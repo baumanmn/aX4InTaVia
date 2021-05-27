@@ -1,0 +1,65 @@
+{
+  "name": "ax4intavia-setup",
+  "version": "1.0.0",
+  "description": "A test project to setup AnnoXplorer with a backend",
+  "main": "js/entry.js",
+  "scripts": {
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "watch": "webpack --progress -d --config webpack.config.js --watch",
+    "test": "mocha"
+  },
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.tik.uni-stuttgart.de/VISUS/aX4InTaVia.git"
+  },
+  "keywords": [
+    "annotation",
+    "nlp",
+    "nltk",
+    "text-vis",
+    "machine-learning"
+  ],
+  "author": "Beck, Baumann, Satkunarajan",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-runtime": "^6.23.0",
+    "d3": "^4.9.1",
+    "d3-selection-multi": "^1.0.1",
+    "jquery": "^3.5.1",
+    "jquery-ui-bundle": "^1.12.1-migrate",
+    "mathjs": "^5.0.0",
+    "snowball-german": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "prettier": "^2.2.0",
+    "webpack": "^2.7.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^2.11.5"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      [
+        "transform-runtime",
+        {
+          "polyfill": false,
+          "regenerator": false
+        }
+      ]
+    ]
+  }
+}
