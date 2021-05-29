@@ -1,6 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, json, request
 import pipeline
-import json
 
 app = Flask(
     __name__,
@@ -11,12 +10,20 @@ app = Flask(
 
 @app.route("/")
 def index():
+    test_file = "data/test.json"
+
+    test_data = pipeline.create_data()
+
+    with open(test_file, "w") as output:
+        json.dump(test_data, output, sort_keys=False, indent=4)
+
     return render_template("index.html", data={})
 
 
 @app.route("/retrieve_data", methods=["GET", "POST"])
 def retrieve_data():
-    data_file = "data/bt_debatte4.json"
+    data_key = request.form["key"]
+    data_file = "data/" + data_key + ".json"
     with open(data_file) as f:
         data = json.load(f)
         return data

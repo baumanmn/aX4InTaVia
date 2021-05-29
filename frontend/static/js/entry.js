@@ -25,10 +25,128 @@ import { initFunctions } from "./functions";
 import { bindSliderToBrushes } from "./slider";
 import { initializeButtonContainer } from "./buttons.js";
 import { initializeStates } from "./overviewState.js";
+//import { drawDataLoader } from "./loadData.js";
 
-var chart = initializeChart(); //draw the basic chart
+drawDataLoader(["bt_debatte4", "test"]);
 
-d3.json("../../../backend/data/bt_debatte4.json", function (data) {
+function drawDataLoader(data) {
+  let body = document.getElementsByTagName("body")[0];
+  let bodyWidth = body.clientWidth;
+
+  let loaderDiv = body.appendChild(document.createElement("div"));
+  let loaderWidth = 600;
+
+  loaderDiv.setAttribute("class", "loader-div");
+  loaderDiv.style.left = bodyWidth / 2 - loaderWidth / 2 + "px";
+
+  let titleDiv = loaderDiv.appendChild(document.createElement("div"));
+  titleDiv.setAttribute("class", "title-div");
+  titleDiv.innerHTML = "Load Dataset";
+
+  titleDiv.onclick = function () {
+    if (!loaderDiv.classList.contains("active")) {
+      loaderDiv.classList.add("active");
+      loaderDiv.style.height = (data.length + 1) * 25 + "px";
+
+      let dataWrapper = loaderDiv.appendChild(document.createElement("div"));
+      dataWrapper.setAttribute("class", "data-wrapper");
+      dataWrapper.style.gridTemplateRows =
+        "repeat(" + (data.length + 1) + ", 25px)";
+
+      for (let i = 0; i < data.length; i++) {
+        let dataDiv = dataWrapper.appendChild(document.createElement("div"));
+        dataDiv.setAttribute("class", "data-selector");
+        dataDiv.innerHTML = data[i];
+        dataDiv.onclick = function () {
+          if (data[i] === "bt_debatte4") {
+            temp({ key: data[i] });
+          }
+        };
+      }
+    } else {
+      document.getElementsByClassName("data-wrapper")[0].remove();
+      loaderDiv.classList.remove("active");
+      loaderDiv.style.height = "25px";
+    }
+  };
+}
+
+function temp(fetch_data) {
+  document.getElementsByClassName("loader-div")[0].remove();
+  $.ajax({
+    type: "POST",
+    url: "/retrieve_data",
+    data: fetch_data,
+    dataType: "json",
+    success: function (results) {
+      var data = results;
+      var chart = initializeChart();
+
+      fillChart(chart, data);
+
+      //draw the initial view
+      drawInitialBars(chart);
+      drawSecondOverviewBars(
+        chart,
+        [0, chart.d.bins.length],
+        [0, chart.d.tokens.length]
+      );
+      drawThirdOverviewBars(
+        chart,
+        [0, chart.d.bins.length],
+        [0, chart.d.tokens.length]
+      );
+
+      initTextArea(chart);
+      //initializeButtonContainer(chart);
+      // initEvents(chart);
+      initFunctions(chart);
+
+      installZoom(chart); //MB currently defucnt
+      initializeViewAssignment(chart);
+      installBrush(chart, 0, {
+        brushNr: 0,
+        overlay: [0, chart.p.tokenExt],
+        selection: [0, chart.p.tokenExt],
+      });
+      installBrush(chart, 1, {
+        brushNr: 0,
+        overlay: [0, chart.p.tokenExt],
+        selection: [0, chart.p.tokenExt],
+      });
+      installBrush(chart, 2, {
+        brushNr: 0,
+        overlay: [0, chart.p.tokenExt],
+        selection: [0, chart.p.tokenExt],
+      });
+
+      initializeButtonContainer(chart);
+
+      //dragChart(chart); //HM
+      //lensChart(chart); //HM
+      initIndicator(chart); //HM
+      // initFilters(chart);
+      initElemrntAddres(chart); //HM
+      initStateController(chart); //HM
+
+      $(function () {
+        controller.newMonitor("textDiv", chart);
+        bindSliderToBrushes(chart, chart.p.tokenExt, 0, 1);
+        bindSliderToBrushes(chart, chart.p.tokenExt, 0, 0);
+        bindSliderToBrushes(chart, chart.p.tokenExt, 1, 1);
+        bindSliderToBrushes(chart, chart.p.tokenExt, 1, 0);
+        bindSliderToBrushes(chart, chart.p.tokenExt, 2, 1);
+        bindSliderToBrushes(chart, chart.p.tokenExt, 2, 0);
+        initializeStates(chart);
+      });
+    },
+  });
+} //draw the basic chart
+
+/* var chart = initializeChart(); */
+
+/* d3.json("/retrieve_data", function (data) {
+
   ////beschnittener datensatz zu testzwecken
   // var data = {
   //    userAnnotations: data.userAnnotations.filter(function (anno) {
@@ -103,9 +221,6 @@ d3.json("../../../backend/data/bt_debatte4.json", function (data) {
   // initEvents(chart);
   initFunctions(chart);
 
-  /**
-   * Brushes
-   */
   installZoom(chart); //MB currently defucnt
   initializeViewAssignment(chart);
   installBrush(chart, 0, {
@@ -147,3 +262,4 @@ d3.json("../../../backend/data/bt_debatte4.json", function (data) {
   // initEvents(chart);
   // initFunctions(chart);
 });
+ */

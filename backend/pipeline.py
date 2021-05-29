@@ -5,15 +5,17 @@ import string
 from nltk.tree import Tree
 from nltk.corpus import stopwords
 
-#nltk.download('averaged_perceptron_tagger')
-#nltk.download('maxent_ne_chunker')
-#nltk.download('words')
-#nltk.download('stopwords')
+nltk.download("averaged_perceptron_tagger")
+nltk.download("maxent_ne_chunker")
+nltk.download("words")
+nltk.download("stopwords")
 
 stop_words = stopwords.words()
 
 """Load text from a hardcoded file location
 """
+
+
 def load_text():
     file_location = "data//"
 
@@ -24,11 +26,14 @@ def load_text():
     with open(file_path) as f:
         data = json.load(f)
         text = data["0"]["content"]
-    
+
     return text
+
 
 """Retrieve continuous entity chunks given text token and their POS tags
 """
+
+
 def get_continuous_chunks(pos_tags):
     chunked = nltk.ne_chunk(pos_tags)
     prev = None
@@ -53,20 +58,22 @@ def get_continuous_chunks(pos_tags):
         if named_entity not in continuous_chunk and len(named_entity) > 0:
             continuous_chunk.append(named_entity)
 
-
     return continuous_chunk, labels
+
 
 """preprocessing pipeline: sentence split --> tokenize --> pos tag + ent. tag
 """
+
+
 def pipeline():
     text = load_text()
     sentences = nltk.sent_tokenize(text)
-    
+
     ent_chunks = []
-    
+
     processed_text = []
     ent_labels = []
-    
+
     annotation_dict = {}
     POS_dict = {}
     ENT_dict = {}
@@ -80,23 +87,16 @@ def pipeline():
         for t, pos in tags:
 
             if len(remove_chunk(t)) == 0:
-                annotation_dict[t] = {
-                    "POS" : "",
-                    "Entity" : ""
-                }
+                annotation_dict[t] = {"POS": "", "Entity": ""}
                 continue
 
-            annotation_dict[t] = {
-                "POS" : pos,
-                "Entity" : ""
-            }
+            annotation_dict[t] = {"POS": pos, "Entity": ""}
 
             if pos in POS_dict.keys():
                 if t not in POS_dict[pos]:
                     POS_dict[pos].append(t)
             else:
                 POS_dict[pos] = [t]
-
 
         # retrieve entities
         chunks, label = get_continuous_chunks(tags)
@@ -122,7 +122,7 @@ def pipeline():
                             ENT_dict[label].append(token)
                     else:
                         ENT_dict[label] = [token]
-                
+
     processed_text = sum(processed_text, [])
 
     return processed_text, annotation_dict, POS_dict, ENT_dict
@@ -132,5 +132,31 @@ def remove_chunk(token):
     if token in stop_words:
         return ""
 
-    return token.translate(str.maketrans('', '', string.punctuation))
-    
+    return token.translate(str.maketrans("", "", string.punctuation))
+
+
+def create_data():
+    tokens, annotation, POS, ENT = pipeline()
+
+    return_dict = {
+        "tokens": [],
+        "size": 4,
+    }
+
+    char_start = 0
+    char_end = len(tokens[0])
+
+    for i in range(len(tokens) - 1):
+        token = tokens[i]
+        token_entry = {
+            "startOff": char_start,
+            "endOff": char_end,
+            "id": i,
+            "text": token,
+        }
+        return_dict["tokens"].append(token_entry)
+
+        char_start = char_end + 1
+        char_end = char_end + len(tokens[i + 1])
+
+    return return_dict
