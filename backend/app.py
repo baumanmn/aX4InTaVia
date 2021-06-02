@@ -3,19 +3,19 @@ import pipeline
 
 app = Flask(
     __name__,
-    static_folder="../Frontend/static",
-    template_folder="../Frontend/templates",
+    static_folder="../frontend/static",
+    template_folder="../frontend/templates",
 )
 
 
 @app.route("/")
 def index():
-    test_file = "data/test.json"
+    # test_file = "data/test.json"
 
-    test_data = pipeline.create_data()
+    # test_data = pipeline.create_data()
 
-    with open(test_file, "w") as output:
-        json.dump(test_data, output, sort_keys=False, indent=4)
+    # with open(test_file, "w") as output:
+    #     json.dump(test_data, output, sort_keys=False, indent=4)
 
     return render_template("index.html", data={})
 

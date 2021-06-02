@@ -3,9 +3,9 @@ catalogue==2.0.1
 certifi==2020.12.5
 chardet==4.0.0
 click==7.1.2
-cupy-cuda102==8.4.0
+cupy-cuda102==8.5.0
 cymem==2.0.5
-fastrlock==0.5
+fastrlock==0.6
 Flask==1.1.2
 idna==2.10
 importlib-metadata==3.4.0
