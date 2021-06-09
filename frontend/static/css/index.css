@@ -553,23 +553,48 @@ div span {
   visibility: visible;
 }
 
-/**
-TEST
-*/
-.test-load-button {
+.loader-div {
   position: absolute;
-  text-align: center;
-  height: 50px;
-  width: 50px;
-  border: 1px solid black;
+  width: 600px;
+  height: 25px;
   background-color: white;
-  margin-top: auto;
-  cursor: pointer;
+  border: 1px solid lightgray;
+  padding: 5px;
   transition: 0.3s;
+  display: grid;
+  grid-template-rows: 100%;
+  overflow: hidden;
 }
 
-.test-load-button.active {
-  height: 500px;
-  width: 500px;
-  cursor: default;
+.title-div {
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  height: 25px;
+}
+
+.loader-div.active {
+  grid-template-rows: 25px auto;
+  max-height: 400px;
+}
+
+.data-wrapper {
+  display: grid;
+  overflow-y: auto;
+}
+.data-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.data-selector {
+  height: 25px;
+  font-size: 12px;
+  text-align: center;
+  border-top: 1px solid lightgray;
+  padding-top: 1px;
+}
+
+.data-selector:hover {
+  background-color: gray;
 }

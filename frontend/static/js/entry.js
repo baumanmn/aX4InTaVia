@@ -27,7 +27,7 @@ import { initializeButtonContainer } from "./buttons.js";
 import { initializeStates } from "./overviewState.js";
 //import { drawDataLoader } from "./loadData.js";
 
-drawDataLoader(["bt_debatte4", "test"]);
+drawDataLoader(["bt_debatte4", "test_0", "test_1", "test_2"]);
 
 function drawDataLoader(data) {
   let body = document.getElementsByTagName("body")[0];
@@ -58,9 +58,7 @@ function drawDataLoader(data) {
         dataDiv.setAttribute("class", "data-selector");
         dataDiv.innerHTML = data[i];
         dataDiv.onclick = function () {
-          if (data[i] === "bt_debatte4") {
-            temp({ key: data[i] });
-          }
+          temp({ key: data[i] });
         };
       }
     } else {

@@ -1,33 +1,21 @@
 import os
 import json
-import nltk
 import string
+import re
+import nltk
 from nltk.tree import Tree
 from nltk.corpus import stopwords
 
-nltk.download("averaged_perceptron_tagger")
-nltk.download("maxent_ne_chunker")
-nltk.download("words")
-nltk.download("stopwords")
+# nltk.download("averaged_perceptron_tagger")
+# nltk.download("maxent_ne_chunker")
+# nltk.download("words")
+# nltk.download("stopwords")
 
 stop_words = stopwords.words()
+typeArray = ["PER", "LOC", "ORG", "EVT", "WRK", "WVL", "CNC"]
 
 """Load text from a hardcoded file location
 """
-
-
-def load_text():
-    file_location = "data//"
-
-    file_name = "data.json"
-
-    file_path = os.path.join(file_location, file_name)
-
-    with open(file_path) as f:
-        data = json.load(f)
-        text = data["0"]["content"]
-
-    return text
 
 
 """Retrieve continuous entity chunks given text token and their POS tags
@@ -65,8 +53,7 @@ def get_continuous_chunks(pos_tags):
 """
 
 
-def pipeline():
-    text = load_text()
+def pipeline(text):
     sentences = nltk.sent_tokenize(text)
 
     ent_chunks = []
@@ -102,6 +89,10 @@ def pipeline():
         chunks, label = get_continuous_chunks(tags)
 
         ent_chunks.append(chunks)
+
+        ## convert nltk label to custom label
+        label = convert_to_constant_label(label)
+
         ent_labels.append(label)
 
     # annotate every component of a continuous chunk with its respective ent. tag
@@ -135,19 +126,43 @@ def remove_chunk(token):
     return token.translate(str.maketrans("", "", string.punctuation))
 
 
-def create_data():
-    tokens, annotation, POS, ENT = pipeline()
+def replace_escape_sequences(input_string):
+    input_string = "".join(re.findall(r'[A-Za-z!"%?´`\'#,;.:]+|\d+', input_string))
+    input_string = input_string.replace("apos;", "'")
+    return input_string
+
+
+def load_text(file_key):
+    file_location = "data//"
+
+    file_name = "data.json"
+
+    file_path = os.path.join(file_location, file_name)
+
+    with open(file_path) as f:
+        data = json.load(f)
+        text = data[file_key]["content"]
+
+    return text
+
+
+def process_annotation_data(file_key):
+    text = load_text(file_key)
+    tokens, annotation, POS, ENT = pipeline(text)
+    tokens = [token for token in tokens if token not in string.punctuation]
 
     return_dict = {
+        "userAnnotations": {},
         "tokens": [],
         "size": 4,
+        "users": ["7", "14", "15", "27"],
     }
 
     char_start = 0
     char_end = len(tokens[0])
 
     for i in range(len(tokens) - 1):
-        token = tokens[i]
+        token = replace_escape_sequences(tokens[i])
         token_entry = {
             "startOff": char_start,
             "endOff": char_end,
@@ -159,4 +174,85 @@ def create_data():
         char_start = char_end + 1
         char_end = char_end + len(tokens[i + 1])
 
-    return return_dict
+    return return_dict, annotation
+
+
+def create_dummy_annotations(data_dict, annotation=None):
+    import random
+    import numpy as np
+
+    hard_coded_users = data_dict["users"]
+
+    userAnnotations = []
+    tokens = data_dict["tokens"]
+    # start_id = tokens[0]["id"]
+    end_id = int(tokens[-1]["id"])
+    half_max_shift = int(0.025 * (end_id + 1))
+
+    unfinished = True
+    curr_id = 0
+
+    while unfinished:
+        # curr_shift = random.randint(1, max_shift)
+        new_anno = {
+            "annotationTokens": [],  # ids of tokens
+            "annotationColor": "#b6f2c6",
+            "userNo": str(random.choice(hard_coded_users)),
+            "annotationType": ["PER"],
+            "borderTokens": {"1leftTokenSafe": True, "2rightTokenSafe": True},
+            "annotationText": "",
+            "annotationChar": [],  # start end end char_idx of first/last token respectively
+        }
+        curr_shift = int(np.random.normal(half_max_shift, half_max_shift))
+        if curr_shift > 2 * half_max_shift:
+            curr_shift = 2 * half_max_shift
+        if curr_shift < 1:
+            curr_shift = 1
+
+        token_ids = []
+        annotated_tokens = []
+        ER_labels = []
+
+        for i in range(curr_id, min(curr_id + curr_shift, end_id)):
+            curr_token = tokens[i]["text"]
+            if len(curr_token) == 0:
+                continue
+
+            token_ids.append(i)
+            annotated_tokens.append(tokens[i]["text"])
+
+            if curr_token in annotation:
+                er_label = annotation[curr_token]["Entity"]
+                if len(er_label) > 0:
+                    ER_labels.append(er_label)
+
+        if len(token_ids) > 0 and len(ER_labels) > 0:
+            token_chars = [
+                tokens[token_ids[0]]["startOff"],
+                tokens[token_ids[-1]]["endOff"],
+            ]
+
+            new_anno["annotationTokens"] = token_ids
+            new_anno["annotationText"] = " ".join(annotated_tokens)
+            new_anno["annotationChar"] = token_chars
+            new_anno["annotationType"] = ER_labels
+
+            # print(new_anno)
+            userAnnotations.append(new_anno)
+
+        curr_id += curr_shift
+        if curr_id >= end_id:
+            unfinished = False
+
+        # print(ER_labels)
+
+    return userAnnotations
+
+
+def convert_to_constant_label(labels):
+    for i in range(len(labels)):
+        for const_label in typeArray:
+            if const_label in labels[i]:
+                labels[i] = const_label
+
+    return labels
