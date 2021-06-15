@@ -132,49 +132,80 @@ def replace_escape_sequences(input_string):
     return input_string
 
 
-def load_text(file_key):
-    file_location = "data//"
-
-    file_name = "data.json"
-
-    file_path = os.path.join(file_location, file_name)
-
-    with open(file_path) as f:
-        data = json.load(f)
-        text = data[file_key]["content"]
-
-    return text
-
-
 def process_annotation_data(file_key):
-    text = load_text(file_key)
-    tokens, annotation, POS, ENT = pipeline(text)
-    tokens = [token for token in tokens if token not in string.punctuation]
+    path = "data//"
+    file_path = path + file_key
+    with open(file_path) as f:
+        # text = json.load(f)
+        text = str(f.read())
+        tokens, annotation, POS, ENT = pipeline(text)
+        tokens = [
+            token
+            for token in tokens
+            if token not in string.punctuation and len(token) > 0
+        ]
 
-    return_dict = {
-        "userAnnotations": {},
-        "tokens": [],
-        "size": 4,
-        "users": ["7", "14", "15", "27"],
-    }
+        curr_anno_tokens = []
+        curr_anno_ids = []
+        curr_anno_chars = []
+        ER_labels = []
 
-    char_start = 0
-    char_end = len(tokens[0])
-
-    for i in range(len(tokens) - 1):
-        token = replace_escape_sequences(tokens[i])
-        token_entry = {
-            "startOff": char_start,
-            "endOff": char_end,
-            "id": i,
-            "text": token,
+        return_dict = {
+            "userAnnotations": [],
+            "tokens": [],
+            "size": 1,
+            "users": ["7"],
+            # "size": 4,
+            # "users": ["7", "14", "15", "27"],
         }
-        return_dict["tokens"].append(token_entry)
 
-        char_start = char_end + 1
-        char_end = char_end + len(tokens[i + 1])
+        char_start = 0
+        char_end = len(tokens[0])
 
-    return return_dict, annotation
+        for i in range(len(tokens) - 1):
+            token = replace_escape_sequences(tokens[i])
+            token_entry = {
+                "startOff": char_start,
+                "endOff": char_end,
+                "id": i,
+                "text": token,
+            }
+            return_dict["tokens"].append(token_entry)
+
+            if token in annotation.keys():
+                if len(annotation[token]["Entity"]):
+                    curr_anno_tokens.append(token)
+                    curr_anno_ids.append(i)
+                    ER_labels.append(annotation[token]["Entity"])
+                    if len(curr_anno_chars):
+                        curr_anno_chars[1] = char_end
+                    else:
+                        curr_anno_chars = [char_start, char_end]
+                else:
+                    if len(curr_anno_tokens):
+                        return_dict["userAnnotations"].append(
+                            {
+                                "annotationTokens": curr_anno_ids,  # ids of tokens
+                                "annotationColor": "#b6f2c6",
+                                "userNo": "7",
+                                "annotationType": ER_labels,
+                                "borderTokens": {
+                                    "1leftTokenSafe": True,
+                                    "2rightTokenSafe": True,
+                                },
+                                "annotationText": " ".join(curr_anno_tokens),
+                                "annotationChar": curr_anno_chars,  # start end end char_idx of first/last token respectively
+                            }
+                        )
+                        curr_anno_tokens = []
+                        curr_anno_ids = []
+                        curr_anno_chars = []
+                        ER_labels = []
+
+            char_start = char_end + 1
+            char_end = char_end + len(tokens[i + 1])
+
+        return return_dict, annotation
 
 
 def create_dummy_annotations(data_dict, annotation=None):

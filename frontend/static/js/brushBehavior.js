@@ -195,8 +195,6 @@ export function brushEndOnClick(chart, brush = 0, overview = 0) {
   var selection = [brushX, brushEnd];
   var overviewRange = computeSnap(chart, selection[0], selection[1]).id;
 
-  // var test2 = [[0, 40],overviewRange, [300, 350], [30, 40]];
-  var test2 = [overviewRange, [300, 350]];
   //drawDetailBars(chart, test2);
 }
 

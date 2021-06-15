@@ -152,6 +152,10 @@ export let controller = (function () {
             chart.d.bins[convertLastOverviewPosition(chart, start)].tokens[0].id
           ];
         let end = overlayRange[1];
+
+        //HACK
+        end = Math.min(end, chart.d.bins.length - 1);
+
         end =
           chart.d.spanIDTable[
             chart.d.bins[convertLastOverviewPosition(chart, end) - 1].tokens[0]

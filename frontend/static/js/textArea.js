@@ -76,6 +76,7 @@ function updateIndividually(chart, brush, color) {
     let oRight = chart.assignedRangeForViews[brush][0][1];
     let sLeft = chart.assignedRangeForViews[brush][1][0];
     let sRight = chart.assignedRangeForViews[brush][1][1];
+
     oLeft =
       chart.d.bins[convertLastOverviewPosition(chart, oLeft, brush)].tokens[0]
         .id;

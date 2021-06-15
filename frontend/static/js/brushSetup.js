@@ -370,3 +370,17 @@ export function compareKey(list, key) {
   }
   return true;
 }
+
+//rangeKey === "selection" || "overlay"
+export function getConvertedRange(chart, overviewID, brushID, rangeKey) {
+  if (rangeKey === "selection") {
+    rangeKey = ".selection";
+  } else {
+    rangeKey = ".overlay";
+  }
+  let brush = chart.overviews[overviewID]["brushes"][brushID];
+  let maxNumBins = chart.d.bins.length;
+
+  let rangeX = parseInt(brush.select(".selection").attr("x"));
+  let rangeW = parseInt(brush.select(".selection").attr("width"));
+}

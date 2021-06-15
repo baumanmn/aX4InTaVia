@@ -27,49 +27,59 @@ import { initializeButtonContainer } from "./buttons.js";
 import { initializeStates } from "./overviewState.js";
 //import { drawDataLoader } from "./loadData.js";
 
-drawDataLoader(["bt_debatte4", "test_0", "test_1", "test_2"]);
+//drawDataLoader(["bt_debatte4", "0", "1", "2"]);
 
-function drawDataLoader(data) {
-  let body = document.getElementsByTagName("body")[0];
-  let bodyWidth = body.clientWidth;
+$.ajax({
+  type: "POST",
+  url: "/file_names",
+  data: {},
+  dataType: "json",
+  success: function (results) {
+    let data = results["file_names"];
+    let body = document.getElementsByTagName("body")[0];
+    let bodyWidth = body.clientWidth;
 
-  let loaderDiv = body.appendChild(document.createElement("div"));
-  let loaderWidth = 600;
+    let loaderDiv = body.appendChild(document.createElement("div"));
+    let loaderWidth = 800;
 
-  loaderDiv.setAttribute("class", "loader-div");
-  loaderDiv.style.left = bodyWidth / 2 - loaderWidth / 2 + "px";
+    loaderDiv.setAttribute("class", "loader-div");
+    loaderDiv.style.left = bodyWidth / 2 - loaderWidth / 2 + "px";
 
-  let titleDiv = loaderDiv.appendChild(document.createElement("div"));
-  titleDiv.setAttribute("class", "title-div");
-  titleDiv.innerHTML = "Load Dataset";
+    let titleDiv = loaderDiv.appendChild(document.createElement("div"));
+    titleDiv.setAttribute("class", "title-div");
+    titleDiv.innerHTML =
+      "Load Dataset" +
+      " or " +
+      "Drop .txt or .json files into the 'data' folder and reload";
 
-  titleDiv.onclick = function () {
-    if (!loaderDiv.classList.contains("active")) {
-      loaderDiv.classList.add("active");
-      loaderDiv.style.height = (data.length + 1) * 25 + "px";
+    titleDiv.onclick = function () {
+      if (!loaderDiv.classList.contains("active")) {
+        loaderDiv.classList.add("active");
+        loaderDiv.style.height = (data.length + 1) * 25 + "px";
 
-      let dataWrapper = loaderDiv.appendChild(document.createElement("div"));
-      dataWrapper.setAttribute("class", "data-wrapper");
-      dataWrapper.style.gridTemplateRows =
-        "repeat(" + (data.length + 1) + ", 25px)";
+        let dataWrapper = loaderDiv.appendChild(document.createElement("div"));
+        dataWrapper.setAttribute("class", "data-wrapper");
+        dataWrapper.style.gridTemplateRows =
+          "repeat(" + (data.length + 1) + ", 25px)";
 
-      for (let i = 0; i < data.length; i++) {
-        let dataDiv = dataWrapper.appendChild(document.createElement("div"));
-        dataDiv.setAttribute("class", "data-selector");
-        dataDiv.innerHTML = data[i];
-        dataDiv.onclick = function () {
-          temp({ key: data[i] });
-        };
+        for (let i = 0; i < data.length; i++) {
+          let dataDiv = dataWrapper.appendChild(document.createElement("div"));
+          dataDiv.setAttribute("class", "data-selector");
+          dataDiv.innerHTML = data[i];
+          dataDiv.onclick = function () {
+            fetchData({ key: data[i] });
+          };
+        }
+      } else {
+        document.getElementsByClassName("data-wrapper")[0].remove();
+        loaderDiv.classList.remove("active");
+        loaderDiv.style.height = "25px";
       }
-    } else {
-      document.getElementsByClassName("data-wrapper")[0].remove();
-      loaderDiv.classList.remove("active");
-      loaderDiv.style.height = "25px";
-    }
-  };
-}
+    };
+  },
+});
 
-function temp(fetch_data) {
+function fetchData(fetch_data) {
   document.getElementsByClassName("loader-div")[0].remove();
   $.ajax({
     type: "POST",
