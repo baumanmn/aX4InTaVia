@@ -56,14 +56,16 @@ def get_continuous_chunks(pos_tags):
 def pipeline(text):
     sentences = nltk.sent_tokenize(text)
 
-    ent_chunks = []
-
     processed_text = []
+
+    ent_chunks = []
     ent_labels = []
 
-    annotation_dict = {}
-    POS_dict = {}
-    ENT_dict = {}
+    token_entity_pairs = []
+
+    # annotation_dict = {}
+    # POS_dict = {}
+    # ENT_dict = {}
 
     for s in sentences:
         tokens = nltk.word_tokenize(s)
@@ -71,19 +73,19 @@ def pipeline(text):
         tags = nltk.pos_tag(tokens)
 
         # annotate each token with its pos tag
-        for t, pos in tags:
+        # for t, pos in tags:
 
-            if len(remove_chunk(t)) == 0:
-                annotation_dict[t] = {"POS": "", "Entity": ""}
-                continue
+        # if len(remove_chunk(t)) == 0:
+        # annotation_dict[t] = {"POS": "", "Entity": ""}
+        # continue
 
-            annotation_dict[t] = {"POS": pos, "Entity": ""}
+        # annotation_dict[t] = {"POS": pos, "Entity": ""}
 
-            if pos in POS_dict.keys():
-                if t not in POS_dict[pos]:
-                    POS_dict[pos].append(t)
-            else:
-                POS_dict[pos] = [t]
+        # if pos in POS_dict.keys():
+        # if t not in POS_dict[pos]:
+        # POS_dict[pos].append(t)
+        # else:
+        # POS_dict[pos] = [t]
 
         # retrieve entities
         chunks, label = get_continuous_chunks(tags)
@@ -100,23 +102,67 @@ def pipeline(text):
         chunks = ent_chunks[i]
         for j in range(len(processed_text[i])):
             token = processed_text[i][j]
+            token_label = None
             for k in range(len(chunks)):
                 curr_chunk = chunks[k]
                 curr_chunk = curr_chunk.split(" ")
                 if token in curr_chunk:
                     idx = k
                     label = ent_labels[i][idx]
-                    annotation_dict[token]["Entity"] = label
+                    # annotation_dict[token]["Entity"] = label
 
-                    if label in ENT_dict.keys():
-                        if token not in ENT_dict[label]:
-                            ENT_dict[label].append(token)
-                    else:
-                        ENT_dict[label] = [token]
+                    token_label = label
+
+                    # if label in ENT_dict.keys():
+                    # if token not in ENT_dict[label]:
+                    # ENT_dict[label].append(token)
+                    # else:
+                    # ENT_dict[label] = [token]
+
+            token_entity_pairs.append((token, token_label))
 
     processed_text = sum(processed_text, [])
 
-    return processed_text, annotation_dict, POS_dict, ENT_dict
+    return processed_text, token_entity_pairs
+    # return processed_text, annotation_dict, POS_dict, ENT_dict
+
+
+def pipeline2(text):
+    import stanza
+
+    nlp = stanza.Pipeline("en")
+    processed_text = []
+    token_entity_pairs = []
+
+    sentences = nltk.sent_tokenize(text)
+    for s in sentences:
+        tokens = nltk.word_tokenize(s)
+        tokens = [replace_escape_sequences(t) for t in tokens]
+        processed_text.append(tokens)
+        doc = nlp(" ".join(tokens))
+        # print(doc.entities)
+
+        if len(doc.entities) > 0:
+            curr_ent = 0
+            n = len(doc.entities)
+            for t in tokens:
+                l = None
+                for i in range(curr_ent, n):
+                    ent = doc.entities[i]
+                    curr_ent = i
+                    texts = ent.text.split(" ")
+                    if t in texts:
+                        l = ent.type
+                        break
+
+                token_entity_pairs.append((t, l))
+
+        # for tuple in token_entity_pairs:
+        # if tuple[1] is not None:
+        # print(tuple)
+    processed_text = sum(processed_text, [])
+    print(processed_text)
+    return processed_text, token_entity_pairs
 
 
 def remove_chunk(token):
@@ -132,13 +178,18 @@ def replace_escape_sequences(input_string):
     return input_string
 
 
-def process_annotation_data(file_key):
+def process_annotation_data(file_key, pipeline_key):
     path = "data//"
     file_path = path + file_key
     with open(file_path) as f:
         # text = json.load(f)
         text = str(f.read())
-        tokens, annotation, POS, ENT = pipeline(text)
+
+        if pipeline_key == "NLTK":
+            tokens, token_entity_pairs = pipeline(text)
+        else:
+            tokens, token_entity_pairs = pipeline2(text)
+        # print(token_entity_pairs)
         tokens = [
             token
             for token in tokens
@@ -162,122 +213,54 @@ def process_annotation_data(file_key):
         char_start = 0
         char_end = len(tokens[0])
 
-        for i in range(len(tokens) - 1):
-            token = replace_escape_sequences(tokens[i])
+        for i in range(len(token_entity_pairs) - 1):
+            token_pair = token_entity_pairs[i]
+            token = replace_escape_sequences(token_pair[0])
             token_entry = {
                 "startOff": char_start,
                 "endOff": char_end,
                 "id": i,
                 "text": token,
             }
+
             return_dict["tokens"].append(token_entry)
 
-            if token in annotation.keys():
-                if len(annotation[token]["Entity"]):
-                    curr_anno_tokens.append(token)
-                    curr_anno_ids.append(i)
-                    ER_labels.append(annotation[token]["Entity"])
-                    if len(curr_anno_chars):
-                        curr_anno_chars[1] = char_end
-                    else:
-                        curr_anno_chars = [char_start, char_end]
+            token_label = token_pair[1]
+
+            if token_label is not None:
+                curr_anno_tokens.append(token)
+                curr_anno_ids.append(i)
+                ER_labels.append(token_label)
+                if len(curr_anno_chars):
+                    curr_anno_chars[1] = char_end
                 else:
-                    if len(curr_anno_tokens):
-                        return_dict["userAnnotations"].append(
-                            {
-                                "annotationTokens": curr_anno_ids,  # ids of tokens
-                                "annotationColor": "#b6f2c6",
-                                "userNo": "7",
-                                "annotationType": ER_labels,
-                                "borderTokens": {
-                                    "1leftTokenSafe": True,
-                                    "2rightTokenSafe": True,
-                                },
-                                "annotationText": " ".join(curr_anno_tokens),
-                                "annotationChar": curr_anno_chars,  # start end end char_idx of first/last token respectively
-                            }
-                        )
-                        curr_anno_tokens = []
-                        curr_anno_ids = []
-                        curr_anno_chars = []
-                        ER_labels = []
+                    curr_anno_chars = [char_start, char_end]
+
+            else:
+                if len(curr_anno_tokens):
+                    return_dict["userAnnotations"].append(
+                        {
+                            "annotationTokens": curr_anno_ids,  # ids of tokens
+                            "annotationColor": "#b6f2c6",
+                            "userNo": "7",
+                            "annotationType": ER_labels,
+                            "borderTokens": {
+                                "1leftTokenSafe": True,
+                                "2rightTokenSafe": True,
+                            },
+                            "annotationText": " ".join(curr_anno_tokens),
+                            "annotationChar": curr_anno_chars,  # start end end char_idx of first/last token respectively
+                        }
+                    )
+                    curr_anno_tokens = []
+                    curr_anno_ids = []
+                    curr_anno_chars = []
+                    ER_labels = []
 
             char_start = char_end + 1
-            char_end = char_end + len(tokens[i + 1])
+            char_end = char_end + len(token_entity_pairs[i + 1][0])
 
-        return return_dict, annotation
-
-
-def create_dummy_annotations(data_dict, annotation=None):
-    import random
-    import numpy as np
-
-    hard_coded_users = data_dict["users"]
-
-    userAnnotations = []
-    tokens = data_dict["tokens"]
-    # start_id = tokens[0]["id"]
-    end_id = int(tokens[-1]["id"])
-    half_max_shift = int(0.025 * (end_id + 1))
-
-    unfinished = True
-    curr_id = 0
-
-    while unfinished:
-        # curr_shift = random.randint(1, max_shift)
-        new_anno = {
-            "annotationTokens": [],  # ids of tokens
-            "annotationColor": "#b6f2c6",
-            "userNo": str(random.choice(hard_coded_users)),
-            "annotationType": ["PER"],
-            "borderTokens": {"1leftTokenSafe": True, "2rightTokenSafe": True},
-            "annotationText": "",
-            "annotationChar": [],  # start end end char_idx of first/last token respectively
-        }
-        curr_shift = int(np.random.normal(half_max_shift, half_max_shift))
-        if curr_shift > 2 * half_max_shift:
-            curr_shift = 2 * half_max_shift
-        if curr_shift < 1:
-            curr_shift = 1
-
-        token_ids = []
-        annotated_tokens = []
-        ER_labels = []
-
-        for i in range(curr_id, min(curr_id + curr_shift, end_id)):
-            curr_token = tokens[i]["text"]
-            if len(curr_token) == 0:
-                continue
-
-            token_ids.append(i)
-            annotated_tokens.append(tokens[i]["text"])
-
-            if curr_token in annotation:
-                er_label = annotation[curr_token]["Entity"]
-                if len(er_label) > 0:
-                    ER_labels.append(er_label)
-
-        if len(token_ids) > 0 and len(ER_labels) > 0:
-            token_chars = [
-                tokens[token_ids[0]]["startOff"],
-                tokens[token_ids[-1]]["endOff"],
-            ]
-
-            new_anno["annotationTokens"] = token_ids
-            new_anno["annotationText"] = " ".join(annotated_tokens)
-            new_anno["annotationChar"] = token_chars
-            new_anno["annotationType"] = ER_labels
-
-            # print(new_anno)
-            userAnnotations.append(new_anno)
-
-        curr_id += curr_shift
-        if curr_id >= end_id:
-            unfinished = False
-
-        # print(ER_labels)
-
-    return userAnnotations
+        return return_dict
 
 
 def convert_to_constant_label(labels):

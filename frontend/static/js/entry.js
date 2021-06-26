@@ -27,7 +27,19 @@ import { initializeButtonContainer } from "./buttons.js";
 import { initializeStates } from "./overviewState.js";
 //import { drawDataLoader } from "./loadData.js";
 
-//drawDataLoader(["bt_debatte4", "0", "1", "2"]);
+$(document).ajaxStart(function () {
+  console.log("Loading");
+  let body = document.getElementsByTagName("body")[0];
+  let bodyWidth = body.clientWidth;
+  let loadAnimation = body.appendChild(document.createElement("div"));
+  loadAnimation.setAttribute("class", "load-animation-div");
+  loadAnimation.style.left = bodyWidth / 2 - 60 + "px";
+});
+
+$(document).ajaxComplete(function () {
+  console.log("done");
+  document.getElementsByClassName("load-animation-div")[0].remove();
+});
 
 $.ajax({
   type: "POST",
@@ -35,12 +47,55 @@ $.ajax({
   data: {},
   dataType: "json",
   success: function (results) {
-    let data = results["file_names"];
-    let body = document.getElementsByTagName("body")[0];
-    let bodyWidth = body.clientWidth;
+    let PIPELINE_KEY = "NLTK";
 
-    let loaderDiv = body.appendChild(document.createElement("div"));
+    let data = results["file_names"];
+    let pipelines = results["pipeline_names"];
+    let body = document.getElementsByTagName("body")[0];
+
+    let bodyWidth = body.clientWidth;
+    let selectorWidth = 200;
     let loaderWidth = 800;
+    let margin = 20;
+
+    let pipelineSelector = body.appendChild(document.createElement("div"));
+    let loaderDiv = body.appendChild(document.createElement("div"));
+
+    pipelineSelector.setAttribute("class", "selector-div");
+    pipelineSelector.style.left =
+      bodyWidth / 2 - loaderWidth / 2 - selectorWidth - margin + "px";
+
+    let temp = pipelineSelector.appendChild(document.createElement("div"));
+    temp.setAttribute("class", "title-div");
+    temp.innerHTML = "NER Tagger";
+
+    temp.onclick = function () {
+      if (!pipelineSelector.classList.contains("active")) {
+        pipelineSelector.classList.add("active");
+        pipelineSelector.style.height = (pipelines.length + 1) * 25 + "px";
+
+        let dataWrapper = pipelineSelector.appendChild(
+          document.createElement("div")
+        );
+        dataWrapper.setAttribute("class", "selector-wrapper");
+        dataWrapper.style.gridTemplateRows =
+          "repeat(" + (pipelines.length + 1) + ", 25px)";
+
+        for (let i = 0; i < pipelines.length; i++) {
+          let dataDiv = dataWrapper.appendChild(document.createElement("div"));
+          dataDiv.setAttribute("class", "data-selector");
+          dataDiv.innerHTML = pipelines[i];
+          dataDiv.onclick = function () {
+            PIPELINE_KEY = pipelines[i];
+            alert("Selected the" + pipelines[i] + " tagger");
+          };
+        }
+      } else {
+        document.getElementsByClassName("selector-wrapper")[0].remove();
+        pipelineSelector.classList.remove("active");
+        pipelineSelector.style.height = "25px";
+      }
+    };
 
     loaderDiv.setAttribute("class", "loader-div");
     loaderDiv.style.left = bodyWidth / 2 - loaderWidth / 2 + "px";
@@ -67,7 +122,7 @@ $.ajax({
           dataDiv.setAttribute("class", "data-selector");
           dataDiv.innerHTML = data[i];
           dataDiv.onclick = function () {
-            fetchData({ key: data[i] });
+            fetchData({ key: data[i], pipeline: PIPELINE_KEY });
           };
         }
       } else {
@@ -81,6 +136,7 @@ $.ajax({
 
 function fetchData(fetch_data) {
   document.getElementsByClassName("loader-div")[0].remove();
+  document.getElementsByClassName("selector-div")[0].remove();
   $.ajax({
     type: "POST",
     url: "/retrieve_data",

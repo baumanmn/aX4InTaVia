@@ -21,18 +21,24 @@ def get_file_names():
     file_names = glob(path + "*.json") + glob(path + "*.txt")
     file_names = [f.split("\\")[1] for f in file_names]
 
-    return {"file_names": file_names}
+    pipeline_names = ["NLTK", "StanfordNLP"]
+
+    return {"file_names": file_names, "pipeline_names": pipeline_names}
 
 
 @app.route("/retrieve_data", methods=["GET", "POST"])
 def retrieve_data():
-    path = "data//"
     data_key = request.form["key"]
+    pipeline_key = request.form["pipeline"]
+
+    print(pipeline_key)
+
+    path = "data//"
     data_file = path + data_key
 
     if ".txt" in data_key:
         with open(data_file) as f:
-            processed_file = preprocess(data_key)
+            processed_file = preprocess(data_key, pipeline_key)
             with open(processed_file) as f:
                 data = json.load(f)
 
@@ -40,16 +46,16 @@ def retrieve_data():
         with open(data_file) as f:
             data = json.load(f)
             if "userAnnotations" not in data.keys():
-                processed_file = preprocess(data_key)
+                processed_file = preprocess(data_key, pipeline_key)
                 with open(processed_file) as f:
                     data = json.load(f)
 
     return data
 
 
-def preprocess(file_key):
+def preprocess(file_key, pipeline_key):
 
-    test_data, annotation = pipeline.process_annotation_data(file_key)
+    test_data = pipeline.process_annotation_data(file_key, pipeline_key)
 
     processed_file = "data/processed_" + file_key.split(".")[0] + ".json"
 
