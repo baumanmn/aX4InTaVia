@@ -385,6 +385,7 @@ function countTokensInBins(chart, binRange) {
 }
 
 export function convertBinRange(chart, binRange) {
+  //console.log(binRange);
   return [
     chart.d.bins[binRange[0]].tokens[0].id,
     chart.d.bins[binRange[1]].tokens[
@@ -5119,11 +5120,11 @@ export function newDrawAtomicDetailBars(
                     xPos[d.id - firstTokenId].inc
                 ) +
                 "," +
-                  String(chart.p.wordViewExt + chart.p.wordViewConnectorsExt) +
+                String(chart.p.wordViewExt + chart.p.wordViewConnectorsExt) +
                 " " +
                 String(xPos[d.id - firstTokenId].begin) +
                 "," +
-                  String(chart.p.wordViewExt + chart.p.wordViewConnectorsExt)
+                String(chart.p.wordViewExt + chart.p.wordViewConnectorsExt)
               );
             };
 
@@ -5134,9 +5135,9 @@ export function newDrawAtomicDetailBars(
                 xScaleTokenText.bandwidth() -
                 (xPos[d.id - firstTokenId].begin +
                   xPos[d.id - firstTokenId].inc);
-                var t2 = chart.p.wordViewConnectorsExt;
+              var t2 = chart.p.wordViewConnectorsExt;
               var t3 = xScaleTokenText(d.id) - xPos[d.id - firstTokenId].begin;
-                var t4 = chart.p.wordViewConnectorsExt;
+              var t4 = chart.p.wordViewConnectorsExt;
 
               var upperWidth = xScaleTokenText.bandwidth();
               var rightLength = pythagoras(t1, t2);
