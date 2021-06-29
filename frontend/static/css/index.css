@@ -597,11 +597,16 @@ div span {
 }
 
 .data-selector {
+  background-color: white;
   height: 25px;
   font-size: 12px;
   text-align: center;
   border-top: 1px solid lightgray;
   padding-top: 1px;
+}
+
+.data-selector.active {
+  background-color: lightblue;
 }
 
 .data-selector:hover {

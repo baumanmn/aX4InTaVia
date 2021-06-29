@@ -69,6 +69,8 @@ def pipeline(text):
 
     for s in sentences:
         tokens = nltk.word_tokenize(s)
+        tokens = [clean_word(token) for token in tokens]
+        tokens = [t for t in tokens if len(t) > 0]
         processed_text.append(tokens)
         tags = nltk.pos_tag(tokens)
 
@@ -137,7 +139,8 @@ def pipeline2(text):
     sentences = nltk.sent_tokenize(text)
     for s in sentences:
         tokens = nltk.word_tokenize(s)
-        tokens = [replace_escape_sequences(t) for t in tokens]
+        tokens = [clean_word(t) for t in tokens]
+        tokens = [t for t in tokens if len(t) > 0]
         processed_text.append(tokens)
         doc = nlp(" ".join(tokens))
         # print(doc.entities)
@@ -161,7 +164,6 @@ def pipeline2(text):
         # if tuple[1] is not None:
         # print(tuple)
     processed_text = sum(processed_text, [])
-    print(processed_text)
     return processed_text, token_entity_pairs
 
 
@@ -176,6 +178,29 @@ def replace_escape_sequences(input_string):
     input_string = "".join(re.findall(r'[A-Za-z!"%?´`\'#,;.:]+|\d+', input_string))
     input_string = input_string.replace("apos;", "'")
     return input_string
+
+
+def clean_word(
+    w, lower_case=False, remove_punct=True, remove_digits=False, replace_escape=True
+):
+    if w.isspace():
+        return w
+
+    w = w.strip()
+
+    if lower_case == True:
+        w = w.lower()
+
+    if remove_punct == True:
+        w = re.sub("[" + string.punctuation + "]", "", w)
+
+    if remove_digits == True:
+        w = "".join([c for c in w if not c.isdigit()])
+
+    if replace_escape == True:
+        w = replace_escape_sequences(w)
+
+    return w
 
 
 def process_annotation_data(file_key, pipeline_key):
@@ -215,7 +240,9 @@ def process_annotation_data(file_key, pipeline_key):
 
         for i in range(len(token_entity_pairs) - 1):
             token_pair = token_entity_pairs[i]
-            token = replace_escape_sequences(token_pair[0])
+            token = token_pair[0]
+            # token = replace_escape_sequences(token_pair[0])
+            # token = clean_word(token)
             token_entry = {
                 "startOff": char_start,
                 "endOff": char_end,

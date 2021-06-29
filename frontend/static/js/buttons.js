@@ -796,8 +796,8 @@ export function adjustWorkBenchBrush(id, selectionRange = null) {
       .select(".selection")
       .attr("height", range[1] - range[0]);
 
-    if (overlayRange[0][1] === 750) overlayRange[0][1] = 749;
-    updateAnnoViewRange(chartRef, workbench[snap_id]["ids"], overlayRange[0], true);
+    if (overlayRange[1] === 750) overlayRange[1] = 749;
+    updateAnnoViewRange(chartRef, workbench[snap_id]["ids"], overlayRange, true);
   });
 }
 

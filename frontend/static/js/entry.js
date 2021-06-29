@@ -28,7 +28,6 @@ import { initializeStates } from "./overviewState.js";
 //import { drawDataLoader } from "./loadData.js";
 
 $(document).ajaxStart(function () {
-  console.log("Loading");
   let body = document.getElementsByTagName("body")[0];
   let bodyWidth = body.clientWidth;
   let loadAnimation = body.appendChild(document.createElement("div"));
@@ -37,7 +36,6 @@ $(document).ajaxStart(function () {
 });
 
 $(document).ajaxComplete(function () {
-  console.log("done");
   document.getElementsByClassName("load-animation-div")[0].remove();
 });
 
@@ -81,13 +79,23 @@ $.ajax({
         dataWrapper.style.gridTemplateRows =
           "repeat(" + (pipelines.length + 1) + ", 25px)";
 
+        let lastClicked = null;
+
         for (let i = 0; i < pipelines.length; i++) {
           let dataDiv = dataWrapper.appendChild(document.createElement("div"));
           dataDiv.setAttribute("class", "data-selector");
+          if (i === 0) {
+            dataDiv.classList.add("active");
+            lastClicked = dataDiv;
+          }
           dataDiv.innerHTML = pipelines[i];
           dataDiv.onclick = function () {
             PIPELINE_KEY = pipelines[i];
-            alert("Selected the" + pipelines[i] + " tagger");
+            if (lastClicked !== null) {
+              lastClicked.classList.remove("active");
+            }
+            dataDiv.classList.add("active");
+            lastClicked = dataDiv;
           };
         }
       } else {
