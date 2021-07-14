@@ -2,14 +2,17 @@ import os
 import json
 import string
 import re
+import stanza
 import nltk
 from nltk.tree import Tree
 from nltk.corpus import stopwords
 
+# stanza.download('en')
 # nltk.download("averaged_perceptron_tagger")
 # nltk.download("maxent_ne_chunker")
 # nltk.download("words")
 # nltk.download("stopwords")
+# nltk.donwload("punkt")
 
 stop_words = stopwords.words()
 typeArray = ["PER", "LOC", "ORG", "EVT", "WRK", "WVL", "CNC"]
