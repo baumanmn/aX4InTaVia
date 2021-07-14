@@ -53,43 +53,33 @@ def get_continuous_chunks(pos_tags):
 """
 
 
-def pipeline(text):
-    sentences = nltk.sent_tokenize(text)
-
+def produce_tokens(text):
     processed_text = []
+    processed_text_as_list = []
 
-    ent_chunks = []
-    ent_labels = []
-
-    token_entity_pairs = []
-
-    # annotation_dict = {}
-    # POS_dict = {}
-    # ENT_dict = {}
+    text = text.encode().decode("unicode-escape")
+    sentences = nltk.sent_tokenize(text)
 
     for s in sentences:
         tokens = nltk.word_tokenize(s)
         tokens = [clean_word(token) for token in tokens]
         tokens = [t for t in tokens if len(t) > 0]
         processed_text.append(tokens)
-        tags = nltk.pos_tag(tokens)
+        processed_text_as_list += tokens
 
-        # annotate each token with its pos tag
-        # for t, pos in tags:
+    return processed_text, processed_text_as_list
 
-        # if len(remove_chunk(t)) == 0:
-        # annotation_dict[t] = {"POS": "", "Entity": ""}
-        # continue
 
-        # annotation_dict[t] = {"POS": pos, "Entity": ""}
+def standard_tagger(sentences):
+    ent_chunks = []
 
-        # if pos in POS_dict.keys():
-        # if t not in POS_dict[pos]:
-        # POS_dict[pos].append(t)
-        # else:
-        # POS_dict[pos] = [t]
+    ent_labels = []
 
-        # retrieve entities
+    token_entity_pairs = []
+
+    for s in sentences:
+        tags = nltk.pos_tag(s)
+
         chunks, label = get_continuous_chunks(tags)
 
         ent_chunks.append(chunks)
@@ -100,10 +90,10 @@ def pipeline(text):
         ent_labels.append(label)
 
     # annotate every component of a continuous chunk with its respective ent. tag
-    for i in range(len(processed_text)):
+    for i in range(len(sentences)):
         chunks = ent_chunks[i]
-        for j in range(len(processed_text[i])):
-            token = processed_text[i][j]
+        for j in range(len(sentences[i])):
+            token = sentences[i][j]
             token_label = None
             for k in range(len(chunks)):
                 curr_chunk = chunks[k]
@@ -111,44 +101,29 @@ def pipeline(text):
                 if token in curr_chunk:
                     idx = k
                     label = ent_labels[i][idx]
-                    # annotation_dict[token]["Entity"] = label
 
                     token_label = label
 
-                    # if label in ENT_dict.keys():
-                    # if token not in ENT_dict[label]:
-                    # ENT_dict[label].append(token)
-                    # else:
-                    # ENT_dict[label] = [token]
-
             token_entity_pairs.append((token, token_label))
 
-    processed_text = sum(processed_text, [])
-
-    return processed_text, token_entity_pairs
-    # return processed_text, annotation_dict, POS_dict, ENT_dict
+    return token_entity_pairs
 
 
-def pipeline2(text):
+def stanza_tagger(sentences):
     import stanza
 
     nlp = stanza.Pipeline("en")
-    processed_text = []
+
     token_entity_pairs = []
 
-    sentences = nltk.sent_tokenize(text)
     for s in sentences:
-        tokens = nltk.word_tokenize(s)
-        tokens = [clean_word(t) for t in tokens]
-        tokens = [t for t in tokens if len(t) > 0]
-        processed_text.append(tokens)
-        doc = nlp(" ".join(tokens))
-        # print(doc.entities)
+
+        doc = nlp(" ".join(s))
 
         if len(doc.entities) > 0:
             curr_ent = 0
             n = len(doc.entities)
-            for t in tokens:
+            for t in s:
                 l = None
                 for i in range(curr_ent, n):
                     ent = doc.entities[i]
@@ -160,11 +135,7 @@ def pipeline2(text):
 
                 token_entity_pairs.append((t, l))
 
-        # for tuple in token_entity_pairs:
-        # if tuple[1] is not None:
-        # print(tuple)
-    processed_text = sum(processed_text, [])
-    return processed_text, token_entity_pairs
+    return token_entity_pairs
 
 
 def remove_chunk(token):
@@ -185,6 +156,8 @@ def clean_word(
 ):
     if w.isspace():
         return w
+
+    w = w.encode().decode("unicode-escape")
 
     w = w.strip()
 
@@ -210,14 +183,13 @@ def process_annotation_data(file_key, pipeline_key):
         # text = json.load(f)
         text = str(f.read())
 
-        if pipeline_key == "NLTK":
-            tokens, token_entity_pairs = pipeline(text)
-        else:
-            tokens, token_entity_pairs = pipeline2(text)
-        # print(token_entity_pairs)
+        tokens, tokens_as_list = produce_tokens(text)
+        token_entity_pairs = standard_tagger(tokens)
+        token_entity_pairs2 = stanza_tagger(tokens)
+
         tokens = [
             token
-            for token in tokens
+            for token in tokens_as_list
             if token not in string.punctuation and len(token) > 0
         ]
 
@@ -241,8 +213,6 @@ def process_annotation_data(file_key, pipeline_key):
         for i in range(len(token_entity_pairs) - 1):
             token_pair = token_entity_pairs[i]
             token = token_pair[0]
-            # token = replace_escape_sequences(token_pair[0])
-            # token = clean_word(token)
             token_entry = {
                 "startOff": char_start,
                 "endOff": char_end,
@@ -265,6 +235,7 @@ def process_annotation_data(file_key, pipeline_key):
 
             else:
                 if len(curr_anno_tokens):
+
                     return_dict["userAnnotations"].append(
                         {
                             "annotationTokens": curr_anno_ids,  # ids of tokens
@@ -287,6 +258,55 @@ def process_annotation_data(file_key, pipeline_key):
             char_start = char_end + 1
             char_end = char_end + len(token_entity_pairs[i + 1][0])
 
+        curr_anno_tokens = []
+        curr_anno_ids = []
+        curr_anno_chars = []
+        ER_labels = []
+
+        char_start = 0
+        char_end = len(tokens[0])
+
+        for i in range(len(token_entity_pairs2) - 1):
+            token_pair = token_entity_pairs2[i]
+
+            token = token_pair[0]
+
+            token_label = token_pair[1]
+
+            if token_label is not None:
+                curr_anno_tokens.append(token)
+                curr_anno_ids.append(i)
+                ER_labels.append(token_label)
+                if len(curr_anno_chars):
+                    curr_anno_chars[1] = char_end
+                else:
+                    curr_anno_chars = [char_start, char_end]
+
+            else:
+                if len(curr_anno_tokens):
+
+                    return_dict["userAnnotations"].append(
+                        {
+                            "annotationTokens": curr_anno_ids,  # ids of tokens
+                            "annotationColor": "#b6f2c6",
+                            "userNo": "5",
+                            "annotationType": ER_labels,
+                            "borderTokens": {
+                                "1leftTokenSafe": True,
+                                "2rightTokenSafe": True,
+                            },
+                            "annotationText": " ".join(curr_anno_tokens),
+                            "annotationChar": curr_anno_chars,  # start end end char_idx of first/last token respectively
+                        }
+                    )
+                    curr_anno_tokens = []
+                    curr_anno_ids = []
+                    curr_anno_chars = []
+                    ER_labels = []
+
+            char_start = char_end + 1
+            char_end = char_end + len(token_entity_pairs2[i + 1][0])
+
         return return_dict
 
 
@@ -297,3 +317,82 @@ def convert_to_constant_label(labels):
                 labels[i] = const_label
 
     return labels
+
+
+def split_into_words(
+    input_sequence,
+    lower_case=False,
+    remove_punct_only=True,
+    remove_digits=False,
+    replace_escape=True,
+    remove_stop_words=False,
+    remove_umlt=False,
+):
+    if len(input_sequence) == 0:
+        return []
+
+    processed = []
+    sequence = input_sequence.replace(",", " ")
+    sequence = re.split(r"\s", sequence)
+    sequence = [separate_strings_and_digits(word) for word in sequence]
+    sequence = sum(sequence, [])
+
+    for w in sequence:
+        if len(w) == 0:
+            continue
+
+        if "http" in w:
+            continue
+
+        w = w.strip()
+
+        if lower_case == True:
+            w = w.lower()
+
+        if remove_stop_words == True:
+            if w in stop_words:
+                continue
+
+        if replace_escape == True:
+            if w.isdigit() == False:
+                w = replace_escape_sequences(w)
+
+        if remove_punct_only == True:
+            remove = True
+            for c in w:
+                if c not in string.punctuation:
+                    remove = False
+                    break
+
+            if remove == True:
+                continue
+
+        if w.isspace() or not w:
+            continue
+        else:
+            processed.append(w)
+
+    return processed
+
+
+def separate_strings_and_digits(input_sequence):
+    components = []
+    curr_string = ""
+    is_string = True
+    for c in input_sequence:
+        if c.isdigit():
+            if is_string == True:
+                components.append(curr_string)
+                curr_string = ""
+                is_string = False
+        else:
+            if is_string == False:
+                components.append(curr_string)
+                curr_string = ""
+                is_string = True
+        curr_string += c
+
+    if len(curr_string) > 0:
+        components.append(curr_string)
+
+    return components

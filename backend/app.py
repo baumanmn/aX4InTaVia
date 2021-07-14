@@ -31,23 +31,21 @@ def retrieve_data():
     data_key = request.form["key"]
     pipeline_key = request.form["pipeline"]
 
-    print(pipeline_key)
-
     path = "data//"
     data_file = path + data_key
 
     if ".txt" in data_key:
-        with open(data_file) as f:
+        with open(data_file, encoding="utf-8") as f:
             processed_file = preprocess(data_key, pipeline_key)
-            with open(processed_file) as f:
+            with open(processed_file, encoding="utf-8") as f:
                 data = json.load(f)
 
     else:
-        with open(data_file) as f:
+        with open(data_file, encoding="utf-8") as f:
             data = json.load(f)
             if "userAnnotations" not in data.keys():
                 processed_file = preprocess(data_key, pipeline_key)
-                with open(processed_file) as f:
+                with open(processed_file, encoding="utf-8") as f:
                     data = json.load(f)
 
     return data
