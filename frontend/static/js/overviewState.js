@@ -1056,7 +1056,6 @@ export function indicatorUpdatePipeline(chart, metaData) {
       data["drawSplitIndicators"] !== undefined &&
       data["drawSplitIndicators"] === true
     ) {
-      console.log(data);
       drawSplitIndicator(chart, data["brushID"], data["splitPos"], overviewNr);
     }
     if (

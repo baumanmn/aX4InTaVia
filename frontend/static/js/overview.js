@@ -91,6 +91,7 @@ export function updatePartition(chart, brushRanges, overviewID, ids) {
     setActiveOverview(chart, stateEncoder[brushID].children.childActive, 2); //to do
 
     indicatorUpdatePipeline(chart, {
+      // TO DO FOR MISSING OV1 RECTANGLES
       1: {
         brushIndices: [0, 1, 2],
         updateAllIndicators: true,
@@ -101,6 +102,7 @@ export function updatePartition(chart, brushRanges, overviewID, ids) {
     });
 
     drawNameTBDdRectangle(chart, brushID);
+    updateAll(chart, brushID);
     updateAllGrandButtonRectangles(brushID);
     checkAndUpdateSplit(chart, overviewID, ids);
     checkAndUpdateAssignment(chart, 0, ids, brushRanges[1]);
