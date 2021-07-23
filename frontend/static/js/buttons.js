@@ -788,22 +788,6 @@ export function adjustWorkBenchBrush(id, selectionRange = null) {
       workbench[snap_id]["position"][1]
     );
 
-    // ?
-    /* workbench[snap_id]["brush"].remove();
-    workbench[snap_id]["brush"] = workbench.object
-      .append("g")
-      .classed("workbenchBrush", true)
-      .call(workbench[snap_id]["brushObject"])
-      .call(
-        workbench[snap_id]["brushObject"].move,
-        workbench[snap_id]["moveRange"]
-      );
-
-    workbench[snap_id]["brush"]
-      .select(".selection")
-      .attr("fill", workbench[snap_id]["color"]); */
-    // ?
-
     workbench[snap_id]["brush"]
       .select(".selection")
       .attr("y", workbench[snap_id]["position"][0] + range[0]);
@@ -1039,10 +1023,6 @@ function addBrushToWorkbench(id = [0], button) {
         length
       );
 
-      workbench[snap_id]["moveRange"] = [
-        y + selectionRange[0],
-        y + selectionRange[1],
-      ];
       workbench[snap_id]["selectionRange"] = selectionRange;
       workbench[snap_id]["position"] = [y, length];
       workbench[snap_id]["brush"] = workbench.object
@@ -1073,6 +1053,7 @@ function addBrushToWorkbench(id = [0], button) {
       workbench[snap_id]["brushObject"].on("end", function () {
         let overviewBrushRanges = getBrushRanges(snap_id); //get overlay and selection ranges
         if (overviewBrushRanges[0][1] === 750) overviewBrushRanges[0][1] = 749;
+        console.log("end");
         updateAnnoViewRange(
           chartRef,
           workbench[snap_id]["ids"],

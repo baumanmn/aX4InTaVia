@@ -18,15 +18,17 @@ export let controller = (function () {
     bigSplit = false;
     smallSplit = false;
 
-    let stackedSplit = false;
+    //let stackedSplit = false;
     let stopOn = "currentStop"; // global variable to set on which word the bigSplit should occur
-    let container = "#" + textDivID;
+    //let container = "#" + textDivID;
     //bandInstance = rubberBand.getInstance(textDivID);
     view0 = view.initView(textDivID, "view0", chart);
-    let globalWordC = view0.getWordCount();
+    //let globalWordC = view0.getWordCount();
     //const splitSpace = $(container).height() - bandInstance.getHeight();
     //const splitSpace = $(container).height(); --> for landscape mode
     const splitSpace = view0.getParentHeight() - 10;
+
+    let numViews = 1;
 
     /**
      * sets the height of the views according to their content:
@@ -144,6 +146,16 @@ export let controller = (function () {
     }
 
     return {
+      getNumViews: function () {
+        return numViews;
+      },
+
+      increaseNumViews: function () {
+        numViews += 1;
+        let textArea = document.getElementsByClassName("textArea")[0];
+        textArea.style.gridTemplateRows = "repeat(" + numViews + ", 1fr)";
+      },
+
       synchronizeView: function (chart, viewID) {
         let overlayRange = chart.assignedRangeForViews[viewID][1];
         let start = overlayRange[0];

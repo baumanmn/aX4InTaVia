@@ -33,6 +33,7 @@
     "d3-selection-multi": "^1.0.1",
     "jquery": "^3.5.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
+    "label-studio": "^1.0.1",
     "mathjs": "^5.0.0",
     "snowball-german": "^1.0.0"
   },

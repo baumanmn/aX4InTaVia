@@ -314,6 +314,15 @@ margin-left: 40px;
   overflow: hidden;
 }
 
+.textArea {
+  grid-area: textWindow;
+  height: 750px;
+  display: grid;
+  grid-template-rows: 100%;
+  /* height: 100%;
+  width: 100%; */
+}
+
 /**css for all text views**/
 .splitView {
   /**landscape mode exclusive*/
@@ -334,12 +343,28 @@ margin-left: 40px;
   /* display: inline-block; */
 
   /**same for both modes*/
-  grid-area: textWindow;
+  /* grid-area: textWindow; */
   overflow: auto;
   background: white;
   background-color: white;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
+/* #textDivView {
+  grid-area: textDivView;
+  grid-column-start: 1;
+  grid-column-end: row1-end;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#view1 {
+  grid-area: view1;
+  grid-column-start: 1;
+  grid-column-end: row2-end;
+  grid-row-start: 2;
+  grid-row-end: 3;
+} */
 
 .upperview {
   box-shadow: 0 0 28px rgba(0, 0, 0, 0.25), 0 0 10px rgba(0, 0, 0, 0.22);

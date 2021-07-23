@@ -12,15 +12,20 @@ var tempTokenRange;
 export function initTextArea(globalChart) {
   chart = globalChart;
   tempTokenRange = chart.d.tokenRange;
-  var container = d3.select("body");
   //chart.pContainer = container.append("div").attr("id", "pContainer");
-  var textContainer = d3
+  var textContainer = d3.select("body").append("div").attr("class", "textArea");
+  /* var textContainer = d3
     .select("body")
     .append("div")
     .attr("id", "textDiv")
     .attr("class", "splitView");
   //region add text area spans
-  var textDiv = d3.select("#textDiv");
+  var textDiv = d3.select("#textDiv"); */
+  var textDiv = d3
+    .select(".textArea")
+    .append("div")
+    .attr("id", "textDiv")
+    .attr("class", "splitView");
   var j = 0;
   for (let i = 0; i < chart.d.tokens.length; i++) {
     textDiv

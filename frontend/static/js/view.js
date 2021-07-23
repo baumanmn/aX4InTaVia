@@ -271,6 +271,7 @@ export let view = (function () {
   return {
     //add new splitView after designated predecessor
     newView: function (newID, content, predec, chart) {
+      monitor.increaseNumViews();
       let newView = $(
         '<div id="' + newID + '" class="splitView ui-droppable">' + "</div>"
       ).insertAfter("#" + predec);
