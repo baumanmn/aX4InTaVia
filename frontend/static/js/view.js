@@ -13,7 +13,7 @@ export let view = (function () {
 
       appendContent: function (spans) {
         viewContainer.append(spans);
-        viewCount = viewContainer.find("span:not(.text_whitespace)").length;
+        //viewCount = viewContainer.find("span:not(.text_whitespace)").length;
       },
 
       emptyContent: function () {
@@ -26,17 +26,17 @@ export let view = (function () {
     newView: function (newID, content, predec, chart) {
       monitor.increaseNumViews();
       let newView = $(
-        '<div id="' + newID + '" class="splitView ui-droppable">' + "</div>"
+        '<div id="' + newID + '" class="splitView">' + "</div>"
       ).insertAfter("#" + predec);
       newView.append(content);
-      let wordCount = newView.find("span:not(.text_whitespace)").length;
+      let wordCount = 0;
       return init(newID, newID, wordCount, chart);
     },
 
     initView: function (containerID, newID, chart) {
       let newView = $("#" + containerID);
-      newView.addClass("splitView ui-droppable");
-      let wordCount = newView.find("span:not(text_whitespace)").length;
+      newView.addClass("splitView");
+      let wordCount = 0;
       return init(newID, containerID, wordCount, chart);
     },
   };

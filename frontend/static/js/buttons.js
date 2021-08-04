@@ -959,6 +959,8 @@ function addBrushToWorkbench(id = [0], button) {
 
   $(function () {
     let sameTreeSnapID = isPartOfSubtree(id);
+    let assignedViewID;
+
     if (sameTreeSnapID !== -1) {
       //unhighlight formerly assigned button
       workbench["snap_" + sameTreeSnapID]["button"]
@@ -978,16 +980,21 @@ function addBrushToWorkbench(id = [0], button) {
       button
         .style("stroke", workbench["colorPalette"][sameTreeSnapID])
         .style("stroke-width", "2px");
-      //.style("stroke-dasharray", ("3, 3"));
+      
+      assignedViewID = workbench["snap_" + sameTreeSnapID]["assignedViewID"]
     } else {
       //assign new button
       workbench["snap_" + workbench.num_snaps]["ids"] = id;
+      workbench["snap_" + workbench.num_snaps]["assignedViewID"] = workbench.num_snaps;
       workbench["snap_" + workbench.num_snaps]["button"] = button;
       workbench["snap_" + workbench.num_snaps]["color"] =
         workbench["colorPalette"][workbench.num_snaps];
       button
         .style("stroke", workbench["colorPalette"][workbench.num_snaps])
         .style("stroke-width", "2px");
+
+      assignedViewID = workbench.num_snaps;
+
       workbench.num_snaps = Math.min(
         workbench.max_snaps,
         workbench.num_snaps + 1
@@ -1075,7 +1082,7 @@ function addBrushToWorkbench(id = [0], button) {
       );
       y += length;
     }
-    assignBrushToView(chartRef, workbench.num_snaps - 1, id.length - 1, id);
+    assignBrushToView(chartRef, assignedViewID, id.length - 1, id);
     drawDetailBars(chartRef);
   });
 }

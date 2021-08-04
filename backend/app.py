@@ -21,7 +21,7 @@ def get_file_names():
     file_names = glob(path + "*.json") + glob(path + "*.txt")
     file_names = [f.split("\\")[1] for f in file_names]
 
-    pipeline_names = ["NLTK", "StanfordNLP"]
+    pipeline_names = ["Standard", "Stanza", "Both"]
 
     return {"file_names": file_names, "pipeline_names": pipeline_names}
 

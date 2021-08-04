@@ -102,6 +102,7 @@ function updateIndividually(chart, brush, color) {
           convertLastOverviewPosition(chart, sRight, brush)
         )
       ].tokens[0].id;
+
     for (
       let i = chart.d.spanIDTable[sLeft];
       i <= chart.d.spanIDTable[sRight];

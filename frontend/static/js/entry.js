@@ -25,7 +25,7 @@ import { initFunctions } from "./functions";
 import { bindSliderToBrushes } from "./slider";
 import { initializeButtonContainer } from "./buttons.js";
 import { initializeStates } from "./overviewState.js";
-//import { drawDataLoader } from "./loadData.js";
+//import "./annotation.js";
 
 $(document).ajaxStart(function () {
   let body = document.getElementsByTagName("body")[0];

@@ -18,11 +18,6 @@ import {
 } from "./overviewState";
 import { updateTextArea } from "./textArea";
 import { currentlyActive } from "./buttons.js";
-import {
-  //computeOverviewOrigin,
-  drawCompleteOverviewBackground,
-  drawStripGroup,
-} from "./drawChart";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
@@ -181,19 +176,6 @@ export function removeAndPrepend(chart, sliderID, overview, brush1, brush2) {
   let leftBrush = sliderID;
   let rightBrush = sliderID + 1;
 
-  /*
-   * No matter which slider was moved,
-   * brush2 has to be readjusted
-   */
-  /* if (chart.overviews[overview]["brushGroup"][2] !== null)
-    chart.overviews[overview]["brushGroup"][2].remove(); */
-  /*
-   * Depending on the slider either brush
-   * takes on the role of the left brush and
-   * brush2 the role of the right brush or
-   * brush2 the role of the left brush and
-   * brush3 the role of the right brush
-   */
   chart.overviews[overview]["splits"][sliderID] = true;
 
   if (chart.overviews[overview]["brushGroup"][leftBrush] !== null)

@@ -29,6 +29,7 @@ module.exports = {
         // test: dir_js,
         include: dir_js,
         loader: "babel-loader",
+
         // exclude: [
         //     path.resolve(__dirname, 'node_modules'),
         // ],

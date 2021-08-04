@@ -114,7 +114,6 @@ function drawNSplitWindows(chart) {
     (chart.p.annotatorBandsExt - chart.d.users.length * chart.p.userHeight) /
     (chart.d.users.length + 1);
   let windowWidth = Math.floor(chart.p.tokenExt / n);
-  console.log(chart.p.tokenExt);
   let ids = Object.keys(chart.d.annoViewObj["hashMap"]);
   ids.forEach(function (id, i) {
     chart["splitWindow_" + id] = chart.detail

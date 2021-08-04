@@ -21,6 +21,7 @@ export let controller = (function () {
       },
 
       increaseNumViews: function () {
+        console.log("inc")
         numViews += 1;
         let textArea = document.getElementsByClassName("textArea")[0];
         textArea.style.gridTemplateRows = "repeat(" + numViews + ", 1fr)";
