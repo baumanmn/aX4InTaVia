@@ -3,7 +3,8 @@
 var path = require("path");
 
 var webpack = require("webpack");
-var CopyWebpackPlugin = require("copy-webpack-plugin");
+//var CopyWebpackPlugin = require("copy-webpack-plugin");
+var CopyPlugin = require("copy-webpack-plugin");
 
 var dir_js = path.resolve(__dirname, "js");
 var dir_css = path.resolve(__dirname, "css");
@@ -11,6 +12,7 @@ var dir_html = path.resolve(__dirname, "../templates");
 var dir_build = path.resolve(__dirname, "build");
 
 module.exports = {
+  mode: "development",
   // entry: [
   //     'babel-polyfill',
   //     path.resolve(dir_js, 'main.js')
@@ -23,32 +25,30 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        // test: dir_js,
-        include: dir_js,
-        loader: "babel-loader",
-
-        // exclude: [
-        //     path.resolve(__dirname, 'node_modules'),
-        // ],
+        use: [
+          {
+            loader: "babel-loader",
+            //include: dir_js,
+          },
+        ],
+        include: [dir_js],
       },
-      //,
-      //{
-      //    test: /\.css$/,
-      //    include: dir_css,
-      //    loader: 'style-loader!css-loader'
-      //}
     ],
   },
 
   // debug: true,
   plugins: [
-    // Simply copies the files over
-    new CopyWebpackPlugin([
-      { from: dir_html }, // to: output.path
+    new CopyPlugin([
+      { from: dir_html },
+      //{ from: dir_html, to: "dest" },
     ]),
+    // Simply copies the files over
+    /* new CopyWebpackPlugin([
+      { from: dir_html }, // to: output.path
+    ]), */
     // ,
     // // Avoid publishing files when compilation fails
     // new webpack.NoErrorsPlugin()

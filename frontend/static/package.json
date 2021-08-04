@@ -4,11 +4,11 @@
   "description": "A test project to setup AnnoXplorer with a backend",
   "main": "js/entry.js",
   "scripts": {
-    "build": "webpack -p --progress --config webpack.config.js",
-    "dev-build": "webpack --progress -d --config webpack.config.js",
-    "watch": "webpack --progress -d --config webpack.config.js --watch",
+    "build": "webpack",
+    "dev-build": "webpack",
+    "watch": "webpack --watch",
     "test": "mocha",
-    "start:dev" : "webpack-dev-server"
+    "start:dev": "webpack-dev-server"
   },
   "presets": [
     "@babel/preset-env",
@@ -40,18 +40,20 @@
     "snowball-german": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
-    "copy-webpack-plugin": "^4.0.1",
+    "copy-webpack-plugin": "^4.6.0",
     "less": "^4.1.1",
     "prettier": "^2.2.0",
     "sass": "^1.36.0",
-    "webpack": "^2.7.0",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^2.11.5"
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "babel": {
     "presets": [
