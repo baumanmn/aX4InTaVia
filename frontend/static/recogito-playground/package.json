@@ -1,0 +1,26 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm start",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "keywords": [
+    "test",
+    "test2"
+  ],
+  "author": "testna",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@recogito/recogito-js": "^1.4.0"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}

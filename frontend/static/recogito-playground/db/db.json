@@ -1,0 +1,86 @@
+{
+  "data": {
+    "annotations": [
+      {
+        "type": "Annotation",
+        "body": [
+          {
+            "type": "TextualBody",
+            "value": "Test",
+            "purpose": "commenting"
+          }
+        ],
+        "target": {
+          "selector": [
+            {
+              "type": "TextQuoteSelector",
+              "exact": "Gregor"
+            },
+            {
+              "type": "TextPositionSelector",
+              "start": 192,
+              "end": 198
+            }
+          ]
+        },
+        "@context": "http://www.w3.org/ns/anno.jsonld",
+        "id": "#d33405bf-8216-4c3a-8e95-d50b94cf4d68"
+      },
+      {
+        "type": "Annotation",
+        "body": [
+          {
+            "type": "TextualBody",
+            "value": "Test 2",
+            "purpose": "commenting"
+          }
+        ],
+        "target": {
+          "selector": [
+            {
+              "type": "TextQuoteSelector",
+              "exact": "Morgens"
+            },
+            {
+              "type": "TextPositionSelector",
+              "start": 1216,
+              "end": 1223
+            }
+          ]
+        },
+        "@context": "http://www.w3.org/ns/anno.jsonld",
+        "id": "#3231ce0b-34c4-4908-af70-5b5d28877484"
+      }
+    ],
+    "annotationIDLookUp": {
+      "#d33405bf-8216-4c3a-8e95-d50b94cf4d68": 0,
+      "#3231ce0b-34c4-4908-af70-5b5d28877484": 1
+    },
+    "relations": [
+      {
+        "@context": "http://www.w3.org/ns/anno.jsonld",
+        "type": "Annotation",
+        "id": "#48cec0c1-6403-4ae5-bc89-77bfb71a48a3",
+        "body": [
+          {
+            "type": "TextualBody",
+            "value": "Test 3",
+            "purpose": "tagging"
+          }
+        ],
+        "target": [
+          {
+            "id": "#d33405bf-8216-4c3a-8e95-d50b94cf4d68"
+          },
+          {
+            "id": "#3231ce0b-34c4-4908-af70-5b5d28877484"
+          }
+        ],
+        "motivation": "linking"
+      }
+    ],
+    "relationIDLookUp": {
+      "#48cec0c1-6403-4ae5-bc89-77bfb71a48a3": 0
+    }
+  }
+}

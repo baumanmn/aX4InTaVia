@@ -1,0 +1,206 @@
+:root {
+  --container-width: calc(45vw - 15px - 1px);
+  --container-height: calc(95vh - 100px);
+  --item-width: 600px;
+  --item-height: calc(1 / 2 * 100vh);
+  --btn-width: 100px;
+  --header-height: 50px;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: var(--header-height) auto;
+  grid-template-columns: calc(50vw - 15px - 1px) calc(50vh - 15px - 1px);
+}
+
+.header {
+  grid-column: span 2;
+  width: calc(100vw - 20px);
+  border: 1px solid lightgray;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header > div {
+  width: var(--btn-width);
+  height: calc(var(--header-height) - 20px);
+  line-height: calc(var(--header-height) - 20px);
+
+  border: 1px solid lightgray;
+  cursor: pointer;
+
+  font-size: 12px;
+  text-align: center;
+}
+
+#text {
+  /* height: calc(45vh - 15px - 1px);
+  width: calc(100vw - 50px); */
+  width: var(--container-width);
+  height: var(--container-height);
+  margin-top: 25px;
+  padding: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 24px;
+  background-color: lightblue;
+}
+
+#annotations {
+  /* height: calc(45vh - 15px - 1px);
+  width: calc(100vw - 50px); */
+  width: var(--container-width);
+  height: var(--container-height);
+  padding: 15px;
+
+  /* background-color: lightgreen; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* #modeBtn {
+  height: 25px;
+  line-height: 25px;
+  width: var(--btn-width);
+  border: 1px solid lightgray;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+} */
+
+.annotations-item {
+  /* height: calc(1 / 3 * 100vw); */
+  height: var(--item-height);
+  width: var(--item-width);
+  padding: 15px;
+
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border: 1px solid lightgray;
+}
+
+.annotations-item .wrapper {
+  display: grid;
+  /* grid-template-columns: 300px 100px; */
+  grid-template-columns: calc(3 / 4 * var(--item-width)) calc(
+      1 / 4 * var(--item-width)
+    );
+  grid-template-areas: "content btn";
+}
+
+.annotations-item .wrapper .remove-btn {
+  grid-area: btn;
+
+  /* width: 60px; */
+  /* width: calc(0.6 * 1 / 4 * var(--item-width)); */
+  width: var(--btn-width);
+  height: 38px;
+  margin: 10px 30px;
+
+  line-height: 38px;
+  text-align: center;
+  font-size: 1em;
+
+  background: #cd5c5c;
+  color: white;
+  cursor: pointer;
+}
+
+.annotations-item .wrapper .contentBox {
+  width: calc(3 / 4 * var(--item-width));
+  margin: 10px 20px;
+  position: relative;
+  grid-area: content;
+}
+
+.annotations-item .wrapper .contentBox .label {
+  position: relative;
+  padding: 10px;
+  background: #2694af;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.annotations-item .contentBox .label::before {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+}
+
+.annotations-item .contentBox.active .label::before {
+  content: "-";
+}
+
+.annotations-item .wrapper .contentBox .content {
+  position: relative;
+  height: 0;
+  padding: 0px;
+  overflow: hidden;
+  background: #fff;
+  transition: 0s;
+}
+
+.annotations-item .wrapper .contentBox.active .content {
+  /* height: 250px; */
+  height: calc(0.9 * var(--item-height));
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: 0.5s;
+}
+
+.annotations-item .wrapper .contentBox.active .content .annotation {
+  display: grid;
+  grid-template-rows: 50px 50px auto;
+}
+
+.annotations-item .wrapper .contentBox.active .content > div {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid lightgray;
+  margin-top: 5px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.annotations-item .wrapper .contentBox.active .content .tagBox {
+  height: 25px;
+  min-width: 25px;
+  text-align: center;
+  line-height: 25px;
+  padding: 5px;
+  margin-left: 5px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+}
+
+.annotations-item .wrapper .contentBox.active .content > pre {
+  padding: 10px;
+  background: lightgray;
+}
+
+.hovered {
+  background: mediumseagreen !important;
+}
+
+.relation-hovered {
+  background: coral !important;
+}
