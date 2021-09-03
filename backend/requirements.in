@@ -1,0 +1,4 @@
+pip-tools
+black
+python-dotenv
+flask
