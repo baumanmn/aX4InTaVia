@@ -1,0 +1,411 @@
+/*region atomic*/
+.atomicFrame {
+  stroke-width: 1px;
+  stroke: rgb(240, 240, 240);
+  fill: none;
+  pointer-events: none;
+}
+
+.atomic.anno.compressed {
+  shape-rendering: geometricPrecision;
+  fill: rgba(0, 0, 0, 0.3);
+  stroke-linejoin: round;
+}
+
+.atomic.anno.uncompressed {
+  fill: none;
+}
+
+.atomic.chunk.supercompressed {
+  shape-rendering: geometricPrecision;
+  stroke-linecap: round;
+  stroke-width: 3px;
+  stroke: black;
+}
+
+.atomic.type {
+  shape-rendering: geometricPrecision;
+  stroke-linejoin: round;
+}
+
+.atomic.bgToken,
+.atomic.tokenPolygon,
+.atomic.tokenTextBg {
+  stroke-width: 1px;
+  stroke: rgb(240, 240, 240);
+}
+
+.atomic.bgToken_g {
+  shape-rendering: geometricPrecision;
+}
+
+/*HM*/
+/*.atomic.bgToken_g.noAnno:hover {*/
+/*fill: yellow;*/
+/*}*/
+
+/*.atomic.bgToken_g.anno:hover {*/
+/*fill: goldenrod;*/
+/*}*/
+/*HM*/
+
+.atomic.tokenText {
+  text-anchor: start;
+  dominant-baseline: central;
+  font-family: sans-serif;
+  /*stroke-width: 1px;*/
+  /*stroke: lightgrey;*/
+}
+
+.atomic.tokenText.anno {
+  fill: white;
+}
+
+.atomic.tokenText.noAnno {
+  fill: black;
+}
+
+/*endregion*/
+
+/*region semiaggregated*/
+.semiAggregated.anno.compressed {
+  fill: rgba(0, 0, 0, 0.3);
+  stroke-linejoin: miter;
+}
+
+.semiAggregated.chunk.supercompressed {
+  shape-rendering: geometricPrecision;
+  stroke-linecap: butt;
+  stroke-width: 2px;
+  stroke: black;
+}
+
+/*endregion*/
+
+/*region aggregated*/
+.aggregated.anno.compressed {
+  fill: rgb(0, 0, 0);
+  stroke: none;
+}
+
+.aggregated.pseudoChunk.supercompressed {
+  fill: black;
+}
+
+/*endregion*/
+
+/*region multiple tokenModeClasses*/
+.anno.compressed {
+  stroke-width: 1px;
+  stroke: black;
+}
+
+.globalTermFrame {
+  stroke-width: 1px;
+  stroke: black;
+  fill: none;
+}
+
+.termText {
+  text-anchor: start;
+  dominant-baseline: central;
+  font-family: sans-serif;
+  /*font-style: oblique;*/
+  /*font-weight: bold;*/
+  /*font-weight: bold;*/
+
+  /*fill: darkred;*/
+}
+
+.textIndicator_g {
+  stroke-width: 1px;
+  stroke: black;
+  display: none;
+}
+
+.activeTermRect {
+  display: none;
+  stroke-width: 1px;
+  stroke: goldenrod;
+  fill: goldenrod;
+}
+
+.listenerRect {
+  pointer-events: all;
+  fill: none;
+}
+
+/*double to make sure this beats the simple class*/
+.activeTerm.activeTerm {
+  display: block;
+}
+
+.tokenAnnoType,
+.binAnnoType {
+  stroke-width: 1px;
+}
+
+/*endregion*/
+
+/*region NZE*/
+.annotator-controls {
+  white-space: normal;
+}
+
+/*endregion*/
+
+/*region detail*/
+#detailBg_r {
+  fill: white;
+}
+
+.userLayerBG {
+  fill: white;
+}
+
+.userLayerBG_stroke {
+  stroke: black;
+  stroke-width: 0.5px;
+  fill: none;
+}
+
+.chunkAnno {
+  stroke-width: 1px;
+  stroke: black;
+}
+
+/*HM*/
+/*Ignore anno type hover */
+.tokenAnnoType {
+  pointer-events: none;
+}
+
+/*HM*/
+/*Ignore bin type hover */
+.binAnnoType {
+  pointer-events: none;
+}
+
+/*endregion*/
+
+.dragButtonOutline {
+  stroke-width: 1px;
+  stroke: black;
+  shape-rendering: geometricPrecision;
+}
+
+.dragButtonText {
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.dragButtonConnector {
+  stroke-width: 5px;
+  stroke: black;
+}
+
+/*region lens*/
+#overviewBg_r,
+#dragBackground {
+  fill: white;
+}
+
+.typeRectAggregated {
+  stroke-width: 1px;
+  /*stroke: black;*/
+}
+
+#lensBackground {
+  fill: white;
+  /*stroke: black;*/
+  /*stroke-width: 0.5px;*/
+}
+
+#lensFrame {
+  fill: none;
+  stroke: black;
+  stroke-width: 0.5px;
+}
+
+/*endregion*/
+
+/*region overview*/
+.stroke {
+  stroke: black;
+  stroke-width: 0.5px;
+  /*fill: none;*/
+}
+
+/*endregion*/
+
+/*region general*/
+body {
+  background-color: palegoldenrod;
+}
+
+.selection {
+  fill-opacity: 0.3;
+  stroke-width: 2px;
+  stroke: red;
+  fill: gray;
+}
+
+#tool {
+  shape-rendering: crispEdges;
+}
+
+/*endregion*/
+
+/*region text*/
+#textDiv {
+  width: 1450px;
+  height: calc(100vh - 650px);
+  min-height: 100px;
+  overflow: auto;
+  margin-left: 40px;
+  background: white;
+  float: left;
+}
+
+/*HM*/
+#filtersDiv {
+  margin-left: 40px;
+  margin-top: 10px;
+  width: 1450px;
+  height: 20px;
+  background: #f5f5f5;
+  float: left;
+}
+/*HM*/
+
+/*input[type=checkbox]*/
+/*{*/
+/*!* Double-sized Checkboxes *!*/
+/*-ms-transform: scale(2); !* IE *!*/
+/*-moz-transform: scale(2); !* FF *!*/
+/*-webkit-transform: scale(2); !* Safari and Chrome *!*/
+/*-o-transform: scale(2); !* Opera *!*/
+/*padding: 10px;*/
+/*}*/
+
+/*HM*/
+.underline {
+  border-bottom: 2px solid black;
+}
+
+/*HM*/
+.underlineActive.underline {
+  border-top: solid;
+}
+
+/*HM*/
+.firstActiveChunk.underline {
+  border-left: solid;
+}
+
+/*HM*/
+.lastActiveChunk.underline {
+  border-right: solid;
+}
+
+/*HM*/
+div span {
+  line-height: 25px;
+  /* box-sizing: content-box; */
+  /*border-bottom:  2px solid transparent;;*/
+  /* background-clip: border-box; */
+  /* display: block; */
+  /* float: left; */
+}
+
+/*HM*/
+/*active not annotated text token*/
+.activeTextToken {
+  background: yellow !important;
+}
+
+/*HM*/
+/*active annotated text token*/
+.activeAnnotatedTextToken {
+  background: goldenrod !important;
+}
+
+/*HM*/
+#container {
+  width: 100%;
+}
+
+/*HM*/
+#tool {
+  width: 100%;
+}
+
+/*HM*/
+.activeNoAnnoChartToken {
+  fill: yellow !important;
+}
+
+/*HM*/
+.activeAnnoChartToken {
+  fill: goldenrod !important;
+}
+
+/*HM*/
+.activeAnnoChartBin {
+  fill: goldenrod !important;
+}
+
+/*HM*/
+.indicatorArrow {
+  fill: black;
+  stroke: black;
+}
+
+/*HM*/
+/*temporal solution*/
+.noAnnoSemiAggregated_t_b {
+  pointer-events: none;
+  fill: yellow;
+  stroke: none;
+}
+/*HM*/
+.noAnnoBgToken {
+  pointer-events: none;
+  fill: yellow;
+  stroke: none;
+}
+/*HM*/
+.noAnnoBgBin {
+  pointer-events: none;
+  fill: yellow;
+  stroke: none;
+}
+
+/*HM*/
+.transparent {
+  fill-opacity: 0;
+  stroke: transparent !important;
+}
+
+/*HM*/
+.column {
+  float: left;
+  margin-left: 50px;
+}
+
+.notActiveType {
+  fill-opacity: 0;
+}
+
+/*endregion*/
+
+.liList {
+  cursor: pointer;
+  list-style: none;
+}
+
+.liList:hover {
+  color: blue;
+}

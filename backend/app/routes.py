@@ -3,7 +3,8 @@ from glob import glob
 from flask import render_template, json, request
 
 from app import app
-import pipeline
+
+# import pipeline
 
 
 @app.route("/")
@@ -19,46 +20,47 @@ def get_file_names():
     file_names = glob(path + "*.json") + glob(path + "*.txt")
     file_names = [f.split("\\")[1] for f in file_names]
 
-    pipeline_names = ["Standard", "Stanza", "Both"]
+    # pipeline_names = ["Standard", "Stanza", "Both"]
 
-    return {"file_names": file_names, "pipeline_names": pipeline_names}
+    # return {"file_names": file_names, "pipeline_names": pipeline_names}
+    return {"file_names": file_names}
 
 
 @app.route("/retrieve_data", methods=["GET", "POST"])
 def retrieve_data():
     data_key = request.form["key"]
-    pipeline_key = request.form["pipeline"]
+    # pipeline_key = request.form["pipeline"]
 
     path = "data//"
     data_file = path + data_key
 
-    if ".txt" in data_key:
-        with open(data_file, encoding="utf-8") as f:
-            processed_file = preprocess(data_key, pipeline_key)
-            with open(processed_file, encoding="utf-8") as f:
-                data = json.load(f)
+    # if ".txt" in data_key:
+    # with open(data_file, encoding="utf-8") as f:
+    #     processed_file = preprocess(data_key, pipeline_key)
+    #     with open(processed_file, encoding="utf-8") as f:
+    #         data = json.load(f)
 
-    else:
-        with open(data_file, encoding="utf-8") as f:
-            data = json.load(f)
-            if "userAnnotations" not in data.keys():
-                processed_file = preprocess(data_key, pipeline_key)
-                with open(processed_file, encoding="utf-8") as f:
-                    data = json.load(f)
+    # else:
+    with open(data_file, encoding="utf-8") as f:
+        data = json.load(f)
+        # if "userAnnotations" not in data.keys():
+        #     processed_file = preprocess(data_key, pipeline_key)
+        #     with open(processed_file, encoding="utf-8") as f:
+        #         data = json.load(f)
 
     return data
 
 
-def preprocess(file_key, pipeline_key):
-
-    test_data = pipeline.process_annotation_data(file_key, pipeline_key)
-
-    processed_file = "data/processed_" + file_key.split(".")[0] + ".json"
-
-    with open(processed_file, "w") as output:
-        json.dump(test_data, output, sort_keys=False, indent=4)
-
-    return processed_file
+# def preprocess(file_key, pipeline_key):
+#
+#     test_data = pipeline.process_annotation_data(file_key, pipeline_key)
+#
+#     processed_file = "data/processed_" + file_key.split(".")[0] + ".json"
+#
+#     with open(processed_file, "w") as output:
+#         json.dump(test_data, output, sort_keys=False, indent=4)
+#
+#     return processed_file
 
 
 """DEPRECATED"""
