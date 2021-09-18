@@ -28,7 +28,8 @@ export function initSelectFile() {
   // ];
   $.ajax({
     type: "POST",
-    url: "/file_names",
+    url: "/aX4InTaVia/file_names",
+    //url: "/file_names",
     data: {},
     dataType: "json",
     success: function (results) {
@@ -54,7 +55,8 @@ export function initSelectFile() {
 
     $.ajax({
     type: "POST",
-    url: "/retrieve_data",
+    url: "/aX4InTaVia/retrieve_data",
+    //url: "/retrieve_data",
     data: fetch_data,
     dataType: "json",
     success: function (results) {

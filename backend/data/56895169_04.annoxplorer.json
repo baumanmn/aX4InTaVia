@@ -1,0 +1,3167 @@
+{
+  "size": 2,
+  "users": [
+    1,
+    2
+  ],
+  "tokens": [
+    {
+      "startOff": 0,
+      "endOff": 4,
+      "id": 0,
+      "text": "KLAP"
+    },
+    {
+      "startOff": 5,
+      "endOff": 6,
+      "id": 1,
+      "text": "("
+    },
+    {
+      "startOff": 6,
+      "endOff": 14,
+      "id": 2,
+      "text": "Johannes"
+    },
+    {
+      "startOff": 14,
+      "endOff": 15,
+      "id": 3,
+      "text": ")"
+    },
+    {
+      "startOff": 15,
+      "endOff": 16,
+      "id": 4,
+      "text": ","
+    },
+    {
+      "startOff": 17,
+      "endOff": 21,
+      "id": 5,
+      "text": "geb."
+    },
+    {
+      "startOff": 22,
+      "endOff": 24,
+      "id": 6,
+      "text": "te"
+    },
+    {
+      "startOff": 25,
+      "endOff": 34,
+      "id": 7,
+      "text": "Amsterdam"
+    },
+    {
+      "startOff": 35,
+      "endOff": 37,
+      "id": 8,
+      "text": "in"
+    },
+    {
+      "startOff": 38,
+      "endOff": 42,
+      "id": 9,
+      "text": "1733"
+    },
+    {
+      "startOff": 42,
+      "endOff": 43,
+      "id": 10,
+      "text": ","
+    },
+    {
+      "startOff": 44,
+      "endOff": 50,
+      "id": 11,
+      "text": "overl."
+    },
+    {
+      "startOff": 51,
+      "endOff": 57,
+      "id": 12,
+      "text": "aldaar"
+    },
+    {
+      "startOff": 58,
+      "endOff": 59,
+      "id": 13,
+      "text": "5"
+    },
+    {
+      "startOff": 60,
+      "endOff": 64,
+      "id": 14,
+      "text": "Dec."
+    },
+    {
+      "startOff": 65,
+      "endOff": 69,
+      "id": 15,
+      "text": "1790"
+    },
+    {
+      "startOff": 69,
+      "endOff": 70,
+      "id": 16,
+      "text": "."
+    },
+    {
+      "startOff": 71,
+      "endOff": 74,
+      "id": 17,
+      "text": "Hij"
+    },
+    {
+      "startOff": 75,
+      "endOff": 79,
+      "id": 18,
+      "text": "werd"
+    },
+    {
+      "startOff": 80,
+      "endOff": 89,
+      "id": 19,
+      "text": "luthersch"
+    },
+    {
+      "startOff": 90,
+      "endOff": 99,
+      "id": 20,
+      "text": "predikant"
+    },
+    {
+      "startOff": 100,
+      "endOff": 102,
+      "id": 21,
+      "text": "te"
+    },
+    {
+      "startOff": 103,
+      "endOff": 113,
+      "id": 22,
+      "text": "Bodegraven"
+    },
+    {
+      "startOff": 114,
+      "endOff": 115,
+      "id": 23,
+      "text": "2"
+    },
+    {
+      "startOff": 116,
+      "endOff": 120,
+      "id": 24,
+      "text": "Febr"
+    },
+    {
+      "startOff": 120,
+      "endOff": 121,
+      "id": 25,
+      "text": "."
+    },
+    {
+      "startOff": 122,
+      "endOff": 126,
+      "id": 26,
+      "text": "1759"
+    },
+    {
+      "startOff": 126,
+      "endOff": 127,
+      "id": 27,
+      "text": ","
+    },
+    {
+      "startOff": 128,
+      "endOff": 130,
+      "id": 28,
+      "text": "te"
+    },
+    {
+      "startOff": 131,
+      "endOff": 137,
+      "id": 29,
+      "text": "Zwolle"
+    },
+    {
+      "startOff": 138,
+      "endOff": 140,
+      "id": 30,
+      "text": "in"
+    },
+    {
+      "startOff": 141,
+      "endOff": 145,
+      "id": 31,
+      "text": "Aug."
+    },
+    {
+      "startOff": 146,
+      "endOff": 150,
+      "id": 32,
+      "text": "1761"
+    },
+    {
+      "startOff": 150,
+      "endOff": 151,
+      "id": 33,
+      "text": ","
+    },
+    {
+      "startOff": 152,
+      "endOff": 154,
+      "id": 34,
+      "text": "te"
+    },
+    {
+      "startOff": 155,
+      "endOff": 156,
+      "id": 35,
+      "text": "'"
+    },
+    {
+      "startOff": 156,
+      "endOff": 157,
+      "id": 36,
+      "text": "s"
+    },
+    {
+      "startOff": 158,
+      "endOff": 168,
+      "id": 37,
+      "text": "Gravenhage"
+    },
+    {
+      "startOff": 169,
+      "endOff": 171,
+      "id": 38,
+      "text": "in"
+    },
+    {
+      "startOff": 172,
+      "endOff": 176,
+      "id": 39,
+      "text": "Aug."
+    },
+    {
+      "startOff": 177,
+      "endOff": 181,
+      "id": 40,
+      "text": "1766"
+    },
+    {
+      "startOff": 181,
+      "endOff": 182,
+      "id": 41,
+      "text": ","
+    },
+    {
+      "startOff": 183,
+      "endOff": 185,
+      "id": 42,
+      "text": "te"
+    },
+    {
+      "startOff": 186,
+      "endOff": 195,
+      "id": 43,
+      "text": "Amsterdam"
+    },
+    {
+      "startOff": 196,
+      "endOff": 198,
+      "id": 44,
+      "text": "24"
+    },
+    {
+      "startOff": 199,
+      "endOff": 203,
+      "id": 45,
+      "text": "Juni"
+    },
+    {
+      "startOff": 204,
+      "endOff": 208,
+      "id": 46,
+      "text": "1768"
+    },
+    {
+      "startOff": 208,
+      "endOff": 209,
+      "id": 47,
+      "text": "."
+    },
+    {
+      "startOff": 210,
+      "endOff": 213,
+      "id": 48,
+      "text": "Hij"
+    },
+    {
+      "startOff": 214,
+      "endOff": 220,
+      "id": 49,
+      "text": "werkte"
+    },
+    {
+      "startOff": 221,
+      "endOff": 225,
+      "id": 50,
+      "text": "mede"
+    },
+    {
+      "startOff": 226,
+      "endOff": 229,
+      "id": 51,
+      "text": "aan"
+    },
+    {
+      "startOff": 230,
+      "endOff": 233,
+      "id": 52,
+      "text": "den"
+    },
+    {
+      "startOff": 234,
+      "endOff": 239,
+      "id": 53,
+      "text": "Psalm"
+    },
+    {
+      "startOff": 239,
+      "endOff": 240,
+      "id": 54,
+      "text": "-"
+    },
+    {
+      "startOff": 241,
+      "endOff": 243,
+      "id": 55,
+      "text": "en"
+    },
+    {
+      "startOff": 244,
+      "endOff": 256,
+      "id": 56,
+      "text": "gezangbundel"
+    },
+    {
+      "startOff": 257,
+      "endOff": 260,
+      "id": 57,
+      "text": "van"
+    },
+    {
+      "startOff": 261,
+      "endOff": 265,
+      "id": 58,
+      "text": "1770"
+    },
+    {
+      "startOff": 265,
+      "endOff": 266,
+      "id": 59,
+      "text": ","
+    },
+    {
+      "startOff": 267,
+      "endOff": 275,
+      "id": 60,
+      "text": "ondernam"
+    },
+    {
+      "startOff": 276,
+      "endOff": 279,
+      "id": 61,
+      "text": "met"
+    },
+    {
+      "startOff": 280,
+      "endOff": 282,
+      "id": 62,
+      "text": "Ds"
+    },
+    {
+      "startOff": 282,
+      "endOff": 283,
+      "id": 63,
+      "text": "."
+    },
+    {
+      "startOff": 284,
+      "endOff": 287,
+      "id": 64,
+      "text": "E.F"
+    },
+    {
+      "startOff": 287,
+      "endOff": 288,
+      "id": 65,
+      "text": "."
+    },
+    {
+      "startOff": 289,
+      "endOff": 296,
+      "id": 66,
+      "text": "Alberti"
+    },
+    {
+      "startOff": 297,
+      "endOff": 298,
+      "id": 67,
+      "text": "("
+    },
+    {
+      "startOff": 298,
+      "endOff": 300,
+      "id": 68,
+      "text": "dl"
+    },
+    {
+      "startOff": 300,
+      "endOff": 301,
+      "id": 69,
+      "text": "."
+    },
+    {
+      "startOff": 302,
+      "endOff": 303,
+      "id": 70,
+      "text": "I"
+    },
+    {
+      "startOff": 303,
+      "endOff": 304,
+      "id": 71,
+      "text": ","
+    },
+    {
+      "startOff": 305,
+      "endOff": 309,
+      "id": 72,
+      "text": "kol."
+    },
+    {
+      "startOff": 310,
+      "endOff": 312,
+      "id": 73,
+      "text": "57"
+    },
+    {
+      "startOff": 312,
+      "endOff": 313,
+      "id": 74,
+      "text": ")"
+    },
+    {
+      "startOff": 314,
+      "endOff": 316,
+      "id": 75,
+      "text": "de"
+    },
+    {
+      "startOff": 317,
+      "endOff": 327,
+      "id": 76,
+      "text": "herziening"
+    },
+    {
+      "startOff": 328,
+      "endOff": 331,
+      "id": 77,
+      "text": "van"
+    },
+    {
+      "startOff": 332,
+      "endOff": 334,
+      "id": 78,
+      "text": "Ad"
+    },
+    {
+      "startOff": 334,
+      "endOff": 335,
+      "id": 79,
+      "text": "."
+    },
+    {
+      "startOff": 336,
+      "endOff": 344,
+      "id": 80,
+      "text": "Visscher"
+    },
+    {
+      "startOff": 344,
+      "endOff": 346,
+      "id": 81,
+      "text": "'s"
+    },
+    {
+      "startOff": 347,
+      "endOff": 362,
+      "id": 82,
+      "text": "Bijbelvertaling"
+    },
+    {
+      "startOff": 362,
+      "endOff": 363,
+      "id": 83,
+      "text": ","
+    },
+    {
+      "startOff": 364,
+      "endOff": 374,
+      "id": 84,
+      "text": "uitgegeven"
+    },
+    {
+      "startOff": 375,
+      "endOff": 377,
+      "id": 85,
+      "text": "in"
+    },
+    {
+      "startOff": 378,
+      "endOff": 382,
+      "id": 86,
+      "text": "1780"
+    },
+    {
+      "startOff": 382,
+      "endOff": 383,
+      "id": 87,
+      "text": ","
+    },
+    {
+      "startOff": 384,
+      "endOff": 392,
+      "id": 88,
+      "text": "herdrukt"
+    },
+    {
+      "startOff": 393,
+      "endOff": 395,
+      "id": 89,
+      "text": "in"
+    },
+    {
+      "startOff": 396,
+      "endOff": 400,
+      "id": 90,
+      "text": "1832"
+    },
+    {
+      "startOff": 401,
+      "endOff": 403,
+      "id": 91,
+      "text": "en"
+    },
+    {
+      "startOff": 404,
+      "endOff": 412,
+      "id": 92,
+      "text": "bezorgde"
+    },
+    {
+      "startOff": 413,
+      "endOff": 416,
+      "id": 93,
+      "text": "een"
+    },
+    {
+      "startOff": 417,
+      "endOff": 424,
+      "id": 94,
+      "text": "herdruk"
+    },
+    {
+      "startOff": 425,
+      "endOff": 428,
+      "id": 95,
+      "text": "van"
+    },
+    {
+      "startOff": 429,
+      "endOff": 432,
+      "id": 96,
+      "text": "een"
+    },
+    {
+      "startOff": 433,
+      "endOff": 437,
+      "id": 97,
+      "text": "werk"
+    },
+    {
+      "startOff": 438,
+      "endOff": 441,
+      "id": 98,
+      "text": "van"
+    },
+    {
+      "startOff": 442,
+      "endOff": 445,
+      "id": 99,
+      "text": "J.L"
+    },
+    {
+      "startOff": 445,
+      "endOff": 446,
+      "id": 100,
+      "text": "."
+    },
+    {
+      "startOff": 447,
+      "endOff": 455,
+      "id": 101,
+      "text": "Battilj\u00c3\u0083\u00c2\u00a9"
+    },
+    {
+      "startOff": 456,
+      "endOff": 457,
+      "id": 102,
+      "text": "("
+    },
+    {
+      "startOff": 457,
+      "endOff": 460,
+      "id": 103,
+      "text": "zie"
+    },
+    {
+      "startOff": 461,
+      "endOff": 463,
+      "id": 104,
+      "text": "dl"
+    },
+    {
+      "startOff": 463,
+      "endOff": 464,
+      "id": 105,
+      "text": "."
+    },
+    {
+      "startOff": 465,
+      "endOff": 468,
+      "id": 106,
+      "text": "VII"
+    },
+    {
+      "startOff": 468,
+      "endOff": 469,
+      "id": 107,
+      "text": ","
+    },
+    {
+      "startOff": 470,
+      "endOff": 474,
+      "id": 108,
+      "text": "kol."
+    },
+    {
+      "startOff": 475,
+      "endOff": 477,
+      "id": 109,
+      "text": "78"
+    },
+    {
+      "startOff": 477,
+      "endOff": 478,
+      "id": 110,
+      "text": ")"
+    },
+    {
+      "startOff": 478,
+      "endOff": 479,
+      "id": 111,
+      "text": "."
+    },
+    {
+      "startOff": 480,
+      "endOff": 484,
+      "id": 112,
+      "text": "Zijn"
+    },
+    {
+      "startOff": 485,
+      "endOff": 492,
+      "id": 113,
+      "text": "portret"
+    },
+    {
+      "startOff": 493,
+      "endOff": 495,
+      "id": 114,
+      "text": "is"
+    },
+    {
+      "startOff": 496,
+      "endOff": 500,
+      "id": 115,
+      "text": "1770"
+    },
+    {
+      "startOff": 501,
+      "endOff": 511,
+      "id": 116,
+      "text": "gegraveerd"
+    },
+    {
+      "startOff": 512,
+      "endOff": 516,
+      "id": 117,
+      "text": "door"
+    },
+    {
+      "startOff": 517,
+      "endOff": 519,
+      "id": 118,
+      "text": "J."
+    },
+    {
+      "startOff": 520,
+      "endOff": 529,
+      "id": 119,
+      "text": "Houbraken"
+    },
+    {
+      "startOff": 530,
+      "endOff": 534,
+      "id": 120,
+      "text": "naar"
+    },
+    {
+      "startOff": 535,
+      "endOff": 537,
+      "id": 121,
+      "text": "J."
+    },
+    {
+      "startOff": 538,
+      "endOff": 547,
+      "id": 122,
+      "text": "Quinkhard"
+    },
+    {
+      "startOff": 548,
+      "endOff": 549,
+      "id": 123,
+      "text": "("
+    },
+    {
+      "startOff": 549,
+      "endOff": 553,
+      "id": 124,
+      "text": "1769"
+    },
+    {
+      "startOff": 553,
+      "endOff": 554,
+      "id": 125,
+      "text": ")"
+    },
+    {
+      "startOff": 554,
+      "endOff": 555,
+      "id": 126,
+      "text": ";"
+    },
+    {
+      "startOff": 556,
+      "endOff": 559,
+      "id": 127,
+      "text": "ook"
+    },
+    {
+      "startOff": 560,
+      "endOff": 570,
+      "id": 128,
+      "text": "gegraveerd"
+    },
+    {
+      "startOff": 571,
+      "endOff": 575,
+      "id": 129,
+      "text": "door"
+    },
+    {
+      "startOff": 576,
+      "endOff": 579,
+      "id": 130,
+      "text": "een"
+    },
+    {
+      "startOff": 580,
+      "endOff": 588,
+      "id": 131,
+      "text": "onbekend"
+    },
+    {
+      "startOff": 589,
+      "endOff": 599,
+      "id": 132,
+      "text": "kunstenaar"
+    },
+    {
+      "startOff": 599,
+      "endOff": 600,
+      "id": 133,
+      "text": "."
+    },
+    {
+      "startOff": 601,
+      "endOff": 604,
+      "id": 134,
+      "text": "Zie"
+    },
+    {
+      "startOff": 604,
+      "endOff": 605,
+      "id": 135,
+      "text": ":"
+    },
+    {
+      "startOff": 606,
+      "endOff": 608,
+      "id": 136,
+      "text": "J."
+    },
+    {
+      "startOff": 609,
+      "endOff": 616,
+      "id": 137,
+      "text": "Loosjes"
+    },
+    {
+      "startOff": 616,
+      "endOff": 617,
+      "id": 138,
+      "text": ","
+    },
+    {
+      "startOff": 618,
+      "endOff": 627,
+      "id": 139,
+      "text": "Naamlijst"
+    },
+    {
+      "startOff": 628,
+      "endOff": 631,
+      "id": 140,
+      "text": "van"
+    },
+    {
+      "startOff": 632,
+      "endOff": 643,
+      "id": 141,
+      "text": "predikanten"
+    },
+    {
+      "startOff": 644,
+      "endOff": 648,
+      "id": 142,
+      "text": "enz."
+    },
+    {
+      "startOff": 649,
+      "endOff": 652,
+      "id": 143,
+      "text": "der"
+    },
+    {
+      "startOff": 653,
+      "endOff": 657,
+      "id": 144,
+      "text": "Luth"
+    },
+    {
+      "startOff": 657,
+      "endOff": 658,
+      "id": 145,
+      "text": "."
+    },
+    {
+      "startOff": 659,
+      "endOff": 663,
+      "id": 146,
+      "text": "Kerk"
+    },
+    {
+      "startOff": 664,
+      "endOff": 666,
+      "id": 147,
+      "text": "in"
+    },
+    {
+      "startOff": 667,
+      "endOff": 671,
+      "id": 148,
+      "text": "Ned."
+    },
+    {
+      "startOff": 672,
+      "endOff": 673,
+      "id": 149,
+      "text": "("
+    },
+    {
+      "startOff": 673,
+      "endOff": 674,
+      "id": 150,
+      "text": "'"
+    },
+    {
+      "startOff": 674,
+      "endOff": 675,
+      "id": 151,
+      "text": "s"
+    },
+    {
+      "startOff": 676,
+      "endOff": 683,
+      "id": 152,
+      "text": "Gravenh"
+    },
+    {
+      "startOff": 683,
+      "endOff": 684,
+      "id": 153,
+      "text": "."
+    },
+    {
+      "startOff": 685,
+      "endOff": 689,
+      "id": 154,
+      "text": "1925"
+    },
+    {
+      "startOff": 689,
+      "endOff": 690,
+      "id": 155,
+      "text": ")"
+    },
+    {
+      "startOff": 690,
+      "endOff": 691,
+      "id": 156,
+      "text": ","
+    },
+    {
+      "startOff": 692,
+      "endOff": 695,
+      "id": 157,
+      "text": "146"
+    },
+    {
+      "startOff": 695,
+      "endOff": 696,
+      "id": 158,
+      "text": ";"
+    },
+    {
+      "startOff": 697,
+      "endOff": 700,
+      "id": 159,
+      "text": "F.J"
+    },
+    {
+      "startOff": 700,
+      "endOff": 701,
+      "id": 160,
+      "text": "."
+    },
+    {
+      "startOff": 702,
+      "endOff": 708,
+      "id": 161,
+      "text": "Domela"
+    },
+    {
+      "startOff": 709,
+      "endOff": 720,
+      "id": 162,
+      "text": "Nieuwenhuis"
+    },
+    {
+      "startOff": 720,
+      "endOff": 721,
+      "id": 163,
+      "text": ","
+    },
+    {
+      "startOff": 722,
+      "endOff": 728,
+      "id": 164,
+      "text": "Gesch."
+    },
+    {
+      "startOff": 729,
+      "endOff": 732,
+      "id": 165,
+      "text": "der"
+    },
+    {
+      "startOff": 733,
+      "endOff": 741,
+      "id": 166,
+      "text": "Amsterd."
+    },
+    {
+      "startOff": 742,
+      "endOff": 747,
+      "id": 167,
+      "text": "luth."
+    },
+    {
+      "startOff": 748,
+      "endOff": 756,
+      "id": 168,
+      "text": "gemeente"
+    },
+    {
+      "startOff": 757,
+      "endOff": 758,
+      "id": 169,
+      "text": "("
+    },
+    {
+      "startOff": 758,
+      "endOff": 762,
+      "id": 170,
+      "text": "Amst"
+    },
+    {
+      "startOff": 762,
+      "endOff": 763,
+      "id": 171,
+      "text": "."
+    },
+    {
+      "startOff": 764,
+      "endOff": 768,
+      "id": 172,
+      "text": "1856"
+    },
+    {
+      "startOff": 768,
+      "endOff": 769,
+      "id": 173,
+      "text": ")"
+    },
+    {
+      "startOff": 770,
+      "endOff": 773,
+      "id": 174,
+      "text": "161"
+    },
+    {
+      "startOff": 773,
+      "endOff": 774,
+      "id": 175,
+      "text": ","
+    },
+    {
+      "startOff": 775,
+      "endOff": 778,
+      "id": 176,
+      "text": "165"
+    },
+    {
+      "startOff": 778,
+      "endOff": 779,
+      "id": 177,
+      "text": ","
+    },
+    {
+      "startOff": 780,
+      "endOff": 783,
+      "id": 178,
+      "text": "175"
+    },
+    {
+      "startOff": 783,
+      "endOff": 784,
+      "id": 179,
+      "text": ","
+    },
+    {
+      "startOff": 785,
+      "endOff": 788,
+      "id": 180,
+      "text": "204"
+    },
+    {
+      "startOff": 788,
+      "endOff": 789,
+      "id": 181,
+      "text": ","
+    },
+    {
+      "startOff": 790,
+      "endOff": 793,
+      "id": 182,
+      "text": "206"
+    },
+    {
+      "startOff": 793,
+      "endOff": 794,
+      "id": 183,
+      "text": ","
+    },
+    {
+      "startOff": 795,
+      "endOff": 798,
+      "id": 184,
+      "text": "230"
+    },
+    {
+      "startOff": 798,
+      "endOff": 799,
+      "id": 185,
+      "text": ","
+    },
+    {
+      "startOff": 800,
+      "endOff": 805,
+      "id": 186,
+      "text": "Bijl."
+    },
+    {
+      "startOff": 805,
+      "endOff": 806,
+      "id": 187,
+      "text": ","
+    },
+    {
+      "startOff": 807,
+      "endOff": 810,
+      "id": 188,
+      "text": "111"
+    },
+    {
+      "startOff": 810,
+      "endOff": 811,
+      "id": 189,
+      "text": ","
+    },
+    {
+      "startOff": 812,
+      "endOff": 815,
+      "id": 190,
+      "text": "115"
+    },
+    {
+      "startOff": 815,
+      "endOff": 816,
+      "id": 191,
+      "text": ","
+    },
+    {
+      "startOff": 817,
+      "endOff": 820,
+      "id": 192,
+      "text": "123"
+    },
+    {
+      "startOff": 820,
+      "endOff": 821,
+      "id": 193,
+      "text": ";"
+    },
+    {
+      "startOff": 822,
+      "endOff": 831,
+      "id": 194,
+      "text": "Catalogus"
+    },
+    {
+      "startOff": 832,
+      "endOff": 835,
+      "id": 195,
+      "text": "van"
+    },
+    {
+      "startOff": 836,
+      "endOff": 838,
+      "id": 196,
+      "text": "de"
+    },
+    {
+      "startOff": 839,
+      "endOff": 861,
+      "id": 197,
+      "text": "Bijbel-tentoonstelling"
+    },
+    {
+      "startOff": 862,
+      "endOff": 866,
+      "id": 198,
+      "text": "...."
+    },
+    {
+      "startOff": 867,
+      "endOff": 868,
+      "id": 199,
+      "text": "("
+    },
+    {
+      "startOff": 868,
+      "endOff": 869,
+      "id": 200,
+      "text": "["
+    },
+    {
+      "startOff": 869,
+      "endOff": 874,
+      "id": 201,
+      "text": "Amst."
+    },
+    {
+      "startOff": 874,
+      "endOff": 875,
+      "id": 202,
+      "text": "]"
+    },
+    {
+      "startOff": 876,
+      "endOff": 880,
+      "id": 203,
+      "text": "1914"
+    },
+    {
+      "startOff": 880,
+      "endOff": 881,
+      "id": 204,
+      "text": ")"
+    },
+    {
+      "startOff": 881,
+      "endOff": 882,
+      "id": 205,
+      "text": ","
+    },
+    {
+      "startOff": 883,
+      "endOff": 886,
+      "id": 206,
+      "text": "109"
+    },
+    {
+      "startOff": 887,
+      "endOff": 889,
+      "id": 207,
+      "text": "v."
+    },
+    {
+      "startOff": 890,
+      "endOff": 891,
+      "id": 208,
+      "text": "["
+    },
+    {
+      "startOff": 891,
+      "endOff": 894,
+      "id": 209,
+      "text": "no."
+    },
+    {
+      "startOff": 895,
+      "endOff": 902,
+      "id": 210,
+      "text": "770-774"
+    },
+    {
+      "startOff": 902,
+      "endOff": 903,
+      "id": 211,
+      "text": "]"
+    },
+    {
+      "startOff": 903,
+      "endOff": 904,
+      "id": 212,
+      "text": ";"
+    },
+    {
+      "startOff": 905,
+      "endOff": 917,
+      "id": 213,
+      "text": "Naamregister"
+    },
+    {
+      "startOff": 918,
+      "endOff": 921,
+      "id": 214,
+      "text": "van"
+    },
+    {
+      "startOff": 922,
+      "endOff": 929,
+      "id": 215,
+      "text": "nederd."
+    },
+    {
+      "startOff": 930,
+      "endOff": 936,
+      "id": 216,
+      "text": "boeken"
+    },
+    {
+      "startOff": 937,
+      "endOff": 940,
+      "id": 217,
+      "text": "tot"
+    },
+    {
+      "startOff": 941,
+      "endOff": 945,
+      "id": 218,
+      "text": "1787"
+    },
+    {
+      "startOff": 945,
+      "endOff": 946,
+      "id": 219,
+      "text": ","
+    },
+    {
+      "startOff": 947,
+      "endOff": 950,
+      "id": 220,
+      "text": "298"
+    },
+    {
+      "startOff": 950,
+      "endOff": 951,
+      "id": 221,
+      "text": ","
+    },
+    {
+      "startOff": 952,
+      "endOff": 959,
+      "id": 222,
+      "text": "laatste"
+    },
+    {
+      "startOff": 960,
+      "endOff": 965,
+      "id": 223,
+      "text": "regel"
+    },
+    {
+      "startOff": 965,
+      "endOff": 966,
+      "id": 224,
+      "text": ";"
+    },
+    {
+      "startOff": 967,
+      "endOff": 972,
+      "id": 225,
+      "text": "Bibl."
+    },
+    {
+      "startOff": 973,
+      "endOff": 979,
+      "id": 226,
+      "text": "theol."
+    },
+    {
+      "startOff": 980,
+      "endOff": 982,
+      "id": 227,
+      "text": "et"
+    },
+    {
+      "startOff": 983,
+      "endOff": 990,
+      "id": 228,
+      "text": "philos."
+    },
+    {
+      "startOff": 991,
+      "endOff": 992,
+      "id": 229,
+      "text": "("
+    },
+    {
+      "startOff": 992,
+      "endOff": 996,
+      "id": 230,
+      "text": "Lugd"
+    },
+    {
+      "startOff": 996,
+      "endOff": 997,
+      "id": 231,
+      "text": "."
+    },
+    {
+      "startOff": 998,
+      "endOff": 1002,
+      "id": 232,
+      "text": "Bat."
+    },
+    {
+      "startOff": 1002,
+      "endOff": 1003,
+      "id": 233,
+      "text": ","
+    },
+    {
+      "startOff": 1004,
+      "endOff": 1015,
+      "id": 234,
+      "text": "Burgersdijk"
+    },
+    {
+      "startOff": 1016,
+      "endOff": 1018,
+      "id": 235,
+      "text": "en"
+    },
+    {
+      "startOff": 1019,
+      "endOff": 1027,
+      "id": 236,
+      "text": "Niermans"
+    },
+    {
+      "startOff": 1028,
+      "endOff": 1032,
+      "id": 237,
+      "text": "1900"
+    },
+    {
+      "startOff": 1032,
+      "endOff": 1033,
+      "id": 238,
+      "text": ")"
+    },
+    {
+      "startOff": 1033,
+      "endOff": 1034,
+      "id": 239,
+      "text": ","
+    },
+    {
+      "startOff": 1035,
+      "endOff": 1038,
+      "id": 240,
+      "text": "782"
+    },
+    {
+      "startOff": 1039,
+      "endOff": 1040,
+      "id": 241,
+      "text": "("
+    },
+    {
+      "startOff": 1040,
+      "endOff": 1043,
+      "id": 242,
+      "text": "no."
+    },
+    {
+      "startOff": 1044,
+      "endOff": 1047,
+      "id": 243,
+      "text": "486"
+    },
+    {
+      "startOff": 1047,
+      "endOff": 1048,
+      "id": 244,
+      "text": ")"
+    },
+    {
+      "startOff": 1048,
+      "endOff": 1049,
+      "id": 245,
+      "text": ";"
+    },
+    {
+      "startOff": 1050,
+      "endOff": 1052,
+      "id": 246,
+      "text": "J."
+    },
+    {
+      "startOff": 1053,
+      "endOff": 1060,
+      "id": 247,
+      "text": "Loosjes"
+    },
+    {
+      "startOff": 1060,
+      "endOff": 1061,
+      "id": 248,
+      "text": ","
+    },
+    {
+      "startOff": 1062,
+      "endOff": 1068,
+      "id": 249,
+      "text": "Gesch."
+    },
+    {
+      "startOff": 1069,
+      "endOff": 1072,
+      "id": 250,
+      "text": "der"
+    },
+    {
+      "startOff": 1073,
+      "endOff": 1077,
+      "id": 251,
+      "text": "Luth"
+    },
+    {
+      "startOff": 1077,
+      "endOff": 1078,
+      "id": 252,
+      "text": "."
+    },
+    {
+      "startOff": 1079,
+      "endOff": 1083,
+      "id": 253,
+      "text": "Kerk"
+    },
+    {
+      "startOff": 1084,
+      "endOff": 1086,
+      "id": 254,
+      "text": "in"
+    },
+    {
+      "startOff": 1087,
+      "endOff": 1089,
+      "id": 255,
+      "text": "de"
+    },
+    {
+      "startOff": 1090,
+      "endOff": 1094,
+      "id": 256,
+      "text": "Ned."
+    },
+    {
+      "startOff": 1095,
+      "endOff": 1096,
+      "id": 257,
+      "text": "("
+    },
+    {
+      "startOff": 1096,
+      "endOff": 1097,
+      "id": 258,
+      "text": "'"
+    },
+    {
+      "startOff": 1097,
+      "endOff": 1098,
+      "id": 259,
+      "text": "s"
+    },
+    {
+      "startOff": 1099,
+      "endOff": 1106,
+      "id": 260,
+      "text": "Gravenh"
+    },
+    {
+      "startOff": 1106,
+      "endOff": 1107,
+      "id": 261,
+      "text": "."
+    },
+    {
+      "startOff": 1108,
+      "endOff": 1112,
+      "id": 262,
+      "text": "1921"
+    },
+    {
+      "startOff": 1112,
+      "endOff": 1113,
+      "id": 263,
+      "text": ")"
+    },
+    {
+      "startOff": 1113,
+      "endOff": 1114,
+      "id": 264,
+      "text": ","
+    },
+    {
+      "startOff": 1115,
+      "endOff": 1118,
+      "id": 265,
+      "text": "103"
+    },
+    {
+      "startOff": 1118,
+      "endOff": 1119,
+      "id": 266,
+      "text": ","
+    },
+    {
+      "startOff": 1120,
+      "endOff": 1123,
+      "id": 267,
+      "text": "198"
+    },
+    {
+      "startOff": 1123,
+      "endOff": 1124,
+      "id": 268,
+      "text": ","
+    },
+    {
+      "startOff": 1125,
+      "endOff": 1128,
+      "id": 269,
+      "text": "200"
+    },
+    {
+      "startOff": 1128,
+      "endOff": 1129,
+      "id": 270,
+      "text": ","
+    },
+    {
+      "startOff": 1130,
+      "endOff": 1133,
+      "id": 271,
+      "text": "203"
+    },
+    {
+      "startOff": 1133,
+      "endOff": 1134,
+      "id": 272,
+      "text": ";"
+    },
+    {
+      "startOff": 1135,
+      "endOff": 1137,
+      "id": 273,
+      "text": "de"
+    },
+    {
+      "startOff": 1138,
+      "endOff": 1141,
+      "id": 274,
+      "text": "Bie"
+    },
+    {
+      "startOff": 1142,
+      "endOff": 1144,
+      "id": 275,
+      "text": "en"
+    },
+    {
+      "startOff": 1145,
+      "endOff": 1152,
+      "id": 276,
+      "text": "Loosjes"
+    },
+    {
+      "startOff": 1152,
+      "endOff": 1153,
+      "id": 277,
+      "text": ","
+    },
+    {
+      "startOff": 1154,
+      "endOff": 1159,
+      "id": 278,
+      "text": "Biogr"
+    },
+    {
+      "startOff": 1159,
+      "endOff": 1160,
+      "id": 279,
+      "text": "."
+    },
+    {
+      "startOff": 1161,
+      "endOff": 1170,
+      "id": 280,
+      "text": "Woordenb."
+    },
+    {
+      "startOff": 1171,
+      "endOff": 1174,
+      "id": 281,
+      "text": "van"
+    },
+    {
+      "startOff": 1175,
+      "endOff": 1182,
+      "id": 282,
+      "text": "Protest"
+    },
+    {
+      "startOff": 1182,
+      "endOff": 1183,
+      "id": 283,
+      "text": "."
+    },
+    {
+      "startOff": 1184,
+      "endOff": 1191,
+      "id": 284,
+      "text": "Godgel."
+    },
+    {
+      "startOff": 1192,
+      "endOff": 1194,
+      "id": 285,
+      "text": "in"
+    },
+    {
+      "startOff": 1195,
+      "endOff": 1198,
+      "id": 286,
+      "text": "Ned"
+    },
+    {
+      "startOff": 1198,
+      "endOff": 1199,
+      "id": 287,
+      "text": "."
+    },
+    {
+      "startOff": 1200,
+      "endOff": 1202,
+      "id": 288,
+      "text": "IV"
+    },
+    {
+      "startOff": 1202,
+      "endOff": 1203,
+      "id": 289,
+      "text": ","
+    },
+    {
+      "startOff": 1204,
+      "endOff": 1207,
+      "id": 290,
+      "text": "783"
+    },
+    {
+      "startOff": 1207,
+      "endOff": 1208,
+      "id": 291,
+      "text": "."
+    },
+    {
+      "startOff": 1209,
+      "endOff": 1219,
+      "id": 292,
+      "text": "Knipscheer"
+    }
+  ],
+  "userAnnotations": [
+    {
+      "annotationTokens": [
+        2
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Johannes",
+      "annotationChar": [
+        6,
+        14
+      ]
+    },
+    {
+      "annotationTokens": [
+        7
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Amsterdam",
+      "annotationChar": [
+        25,
+        34
+      ]
+    },
+    {
+      "annotationTokens": [
+        22
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Bodegraven",
+      "annotationChar": [
+        103,
+        113
+      ]
+    },
+    {
+      "annotationTokens": [
+        29
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Zwolle",
+      "annotationChar": [
+        131,
+        137
+      ]
+    },
+    {
+      "annotationTokens": [
+        31,
+        32
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Aug. 1761",
+      "annotationChar": [
+        141,
+        150
+      ]
+    },
+    {
+      "annotationTokens": [
+        37
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gravenhage",
+      "annotationChar": [
+        158,
+        168
+      ]
+    },
+    {
+      "annotationTokens": [
+        39,
+        40
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Aug. 1766",
+      "annotationChar": [
+        172,
+        181
+      ]
+    },
+    {
+      "annotationTokens": [
+        43
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Amsterdam",
+      "annotationChar": [
+        186,
+        195
+      ]
+    },
+    {
+      "annotationTokens": [
+        62
+      ],
+      "annotationColor": "#c480ff",
+      "userNo": 1,
+      "annotationType": [
+        "ORG"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Ds",
+      "annotationChar": [
+        280,
+        282
+      ]
+    },
+    {
+      "annotationTokens": [
+        66
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Alberti",
+      "annotationChar": [
+        289,
+        296
+      ]
+    },
+    {
+      "annotationTokens": [
+        78
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Ad",
+      "annotationChar": [
+        332,
+        334
+      ]
+    },
+    {
+      "annotationTokens": [
+        80
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Visscher",
+      "annotationChar": [
+        336,
+        344
+      ]
+    },
+    {
+      "annotationTokens": [
+        99
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "J.L",
+      "annotationChar": [
+        442,
+        445
+      ]
+    },
+    {
+      "annotationTokens": [
+        101
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Battilj\u00c3\u0083\u00c2\u00a9",
+      "annotationChar": [
+        447,
+        455
+      ]
+    },
+    {
+      "annotationTokens": [
+        106
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "VII",
+      "annotationChar": [
+        465,
+        468
+      ]
+    },
+    {
+      "annotationTokens": [
+        118,
+        119
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "J. Houbraken",
+      "annotationChar": [
+        517,
+        529
+      ]
+    },
+    {
+      "annotationTokens": [
+        121,
+        122
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "J. Quinkhard",
+      "annotationChar": [
+        535,
+        547
+      ]
+    },
+    {
+      "annotationTokens": [
+        136,
+        137
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "J. Loosjes",
+      "annotationChar": [
+        606,
+        616
+      ]
+    },
+    {
+      "annotationTokens": [
+        144
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Luth",
+      "annotationChar": [
+        653,
+        657
+      ]
+    },
+    {
+      "annotationTokens": [
+        148
+      ],
+      "annotationColor": "#c480ff",
+      "userNo": 1,
+      "annotationType": [
+        "ORG"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Ned.",
+      "annotationChar": [
+        667,
+        671
+      ]
+    },
+    {
+      "annotationTokens": [
+        152
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gravenh",
+      "annotationChar": [
+        676,
+        683
+      ]
+    },
+    {
+      "annotationTokens": [
+        159
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "F.J",
+      "annotationChar": [
+        697,
+        700
+      ]
+    },
+    {
+      "annotationTokens": [
+        161,
+        162
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Domela Nieuwenhuis",
+      "annotationChar": [
+        702,
+        720
+      ]
+    },
+    {
+      "annotationTokens": [
+        164,
+        165,
+        166
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gesch. der Amsterd.",
+      "annotationChar": [
+        722,
+        741
+      ]
+    },
+    {
+      "annotationTokens": [
+        170
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Amst",
+      "annotationChar": [
+        758,
+        762
+      ]
+    },
+    {
+      "annotationTokens": [
+        186
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Bijl.",
+      "annotationChar": [
+        800,
+        805
+      ]
+    },
+    {
+      "annotationTokens": [
+        197
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Bijbel-tentoonstelling",
+      "annotationChar": [
+        839,
+        861
+      ]
+    },
+    {
+      "annotationTokens": [
+        234
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Burgersdijk",
+      "annotationChar": [
+        1004,
+        1015
+      ]
+    },
+    {
+      "annotationTokens": [
+        236,
+        237
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Niermans 1900",
+      "annotationChar": [
+        1019,
+        1032
+      ]
+    },
+    {
+      "annotationTokens": [
+        246,
+        247
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "J. Loosjes",
+      "annotationChar": [
+        1050,
+        1060
+      ]
+    },
+    {
+      "annotationTokens": [
+        249,
+        250,
+        251
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gesch. der Luth",
+      "annotationChar": [
+        1062,
+        1077
+      ]
+    },
+    {
+      "annotationTokens": [
+        256
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Ned.",
+      "annotationChar": [
+        1090,
+        1094
+      ]
+    },
+    {
+      "annotationTokens": [
+        260
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gravenh",
+      "annotationChar": [
+        1099,
+        1106
+      ]
+    },
+    {
+      "annotationTokens": [
+        274
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Bie",
+      "annotationChar": [
+        1138,
+        1141
+      ]
+    },
+    {
+      "annotationTokens": [
+        276
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Loosjes",
+      "annotationChar": [
+        1145,
+        1152
+      ]
+    },
+    {
+      "annotationTokens": [
+        278
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Biogr",
+      "annotationChar": [
+        1154,
+        1159
+      ]
+    },
+    {
+      "annotationTokens": [
+        286
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Ned",
+      "annotationChar": [
+        1195,
+        1198
+      ]
+    },
+    {
+      "annotationTokens": [
+        288
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "IV",
+      "annotationChar": [
+        1200,
+        1202
+      ]
+    },
+    {
+      "annotationTokens": [
+        292
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Knipscheer",
+      "annotationChar": [
+        1209,
+        1219
+      ]
+    },
+    {
+      "annotationTokens": [
+        7
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, DBpedia:Settlement"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Amsterdam",
+      "annotationChar": [
+        25,
+        34
+      ]
+    },
+    {
+      "annotationTokens": [
+        29
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, DBpedia:Region, Schema:AdministrativeArea, DBpedia:AdministrativeRegion, DBpedia:GovernmentalAdministrativeRegion, DBpedia:Municipality"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Zwolle",
+      "annotationChar": [
+        131,
+        137
+      ]
+    },
+    {
+      "annotationTokens": [
+        44,
+        45
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "24 Juni",
+      "annotationChar": [
+        196,
+        203
+      ]
+    },
+    {
+      "annotationTokens": [
+        119
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Houbraken",
+      "annotationChar": [
+        520,
+        529
+      ]
+    },
+    {
+      "annotationTokens": [
+        20
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "predikant",
+      "annotationChar": [
+        90,
+        99
+      ]
+    },
+    {
+      "annotationTokens": [
+        22
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, DBpedia:Settlement"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Bodegraven",
+      "annotationChar": [
+        103,
+        113
+      ]
+    },
+    {
+      "annotationTokens": [
+        161,
+        162
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "DBpedia:Agent, Schema:Person, Http://xmlns.com/foaf/0.1/Person, DBpedia:Person, DBpedia:Politician"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Domela Nieuwenhuis",
+      "annotationChar": [
+        702,
+        720
+      ]
+    },
+    {
+      "annotationTokens": [
+        43
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, DBpedia:Settlement"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Amsterdam",
+      "annotationChar": [
+        186,
+        195
+      ]
+    },
+    {
+      "annotationTokens": [
+        226
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "theol.",
+      "annotationChar": [
+        973,
+        979
+      ]
+    },
+    {
+      "annotationTokens": [
+        4,
+        5
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Wigger Allertsz.",
+      "annotationChar": [
+        18,
+        34
+      ]
+    },
+    {
+      "annotationTokens": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Allert Jansz. Groot van Egmond",
+      "annotationChar": [
+        46,
+        76
+      ]
+    },
+    {
+      "annotationTokens": [
+        18,
+        19
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Geerte Wiggertsdr",
+      "annotationChar": [
+        84,
+        101
+      ]
+    },
+    {
+      "annotationTokens": [
+        32,
+        33,
+        34
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Suster Semeyns Meinertsdr",
+      "annotationChar": [
+        152,
+        177
+      ]
+    },
+    {
+      "annotationTokens": [
+        42,
+        43
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Noorder Koggen",
+      "annotationChar": [
+        209,
+        223
+      ]
+    },
+    {
+      "annotationTokens": [
+        46
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Medemblik",
+      "annotationChar": [
+        231,
+        240
+      ]
+    },
+    {
+      "annotationTokens": [
+        62
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Wieringen",
+      "annotationChar": [
+        317,
+        326
+      ]
+    },
+    {
+      "annotationTokens": [
+        129,
+        130,
+        131
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Hendrik van Brederode",
+      "annotationChar": [
+        705,
+        726
+      ]
+    },
+    {
+      "annotationTokens": [
+        135
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Amalia",
+      "annotationChar": [
+        742,
+        748
+      ]
+    },
+    {
+      "annotationTokens": [
+        139
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Nieuwenaar",
+      "annotationChar": [
+        761,
+        771
+      ]
+    },
+    {
+      "annotationTokens": [
+        142
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Hoorn",
+      "annotationChar": [
+        777,
+        782
+      ]
+    },
+    {
+      "annotationTokens": [
+        144
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Alkmaar",
+      "annotationChar": [
+        786,
+        793
+      ]
+    },
+    {
+      "annotationTokens": [
+        163
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Hendrik",
+      "annotationChar": [
+        886,
+        893
+      ]
+    },
+    {
+      "annotationTokens": [
+        188
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Vrijheit",
+      "annotationChar": [
+        1029,
+        1037
+      ]
+    },
+    {
+      "annotationTokens": [
+        190
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Medemblik",
+      "annotationChar": [
+        1042,
+        1051
+      ]
+    },
+    {
+      "annotationTokens": [
+        194,
+        195
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 2,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Familie-archief Semeyns",
+      "annotationChar": [
+        1058,
+        1081
+      ]
+    },
+    {
+      "annotationTokens": [
+        197
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 2,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Bruinvis",
+      "annotationChar": [
+        1083,
+        1091
+      ]
+    },
+    {
+      "annotationTokens": [
+        199
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Alkmaar",
+      "annotationChar": [
+        1095,
+        1102
+      ]
+    },
+    {
+      "annotationTokens": [
+        202
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Alkm",
+      "annotationChar": [
+        1112,
+        1116
+      ]
+    },
+    {
+      "annotationTokens": [
+        212,
+        213,
+        214,
+        215
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 2,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Register van den Renten",
+      "annotationChar": [
+        1146,
+        1169
+      ]
+    },
+    {
+      "annotationTokens": [
+        220,
+        221
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "S. Gommerskercke",
+      "annotationChar": [
+        1196,
+        1212
+      ]
+    },
+    {
+      "annotationTokens": [
+        224
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Enkhuizen",
+      "annotationChar": [
+        1217,
+        1226
+      ]
+    },
+    {
+      "annotationTokens": [
+        229
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Rijksarchief",
+      "annotationChar": [
+        1250,
+        1262
+      ]
+    },
+    {
+      "annotationTokens": [
+        231
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Noord-Holland",
+      "annotationChar": [
+        1266,
+        1279
+      ]
+    }
+  ]
+}

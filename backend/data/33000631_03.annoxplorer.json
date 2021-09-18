@@ -1,0 +1,3179 @@
+{
+  "size": 2,
+  "users": [
+    1,
+    2
+  ],
+  "tokens": [
+    {
+      "startOff": 0,
+      "endOff": 5,
+      "id": 0,
+      "text": "ALEID"
+    },
+    {
+      "startOff": 6,
+      "endOff": 9,
+      "id": 1,
+      "text": "van"
+    },
+    {
+      "startOff": 10,
+      "endOff": 15,
+      "id": 2,
+      "text": "Gelre"
+    },
+    {
+      "startOff": 16,
+      "endOff": 17,
+      "id": 3,
+      "text": "("
+    },
+    {
+      "startOff": 17,
+      "endOff": 18,
+      "id": 4,
+      "text": "1"
+    },
+    {
+      "startOff": 18,
+      "endOff": 19,
+      "id": 5,
+      "text": ")"
+    },
+    {
+      "startOff": 19,
+      "endOff": 20,
+      "id": 6,
+      "text": ","
+    },
+    {
+      "startOff": 21,
+      "endOff": 28,
+      "id": 7,
+      "text": "dochter"
+    },
+    {
+      "startOff": 29,
+      "endOff": 32,
+      "id": 8,
+      "text": "van"
+    },
+    {
+      "startOff": 33,
+      "endOff": 37,
+      "id": 9,
+      "text": "Otto"
+    },
+    {
+      "startOff": 38,
+      "endOff": 39,
+      "id": 10,
+      "text": "I"
+    },
+    {
+      "startOff": 40,
+      "endOff": 42,
+      "id": 11,
+      "text": "en"
+    },
+    {
+      "startOff": 43,
+      "endOff": 52,
+      "id": 12,
+      "text": "Richardis"
+    },
+    {
+      "startOff": 52,
+      "endOff": 53,
+      "id": 13,
+      "text": ","
+    },
+    {
+      "startOff": 54,
+      "endOff": 61,
+      "id": 14,
+      "text": "dochter"
+    },
+    {
+      "startOff": 62,
+      "endOff": 65,
+      "id": 15,
+      "text": "van"
+    },
+    {
+      "startOff": 66,
+      "endOff": 70,
+      "id": 16,
+      "text": "Otto"
+    },
+    {
+      "startOff": 71,
+      "endOff": 77,
+      "id": 17,
+      "text": "hertog"
+    },
+    {
+      "startOff": 78,
+      "endOff": 81,
+      "id": 18,
+      "text": "van"
+    },
+    {
+      "startOff": 82,
+      "endOff": 89,
+      "id": 19,
+      "text": "Beieren"
+    },
+    {
+      "startOff": 89,
+      "endOff": 90,
+      "id": 20,
+      "text": ","
+    },
+    {
+      "startOff": 91,
+      "endOff": 95,
+      "id": 21,
+      "text": "werd"
+    },
+    {
+      "startOff": 96,
+      "endOff": 98,
+      "id": 22,
+      "text": "in"
+    },
+    {
+      "startOff": 99,
+      "endOff": 101,
+      "id": 23,
+      "text": "of"
+    },
+    {
+      "startOff": 102,
+      "endOff": 106,
+      "id": 24,
+      "text": "kort"
+    },
+    {
+      "startOff": 107,
+      "endOff": 109,
+      "id": 25,
+      "text": "na"
+    },
+    {
+      "startOff": 110,
+      "endOff": 114,
+      "id": 26,
+      "text": "1197"
+    },
+    {
+      "startOff": 115,
+      "endOff": 117,
+      "id": 27,
+      "text": "de"
+    },
+    {
+      "startOff": 118,
+      "endOff": 124,
+      "id": 28,
+      "text": "eerste"
+    },
+    {
+      "startOff": 125,
+      "endOff": 130,
+      "id": 29,
+      "text": "vrouw"
+    },
+    {
+      "startOff": 131,
+      "endOff": 134,
+      "id": 30,
+      "text": "van"
+    },
+    {
+      "startOff": 135,
+      "endOff": 141,
+      "id": 31,
+      "text": "Willem"
+    },
+    {
+      "startOff": 142,
+      "endOff": 145,
+      "id": 32,
+      "text": "van"
+    },
+    {
+      "startOff": 146,
+      "endOff": 153,
+      "id": 33,
+      "text": "Holland"
+    },
+    {
+      "startOff": 153,
+      "endOff": 154,
+      "id": 34,
+      "text": ","
+    },
+    {
+      "startOff": 155,
+      "endOff": 164,
+      "id": 35,
+      "text": "toenmaals"
+    },
+    {
+      "startOff": 165,
+      "endOff": 170,
+      "id": 36,
+      "text": "graaf"
+    },
+    {
+      "startOff": 171,
+      "endOff": 174,
+      "id": 37,
+      "text": "van"
+    },
+    {
+      "startOff": 175,
+      "endOff": 184,
+      "id": 38,
+      "text": "Friesland"
+    },
+    {
+      "startOff": 185,
+      "endOff": 187,
+      "id": 39,
+      "text": "en"
+    },
+    {
+      "startOff": 188,
+      "endOff": 195,
+      "id": 40,
+      "text": "broeder"
+    },
+    {
+      "startOff": 196,
+      "endOff": 199,
+      "id": 41,
+      "text": "van"
+    },
+    {
+      "startOff": 200,
+      "endOff": 205,
+      "id": 42,
+      "text": "graaf"
+    },
+    {
+      "startOff": 206,
+      "endOff": 210,
+      "id": 43,
+      "text": "Dirk"
+    },
+    {
+      "startOff": 211,
+      "endOff": 214,
+      "id": 44,
+      "text": "VII"
+    },
+    {
+      "startOff": 214,
+      "endOff": 215,
+      "id": 45,
+      "text": ","
+    },
+    {
+      "startOff": 216,
+      "endOff": 224,
+      "id": 46,
+      "text": "waarmede"
+    },
+    {
+      "startOff": 225,
+      "endOff": 228,
+      "id": 47,
+      "text": "zij"
+    },
+    {
+      "startOff": 229,
+      "endOff": 231,
+      "id": 48,
+      "text": "te"
+    },
+    {
+      "startOff": 232,
+      "endOff": 240,
+      "id": 49,
+      "text": "Stavoren"
+    },
+    {
+      "startOff": 241,
+      "endOff": 246,
+      "id": 50,
+      "text": "huwde"
+    },
+    {
+      "startOff": 246,
+      "endOff": 247,
+      "id": 51,
+      "text": "."
+    },
+    {
+      "startOff": 248,
+      "endOff": 251,
+      "id": 52,
+      "text": "Het"
+    },
+    {
+      "startOff": 252,
+      "endOff": 262,
+      "id": 53,
+      "text": "romantisch"
+    },
+    {
+      "startOff": 263,
+      "endOff": 270,
+      "id": 54,
+      "text": "verhaal"
+    },
+    {
+      "startOff": 271,
+      "endOff": 275,
+      "id": 55,
+      "text": "over"
+    },
+    {
+      "startOff": 276,
+      "endOff": 280,
+      "id": 56,
+      "text": "haar"
+    },
+    {
+      "startOff": 281,
+      "endOff": 289,
+      "id": 57,
+      "text": "huwelijk"
+    },
+    {
+      "startOff": 290,
+      "endOff": 293,
+      "id": 58,
+      "text": "bij"
+    },
+    {
+      "startOff": 294,
+      "endOff": 297,
+      "id": 59,
+      "text": "den"
+    },
+    {
+      "startOff": 298,
+      "endOff": 308,
+      "id": 60,
+      "text": "Procurator"
+    },
+    {
+      "startOff": 309,
+      "endOff": 313,
+      "id": 61,
+      "text": "moge"
+    },
+    {
+      "startOff": 314,
+      "endOff": 317,
+      "id": 62,
+      "text": "een"
+    },
+    {
+      "startOff": 318,
+      "endOff": 322,
+      "id": 63,
+      "text": "kern"
+    },
+    {
+      "startOff": 323,
+      "endOff": 326,
+      "id": 64,
+      "text": "van"
+    },
+    {
+      "startOff": 327,
+      "endOff": 335,
+      "id": 65,
+      "text": "waarheid"
+    },
+    {
+      "startOff": 336,
+      "endOff": 342,
+      "id": 66,
+      "text": "hebben"
+    },
+    {
+      "startOff": 342,
+      "endOff": 343,
+      "id": 67,
+      "text": ","
+    },
+    {
+      "startOff": 344,
+      "endOff": 349,
+      "id": 68,
+      "text": "zeker"
+    },
+    {
+      "startOff": 350,
+      "endOff": 352,
+      "id": 69,
+      "text": "is"
+    },
+    {
+      "startOff": 353,
+      "endOff": 356,
+      "id": 70,
+      "text": "het"
+    },
+    {
+      "startOff": 357,
+      "endOff": 361,
+      "id": 71,
+      "text": "jaar"
+    },
+    {
+      "startOff": 362,
+      "endOff": 366,
+      "id": 72,
+      "text": "1206"
+    },
+    {
+      "startOff": 366,
+      "endOff": 367,
+      "id": 73,
+      "text": ","
+    },
+    {
+      "startOff": 368,
+      "endOff": 374,
+      "id": 74,
+      "text": "waarop"
+    },
+    {
+      "startOff": 375,
+      "endOff": 378,
+      "id": 75,
+      "text": "hij"
+    },
+    {
+      "startOff": 379,
+      "endOff": 382,
+      "id": 76,
+      "text": "dit"
+    },
+    {
+      "startOff": 383,
+      "endOff": 390,
+      "id": 77,
+      "text": "plaatst"
+    },
+    {
+      "startOff": 390,
+      "endOff": 391,
+      "id": 78,
+      "text": ","
+    },
+    {
+      "startOff": 392,
+      "endOff": 399,
+      "id": 79,
+      "text": "onjuist"
+    },
+    {
+      "startOff": 399,
+      "endOff": 400,
+      "id": 80,
+      "text": ";"
+    },
+    {
+      "startOff": 401,
+      "endOff": 404,
+      "id": 81,
+      "text": "het"
+    },
+    {
+      "startOff": 405,
+      "endOff": 414,
+      "id": 82,
+      "text": "Chronicon"
+    },
+    {
+      "startOff": 415,
+      "endOff": 425,
+      "id": 83,
+      "text": "Egmundanum"
+    },
+    {
+      "startOff": 426,
+      "endOff": 431,
+      "id": 84,
+      "text": "noemt"
+    },
+    {
+      "startOff": 432,
+      "endOff": 435,
+      "id": 85,
+      "text": "het"
+    },
+    {
+      "startOff": 436,
+      "endOff": 440,
+      "id": 86,
+      "text": "jaar"
+    },
+    {
+      "startOff": 441,
+      "endOff": 445,
+      "id": 87,
+      "text": "1197"
+    },
+    {
+      "startOff": 446,
+      "endOff": 448,
+      "id": 88,
+      "text": "of"
+    },
+    {
+      "startOff": 449,
+      "endOff": 453,
+      "id": 89,
+      "text": "1198"
+    },
+    {
+      "startOff": 454,
+      "endOff": 456,
+      "id": 90,
+      "text": "en"
+    },
+    {
+      "startOff": 457,
+      "endOff": 459,
+      "id": 91,
+      "text": "in"
+    },
+    {
+      "startOff": 460,
+      "endOff": 463,
+      "id": 92,
+      "text": "een"
+    },
+    {
+      "startOff": 464,
+      "endOff": 468,
+      "id": 93,
+      "text": "stuk"
+    },
+    {
+      "startOff": 469,
+      "endOff": 472,
+      "id": 94,
+      "text": "van"
+    },
+    {
+      "startOff": 473,
+      "endOff": 477,
+      "id": 95,
+      "text": "1200"
+    },
+    {
+      "startOff": 478,
+      "endOff": 482,
+      "id": 96,
+      "text": "komt"
+    },
+    {
+      "startOff": 483,
+      "endOff": 489,
+      "id": 97,
+      "text": "Willem"
+    },
+    {
+      "startOff": 490,
+      "endOff": 493,
+      "id": 98,
+      "text": "als"
+    },
+    {
+      "startOff": 494,
+      "endOff": 504,
+      "id": 99,
+      "text": "schoonzoon"
+    },
+    {
+      "startOff": 505,
+      "endOff": 508,
+      "id": 100,
+      "text": "van"
+    },
+    {
+      "startOff": 509,
+      "endOff": 512,
+      "id": 101,
+      "text": "den"
+    },
+    {
+      "startOff": 513,
+      "endOff": 518,
+      "id": 102,
+      "text": "graaf"
+    },
+    {
+      "startOff": 519,
+      "endOff": 522,
+      "id": 103,
+      "text": "van"
+    },
+    {
+      "startOff": 523,
+      "endOff": 528,
+      "id": 104,
+      "text": "Gelre"
+    },
+    {
+      "startOff": 529,
+      "endOff": 533,
+      "id": 105,
+      "text": "voor"
+    },
+    {
+      "startOff": 533,
+      "endOff": 534,
+      "id": 106,
+      "text": "."
+    },
+    {
+      "startOff": 535,
+      "endOff": 538,
+      "id": 107,
+      "text": "Het"
+    },
+    {
+      "startOff": 539,
+      "endOff": 547,
+      "id": 108,
+      "text": "huwelijk"
+    },
+    {
+      "startOff": 548,
+      "endOff": 551,
+      "id": 109,
+      "text": "had"
+    },
+    {
+      "startOff": 552,
+      "endOff": 556,
+      "id": 110,
+      "text": "geen"
+    },
+    {
+      "startOff": 557,
+      "endOff": 564,
+      "id": 111,
+      "text": "invloed"
+    },
+    {
+      "startOff": 565,
+      "endOff": 567,
+      "id": 112,
+      "text": "op"
+    },
+    {
+      "startOff": 568,
+      "endOff": 570,
+      "id": 113,
+      "text": "de"
+    },
+    {
+      "startOff": 571,
+      "endOff": 579,
+      "id": 114,
+      "text": "politiek"
+    },
+    {
+      "startOff": 579,
+      "endOff": 580,
+      "id": 115,
+      "text": ":"
+    },
+    {
+      "startOff": 581,
+      "endOff": 587,
+      "id": 116,
+      "text": "Willem"
+    },
+    {
+      "startOff": 587,
+      "endOff": 589,
+      "id": 117,
+      "text": "'s"
+    },
+    {
+      "startOff": 590,
+      "endOff": 601,
+      "id": 118,
+      "text": "schoonvader"
+    },
+    {
+      "startOff": 602,
+      "endOff": 607,
+      "id": 119,
+      "text": "hield"
+    },
+    {
+      "startOff": 608,
+      "endOff": 612,
+      "id": 120,
+      "text": "zich"
+    },
+    {
+      "startOff": 613,
+      "endOff": 615,
+      "id": 121,
+      "text": "in"
+    },
+    {
+      "startOff": 616,
+      "endOff": 619,
+      "id": 122,
+      "text": "den"
+    },
+    {
+      "startOff": 620,
+      "endOff": 629,
+      "id": 123,
+      "text": "Loonschen"
+    },
+    {
+      "startOff": 630,
+      "endOff": 636,
+      "id": 124,
+      "text": "oorlog"
+    },
+    {
+      "startOff": 637,
+      "endOff": 645,
+      "id": 125,
+      "text": "onzijdig"
+    },
+    {
+      "startOff": 645,
+      "endOff": 646,
+      "id": 126,
+      "text": ";"
+    },
+    {
+      "startOff": 647,
+      "endOff": 650,
+      "id": 127,
+      "text": "ook"
+    },
+    {
+      "startOff": 651,
+      "endOff": 656,
+      "id": 128,
+      "text": "zijne"
+    },
+    {
+      "startOff": 657,
+      "endOff": 662,
+      "id": 129,
+      "text": "vrouw"
+    },
+    {
+      "startOff": 663,
+      "endOff": 670,
+      "id": 130,
+      "text": "schijnt"
+    },
+    {
+      "startOff": 671,
+      "endOff": 675,
+      "id": 131,
+      "text": "geen"
+    },
+    {
+      "startOff": 676,
+      "endOff": 679,
+      "id": 132,
+      "text": "rol"
+    },
+    {
+      "startOff": 680,
+      "endOff": 688,
+      "id": 133,
+      "text": "gespeeld"
+    },
+    {
+      "startOff": 689,
+      "endOff": 691,
+      "id": 134,
+      "text": "te"
+    },
+    {
+      "startOff": 692,
+      "endOff": 698,
+      "id": 135,
+      "text": "hebben"
+    },
+    {
+      "startOff": 698,
+      "endOff": 699,
+      "id": 136,
+      "text": "."
+    },
+    {
+      "startOff": 700,
+      "endOff": 703,
+      "id": 137,
+      "text": "Zij"
+    },
+    {
+      "startOff": 704,
+      "endOff": 712,
+      "id": 138,
+      "text": "overleed"
+    },
+    {
+      "startOff": 713,
+      "endOff": 715,
+      "id": 139,
+      "text": "12"
+    },
+    {
+      "startOff": 716,
+      "endOff": 720,
+      "id": 140,
+      "text": "Febr"
+    },
+    {
+      "startOff": 720,
+      "endOff": 721,
+      "id": 141,
+      "text": "."
+    },
+    {
+      "startOff": 722,
+      "endOff": 726,
+      "id": 142,
+      "text": "1218"
+    },
+    {
+      "startOff": 727,
+      "endOff": 729,
+      "id": 143,
+      "text": "en"
+    },
+    {
+      "startOff": 730,
+      "endOff": 734,
+      "id": 144,
+      "text": "werd"
+    },
+    {
+      "startOff": 735,
+      "endOff": 737,
+      "id": 145,
+      "text": "te"
+    },
+    {
+      "startOff": 738,
+      "endOff": 747,
+      "id": 146,
+      "text": "Rijnsburg"
+    },
+    {
+      "startOff": 748,
+      "endOff": 750,
+      "id": 147,
+      "text": "in"
+    },
+    {
+      "startOff": 751,
+      "endOff": 753,
+      "id": 148,
+      "text": "de"
+    },
+    {
+      "startOff": 754,
+      "endOff": 763,
+      "id": 149,
+      "text": "abdijkerk"
+    },
+    {
+      "startOff": 763,
+      "endOff": 764,
+      "id": 150,
+      "text": ","
+    },
+    {
+      "startOff": 765,
+      "endOff": 769,
+      "id": 151,
+      "text": "waar"
+    },
+    {
+      "startOff": 770,
+      "endOff": 774,
+      "id": 152,
+      "text": "haar"
+    },
+    {
+      "startOff": 775,
+      "endOff": 784,
+      "id": 153,
+      "text": "grafsteen"
+    },
+    {
+      "startOff": 785,
+      "endOff": 788,
+      "id": 154,
+      "text": "nog"
+    },
+    {
+      "startOff": 789,
+      "endOff": 791,
+      "id": 155,
+      "text": "te"
+    },
+    {
+      "startOff": 792,
+      "endOff": 796,
+      "id": 156,
+      "text": "zien"
+    },
+    {
+      "startOff": 797,
+      "endOff": 799,
+      "id": 157,
+      "text": "is"
+    },
+    {
+      "startOff": 799,
+      "endOff": 800,
+      "id": 158,
+      "text": ","
+    },
+    {
+      "startOff": 801,
+      "endOff": 809,
+      "id": 159,
+      "text": "begraven"
+    },
+    {
+      "startOff": 809,
+      "endOff": 810,
+      "id": 160,
+      "text": "."
+    },
+    {
+      "startOff": 811,
+      "endOff": 817,
+      "id": 161,
+      "text": "Willem"
+    },
+    {
+      "startOff": 818,
+      "endOff": 828,
+      "id": 162,
+      "text": "hertrouwde"
+    },
+    {
+      "startOff": 829,
+      "endOff": 832,
+      "id": 163,
+      "text": "met"
+    },
+    {
+      "startOff": 833,
+      "endOff": 838,
+      "id": 164,
+      "text": "Maria"
+    },
+    {
+      "startOff": 839,
+      "endOff": 842,
+      "id": 165,
+      "text": "van"
+    },
+    {
+      "startOff": 843,
+      "endOff": 850,
+      "id": 166,
+      "text": "Brabant"
+    },
+    {
+      "startOff": 850,
+      "endOff": 851,
+      "id": 167,
+      "text": "."
+    },
+    {
+      "startOff": 852,
+      "endOff": 857,
+      "id": 168,
+      "text": "Zijne"
+    },
+    {
+      "startOff": 858,
+      "endOff": 866,
+      "id": 169,
+      "text": "kinderen"
+    },
+    {
+      "startOff": 866,
+      "endOff": 867,
+      "id": 170,
+      "text": ","
+    },
+    {
+      "startOff": 868,
+      "endOff": 873,
+      "id": 171,
+      "text": "allen"
+    },
+    {
+      "startOff": 874,
+      "endOff": 877,
+      "id": 172,
+      "text": "uit"
+    },
+    {
+      "startOff": 878,
+      "endOff": 881,
+      "id": 173,
+      "text": "het"
+    },
+    {
+      "startOff": 882,
+      "endOff": 890,
+      "id": 174,
+      "text": "huwelijk"
+    },
+    {
+      "startOff": 891,
+      "endOff": 894,
+      "id": 175,
+      "text": "met"
+    },
+    {
+      "startOff": 895,
+      "endOff": 900,
+      "id": 176,
+      "text": "Aleid"
+    },
+    {
+      "startOff": 900,
+      "endOff": 901,
+      "id": 177,
+      "text": ","
+    },
+    {
+      "startOff": 902,
+      "endOff": 907,
+      "id": 178,
+      "text": "waren"
+    },
+    {
+      "startOff": 907,
+      "endOff": 908,
+      "id": 179,
+      "text": ":"
+    },
+    {
+      "startOff": 909,
+      "endOff": 915,
+      "id": 180,
+      "text": "Floris"
+    },
+    {
+      "startOff": 916,
+      "endOff": 918,
+      "id": 181,
+      "text": "IV"
+    },
+    {
+      "startOff": 918,
+      "endOff": 919,
+      "id": 182,
+      "text": ","
+    },
+    {
+      "startOff": 920,
+      "endOff": 924,
+      "id": 183,
+      "text": "Otto"
+    },
+    {
+      "startOff": 924,
+      "endOff": 925,
+      "id": 184,
+      "text": ","
+    },
+    {
+      "startOff": 926,
+      "endOff": 934,
+      "id": 185,
+      "text": "bisschop"
+    },
+    {
+      "startOff": 935,
+      "endOff": 938,
+      "id": 186,
+      "text": "van"
+    },
+    {
+      "startOff": 939,
+      "endOff": 946,
+      "id": 187,
+      "text": "Utrecht"
+    },
+    {
+      "startOff": 946,
+      "endOff": 947,
+      "id": 188,
+      "text": ","
+    },
+    {
+      "startOff": 948,
+      "endOff": 954,
+      "id": 189,
+      "text": "Willem"
+    },
+    {
+      "startOff": 955,
+      "endOff": 958,
+      "id": 190,
+      "text": "III"
+    },
+    {
+      "startOff": 958,
+      "endOff": 959,
+      "id": 191,
+      "text": ","
+    },
+    {
+      "startOff": 960,
+      "endOff": 965,
+      "id": 192,
+      "text": "voogd"
+    },
+    {
+      "startOff": 966,
+      "endOff": 970,
+      "id": 193,
+      "text": "over"
+    },
+    {
+      "startOff": 971,
+      "endOff": 975,
+      "id": 194,
+      "text": "zijn"
+    },
+    {
+      "startOff": 976,
+      "endOff": 980,
+      "id": 195,
+      "text": "neef"
+    },
+    {
+      "startOff": 981,
+      "endOff": 987,
+      "id": 196,
+      "text": "Willem"
+    },
+    {
+      "startOff": 988,
+      "endOff": 990,
+      "id": 197,
+      "text": "II"
+    },
+    {
+      "startOff": 990,
+      "endOff": 991,
+      "id": 198,
+      "text": ","
+    },
+    {
+      "startOff": 992,
+      "endOff": 1001,
+      "id": 199,
+      "text": "Richardis"
+    },
+    {
+      "startOff": 1001,
+      "endOff": 1002,
+      "id": 200,
+      "text": ","
+    },
+    {
+      "startOff": 1003,
+      "endOff": 1006,
+      "id": 201,
+      "text": "die"
+    },
+    {
+      "startOff": 1007,
+      "endOff": 1009,
+      "id": 202,
+      "text": "de"
+    },
+    {
+      "startOff": 1010,
+      "endOff": 1015,
+      "id": 203,
+      "text": "abdij"
+    },
+    {
+      "startOff": 1016,
+      "endOff": 1027,
+      "id": 204,
+      "text": "Koningsveld"
+    },
+    {
+      "startOff": 1028,
+      "endOff": 1036,
+      "id": 205,
+      "text": "stichtte"
+    },
+    {
+      "startOff": 1036,
+      "endOff": 1037,
+      "id": 206,
+      "text": ","
+    },
+    {
+      "startOff": 1038,
+      "endOff": 1040,
+      "id": 207,
+      "text": "en"
+    },
+    {
+      "startOff": 1041,
+      "endOff": 1044,
+      "id": 208,
+      "text": "Ada"
+    },
+    {
+      "startOff": 1044,
+      "endOff": 1045,
+      "id": 209,
+      "text": ","
+    },
+    {
+      "startOff": 1046,
+      "endOff": 1051,
+      "id": 210,
+      "text": "abdis"
+    },
+    {
+      "startOff": 1052,
+      "endOff": 1055,
+      "id": 211,
+      "text": "van"
+    },
+    {
+      "startOff": 1056,
+      "endOff": 1065,
+      "id": 212,
+      "text": "Rijnsburg"
+    },
+    {
+      "startOff": 1065,
+      "endOff": 1066,
+      "id": 213,
+      "text": "."
+    },
+    {
+      "startOff": 1067,
+      "endOff": 1070,
+      "id": 214,
+      "text": "Zie"
+    },
+    {
+      "startOff": 1070,
+      "endOff": 1071,
+      "id": 215,
+      "text": ":"
+    },
+    {
+      "startOff": 1072,
+      "endOff": 1085,
+      "id": 216,
+      "text": "Oorkondenboek"
+    },
+    {
+      "startOff": 1086,
+      "endOff": 1089,
+      "id": 217,
+      "text": "van"
+    },
+    {
+      "startOff": 1090,
+      "endOff": 1092,
+      "id": 218,
+      "text": "H."
+    },
+    {
+      "startOff": 1093,
+      "endOff": 1095,
+      "id": 219,
+      "text": "en"
+    },
+    {
+      "startOff": 1096,
+      "endOff": 1098,
+      "id": 220,
+      "text": "Z."
+    },
+    {
+      "startOff": 1098,
+      "endOff": 1099,
+      "id": 221,
+      "text": ";"
+    },
+    {
+      "startOff": 1100,
+      "endOff": 1105,
+      "id": 222,
+      "text": "Sloet"
+    },
+    {
+      "startOff": 1105,
+      "endOff": 1106,
+      "id": 223,
+      "text": ","
+    },
+    {
+      "startOff": 1107,
+      "endOff": 1112,
+      "id": 224,
+      "text": "Oork."
+    },
+    {
+      "startOff": 1113,
+      "endOff": 1116,
+      "id": 225,
+      "text": "van"
+    },
+    {
+      "startOff": 1117,
+      "endOff": 1122,
+      "id": 226,
+      "text": "Gelre"
+    },
+    {
+      "startOff": 1123,
+      "endOff": 1126,
+      "id": 227,
+      "text": "no."
+    },
+    {
+      "startOff": 1127,
+      "endOff": 1130,
+      "id": 228,
+      "text": "397"
+    },
+    {
+      "startOff": 1130,
+      "endOff": 1131,
+      "id": 229,
+      "text": ";"
+    },
+    {
+      "startOff": 1132,
+      "endOff": 1134,
+      "id": 230,
+      "text": "de"
+    },
+    {
+      "startOff": 1135,
+      "endOff": 1138,
+      "id": 231,
+      "text": "Ann"
+    },
+    {
+      "startOff": 1138,
+      "endOff": 1139,
+      "id": 232,
+      "text": "."
+    },
+    {
+      "startOff": 1140,
+      "endOff": 1144,
+      "id": 233,
+      "text": "Egm."
+    },
+    {
+      "startOff": 1145,
+      "endOff": 1147,
+      "id": 234,
+      "text": "en"
+    },
+    {
+      "startOff": 1148,
+      "endOff": 1151,
+      "id": 235,
+      "text": "het"
+    },
+    {
+      "startOff": 1152,
+      "endOff": 1157,
+      "id": 236,
+      "text": "Chron"
+    },
+    {
+      "startOff": 1157,
+      "endOff": 1158,
+      "id": 237,
+      "text": "."
+    },
+    {
+      "startOff": 1159,
+      "endOff": 1163,
+      "id": 238,
+      "text": "Egm."
+    },
+    {
+      "startOff": 1163,
+      "endOff": 1164,
+      "id": 239,
+      "text": ","
+    },
+    {
+      "startOff": 1165,
+      "endOff": 1171,
+      "id": 240,
+      "text": "beiden"
+    },
+    {
+      "startOff": 1172,
+      "endOff": 1174,
+      "id": 241,
+      "text": "op"
+    },
+    {
+      "startOff": 1175,
+      "endOff": 1178,
+      "id": 242,
+      "text": "het"
+    },
+    {
+      "startOff": 1179,
+      "endOff": 1183,
+      "id": 243,
+      "text": "jaar"
+    },
+    {
+      "startOff": 1184,
+      "endOff": 1188,
+      "id": 244,
+      "text": "1197"
+    },
+    {
+      "startOff": 1188,
+      "endOff": 1189,
+      "id": 245,
+      "text": ","
+    },
+    {
+      "startOff": 1190,
+      "endOff": 1192,
+      "id": 246,
+      "text": "en"
+    },
+    {
+      "startOff": 1193,
+      "endOff": 1202,
+      "id": 247,
+      "text": "Wilhelmus"
+    },
+    {
+      "startOff": 1203,
+      "endOff": 1213,
+      "id": 248,
+      "text": "Procurator"
+    },
+    {
+      "startOff": 1214,
+      "endOff": 1215,
+      "id": 249,
+      "text": "("
+    },
+    {
+      "startOff": 1215,
+      "endOff": 1219,
+      "id": 250,
+      "text": "uitg"
+    },
+    {
+      "startOff": 1219,
+      "endOff": 1220,
+      "id": 251,
+      "text": "."
+    },
+    {
+      "startOff": 1221,
+      "endOff": 1230,
+      "id": 252,
+      "text": "Pijnacker"
+    },
+    {
+      "startOff": 1231,
+      "endOff": 1238,
+      "id": 253,
+      "text": "Hordijk"
+    },
+    {
+      "startOff": 1238,
+      "endOff": 1239,
+      "id": 254,
+      "text": ")"
+    },
+    {
+      "startOff": 1240,
+      "endOff": 1246,
+      "id": 255,
+      "text": "XIX-XX"
+    },
+    {
+      "startOff": 1247,
+      "endOff": 1249,
+      "id": 256,
+      "text": "en"
+    },
+    {
+      "startOff": 1250,
+      "endOff": 1253,
+      "id": 257,
+      "text": "1-4"
+    },
+    {
+      "startOff": 1253,
+      "endOff": 1254,
+      "id": 258,
+      "text": "."
+    },
+    {
+      "startOff": 1255,
+      "endOff": 1261,
+      "id": 259,
+      "text": "Obreen"
+    }
+  ],
+  "userAnnotations": [
+    {
+      "annotationTokens": [
+        0,
+        1,
+        2
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "ALEID van Gelre",
+      "annotationChar": [
+        0,
+        15
+      ]
+    },
+    {
+      "annotationTokens": [
+        9,
+        10
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Otto I",
+      "annotationChar": [
+        33,
+        39
+      ]
+    },
+    {
+      "annotationTokens": [
+        12
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Richardis",
+      "annotationChar": [
+        43,
+        52
+      ]
+    },
+    {
+      "annotationTokens": [
+        16
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Otto",
+      "annotationChar": [
+        66,
+        70
+      ]
+    },
+    {
+      "annotationTokens": [
+        19
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Beieren",
+      "annotationChar": [
+        82,
+        89
+      ]
+    },
+    {
+      "annotationTokens": [
+        31
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem",
+      "annotationChar": [
+        135,
+        141
+      ]
+    },
+    {
+      "annotationTokens": [
+        33
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Holland",
+      "annotationChar": [
+        146,
+        153
+      ]
+    },
+    {
+      "annotationTokens": [
+        38
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Friesland",
+      "annotationChar": [
+        175,
+        184
+      ]
+    },
+    {
+      "annotationTokens": [
+        43,
+        44
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Dirk VII",
+      "annotationChar": [
+        206,
+        214
+      ]
+    },
+    {
+      "annotationTokens": [
+        49
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Stavoren",
+      "annotationChar": [
+        232,
+        240
+      ]
+    },
+    {
+      "annotationTokens": [
+        60
+      ],
+      "annotationColor": "#c480ff",
+      "userNo": 1,
+      "annotationType": [
+        "ORG"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Procurator",
+      "annotationChar": [
+        298,
+        308
+      ]
+    },
+    {
+      "annotationTokens": [
+        82,
+        83
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Chronicon Egmundanum",
+      "annotationChar": [
+        405,
+        425
+      ]
+    },
+    {
+      "annotationTokens": [
+        97
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem",
+      "annotationChar": [
+        483,
+        489
+      ]
+    },
+    {
+      "annotationTokens": [
+        104
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gelre",
+      "annotationChar": [
+        523,
+        528
+      ]
+    },
+    {
+      "annotationTokens": [
+        116
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem",
+      "annotationChar": [
+        581,
+        587
+      ]
+    },
+    {
+      "annotationTokens": [
+        123
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Loonschen",
+      "annotationChar": [
+        620,
+        629
+      ]
+    },
+    {
+      "annotationTokens": [
+        140
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Febr",
+      "annotationChar": [
+        716,
+        720
+      ]
+    },
+    {
+      "annotationTokens": [
+        146
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Rijnsburg",
+      "annotationChar": [
+        738,
+        747
+      ]
+    },
+    {
+      "annotationTokens": [
+        161
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem",
+      "annotationChar": [
+        811,
+        817
+      ]
+    },
+    {
+      "annotationTokens": [
+        164
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Maria",
+      "annotationChar": [
+        833,
+        838
+      ]
+    },
+    {
+      "annotationTokens": [
+        166
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Brabant",
+      "annotationChar": [
+        843,
+        850
+      ]
+    },
+    {
+      "annotationTokens": [
+        176
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Aleid",
+      "annotationChar": [
+        895,
+        900
+      ]
+    },
+    {
+      "annotationTokens": [
+        180,
+        181
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Floris IV",
+      "annotationChar": [
+        909,
+        918
+      ]
+    },
+    {
+      "annotationTokens": [
+        183
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Otto",
+      "annotationChar": [
+        920,
+        924
+      ]
+    },
+    {
+      "annotationTokens": [
+        187
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Utrecht",
+      "annotationChar": [
+        939,
+        946
+      ]
+    },
+    {
+      "annotationTokens": [
+        189,
+        190
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem III",
+      "annotationChar": [
+        948,
+        958
+      ]
+    },
+    {
+      "annotationTokens": [
+        196,
+        197
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem II",
+      "annotationChar": [
+        981,
+        990
+      ]
+    },
+    {
+      "annotationTokens": [
+        199
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Richardis",
+      "annotationChar": [
+        992,
+        1001
+      ]
+    },
+    {
+      "annotationTokens": [
+        204
+      ],
+      "annotationColor": "#c480ff",
+      "userNo": 1,
+      "annotationType": [
+        "ORG"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Koningsveld",
+      "annotationChar": [
+        1016,
+        1027
+      ]
+    },
+    {
+      "annotationTokens": [
+        208
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Ada",
+      "annotationChar": [
+        1041,
+        1044
+      ]
+    },
+    {
+      "annotationTokens": [
+        212
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Rijnsburg",
+      "annotationChar": [
+        1056,
+        1065
+      ]
+    },
+    {
+      "annotationTokens": [
+        220
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Z.",
+      "annotationChar": [
+        1096,
+        1098
+      ]
+    },
+    {
+      "annotationTokens": [
+        222
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Sloet",
+      "annotationChar": [
+        1100,
+        1105
+      ]
+    },
+    {
+      "annotationTokens": [
+        226
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gelre",
+      "annotationChar": [
+        1117,
+        1122
+      ]
+    },
+    {
+      "annotationTokens": [
+        231
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Ann",
+      "annotationChar": [
+        1135,
+        1138
+      ]
+    },
+    {
+      "annotationTokens": [
+        236
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 1,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Chron",
+      "annotationChar": [
+        1152,
+        1157
+      ]
+    },
+    {
+      "annotationTokens": [
+        247,
+        248
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Wilhelmus Procurator",
+      "annotationChar": [
+        1193,
+        1213
+      ]
+    },
+    {
+      "annotationTokens": [
+        252,
+        253
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 1,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Pijnacker Hordijk",
+      "annotationChar": [
+        1221,
+        1238
+      ]
+    },
+    {
+      "annotationTokens": [
+        255
+      ],
+      "annotationColor": "#c480ff",
+      "userNo": 1,
+      "annotationType": [
+        "ORG"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "XIX-XX",
+      "annotationChar": [
+        1240,
+        1246
+      ]
+    },
+    {
+      "annotationTokens": [
+        203
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "abdij",
+      "annotationChar": [
+        1010,
+        1015
+      ]
+    },
+    {
+      "annotationTokens": [
+        33
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Holland",
+      "annotationChar": [
+        146,
+        153
+      ]
+    },
+    {
+      "annotationTokens": [
+        49
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, DBpedia:Settlement"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Stavoren",
+      "annotationChar": [
+        232,
+        240
+      ]
+    },
+    {
+      "annotationTokens": [
+        9,
+        10
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "DBpedia:Agent, DBpedia:Family"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Otto I",
+      "annotationChar": [
+        33,
+        39
+      ]
+    },
+    {
+      "annotationTokens": [
+        189,
+        190
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "DBpedia:Agent, DBpedia:Family"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem III",
+      "annotationChar": [
+        948,
+        958
+      ]
+    },
+    {
+      "annotationTokens": [
+        187
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, Schema:Country, DBpedia:Country"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Utrecht",
+      "annotationChar": [
+        939,
+        946
+      ]
+    },
+    {
+      "annotationTokens": [
+        210
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "abdis",
+      "annotationChar": [
+        1046,
+        1051
+      ]
+    },
+    {
+      "annotationTokens": [
+        180,
+        181
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "DBpedia:Agent, DBpedia:Family"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Floris IV",
+      "annotationChar": [
+        909,
+        918
+      ]
+    },
+    {
+      "annotationTokens": [
+        196,
+        197
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "DBpedia:Agent, Schema:Person, Http://xmlns.com/foaf/0.1/Person, DBpedia:Person, DBpedia:Monarch"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Willem II",
+      "annotationChar": [
+        981,
+        990
+      ]
+    },
+    {
+      "annotationTokens": [
+        43,
+        44
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "DBpedia:Agent, DBpedia:Family"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Dirk VII",
+      "annotationChar": [
+        206,
+        214
+      ]
+    },
+    {
+      "annotationTokens": [
+        19
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Beieren",
+      "annotationChar": [
+        82,
+        89
+      ]
+    },
+    {
+      "annotationTokens": [
+        185
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "bisschop",
+      "annotationChar": [
+        926,
+        934
+      ]
+    },
+    {
+      "annotationTokens": [
+        38
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, DBpedia:Region, Schema:AdministrativeArea, DBpedia:AdministrativeRegion, DBpedia:GovernmentalAdministrativeRegion, DBpedia:Province"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Friesland",
+      "annotationChar": [
+        175,
+        184
+      ]
+    },
+    {
+      "annotationTokens": [
+        2
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, Schema:Country, DBpedia:Country"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gelre",
+      "annotationChar": [
+        10,
+        15
+      ]
+    },
+    {
+      "annotationTokens": [
+        166
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Brabant",
+      "annotationChar": [
+        843,
+        850
+      ]
+    },
+    {
+      "annotationTokens": [
+        104
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, Schema:Country, DBpedia:Country"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gelre",
+      "annotationChar": [
+        523,
+        528
+      ]
+    },
+    {
+      "annotationTokens": [
+        252
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, DBpedia:Settlement"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Pijnacker",
+      "annotationChar": [
+        1221,
+        1230
+      ]
+    },
+    {
+      "annotationTokens": [
+        226
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        "Schema:Place, DBpedia:Place, DBpedia:PopulatedPlace, Schema:Country, DBpedia:Country"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Gelre",
+      "annotationChar": [
+        1117,
+        1122
+      ]
+    },
+    {
+      "annotationTokens": [
+        146
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Rijnsburg",
+      "annotationChar": [
+        738,
+        747
+      ]
+    },
+    {
+      "annotationTokens": [
+        212
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 1,
+      "annotationType": [
+        ""
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Rijnsburg",
+      "annotationChar": [
+        1056,
+        1065
+      ]
+    },
+    {
+      "annotationTokens": [
+        4,
+        5
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Wigger Allertsz.",
+      "annotationChar": [
+        18,
+        34
+      ]
+    },
+    {
+      "annotationTokens": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Allert Jansz. Groot van Egmond",
+      "annotationChar": [
+        46,
+        76
+      ]
+    },
+    {
+      "annotationTokens": [
+        18,
+        19
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Geerte Wiggertsdr",
+      "annotationChar": [
+        84,
+        101
+      ]
+    },
+    {
+      "annotationTokens": [
+        32,
+        33,
+        34
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Suster Semeyns Meinertsdr",
+      "annotationChar": [
+        152,
+        177
+      ]
+    },
+    {
+      "annotationTokens": [
+        42,
+        43
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Noorder Koggen",
+      "annotationChar": [
+        209,
+        223
+      ]
+    },
+    {
+      "annotationTokens": [
+        46
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Medemblik",
+      "annotationChar": [
+        231,
+        240
+      ]
+    },
+    {
+      "annotationTokens": [
+        62
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Wieringen",
+      "annotationChar": [
+        317,
+        326
+      ]
+    },
+    {
+      "annotationTokens": [
+        129,
+        130,
+        131
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Hendrik van Brederode",
+      "annotationChar": [
+        705,
+        726
+      ]
+    },
+    {
+      "annotationTokens": [
+        135
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Amalia",
+      "annotationChar": [
+        742,
+        748
+      ]
+    },
+    {
+      "annotationTokens": [
+        139
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Nieuwenaar",
+      "annotationChar": [
+        761,
+        771
+      ]
+    },
+    {
+      "annotationTokens": [
+        142
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Hoorn",
+      "annotationChar": [
+        777,
+        782
+      ]
+    },
+    {
+      "annotationTokens": [
+        144
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Alkmaar",
+      "annotationChar": [
+        786,
+        793
+      ]
+    },
+    {
+      "annotationTokens": [
+        163
+      ],
+      "annotationColor": "#b6f2c6",
+      "userNo": 2,
+      "annotationType": [
+        "PER"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Hendrik",
+      "annotationChar": [
+        886,
+        893
+      ]
+    },
+    {
+      "annotationTokens": [
+        188
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Vrijheit",
+      "annotationChar": [
+        1029,
+        1037
+      ]
+    },
+    {
+      "annotationTokens": [
+        190
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Medemblik",
+      "annotationChar": [
+        1042,
+        1051
+      ]
+    },
+    {
+      "annotationTokens": [
+        194,
+        195
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 2,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Familie-archief Semeyns",
+      "annotationChar": [
+        1058,
+        1081
+      ]
+    },
+    {
+      "annotationTokens": [
+        197
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 2,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Bruinvis",
+      "annotationChar": [
+        1083,
+        1091
+      ]
+    },
+    {
+      "annotationTokens": [
+        199
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Alkmaar",
+      "annotationChar": [
+        1095,
+        1102
+      ]
+    },
+    {
+      "annotationTokens": [
+        202
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Alkm",
+      "annotationChar": [
+        1112,
+        1116
+      ]
+    },
+    {
+      "annotationTokens": [
+        212,
+        213,
+        214,
+        215
+      ],
+      "annotationColor": "#59b3ad",
+      "userNo": 2,
+      "annotationType": [
+        "MISC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Register van den Renten",
+      "annotationChar": [
+        1146,
+        1169
+      ]
+    },
+    {
+      "annotationTokens": [
+        220,
+        221
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "S. Gommerskercke",
+      "annotationChar": [
+        1196,
+        1212
+      ]
+    },
+    {
+      "annotationTokens": [
+        224
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Enkhuizen",
+      "annotationChar": [
+        1217,
+        1226
+      ]
+    },
+    {
+      "annotationTokens": [
+        229
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Rijksarchief",
+      "annotationChar": [
+        1250,
+        1262
+      ]
+    },
+    {
+      "annotationTokens": [
+        231
+      ],
+      "annotationColor": "#e6acac",
+      "userNo": 2,
+      "annotationType": [
+        "LOC"
+      ],
+      "borderTokens": {
+        "1leftTokenSafe": true,
+        "2rightTokenSafe": true
+      },
+      "annotationText": "Noord-Holland",
+      "annotationChar": [
+        1266,
+        1279
+      ]
+    }
+  ]
+}
