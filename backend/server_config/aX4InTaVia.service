@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve aX4InTaVia
+After=network.target
+
+[Service]
+User=annoxplorer
+Group=nginx
+WorkingDirectory=/home/annoxplorer/aX4InTaVia/backend
+Environment="PYTHONPATH=/home/annoxplorer/aX4InTaVia/backend/.venv/bin"
+ExecStart=/home/annoxplorer/aX4InTaVia/backend/.venv/bin/gunicorn --workers 2 --bind unix:aX4InTaVia.sock -m 007 aX4InTaVia:app
+
+[Install]
+WantedBy=multi-user.target

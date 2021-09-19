@@ -1,1 +1,1 @@
-FLASK_APP=aX4InTaVia_server.py
+FLASK_APP=aX4InTaVia.py
