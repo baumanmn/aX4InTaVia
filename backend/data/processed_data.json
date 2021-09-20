@@ -1,0 +1,7210 @@
+{
+    "userAnnotations": [
+        {
+            "annotationTokens": [
+                6
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Leicester",
+            "annotationChar": [
+                42,
+                50
+            ]
+        },
+        {
+            "annotationTokens": [
+                10
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Tuesdays",
+            "annotationChar": [
+                62,
+                69
+            ]
+        },
+        {
+            "annotationTokens": [
+                14
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Boris",
+            "annotationChar": [
+                86,
+                90
+            ]
+        },
+        {
+            "annotationTokens": [
+                21
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Britains",
+            "annotationChar": [
+                120,
+                127
+            ]
+        },
+        {
+            "annotationTokens": [
+                26
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Times",
+            "annotationChar": [
+                159,
+                163
+            ]
+        },
+        {
+            "annotationTokens": [
+                34
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Roosevelt",
+            "annotationChar": [
+                199,
+                207
+            ]
+        },
+        {
+            "annotationTokens": [
+                57,
+                58
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Daily Telegraphreports",
+            "annotationChar": [
+                338,
+                358
+            ]
+        },
+        {
+            "annotationTokens": [
+                63
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Leicester",
+            "annotationChar": [
+                380,
+                388
+            ]
+        },
+        {
+            "annotationTokens": [
+                86
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Leicester",
+            "annotationChar": [
+                509,
+                517
+            ]
+        },
+        {
+            "annotationTokens": [
+                89,
+                90
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "New Deal",
+            "annotationChar": [
+                524,
+                530
+            ]
+        },
+        {
+            "annotationTokens": [
+                93
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Johnson",
+            "annotationChar": [
+                535,
+                541
+            ]
+        },
+        {
+            "annotationTokens": [
+                100
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Leicester",
+            "annotationChar": [
+                587,
+                595
+            ]
+        },
+        {
+            "annotationTokens": [
+                108
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Leicester",
+            "annotationChar": [
+                632,
+                640
+            ]
+        },
+        {
+            "annotationTokens": [
+                110,
+                111,
+                112
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Sir Peter Soulsby",
+            "annotationChar": [
+                646,
+                660
+            ]
+        },
+        {
+            "annotationTokens": [
+                134
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Covid19",
+            "annotationChar": [
+                775,
+                781
+            ]
+        },
+        {
+            "annotationTokens": [
+                143
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Mirrorleads",
+            "annotationChar": [
+                842,
+                852
+            ]
+        },
+        {
+            "annotationTokens": [
+                161
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Express",
+            "annotationChar": [
+                950,
+                956
+            ]
+        },
+        {
+            "annotationTokens": [
+                171,
+                172
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Daily Star",
+            "annotationChar": [
+                991,
+                999
+            ]
+        },
+        {
+            "annotationTokens": [
+                178
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Wurzels",
+            "annotationChar": [
+                1018,
+                1024
+            ]
+        },
+        {
+            "annotationTokens": [
+                180,
+                181
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE",
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Adge Cutler",
+            "annotationChar": [
+                1033,
+                1042
+            ]
+        },
+        {
+            "annotationTokens": [
+                187
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Times",
+            "annotationChar": [
+                1085,
+                1089
+            ]
+        },
+        {
+            "annotationTokens": [
+                206,
+                207
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "LONDON Reuters",
+            "annotationChar": [
+                1177,
+                1189
+            ]
+        },
+        {
+            "annotationTokens": [
+                237,
+                238
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "National Grid",
+            "annotationChar": [
+                1339,
+                1350
+            ]
+        },
+        {
+            "annotationTokens": [
+                254
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Britains",
+            "annotationChar": [
+                1432,
+                1439
+            ]
+        },
+        {
+            "annotationTokens": [
+                271
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Britain",
+            "annotationChar": [
+                1518,
+                1524
+            ]
+        },
+        {
+            "annotationTokens": [
+                291,
+                292
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "United Nations",
+            "annotationChar": [
+                1612,
+                1624
+            ]
+        },
+        {
+            "annotationTokens": [
+                310,
+                311
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "National Grid",
+            "annotationChar": [
+                1711,
+                1722
+            ]
+        },
+        {
+            "annotationTokens": [
+                314
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "John",
+            "annotationChar": [
+                1737,
+                1740
+            ]
+        },
+        {
+            "annotationTokens": [
+                334
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Britains",
+            "annotationChar": [
+                1850,
+                1857
+            ]
+        },
+        {
+            "annotationTokens": [
+                356
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Britain",
+            "annotationChar": [
+                1958,
+                1964
+            ]
+        },
+        {
+            "annotationTokens": [
+                396
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Britains",
+            "annotationChar": [
+                2162,
+                2169
+            ]
+        },
+        {
+            "annotationTokens": [
+                437,
+                438
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE",
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "National Grid",
+            "annotationChar": [
+                2368,
+                2379
+            ]
+        },
+        {
+            "annotationTokens": [
+                444
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Britains",
+            "annotationChar": [
+                2397,
+                2404
+            ]
+        },
+        {
+            "annotationTokens": [
+                450
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Europe",
+            "annotationChar": [
+                2435,
+                2440
+            ]
+        },
+        {
+            "annotationTokens": [
+                457
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Netherlands",
+            "annotationChar": [
+                2481,
+                2491
+            ]
+        },
+        {
+            "annotationTokens": [
+                478,
+                479
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE",
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "National Grid",
+            "annotationChar": [
+                2618,
+                2629
+            ]
+        },
+        {
+            "annotationTokens": [
+                513
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "England",
+            "annotationChar": [
+                2786,
+                2792
+            ]
+        },
+        {
+            "annotationTokens": [
+                522,
+                523
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG",
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Orsteds Walney",
+            "annotationChar": [
+                2832,
+                2844
+            ]
+        },
+        {
+            "annotationTokens": [
+                530
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Cheltenham",
+            "annotationChar": [
+                2869,
+                2878
+            ]
+        },
+        {
+            "annotationTokens": [
+                554
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Irish",
+            "annotationChar": [
+                2985,
+                2989
+            ]
+        },
+        {
+            "annotationTokens": [
+                569,
+                570,
+                571,
+                572
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER",
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Paddy Power Handicap Chase",
+            "annotationChar": [
+                3061,
+                3083
+            ]
+        },
+        {
+            "annotationTokens": [
+                581,
+                582
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Ellmarie Holdens",
+            "annotationChar": [
+                3109,
+                3123
+            ]
+        },
+        {
+            "annotationTokens": [
+                603
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GSP"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Gowran",
+            "annotationChar": [
+                3217,
+                3222
+            ]
+        },
+        {
+            "annotationTokens": [
+                680
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Dipper",
+            "annotationChar": [
+                3544,
+                3549
+            ]
+        },
+        {
+            "annotationTokens": [
+                694,
+                695,
+                696
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Defi Du Seuil",
+            "annotationChar": [
+                3604,
+                3614
+            ]
+        },
+        {
+            "annotationTokens": [
+                698,
+                699,
+                700
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Clan Des Obeaux",
+            "annotationChar": [
+                3618,
+                3630
+            ]
+        },
+        {
+            "annotationTokens": [
+                749
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Newbury",
+            "annotationChar": [
+                3845,
+                3851
+            ]
+        },
+        {
+            "annotationTokens": [
+                787,
+                788,
+                789
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Deyrann De Carjac",
+            "annotationChar": [
+                4008,
+                4022
+            ]
+        },
+        {
+            "annotationTokens": [
+                797
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Matfog",
+            "annotationChar": [
+                4052,
+                4057
+            ]
+        },
+        {
+            "annotationTokens": [
+                802
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "French",
+            "annotationChar": [
+                4079,
+                4084
+            ]
+        },
+        {
+            "annotationTokens": [
+                816
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Cheltenham",
+            "annotationChar": [
+                4135,
+                4144
+            ]
+        },
+        {
+            "annotationTokens": [
+                824
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Richard",
+            "annotationChar": [
+                4178,
+                4184
+            ]
+        },
+        {
+            "annotationTokens": [
+                845,
+                846,
+                847
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Whos My Jockey",
+            "annotationChar": [
+                4272,
+                4283
+            ]
+        },
+        {
+            "annotationTokens": [
+                859,
+                860
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Philip Hobbs",
+            "annotationChar": [
+                4335,
+                4345
+            ]
+        },
+        {
+            "annotationTokens": [
+                896,
+                897
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Ben Jones",
+            "annotationChar": [
+                4483,
+                4490
+            ]
+        },
+        {
+            "annotationTokens": [
+                908
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Janika",
+            "annotationChar": [
+                4550,
+                4555
+            ]
+        },
+        {
+            "annotationTokens": [
+                919
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "ORG"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Tingle",
+            "annotationChar": [
+                4601,
+                4606
+            ]
+        },
+        {
+            "annotationTokens": [
+                928,
+                929
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Nicky Henderson",
+            "annotationChar": [
+                4655,
+                4668
+            ]
+        },
+        {
+            "annotationTokens": [
+                955,
+                956
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE",
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Summerville Boy",
+            "annotationChar": [
+                4786,
+                4799
+            ]
+        },
+        {
+            "annotationTokens": [
+                972
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Roksana",
+            "annotationChar": [
+                4860,
+                4866
+            ]
+        },
+        {
+            "annotationTokens": [
+                974,
+                975
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Quel Destin",
+            "annotationChar": [
+                4870,
+                4879
+            ]
+        },
+        {
+            "annotationTokens": [
+                981,
+                982
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER",
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "William Henry",
+            "annotationChar": [
+                4910,
+                4921
+            ]
+        },
+        {
+            "annotationTokens": [
+                984
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "GPE"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Emitom",
+            "annotationChar": [
+                4925,
+                4930
+            ]
+        }
+    ],
+    "tokens": [
+        {
+            "startOff": 0,
+            "endOff": 3,
+            "id": 0,
+            "text": "The"
+        },
+        {
+            "startOff": 4,
+            "endOff": 17,
+            "id": 1,
+            "text": "reintroduction"
+        },
+        {
+            "startOff": 18,
+            "endOff": 19,
+            "id": 2,
+            "text": "of"
+        },
+        {
+            "startOff": 20,
+            "endOff": 27,
+            "id": 3,
+            "text": "lockdown"
+        },
+        {
+            "startOff": 28,
+            "endOff": 39,
+            "id": 4,
+            "text": "restrictions"
+        },
+        {
+            "startOff": 40,
+            "endOff": 41,
+            "id": 5,
+            "text": "in"
+        },
+        {
+            "startOff": 42,
+            "endOff": 50,
+            "id": 6,
+            "text": "Leicester"
+        },
+        {
+            "startOff": 51,
+            "endOff": 55,
+            "id": 7,
+            "text": "leads"
+        },
+        {
+            "startOff": 56,
+            "endOff": 59,
+            "id": 8,
+            "text": "many"
+        },
+        {
+            "startOff": 60,
+            "endOff": 61,
+            "id": 9,
+            "text": "of"
+        },
+        {
+            "startOff": 62,
+            "endOff": 69,
+            "id": 10,
+            "text": "Tuesdays"
+        },
+        {
+            "startOff": 70,
+            "endOff": 76,
+            "id": 11,
+            "text": "papers,"
+        },
+        {
+            "startOff": 77,
+            "endOff": 81,
+            "id": 12,
+            "text": "along"
+        },
+        {
+            "startOff": 82,
+            "endOff": 85,
+            "id": 13,
+            "text": "with"
+        },
+        {
+            "startOff": 86,
+            "endOff": 90,
+            "id": 14,
+            "text": "Boris"
+        },
+        {
+            "startOff": 91,
+            "endOff": 98,
+            "id": 15,
+            "text": "Johnsons"
+        },
+        {
+            "startOff": 99,
+            "endOff": 106,
+            "id": 16,
+            "text": "proposed"
+        },
+        {
+            "startOff": 107,
+            "endOff": 109,
+            "id": 17,
+            "text": "new"
+        },
+        {
+            "startOff": 110,
+            "endOff": 113,
+            "id": 18,
+            "text": "deal"
+        },
+        {
+            "startOff": 114,
+            "endOff": 115,
+            "id": 19,
+            "text": "to"
+        },
+        {
+            "startOff": 116,
+            "endOff": 119,
+            "id": 20,
+            "text": "help"
+        },
+        {
+            "startOff": 120,
+            "endOff": 127,
+            "id": 21,
+            "text": "Britains"
+        },
+        {
+            "startOff": 128,
+            "endOff": 135,
+            "id": 22,
+            "text": "recovery"
+        },
+        {
+            "startOff": 136,
+            "endOff": 140,
+            "id": 23,
+            "text": "after"
+        },
+        {
+            "startOff": 141,
+            "endOff": 143,
+            "id": 24,
+            "text": "the"
+        },
+        {
+            "startOff": 144,
+            "endOff": 158,
+            "id": 25,
+            "text": "coronavirus.The"
+        },
+        {
+            "startOff": 159,
+            "endOff": 163,
+            "id": 26,
+            "text": "Times"
+        },
+        {
+            "startOff": 164,
+            "endOff": 168,
+            "id": 27,
+            "text": "leads"
+        },
+        {
+            "startOff": 169,
+            "endOff": 172,
+            "id": 28,
+            "text": "with"
+        },
+        {
+            "startOff": 173,
+            "endOff": 175,
+            "id": 29,
+            "text": "the"
+        },
+        {
+            "startOff": 176,
+            "endOff": 180,
+            "id": 30,
+            "text": "Prime"
+        },
+        {
+            "startOff": 181,
+            "endOff": 189,
+            "id": 31,
+            "text": "Ministers"
+        },
+        {
+            "startOff": 190,
+            "endOff": 196,
+            "id": 32,
+            "text": "echoing"
+        },
+        {
+            "startOff": 197,
+            "endOff": 198,
+            "id": 33,
+            "text": "of"
+        },
+        {
+            "startOff": 199,
+            "endOff": 207,
+            "id": 34,
+            "text": "Roosevelt"
+        },
+        {
+            "startOff": 208,
+            "endOff": 211,
+            "id": 35,
+            "text": "with"
+        },
+        {
+            "startOff": 212,
+            "endOff": 214,
+            "id": 36,
+            "text": "the"
+        },
+        {
+            "startOff": 215,
+            "endOff": 226,
+            "id": 37,
+            "text": "announcement"
+        },
+        {
+            "startOff": 227,
+            "endOff": 228,
+            "id": 38,
+            "text": "of"
+        },
+        {
+            "startOff": 229,
+            "endOff": 229,
+            "id": 39,
+            "text": "a"
+        },
+        {
+            "startOff": 230,
+            "endOff": 230,
+            "id": 40,
+            "text": "5"
+        },
+        {
+            "startOff": 231,
+            "endOff": 237,
+            "id": 41,
+            "text": "billion"
+        },
+        {
+            "startOff": 238,
+            "endOff": 246,
+            "id": 42,
+            "text": "programme"
+        },
+        {
+            "startOff": 247,
+            "endOff": 248,
+            "id": 43,
+            "text": "of"
+        },
+        {
+            "startOff": 249,
+            "endOff": 259,
+            "id": 44,
+            "text": "accelerated"
+        },
+        {
+            "startOff": 260,
+            "endOff": 266,
+            "id": 45,
+            "text": "capital"
+        },
+        {
+            "startOff": 267,
+            "endOff": 274,
+            "id": 46,
+            "text": "spending"
+        },
+        {
+            "startOff": 275,
+            "endOff": 276,
+            "id": 47,
+            "text": "on"
+        },
+        {
+            "startOff": 277,
+            "endOff": 286,
+            "id": 48,
+            "text": "hospitals,"
+        },
+        {
+            "startOff": 287,
+            "endOff": 292,
+            "id": 49,
+            "text": "roads,"
+        },
+        {
+            "startOff": 293,
+            "endOff": 297,
+            "id": 50,
+            "text": "rail,"
+        },
+        {
+            "startOff": 298,
+            "endOff": 305,
+            "id": 51,
+            "text": "prisons,"
+        },
+        {
+            "startOff": 306,
+            "endOff": 312,
+            "id": 52,
+            "text": "courts,"
+        },
+        {
+            "startOff": 313,
+            "endOff": 319,
+            "id": 53,
+            "text": "schools"
+        },
+        {
+            "startOff": 320,
+            "endOff": 322,
+            "id": 54,
+            "text": "and"
+        },
+        {
+            "startOff": 323,
+            "endOff": 326,
+            "id": 55,
+            "text": "high"
+        },
+        {
+            "startOff": 327,
+            "endOff": 337,
+            "id": 56,
+            "text": "streets.The"
+        },
+        {
+            "startOff": 338,
+            "endOff": 342,
+            "id": 57,
+            "text": "Daily"
+        },
+        {
+            "startOff": 343,
+            "endOff": 358,
+            "id": 58,
+            "text": "Telegraphreports"
+        },
+        {
+            "startOff": 359,
+            "endOff": 360,
+            "id": 59,
+            "text": "on"
+        },
+        {
+            "startOff": 361,
+            "endOff": 368,
+            "id": 60,
+            "text": "lockdown"
+        },
+        {
+            "startOff": 369,
+            "endOff": 377,
+            "id": 61,
+            "text": "returning"
+        },
+        {
+            "startOff": 378,
+            "endOff": 379,
+            "id": 62,
+            "text": "to"
+        },
+        {
+            "startOff": 380,
+            "endOff": 388,
+            "id": 63,
+            "text": "Leicester"
+        },
+        {
+            "startOff": 389,
+            "endOff": 393,
+            "id": 64,
+            "text": "after"
+        },
+        {
+            "startOff": 394,
+            "endOff": 394,
+            "id": 65,
+            "text": "a"
+        },
+        {
+            "startOff": 395,
+            "endOff": 399,
+            "id": 66,
+            "text": "surge"
+        },
+        {
+            "startOff": 400,
+            "endOff": 401,
+            "id": 67,
+            "text": "in"
+        },
+        {
+            "startOff": 402,
+            "endOff": 412,
+            "id": 68,
+            "text": "coronavirus"
+        },
+        {
+            "startOff": 413,
+            "endOff": 418,
+            "id": 69,
+            "text": "cases,"
+        },
+        {
+            "startOff": 419,
+            "endOff": 422,
+            "id": 70,
+            "text": "with"
+        },
+        {
+            "startOff": 423,
+            "endOff": 427,
+            "id": 71,
+            "text": "shops"
+        },
+        {
+            "startOff": 428,
+            "endOff": 430,
+            "id": 72,
+            "text": "and"
+        },
+        {
+            "startOff": 431,
+            "endOff": 437,
+            "id": 73,
+            "text": "schools"
+        },
+        {
+            "startOff": 438,
+            "endOff": 444,
+            "id": 74,
+            "text": "closing"
+        },
+        {
+            "startOff": 445,
+            "endOff": 449,
+            "id": 75,
+            "text": "their"
+        },
+        {
+            "startOff": 450,
+            "endOff": 454,
+            "id": 76,
+            "text": "doors"
+        },
+        {
+            "startOff": 455,
+            "endOff": 465,
+            "id": 77,
+            "text": "again.While"
+        },
+        {
+            "startOff": 466,
+            "endOff": 468,
+            "id": 78,
+            "text": "The"
+        },
+        {
+            "startOff": 469,
+            "endOff": 483,
+            "id": 79,
+            "text": "Guardiancarries"
+        },
+        {
+            "startOff": 484,
+            "endOff": 490,
+            "id": 80,
+            "text": "stories"
+        },
+        {
+            "startOff": 491,
+            "endOff": 492,
+            "id": 81,
+            "text": "on"
+        },
+        {
+            "startOff": 493,
+            "endOff": 495,
+            "id": 82,
+            "text": "the"
+        },
+        {
+            "startOff": 496,
+            "endOff": 498,
+            "id": 83,
+            "text": "new"
+        },
+        {
+            "startOff": 499,
+            "endOff": 506,
+            "id": 84,
+            "text": "measures"
+        },
+        {
+            "startOff": 507,
+            "endOff": 508,
+            "id": 85,
+            "text": "in"
+        },
+        {
+            "startOff": 509,
+            "endOff": 517,
+            "id": 86,
+            "text": "Leicester"
+        },
+        {
+            "startOff": 518,
+            "endOff": 520,
+            "id": 87,
+            "text": "and"
+        },
+        {
+            "startOff": 521,
+            "endOff": 523,
+            "id": 88,
+            "text": "the"
+        },
+        {
+            "startOff": 524,
+            "endOff": 526,
+            "id": 89,
+            "text": "New"
+        },
+        {
+            "startOff": 527,
+            "endOff": 530,
+            "id": 90,
+            "text": "Deal"
+        },
+        {
+            "startOff": 531,
+            "endOff": 532,
+            "id": 91,
+            "text": "as"
+        },
+        {
+            "startOff": 533,
+            "endOff": 534,
+            "id": 92,
+            "text": "Mr"
+        },
+        {
+            "startOff": 535,
+            "endOff": 541,
+            "id": 93,
+            "text": "Johnson"
+        },
+        {
+            "startOff": 542,
+            "endOff": 546,
+            "id": 94,
+            "text": "hopes"
+        },
+        {
+            "startOff": 547,
+            "endOff": 548,
+            "id": 95,
+            "text": "to"
+        },
+        {
+            "startOff": 549,
+            "endOff": 555,
+            "id": 96,
+            "text": "refocus"
+        },
+        {
+            "startOff": 556,
+            "endOff": 558,
+            "id": 97,
+            "text": "his"
+        },
+        {
+            "startOff": 559,
+            "endOff": 582,
+            "id": 98,
+            "text": "premiership.Metroreports"
+        },
+        {
+            "startOff": 583,
+            "endOff": 586,
+            "id": 99,
+            "text": "that"
+        },
+        {
+            "startOff": 587,
+            "endOff": 595,
+            "id": 100,
+            "text": "Leicester"
+        },
+        {
+            "startOff": 596,
+            "endOff": 598,
+            "id": 101,
+            "text": "has"
+        },
+        {
+            "startOff": 599,
+            "endOff": 602,
+            "id": 102,
+            "text": "been"
+        },
+        {
+            "startOff": 603,
+            "endOff": 606,
+            "id": 103,
+            "text": "left"
+        },
+        {
+            "startOff": 607,
+            "endOff": 608,
+            "id": 104,
+            "text": "in"
+        },
+        {
+            "startOff": 609,
+            "endOff": 619,
+            "id": 105,
+            "text": "limbo.While"
+        },
+        {
+            "startOff": 620,
+            "endOff": 627,
+            "id": 106,
+            "text": "ireports"
+        },
+        {
+            "startOff": 628,
+            "endOff": 631,
+            "id": 107,
+            "text": "that"
+        },
+        {
+            "startOff": 632,
+            "endOff": 640,
+            "id": 108,
+            "text": "Leicester"
+        },
+        {
+            "startOff": 641,
+            "endOff": 645,
+            "id": 109,
+            "text": "mayor"
+        },
+        {
+            "startOff": 646,
+            "endOff": 648,
+            "id": 110,
+            "text": "Sir"
+        },
+        {
+            "startOff": 649,
+            "endOff": 653,
+            "id": 111,
+            "text": "Peter"
+        },
+        {
+            "startOff": 654,
+            "endOff": 660,
+            "id": 112,
+            "text": "Soulsby"
+        },
+        {
+            "startOff": 661,
+            "endOff": 662,
+            "id": 113,
+            "text": "is"
+        },
+        {
+            "startOff": 663,
+            "endOff": 671,
+            "id": 114,
+            "text": "sceptical"
+        },
+        {
+            "startOff": 672,
+            "endOff": 676,
+            "id": 115,
+            "text": "about"
+        },
+        {
+            "startOff": 677,
+            "endOff": 679,
+            "id": 116,
+            "text": "the"
+        },
+        {
+            "startOff": 680,
+            "endOff": 684,
+            "id": 117,
+            "text": "first"
+        },
+        {
+            "startOff": 685,
+            "endOff": 689,
+            "id": 118,
+            "text": "local"
+        },
+        {
+            "startOff": 690,
+            "endOff": 701,
+            "id": 119,
+            "text": "lockdown.The"
+        },
+        {
+            "startOff": 702,
+            "endOff": 712,
+            "id": 120,
+            "text": "Independent"
+        },
+        {
+            "startOff": 713,
+            "endOff": 716,
+            "id": 121,
+            "text": "says"
+        },
+        {
+            "startOff": 717,
+            "endOff": 720,
+            "id": 122,
+            "text": "that"
+        },
+        {
+            "startOff": 721,
+            "endOff": 729,
+            "id": 123,
+            "text": "ministers"
+        },
+        {
+            "startOff": 730,
+            "endOff": 733,
+            "id": 124,
+            "text": "have"
+        },
+        {
+            "startOff": 734,
+            "endOff": 737,
+            "id": 125,
+            "text": "been"
+        },
+        {
+            "startOff": 738,
+            "endOff": 741,
+            "id": 126,
+            "text": "told"
+        },
+        {
+            "startOff": 742,
+            "endOff": 743,
+            "id": 127,
+            "text": "to"
+        },
+        {
+            "startOff": 744,
+            "endOff": 749,
+            "id": 128,
+            "text": "change"
+        },
+        {
+            "startOff": 750,
+            "endOff": 754,
+            "id": 129,
+            "text": "their"
+        },
+        {
+            "startOff": 755,
+            "endOff": 762,
+            "id": 130,
+            "text": "approach"
+        },
+        {
+            "startOff": 763,
+            "endOff": 764,
+            "id": 131,
+            "text": "on"
+        },
+        {
+            "startOff": 765,
+            "endOff": 771,
+            "id": 132,
+            "text": "testing"
+        },
+        {
+            "startOff": 772,
+            "endOff": 774,
+            "id": 133,
+            "text": "for"
+        },
+        {
+            "startOff": 775,
+            "endOff": 781,
+            "id": 134,
+            "text": "Covid19"
+        },
+        {
+            "startOff": 782,
+            "endOff": 785,
+            "id": 135,
+            "text": "amid"
+        },
+        {
+            "startOff": 786,
+            "endOff": 792,
+            "id": 136,
+            "text": "concern"
+        },
+        {
+            "startOff": 793,
+            "endOff": 797,
+            "id": 137,
+            "text": "about"
+        },
+        {
+            "startOff": 798,
+            "endOff": 800,
+            "id": 138,
+            "text": "the"
+        },
+        {
+            "startOff": 801,
+            "endOff": 811,
+            "id": 139,
+            "text": "governments"
+        },
+        {
+            "startOff": 812,
+            "endOff": 818,
+            "id": 140,
+            "text": "network"
+        },
+        {
+            "startOff": 819,
+            "endOff": 820,
+            "id": 141,
+            "text": "of"
+        },
+        {
+            "startOff": 821,
+            "endOff": 841,
+            "id": 142,
+            "text": "laboratories.TheDaily"
+        },
+        {
+            "startOff": 842,
+            "endOff": 852,
+            "id": 143,
+            "text": "Mirrorleads"
+        },
+        {
+            "startOff": 853,
+            "endOff": 854,
+            "id": 144,
+            "text": "on"
+        },
+        {
+            "startOff": 855,
+            "endOff": 857,
+            "id": 145,
+            "text": "the"
+        },
+        {
+            "startOff": 858,
+            "endOff": 868,
+            "id": 146,
+            "text": "coronavirus"
+        },
+        {
+            "startOff": 869,
+            "endOff": 872,
+            "id": 147,
+            "text": "blow"
+        },
+        {
+            "startOff": 873,
+            "endOff": 875,
+            "id": 148,
+            "text": "for"
+        },
+        {
+            "startOff": 876,
+            "endOff": 885,
+            "id": 149,
+            "text": "Leicester,"
+        },
+        {
+            "startOff": 886,
+            "endOff": 888,
+            "id": 150,
+            "text": "and"
+        },
+        {
+            "startOff": 889,
+            "endOff": 896,
+            "id": 151,
+            "text": "theDaily"
+        },
+        {
+            "startOff": 897,
+            "endOff": 900,
+            "id": 152,
+            "text": "Mail"
+        },
+        {
+            "startOff": 901,
+            "endOff": 907,
+            "id": 153,
+            "text": "reports"
+        },
+        {
+            "startOff": 908,
+            "endOff": 909,
+            "id": 154,
+            "text": "on"
+        },
+        {
+            "startOff": 910,
+            "endOff": 912,
+            "id": 155,
+            "text": "the"
+        },
+        {
+            "startOff": 913,
+            "endOff": 916,
+            "id": 156,
+            "text": "city"
+        },
+        {
+            "startOff": 917,
+            "endOff": 921,
+            "id": 157,
+            "text": "being"
+        },
+        {
+            "startOff": 922,
+            "endOff": 928,
+            "id": 158,
+            "text": "plunged"
+        },
+        {
+            "startOff": 929,
+            "endOff": 932,
+            "id": 159,
+            "text": "into"
+        },
+        {
+            "startOff": 933,
+            "endOff": 949,
+            "id": 160,
+            "text": "lockdown.TheDaily"
+        },
+        {
+            "startOff": 950,
+            "endOff": 956,
+            "id": 161,
+            "text": "Express"
+        },
+        {
+            "startOff": 957,
+            "endOff": 961,
+            "id": 162,
+            "text": "leads"
+        },
+        {
+            "startOff": 962,
+            "endOff": 963,
+            "id": 163,
+            "text": "on"
+        },
+        {
+            "startOff": 964,
+            "endOff": 966,
+            "id": 164,
+            "text": "the"
+        },
+        {
+            "startOff": 967,
+            "endOff": 967,
+            "id": 165,
+            "text": "5"
+        },
+        {
+            "startOff": 968,
+            "endOff": 974,
+            "id": 166,
+            "text": "billion"
+        },
+        {
+            "startOff": 975,
+            "endOff": 977,
+            "id": 167,
+            "text": "new"
+        },
+        {
+            "startOff": 978,
+            "endOff": 982,
+            "id": 168,
+            "text": "deal,"
+        },
+        {
+            "startOff": 983,
+            "endOff": 987,
+            "id": 169,
+            "text": "while"
+        },
+        {
+            "startOff": 988,
+            "endOff": 990,
+            "id": 170,
+            "text": "the"
+        },
+        {
+            "startOff": 991,
+            "endOff": 995,
+            "id": 171,
+            "text": "Daily"
+        },
+        {
+            "startOff": 996,
+            "endOff": 999,
+            "id": 172,
+            "text": "Star"
+        },
+        {
+            "startOff": 1000,
+            "endOff": 1006,
+            "id": 173,
+            "text": "reports"
+        },
+        {
+            "startOff": 1007,
+            "endOff": 1008,
+            "id": 174,
+            "text": "on"
+        },
+        {
+            "startOff": 1009,
+            "endOff": 1009,
+            "id": 175,
+            "text": "a"
+        },
+        {
+            "startOff": 1010,
+            "endOff": 1015,
+            "id": 176,
+            "text": "statue"
+        },
+        {
+            "startOff": 1016,
+            "endOff": 1017,
+            "id": 177,
+            "text": "of"
+        },
+        {
+            "startOff": 1018,
+            "endOff": 1024,
+            "id": 178,
+            "text": "Wurzels"
+        },
+        {
+            "startOff": 1025,
+            "endOff": 1032,
+            "id": 179,
+            "text": "frontman"
+        },
+        {
+            "startOff": 1033,
+            "endOff": 1036,
+            "id": 180,
+            "text": "Adge"
+        },
+        {
+            "startOff": 1037,
+            "endOff": 1042,
+            "id": 181,
+            "text": "Cutler"
+        },
+        {
+            "startOff": 1043,
+            "endOff": 1047,
+            "id": 182,
+            "text": "being"
+        },
+        {
+            "startOff": 1048,
+            "endOff": 1057,
+            "id": 183,
+            "text": "vandalised"
+        },
+        {
+            "startOff": 1058,
+            "endOff": 1061,
+            "id": 184,
+            "text": "with"
+        },
+        {
+            "startOff": 1062,
+            "endOff": 1067,
+            "id": 185,
+            "text": "googly"
+        },
+        {
+            "startOff": 1068,
+            "endOff": 1084,
+            "id": 186,
+            "text": "eyes.TheFinancial"
+        },
+        {
+            "startOff": 1085,
+            "endOff": 1089,
+            "id": 187,
+            "text": "Times"
+        },
+        {
+            "startOff": 1090,
+            "endOff": 1096,
+            "id": 188,
+            "text": "reports"
+        },
+        {
+            "startOff": 1097,
+            "endOff": 1098,
+            "id": 189,
+            "text": "on"
+        },
+        {
+            "startOff": 1099,
+            "endOff": 1101,
+            "id": 190,
+            "text": "the"
+        },
+        {
+            "startOff": 1102,
+            "endOff": 1107,
+            "id": 191,
+            "text": "impact"
+        },
+        {
+            "startOff": 1108,
+            "endOff": 1109,
+            "id": 192,
+            "text": "of"
+        },
+        {
+            "startOff": 1110,
+            "endOff": 1120,
+            "id": 193,
+            "text": "coronavirus"
+        },
+        {
+            "startOff": 1121,
+            "endOff": 1122,
+            "id": 194,
+            "text": "on"
+        },
+        {
+            "startOff": 1123,
+            "endOff": 1126,
+            "id": 195,
+            "text": "debt"
+        },
+        {
+            "startOff": 1127,
+            "endOff": 1131,
+            "id": 196,
+            "text": "sales"
+        },
+        {
+            "startOff": 1132,
+            "endOff": 1133,
+            "id": 197,
+            "text": "as"
+        },
+        {
+            "startOff": 1134,
+            "endOff": 1142,
+            "id": 198,
+            "text": "companies"
+        },
+        {
+            "startOff": 1143,
+            "endOff": 1146,
+            "id": 199,
+            "text": "sell"
+        },
+        {
+            "startOff": 1147,
+            "endOff": 1155,
+            "id": 200,
+            "text": "corporate"
+        },
+        {
+            "startOff": 1156,
+            "endOff": 1160,
+            "id": 201,
+            "text": "bonds"
+        },
+        {
+            "startOff": 1161,
+            "endOff": 1162,
+            "id": 202,
+            "text": "to"
+        },
+        {
+            "startOff": 1163,
+            "endOff": 1167,
+            "id": 203,
+            "text": "raise"
+        },
+        {
+            "startOff": 1168,
+            "endOff": 1175,
+            "id": 204,
+            "text": "capital."
+        },
+        {
+            "startOff": 1176,
+            "endOff": 1176,
+            "id": 205,
+            "text": " "
+        },
+        {
+            "startOff": 1177,
+            "endOff": 1182,
+            "id": 206,
+            "text": "LONDON"
+        },
+        {
+            "startOff": 1183,
+            "endOff": 1189,
+            "id": 207,
+            "text": "Reuters"
+        },
+        {
+            "startOff": 1190,
+            "endOff": 1197,
+            "id": 208,
+            "text": "Britain,"
+        },
+        {
+            "startOff": 1198,
+            "endOff": 1200,
+            "id": 209,
+            "text": "the"
+        },
+        {
+            "startOff": 1201,
+            "endOff": 1210,
+            "id": 210,
+            "text": "birthplace"
+        },
+        {
+            "startOff": 1211,
+            "endOff": 1212,
+            "id": 211,
+            "text": "of"
+        },
+        {
+            "startOff": 1213,
+            "endOff": 1216,
+            "id": 212,
+            "text": "coal"
+        },
+        {
+            "startOff": 1217,
+            "endOff": 1222,
+            "id": 213,
+            "text": "power,"
+        },
+        {
+            "startOff": 1223,
+            "endOff": 1230,
+            "id": 214,
+            "text": "produced"
+        },
+        {
+            "startOff": 1231,
+            "endOff": 1234,
+            "id": 215,
+            "text": "more"
+        },
+        {
+            "startOff": 1235,
+            "endOff": 1245,
+            "id": 216,
+            "text": "electricity"
+        },
+        {
+            "startOff": 1246,
+            "endOff": 1249,
+            "id": 217,
+            "text": "from"
+        },
+        {
+            "startOff": 1250,
+            "endOff": 1259,
+            "id": 218,
+            "text": "zerocarbon"
+        },
+        {
+            "startOff": 1260,
+            "endOff": 1266,
+            "id": 219,
+            "text": "sources"
+        },
+        {
+            "startOff": 1267,
+            "endOff": 1270,
+            "id": 220,
+            "text": "such"
+        },
+        {
+            "startOff": 1271,
+            "endOff": 1272,
+            "id": 221,
+            "text": "as"
+        },
+        {
+            "startOff": 1273,
+            "endOff": 1277,
+            "id": 222,
+            "text": "wind,"
+        },
+        {
+            "startOff": 1278,
+            "endOff": 1282,
+            "id": 223,
+            "text": "solar"
+        },
+        {
+            "startOff": 1283,
+            "endOff": 1285,
+            "id": 224,
+            "text": "and"
+        },
+        {
+            "startOff": 1286,
+            "endOff": 1292,
+            "id": 225,
+            "text": "nuclear"
+        },
+        {
+            "startOff": 1293,
+            "endOff": 1296,
+            "id": 226,
+            "text": "than"
+        },
+        {
+            "startOff": 1297,
+            "endOff": 1300,
+            "id": 227,
+            "text": "from"
+        },
+        {
+            "startOff": 1301,
+            "endOff": 1306,
+            "id": 228,
+            "text": "fossil"
+        },
+        {
+            "startOff": 1307,
+            "endOff": 1310,
+            "id": 229,
+            "text": "fuel"
+        },
+        {
+            "startOff": 1311,
+            "endOff": 1316,
+            "id": 230,
+            "text": "plants"
+        },
+        {
+            "startOff": 1317,
+            "endOff": 1319,
+            "id": 231,
+            "text": "for"
+        },
+        {
+            "startOff": 1320,
+            "endOff": 1322,
+            "id": 232,
+            "text": "the"
+        },
+        {
+            "startOff": 1323,
+            "endOff": 1327,
+            "id": 233,
+            "text": "first"
+        },
+        {
+            "startOff": 1328,
+            "endOff": 1331,
+            "id": 234,
+            "text": "time"
+        },
+        {
+            "startOff": 1332,
+            "endOff": 1333,
+            "id": 235,
+            "text": "in"
+        },
+        {
+            "startOff": 1334,
+            "endOff": 1338,
+            "id": 236,
+            "text": "2019,"
+        },
+        {
+            "startOff": 1339,
+            "endOff": 1346,
+            "id": 237,
+            "text": "National"
+        },
+        {
+            "startOff": 1347,
+            "endOff": 1350,
+            "id": 238,
+            "text": "Grid"
+        },
+        {
+            "startOff": 1351,
+            "endOff": 1354,
+            "id": 239,
+            "text": "said"
+        },
+        {
+            "startOff": 1355,
+            "endOff": 1356,
+            "id": 240,
+            "text": "on"
+        },
+        {
+            "startOff": 1357,
+            "endOff": 1372,
+            "id": 241,
+            "text": "Wednesday.Having"
+        },
+        {
+            "startOff": 1373,
+            "endOff": 1377,
+            "id": 242,
+            "text": "built"
+        },
+        {
+            "startOff": 1378,
+            "endOff": 1380,
+            "id": 243,
+            "text": "the"
+        },
+        {
+            "startOff": 1381,
+            "endOff": 1386,
+            "id": 244,
+            "text": "worlds"
+        },
+        {
+            "startOff": 1387,
+            "endOff": 1391,
+            "id": 245,
+            "text": "first"
+        },
+        {
+            "startOff": 1392,
+            "endOff": 1400,
+            "id": 246,
+            "text": "coalfired"
+        },
+        {
+            "startOff": 1401,
+            "endOff": 1405,
+            "id": 247,
+            "text": "power"
+        },
+        {
+            "startOff": 1406,
+            "endOff": 1410,
+            "id": 248,
+            "text": "plant"
+        },
+        {
+            "startOff": 1411,
+            "endOff": 1412,
+            "id": 249,
+            "text": "in"
+        },
+        {
+            "startOff": 1413,
+            "endOff": 1415,
+            "id": 250,
+            "text": "the"
+        },
+        {
+            "startOff": 1416,
+            "endOff": 1421,
+            "id": 251,
+            "text": "1880s,"
+        },
+        {
+            "startOff": 1422,
+            "endOff": 1425,
+            "id": 252,
+            "text": "coal"
+        },
+        {
+            "startOff": 1426,
+            "endOff": 1431,
+            "id": 253,
+            "text": "became"
+        },
+        {
+            "startOff": 1432,
+            "endOff": 1439,
+            "id": 254,
+            "text": "Britains"
+        },
+        {
+            "startOff": 1440,
+            "endOff": 1447,
+            "id": 255,
+            "text": "dominant"
+        },
+        {
+            "startOff": 1448,
+            "endOff": 1458,
+            "id": 256,
+            "text": "electricity"
+        },
+        {
+            "startOff": 1459,
+            "endOff": 1464,
+            "id": 257,
+            "text": "source"
+        },
+        {
+            "startOff": 1465,
+            "endOff": 1467,
+            "id": 258,
+            "text": "and"
+        },
+        {
+            "startOff": 1468,
+            "endOff": 1468,
+            "id": 259,
+            "text": "a"
+        },
+        {
+            "startOff": 1469,
+            "endOff": 1473,
+            "id": 260,
+            "text": "major"
+        },
+        {
+            "startOff": 1474,
+            "endOff": 1481,
+            "id": 261,
+            "text": "economic"
+        },
+        {
+            "startOff": 1482,
+            "endOff": 1487,
+            "id": 262,
+            "text": "driver"
+        },
+        {
+            "startOff": 1488,
+            "endOff": 1490,
+            "id": 263,
+            "text": "for"
+        },
+        {
+            "startOff": 1491,
+            "endOff": 1493,
+            "id": 264,
+            "text": "the"
+        },
+        {
+            "startOff": 1494,
+            "endOff": 1497,
+            "id": 265,
+            "text": "next"
+        },
+        {
+            "startOff": 1498,
+            "endOff": 1505,
+            "id": 266,
+            "text": "century."
+        },
+        {
+            "startOff": 1506,
+            "endOff": 1506,
+            "id": 267,
+            "text": " "
+        },
+        {
+            "startOff": 1507,
+            "endOff": 1509,
+            "id": 268,
+            "text": "But"
+        },
+        {
+            "startOff": 1510,
+            "endOff": 1513,
+            "id": 269,
+            "text": "last"
+        },
+        {
+            "startOff": 1514,
+            "endOff": 1517,
+            "id": 270,
+            "text": "year"
+        },
+        {
+            "startOff": 1518,
+            "endOff": 1524,
+            "id": 271,
+            "text": "Britain"
+        },
+        {
+            "startOff": 1525,
+            "endOff": 1530,
+            "id": 272,
+            "text": "became"
+        },
+        {
+            "startOff": 1531,
+            "endOff": 1533,
+            "id": 273,
+            "text": "the"
+        },
+        {
+            "startOff": 1534,
+            "endOff": 1538,
+            "id": 274,
+            "text": "first"
+        },
+        {
+            "startOff": 1539,
+            "endOff": 1540,
+            "id": 275,
+            "text": "G7"
+        },
+        {
+            "startOff": 1541,
+            "endOff": 1547,
+            "id": 276,
+            "text": "country"
+        },
+        {
+            "startOff": 1548,
+            "endOff": 1549,
+            "id": 277,
+            "text": "to"
+        },
+        {
+            "startOff": 1550,
+            "endOff": 1555,
+            "id": 278,
+            "text": "commit"
+        },
+        {
+            "startOff": 1556,
+            "endOff": 1557,
+            "id": 279,
+            "text": "to"
+        },
+        {
+            "startOff": 1558,
+            "endOff": 1565,
+            "id": 280,
+            "text": "reaching"
+        },
+        {
+            "startOff": 1566,
+            "endOff": 1572,
+            "id": 281,
+            "text": "netzero"
+        },
+        {
+            "startOff": 1573,
+            "endOff": 1581,
+            "id": 282,
+            "text": "emissions"
+        },
+        {
+            "startOff": 1582,
+            "endOff": 1583,
+            "id": 283,
+            "text": "by"
+        },
+        {
+            "startOff": 1584,
+            "endOff": 1587,
+            "id": 284,
+            "text": "2050"
+        },
+        {
+            "startOff": 1588,
+            "endOff": 1590,
+            "id": 285,
+            "text": "and"
+        },
+        {
+            "startOff": 1591,
+            "endOff": 1592,
+            "id": 286,
+            "text": "in"
+        },
+        {
+            "startOff": 1593,
+            "endOff": 1600,
+            "id": 287,
+            "text": "November"
+        },
+        {
+            "startOff": 1601,
+            "endOff": 1604,
+            "id": 288,
+            "text": "will"
+        },
+        {
+            "startOff": 1605,
+            "endOff": 1608,
+            "id": 289,
+            "text": "host"
+        },
+        {
+            "startOff": 1609,
+            "endOff": 1611,
+            "id": 290,
+            "text": "the"
+        },
+        {
+            "startOff": 1612,
+            "endOff": 1617,
+            "id": 291,
+            "text": "United"
+        },
+        {
+            "startOff": 1618,
+            "endOff": 1624,
+            "id": 292,
+            "text": "Nations"
+        },
+        {
+            "startOff": 1625,
+            "endOff": 1637,
+            "id": 293,
+            "text": "international"
+        },
+        {
+            "startOff": 1638,
+            "endOff": 1644,
+            "id": 294,
+            "text": "climate"
+        },
+        {
+            "startOff": 1645,
+            "endOff": 1649,
+            "id": 295,
+            "text": "talks"
+        },
+        {
+            "startOff": 1650,
+            "endOff": 1651,
+            "id": 296,
+            "text": "in"
+        },
+        {
+            "startOff": 1652,
+            "endOff": 1661,
+            "id": 297,
+            "text": "Glasgow.As"
+        },
+        {
+            "startOff": 1662,
+            "endOff": 1663,
+            "id": 298,
+            "text": "we"
+        },
+        {
+            "startOff": 1664,
+            "endOff": 1668,
+            "id": 299,
+            "text": "enter"
+        },
+        {
+            "startOff": 1669,
+            "endOff": 1669,
+            "id": 300,
+            "text": "a"
+        },
+        {
+            "startOff": 1670,
+            "endOff": 1672,
+            "id": 301,
+            "text": "new"
+        },
+        {
+            "startOff": 1673,
+            "endOff": 1679,
+            "id": 302,
+            "text": "decade,"
+        },
+        {
+            "startOff": 1680,
+            "endOff": 1683,
+            "id": 303,
+            "text": "this"
+        },
+        {
+            "startOff": 1684,
+            "endOff": 1688,
+            "id": 304,
+            "text": "truly"
+        },
+        {
+            "startOff": 1689,
+            "endOff": 1690,
+            "id": 305,
+            "text": "is"
+        },
+        {
+            "startOff": 1691,
+            "endOff": 1691,
+            "id": 306,
+            "text": "a"
+        },
+        {
+            "startOff": 1692,
+            "endOff": 1699,
+            "id": 307,
+            "text": "historic"
+        },
+        {
+            "startOff": 1700,
+            "endOff": 1706,
+            "id": 308,
+            "text": "moment,"
+        },
+        {
+            "startOff": 1707,
+            "endOff": 1710,
+            "id": 309,
+            "text": "said"
+        },
+        {
+            "startOff": 1711,
+            "endOff": 1718,
+            "id": 310,
+            "text": "National"
+        },
+        {
+            "startOff": 1719,
+            "endOff": 1722,
+            "id": 311,
+            "text": "Grid"
+        },
+        {
+            "startOff": 1723,
+            "endOff": 1727,
+            "id": 312,
+            "text": "Chief"
+        },
+        {
+            "startOff": 1728,
+            "endOff": 1736,
+            "id": 313,
+            "text": "Executive"
+        },
+        {
+            "startOff": 1737,
+            "endOff": 1740,
+            "id": 314,
+            "text": "John"
+        },
+        {
+            "startOff": 1741,
+            "endOff": 1750,
+            "id": 315,
+            "text": "Pettigrew,"
+        },
+        {
+            "startOff": 1751,
+            "endOff": 1759,
+            "id": 316,
+            "text": "referring"
+        },
+        {
+            "startOff": 1760,
+            "endOff": 1761,
+            "id": 317,
+            "text": "to"
+        },
+        {
+            "startOff": 1762,
+            "endOff": 1764,
+            "id": 318,
+            "text": "the"
+        },
+        {
+            "startOff": 1765,
+            "endOff": 1772,
+            "id": 319,
+            "text": "companys"
+        },
+        {
+            "startOff": 1773,
+            "endOff": 1778,
+            "id": 320,
+            "text": "latest"
+        },
+        {
+            "startOff": 1779,
+            "endOff": 1786,
+            "id": 321,
+            "text": "data.The"
+        },
+        {
+            "startOff": 1787,
+            "endOff": 1790,
+            "id": 322,
+            "text": "data"
+        },
+        {
+            "startOff": 1791,
+            "endOff": 1795,
+            "id": 323,
+            "text": "shows"
+        },
+        {
+            "startOff": 1796,
+            "endOff": 1800,
+            "id": 324,
+            "text": "wind,"
+        },
+        {
+            "startOff": 1801,
+            "endOff": 1806,
+            "id": 325,
+            "text": "solar,"
+        },
+        {
+            "startOff": 1807,
+            "endOff": 1812,
+            "id": 326,
+            "text": "hydro,"
+        },
+        {
+            "startOff": 1813,
+            "endOff": 1819,
+            "id": 327,
+            "text": "nuclear"
+        },
+        {
+            "startOff": 1820,
+            "endOff": 1822,
+            "id": 328,
+            "text": "and"
+        },
+        {
+            "startOff": 1823,
+            "endOff": 1829,
+            "id": 329,
+            "text": "imports"
+        },
+        {
+            "startOff": 1830,
+            "endOff": 1837,
+            "id": 330,
+            "text": "produced"
+        },
+        {
+            "startOff": 1838,
+            "endOff": 1842,
+            "id": 331,
+            "text": "about"
+        },
+        {
+            "startOff": 1843,
+            "endOff": 1847,
+            "id": 332,
+            "text": "48.5%"
+        },
+        {
+            "startOff": 1848,
+            "endOff": 1849,
+            "id": 333,
+            "text": "of"
+        },
+        {
+            "startOff": 1850,
+            "endOff": 1857,
+            "id": 334,
+            "text": "Britains"
+        },
+        {
+            "startOff": 1858,
+            "endOff": 1868,
+            "id": 335,
+            "text": "electricity"
+        },
+        {
+            "startOff": 1869,
+            "endOff": 1870,
+            "id": 336,
+            "text": "in"
+        },
+        {
+            "startOff": 1871,
+            "endOff": 1874,
+            "id": 337,
+            "text": "2019"
+        },
+        {
+            "startOff": 1875,
+            "endOff": 1879,
+            "id": 338,
+            "text": "while"
+        },
+        {
+            "startOff": 1880,
+            "endOff": 1885,
+            "id": 339,
+            "text": "fossil"
+        },
+        {
+            "startOff": 1886,
+            "endOff": 1890,
+            "id": 340,
+            "text": "fuels"
+        },
+        {
+            "startOff": 1891,
+            "endOff": 1894,
+            "id": 341,
+            "text": "such"
+        },
+        {
+            "startOff": 1895,
+            "endOff": 1896,
+            "id": 342,
+            "text": "as"
+        },
+        {
+            "startOff": 1897,
+            "endOff": 1900,
+            "id": 343,
+            "text": "coal"
+        },
+        {
+            "startOff": 1901,
+            "endOff": 1903,
+            "id": 344,
+            "text": "and"
+        },
+        {
+            "startOff": 1904,
+            "endOff": 1906,
+            "id": 345,
+            "text": "gas"
+        },
+        {
+            "startOff": 1907,
+            "endOff": 1917,
+            "id": 346,
+            "text": "contributed"
+        },
+        {
+            "startOff": 1918,
+            "endOff": 1922,
+            "id": 347,
+            "text": "about"
+        },
+        {
+            "startOff": 1923,
+            "endOff": 1925,
+            "id": 348,
+            "text": "43%"
+        },
+        {
+            "startOff": 1926,
+            "endOff": 1926,
+            "id": 349,
+            "text": " "
+        },
+        {
+            "startOff": 1927,
+            "endOff": 1929,
+            "id": 350,
+            "text": "The"
+        },
+        {
+            "startOff": 1930,
+            "endOff": 1933,
+            "id": 351,
+            "text": "rest"
+        },
+        {
+            "startOff": 1934,
+            "endOff": 1937,
+            "id": 352,
+            "text": "came"
+        },
+        {
+            "startOff": 1938,
+            "endOff": 1941,
+            "id": 353,
+            "text": "from"
+        },
+        {
+            "startOff": 1942,
+            "endOff": 1949,
+            "id": 354,
+            "text": "biomass."
+        },
+        {
+            "startOff": 1950,
+            "endOff": 1957,
+            "id": 355,
+            "text": "GRAPHIC:"
+        },
+        {
+            "startOff": 1958,
+            "endOff": 1964,
+            "id": 356,
+            "text": "Britain"
+        },
+        {
+            "startOff": 1965,
+            "endOff": 1966,
+            "id": 357,
+            "text": "'s"
+        },
+        {
+            "startOff": 1967,
+            "endOff": 1977,
+            "id": 358,
+            "text": "electricity"
+        },
+        {
+            "startOff": 1978,
+            "endOff": 1980,
+            "id": 359,
+            "text": "mix"
+        },
+        {
+            "startOff": 1981,
+            "endOff": 1984,
+            "id": 360,
+            "text": "here"
+        },
+        {
+            "startOff": 1985,
+            "endOff": 1987,
+            "id": 361,
+            "text": "The"
+        },
+        {
+            "startOff": 1988,
+            "endOff": 1995,
+            "id": 362,
+            "text": "increase"
+        },
+        {
+            "startOff": 1996,
+            "endOff": 1997,
+            "id": 363,
+            "text": "in"
+        },
+        {
+            "startOff": 1998,
+            "endOff": 2007,
+            "id": 364,
+            "text": "zerocarbon"
+        },
+        {
+            "startOff": 2008,
+            "endOff": 2012,
+            "id": 365,
+            "text": "power"
+        },
+        {
+            "startOff": 2013,
+            "endOff": 2017,
+            "id": 366,
+            "text": "marks"
+        },
+        {
+            "startOff": 2018,
+            "endOff": 2018,
+            "id": 367,
+            "text": "a"
+        },
+        {
+            "startOff": 2019,
+            "endOff": 2022,
+            "id": 368,
+            "text": "huge"
+        },
+        {
+            "startOff": 2023,
+            "endOff": 2027,
+            "id": 369,
+            "text": "shift"
+        },
+        {
+            "startOff": 2028,
+            "endOff": 2031,
+            "id": 370,
+            "text": "from"
+        },
+        {
+            "startOff": 2032,
+            "endOff": 2037,
+            "id": 371,
+            "text": "almost"
+        },
+        {
+            "startOff": 2038,
+            "endOff": 2040,
+            "id": 372,
+            "text": "two"
+        },
+        {
+            "startOff": 2041,
+            "endOff": 2047,
+            "id": 373,
+            "text": "decades"
+        },
+        {
+            "startOff": 2048,
+            "endOff": 2050,
+            "id": 374,
+            "text": "ago"
+        },
+        {
+            "startOff": 2051,
+            "endOff": 2054,
+            "id": 375,
+            "text": "when"
+        },
+        {
+            "startOff": 2055,
+            "endOff": 2060,
+            "id": 376,
+            "text": "fossil"
+        },
+        {
+            "startOff": 2061,
+            "endOff": 2065,
+            "id": 377,
+            "text": "fuels"
+        },
+        {
+            "startOff": 2066,
+            "endOff": 2073,
+            "id": 378,
+            "text": "provided"
+        },
+        {
+            "startOff": 2074,
+            "endOff": 2078,
+            "id": 379,
+            "text": "about"
+        },
+        {
+            "startOff": 2079,
+            "endOff": 2083,
+            "id": 380,
+            "text": "three"
+        },
+        {
+            "startOff": 2084,
+            "endOff": 2091,
+            "id": 381,
+            "text": "quarters"
+        },
+        {
+            "startOff": 2092,
+            "endOff": 2093,
+            "id": 382,
+            "text": "of"
+        },
+        {
+            "startOff": 2094,
+            "endOff": 2096,
+            "id": 383,
+            "text": "the"
+        },
+        {
+            "startOff": 2097,
+            "endOff": 2104,
+            "id": 384,
+            "text": "countrys"
+        },
+        {
+            "startOff": 2105,
+            "endOff": 2119,
+            "id": 385,
+            "text": "electricity.The"
+        },
+        {
+            "startOff": 2120,
+            "endOff": 2124,
+            "id": 386,
+            "text": "shift"
+        },
+        {
+            "startOff": 2125,
+            "endOff": 2127,
+            "id": 387,
+            "text": "has"
+        },
+        {
+            "startOff": 2128,
+            "endOff": 2131,
+            "id": 388,
+            "text": "been"
+        },
+        {
+            "startOff": 2132,
+            "endOff": 2137,
+            "id": 389,
+            "text": "mainly"
+        },
+        {
+            "startOff": 2138,
+            "endOff": 2143,
+            "id": 390,
+            "text": "thanks"
+        },
+        {
+            "startOff": 2144,
+            "endOff": 2145,
+            "id": 391,
+            "text": "to"
+        },
+        {
+            "startOff": 2146,
+            "endOff": 2146,
+            "id": 392,
+            "text": "a"
+        },
+        {
+            "startOff": 2147,
+            "endOff": 2151,
+            "id": 393,
+            "text": "rapid"
+        },
+        {
+            "startOff": 2152,
+            "endOff": 2159,
+            "id": 394,
+            "text": "increase"
+        },
+        {
+            "startOff": 2160,
+            "endOff": 2161,
+            "id": 395,
+            "text": "in"
+        },
+        {
+            "startOff": 2162,
+            "endOff": 2169,
+            "id": 396,
+            "text": "Britains"
+        },
+        {
+            "startOff": 2170,
+            "endOff": 2178,
+            "id": 397,
+            "text": "renewable"
+        },
+        {
+            "startOff": 2179,
+            "endOff": 2183,
+            "id": 398,
+            "text": "power"
+        },
+        {
+            "startOff": 2184,
+            "endOff": 2192,
+            "id": 399,
+            "text": "capacity,"
+        },
+        {
+            "startOff": 2193,
+            "endOff": 2196,
+            "id": 400,
+            "text": "with"
+        },
+        {
+            "startOff": 2197,
+            "endOff": 2201,
+            "id": 401,
+            "text": "wind,"
+        },
+        {
+            "startOff": 2202,
+            "endOff": 2206,
+            "id": 402,
+            "text": "solar"
+        },
+        {
+            "startOff": 2207,
+            "endOff": 2209,
+            "id": 403,
+            "text": "and"
+        },
+        {
+            "startOff": 2210,
+            "endOff": 2214,
+            "id": 404,
+            "text": "hydro"
+        },
+        {
+            "startOff": 2215,
+            "endOff": 2223,
+            "id": 405,
+            "text": "producing"
+        },
+        {
+            "startOff": 2224,
+            "endOff": 2227,
+            "id": 406,
+            "text": "more"
+        },
+        {
+            "startOff": 2228,
+            "endOff": 2231,
+            "id": 407,
+            "text": "than"
+        },
+        {
+            "startOff": 2232,
+            "endOff": 2232,
+            "id": 408,
+            "text": "a"
+        },
+        {
+            "startOff": 2233,
+            "endOff": 2239,
+            "id": 409,
+            "text": "quarter"
+        },
+        {
+            "startOff": 2240,
+            "endOff": 2241,
+            "id": 410,
+            "text": "of"
+        },
+        {
+            "startOff": 2242,
+            "endOff": 2244,
+            "id": 411,
+            "text": "the"
+        },
+        {
+            "startOff": 2245,
+            "endOff": 2252,
+            "id": 412,
+            "text": "countrys"
+        },
+        {
+            "startOff": 2253,
+            "endOff": 2263,
+            "id": 413,
+            "text": "electricity"
+        },
+        {
+            "startOff": 2264,
+            "endOff": 2265,
+            "id": 414,
+            "text": "in"
+        },
+        {
+            "startOff": 2266,
+            "endOff": 2270,
+            "id": 415,
+            "text": "2019,"
+        },
+        {
+            "startOff": 2271,
+            "endOff": 2272,
+            "id": 416,
+            "text": "up"
+        },
+        {
+            "startOff": 2273,
+            "endOff": 2276,
+            "id": 417,
+            "text": "from"
+        },
+        {
+            "startOff": 2277,
+            "endOff": 2280,
+            "id": 418,
+            "text": "only"
+        },
+        {
+            "startOff": 2281,
+            "endOff": 2284,
+            "id": 419,
+            "text": "2.3%"
+        },
+        {
+            "startOff": 2285,
+            "endOff": 2286,
+            "id": 420,
+            "text": "in"
+        },
+        {
+            "startOff": 2287,
+            "endOff": 2295,
+            "id": 421,
+            "text": "1990.This"
+        },
+        {
+            "startOff": 2296,
+            "endOff": 2301,
+            "id": 422,
+            "text": "figure"
+        },
+        {
+            "startOff": 2302,
+            "endOff": 2303,
+            "id": 423,
+            "text": "is"
+        },
+        {
+            "startOff": 2304,
+            "endOff": 2311,
+            "id": 424,
+            "text": "expected"
+        },
+        {
+            "startOff": 2312,
+            "endOff": 2313,
+            "id": 425,
+            "text": "to"
+        },
+        {
+            "startOff": 2314,
+            "endOff": 2321,
+            "id": 426,
+            "text": "continue"
+        },
+        {
+            "startOff": 2322,
+            "endOff": 2323,
+            "id": 427,
+            "text": "to"
+        },
+        {
+            "startOff": 2324,
+            "endOff": 2327,
+            "id": 428,
+            "text": "grow"
+        },
+        {
+            "startOff": 2328,
+            "endOff": 2329,
+            "id": 429,
+            "text": "as"
+        },
+        {
+            "startOff": 2330,
+            "endOff": 2333,
+            "id": 430,
+            "text": "more"
+        },
+        {
+            "startOff": 2334,
+            "endOff": 2338,
+            "id": 431,
+            "text": "large"
+        },
+        {
+            "startOff": 2339,
+            "endOff": 2346,
+            "id": 432,
+            "text": "offshore"
+        },
+        {
+            "startOff": 2347,
+            "endOff": 2350,
+            "id": 433,
+            "text": "wind"
+        },
+        {
+            "startOff": 2351,
+            "endOff": 2355,
+            "id": 434,
+            "text": "farms"
+        },
+        {
+            "startOff": 2356,
+            "endOff": 2358,
+            "id": 435,
+            "text": "are"
+        },
+        {
+            "startOff": 2359,
+            "endOff": 2367,
+            "id": 436,
+            "text": "built.The"
+        },
+        {
+            "startOff": 2368,
+            "endOff": 2375,
+            "id": 437,
+            "text": "National"
+        },
+        {
+            "startOff": 2376,
+            "endOff": 2379,
+            "id": 438,
+            "text": "Grid"
+        },
+        {
+            "startOff": 2380,
+            "endOff": 2383,
+            "id": 439,
+            "text": "data"
+        },
+        {
+            "startOff": 2384,
+            "endOff": 2388,
+            "id": 440,
+            "text": "shows"
+        },
+        {
+            "startOff": 2389,
+            "endOff": 2392,
+            "id": 441,
+            "text": "that"
+        },
+        {
+            "startOff": 2393,
+            "endOff": 2394,
+            "id": 442,
+            "text": "8%"
+        },
+        {
+            "startOff": 2395,
+            "endOff": 2396,
+            "id": 443,
+            "text": "of"
+        },
+        {
+            "startOff": 2397,
+            "endOff": 2404,
+            "id": 444,
+            "text": "Britains"
+        },
+        {
+            "startOff": 2405,
+            "endOff": 2415,
+            "id": 445,
+            "text": "electricity"
+        },
+        {
+            "startOff": 2416,
+            "endOff": 2419,
+            "id": 446,
+            "text": "came"
+        },
+        {
+            "startOff": 2420,
+            "endOff": 2423,
+            "id": 447,
+            "text": "from"
+        },
+        {
+            "startOff": 2424,
+            "endOff": 2430,
+            "id": 448,
+            "text": "imports"
+        },
+        {
+            "startOff": 2431,
+            "endOff": 2434,
+            "id": 449,
+            "text": "from"
+        },
+        {
+            "startOff": 2435,
+            "endOff": 2440,
+            "id": 450,
+            "text": "Europe"
+        },
+        {
+            "startOff": 2441,
+            "endOff": 2443,
+            "id": 451,
+            "text": "via"
+        },
+        {
+            "startOff": 2444,
+            "endOff": 2458,
+            "id": 452,
+            "text": "interconnectors"
+        },
+        {
+            "startOff": 2459,
+            "endOff": 2462,
+            "id": 453,
+            "text": "with"
+        },
+        {
+            "startOff": 2463,
+            "endOff": 2469,
+            "id": 454,
+            "text": "France,"
+        },
+        {
+            "startOff": 2470,
+            "endOff": 2477,
+            "id": 455,
+            "text": "Belgium,"
+        },
+        {
+            "startOff": 2478,
+            "endOff": 2480,
+            "id": 456,
+            "text": "the"
+        },
+        {
+            "startOff": 2481,
+            "endOff": 2491,
+            "id": 457,
+            "text": "Netherlands"
+        },
+        {
+            "startOff": 2492,
+            "endOff": 2494,
+            "id": 458,
+            "text": "and"
+        },
+        {
+            "startOff": 2495,
+            "endOff": 2507,
+            "id": 459,
+            "text": "Ireland.About"
+        },
+        {
+            "startOff": 2508,
+            "endOff": 2510,
+            "id": 460,
+            "text": "66%"
+        },
+        {
+            "startOff": 2511,
+            "endOff": 2512,
+            "id": 461,
+            "text": "of"
+        },
+        {
+            "startOff": 2513,
+            "endOff": 2517,
+            "id": 462,
+            "text": "these"
+        },
+        {
+            "startOff": 2518,
+            "endOff": 2524,
+            "id": 463,
+            "text": "imports"
+        },
+        {
+            "startOff": 2525,
+            "endOff": 2528,
+            "id": 464,
+            "text": "came"
+        },
+        {
+            "startOff": 2529,
+            "endOff": 2532,
+            "id": 465,
+            "text": "from"
+        },
+        {
+            "startOff": 2533,
+            "endOff": 2542,
+            "id": 466,
+            "text": "zerocarbon"
+        },
+        {
+            "startOff": 2543,
+            "endOff": 2556,
+            "id": 467,
+            "text": "generation.The"
+        },
+        {
+            "startOff": 2557,
+            "endOff": 2560,
+            "id": 468,
+            "text": "data"
+        },
+        {
+            "startOff": 2561,
+            "endOff": 2569,
+            "id": 469,
+            "text": "confirmed"
+        },
+        {
+            "startOff": 2570,
+            "endOff": 2581,
+            "id": 470,
+            "text": "expectations"
+        },
+        {
+            "startOff": 2582,
+            "endOff": 2584,
+            "id": 471,
+            "text": "for"
+        },
+        {
+            "startOff": 2585,
+            "endOff": 2590,
+            "id": 472,
+            "text": "growth"
+        },
+        {
+            "startOff": 2591,
+            "endOff": 2592,
+            "id": 473,
+            "text": "in"
+        },
+        {
+            "startOff": 2593,
+            "endOff": 2601,
+            "id": 474,
+            "text": "lowcarbon"
+        },
+        {
+            "startOff": 2602,
+            "endOff": 2606,
+            "id": 475,
+            "text": "power"
+        },
+        {
+            "startOff": 2607,
+            "endOff": 2615,
+            "id": 476,
+            "text": "published"
+        },
+        {
+            "startOff": 2616,
+            "endOff": 2617,
+            "id": 477,
+            "text": "by"
+        },
+        {
+            "startOff": 2618,
+            "endOff": 2625,
+            "id": 478,
+            "text": "National"
+        },
+        {
+            "startOff": 2626,
+            "endOff": 2629,
+            "id": 479,
+            "text": "Grid"
+        },
+        {
+            "startOff": 2630,
+            "endOff": 2631,
+            "id": 480,
+            "text": "in"
+        },
+        {
+            "startOff": 2632,
+            "endOff": 2639,
+            "id": 481,
+            "text": "mid2019,"
+        },
+        {
+            "startOff": 2640,
+            "endOff": 2644,
+            "id": 482,
+            "text": "based"
+        },
+        {
+            "startOff": 2645,
+            "endOff": 2646,
+            "id": 483,
+            "text": "on"
+        },
+        {
+            "startOff": 2647,
+            "endOff": 2650,
+            "id": 484,
+            "text": "data"
+        },
+        {
+            "startOff": 2651,
+            "endOff": 2653,
+            "id": 485,
+            "text": "for"
+        },
+        {
+            "startOff": 2654,
+            "endOff": 2656,
+            "id": 486,
+            "text": "the"
+        },
+        {
+            "startOff": 2657,
+            "endOff": 2661,
+            "id": 487,
+            "text": "first"
+        },
+        {
+            "startOff": 2662,
+            "endOff": 2665,
+            "id": 488,
+            "text": "five"
+        },
+        {
+            "startOff": 2666,
+            "endOff": 2671,
+            "id": 489,
+            "text": "months"
+        },
+        {
+            "startOff": 2672,
+            "endOff": 2673,
+            "id": 490,
+            "text": "of"
+        },
+        {
+            "startOff": 2674,
+            "endOff": 2676,
+            "id": 491,
+            "text": "the"
+        },
+        {
+            "startOff": 2677,
+            "endOff": 2689,
+            "id": 492,
+            "text": "year.Britains"
+        },
+        {
+            "startOff": 2690,
+            "endOff": 2694,
+            "id": 493,
+            "text": "windy"
+        },
+        {
+            "startOff": 2695,
+            "endOff": 2704,
+            "id": 494,
+            "text": "coastlines"
+        },
+        {
+            "startOff": 2705,
+            "endOff": 2706,
+            "id": 495,
+            "text": "in"
+        },
+        {
+            "startOff": 2707,
+            "endOff": 2716,
+            "id": 496,
+            "text": "particular"
+        },
+        {
+            "startOff": 2717,
+            "endOff": 2720,
+            "id": 497,
+            "text": "have"
+        },
+        {
+            "startOff": 2721,
+            "endOff": 2726,
+            "id": 498,
+            "text": "proved"
+        },
+        {
+            "startOff": 2727,
+            "endOff": 2728,
+            "id": 499,
+            "text": "to"
+        },
+        {
+            "startOff": 2729,
+            "endOff": 2730,
+            "id": 500,
+            "text": "be"
+        },
+        {
+            "startOff": 2731,
+            "endOff": 2732,
+            "id": 501,
+            "text": "an"
+        },
+        {
+            "startOff": 2733,
+            "endOff": 2737,
+            "id": 502,
+            "text": "ideal"
+        },
+        {
+            "startOff": 2738,
+            "endOff": 2741,
+            "id": 503,
+            "text": "host"
+        },
+        {
+            "startOff": 2742,
+            "endOff": 2744,
+            "id": 504,
+            "text": "for"
+        },
+        {
+            "startOff": 2745,
+            "endOff": 2749,
+            "id": 505,
+            "text": "large"
+        },
+        {
+            "startOff": 2750,
+            "endOff": 2753,
+            "id": 506,
+            "text": "wind"
+        },
+        {
+            "startOff": 2754,
+            "endOff": 2762,
+            "id": 507,
+            "text": "projects,"
+        },
+        {
+            "startOff": 2763,
+            "endOff": 2766,
+            "id": 508,
+            "text": "with"
+        },
+        {
+            "startOff": 2767,
+            "endOff": 2769,
+            "id": 509,
+            "text": "the"
+        },
+        {
+            "startOff": 2770,
+            "endOff": 2778,
+            "id": 510,
+            "text": "northwest"
+        },
+        {
+            "startOff": 2779,
+            "endOff": 2783,
+            "id": 511,
+            "text": "coast"
+        },
+        {
+            "startOff": 2784,
+            "endOff": 2785,
+            "id": 512,
+            "text": "of"
+        },
+        {
+            "startOff": 2786,
+            "endOff": 2792,
+            "id": 513,
+            "text": "England"
+        },
+        {
+            "startOff": 2793,
+            "endOff": 2796,
+            "id": 514,
+            "text": "home"
+        },
+        {
+            "startOff": 2797,
+            "endOff": 2798,
+            "id": 515,
+            "text": "to"
+        },
+        {
+            "startOff": 2799,
+            "endOff": 2801,
+            "id": 516,
+            "text": "the"
+        },
+        {
+            "startOff": 2802,
+            "endOff": 2807,
+            "id": 517,
+            "text": "worlds"
+        },
+        {
+            "startOff": 2808,
+            "endOff": 2814,
+            "id": 518,
+            "text": "largest"
+        },
+        {
+            "startOff": 2815,
+            "endOff": 2822,
+            "id": 519,
+            "text": "offshore"
+        },
+        {
+            "startOff": 2823,
+            "endOff": 2826,
+            "id": 520,
+            "text": "wind"
+        },
+        {
+            "startOff": 2827,
+            "endOff": 2831,
+            "id": 521,
+            "text": "farm,"
+        },
+        {
+            "startOff": 2832,
+            "endOff": 2838,
+            "id": 522,
+            "text": "Orsteds"
+        },
+        {
+            "startOff": 2839,
+            "endOff": 2844,
+            "id": 523,
+            "text": "Walney"
+        },
+        {
+            "startOff": 2845,
+            "endOff": 2856,
+            "id": 524,
+            "text": "Extension.It"
+        },
+        {
+            "startOff": 2857,
+            "endOff": 2858,
+            "id": 525,
+            "text": "is"
+        },
+        {
+            "startOff": 2859,
+            "endOff": 2859,
+            "id": 526,
+            "text": "a"
+        },
+        {
+            "startOff": 2860,
+            "endOff": 2862,
+            "id": 527,
+            "text": "new"
+        },
+        {
+            "startOff": 2863,
+            "endOff": 2866,
+            "id": 528,
+            "text": "year"
+        },
+        {
+            "startOff": 2867,
+            "endOff": 2868,
+            "id": 529,
+            "text": "at"
+        },
+        {
+            "startOff": 2869,
+            "endOff": 2878,
+            "id": 530,
+            "text": "Cheltenham"
+        },
+        {
+            "startOff": 2879,
+            "endOff": 2888,
+            "id": 531,
+            "text": "racecourse"
+        },
+        {
+            "startOff": 2889,
+            "endOff": 2891,
+            "id": 532,
+            "text": "but"
+        },
+        {
+            "startOff": 2892,
+            "endOff": 2895,
+            "id": 533,
+            "text": "some"
+        },
+        {
+            "startOff": 2896,
+            "endOff": 2901,
+            "id": 534,
+            "text": "things"
+        },
+        {
+            "startOff": 2902,
+            "endOff": 2905,
+            "id": 535,
+            "text": "will"
+        },
+        {
+            "startOff": 2906,
+            "endOff": 2910,
+            "id": 536,
+            "text": "never"
+        },
+        {
+            "startOff": 2911,
+            "endOff": 2916,
+            "id": 537,
+            "text": "change"
+        },
+        {
+            "startOff": 2917,
+            "endOff": 2918,
+            "id": 538,
+            "text": "at"
+        },
+        {
+            "startOff": 2919,
+            "endOff": 2921,
+            "id": 539,
+            "text": "the"
+        },
+        {
+            "startOff": 2922,
+            "endOff": 2925,
+            "id": 540,
+            "text": "home"
+        },
+        {
+            "startOff": 2926,
+            "endOff": 2927,
+            "id": 541,
+            "text": "of"
+        },
+        {
+            "startOff": 2928,
+            "endOff": 2931,
+            "id": 542,
+            "text": "jump"
+        },
+        {
+            "startOff": 2932,
+            "endOff": 2938,
+            "id": 543,
+            "text": "racing,"
+        },
+        {
+            "startOff": 2939,
+            "endOff": 2943,
+            "id": 544,
+            "text": "among"
+        },
+        {
+            "startOff": 2944,
+            "endOff": 2947,
+            "id": 545,
+            "text": "them"
+        },
+        {
+            "startOff": 2948,
+            "endOff": 2950,
+            "id": 546,
+            "text": "the"
+        },
+        {
+            "startOff": 2951,
+            "endOff": 2957,
+            "id": 547,
+            "text": "respect"
+        },
+        {
+            "startOff": 2958,
+            "endOff": 2961,
+            "id": 548,
+            "text": "that"
+        },
+        {
+            "startOff": 2962,
+            "endOff": 2965,
+            "id": 549,
+            "text": "must"
+        },
+        {
+            "startOff": 2966,
+            "endOff": 2967,
+            "id": 550,
+            "text": "be"
+        },
+        {
+            "startOff": 2968,
+            "endOff": 2972,
+            "id": 551,
+            "text": "given"
+        },
+        {
+            "startOff": 2973,
+            "endOff": 2974,
+            "id": 552,
+            "text": "to"
+        },
+        {
+            "startOff": 2975,
+            "endOff": 2984,
+            "id": 553,
+            "text": "wellbacked"
+        },
+        {
+            "startOff": 2985,
+            "endOff": 2989,
+            "id": 554,
+            "text": "Irish"
+        },
+        {
+            "startOff": 2990,
+            "endOff": 2997,
+            "id": 555,
+            "text": "raiders."
+        },
+        {
+            "startOff": 2998,
+            "endOff": 2998,
+            "id": 556,
+            "text": " "
+        },
+        {
+            "startOff": 2999,
+            "endOff": 3000,
+            "id": 557,
+            "text": "Ex"
+        },
+        {
+            "startOff": 3001,
+            "endOff": 3007,
+            "id": 558,
+            "text": "Patriot"
+        },
+        {
+            "startOff": 3008,
+            "endOff": 3011,
+            "id": 559,
+            "text": "2.00"
+        },
+        {
+            "startOff": 3012,
+            "endOff": 3014,
+            "id": 560,
+            "text": "was"
+        },
+        {
+            "startOff": 3015,
+            "endOff": 3024,
+            "id": 561,
+            "text": "attracting"
+        },
+        {
+            "startOff": 3025,
+            "endOff": 3031,
+            "id": 562,
+            "text": "support"
+        },
+        {
+            "startOff": 3032,
+            "endOff": 3035,
+            "id": 563,
+            "text": "soon"
+        },
+        {
+            "startOff": 3036,
+            "endOff": 3040,
+            "id": 564,
+            "text": "after"
+        },
+        {
+            "startOff": 3041,
+            "endOff": 3047,
+            "id": 565,
+            "text": "betting"
+        },
+        {
+            "startOff": 3048,
+            "endOff": 3052,
+            "id": 566,
+            "text": "began"
+        },
+        {
+            "startOff": 3053,
+            "endOff": 3054,
+            "id": 567,
+            "text": "on"
+        },
+        {
+            "startOff": 3055,
+            "endOff": 3060,
+            "id": 568,
+            "text": "todays"
+        },
+        {
+            "startOff": 3061,
+            "endOff": 3065,
+            "id": 569,
+            "text": "Paddy"
+        },
+        {
+            "startOff": 3066,
+            "endOff": 3070,
+            "id": 570,
+            "text": "Power"
+        },
+        {
+            "startOff": 3071,
+            "endOff": 3078,
+            "id": 571,
+            "text": "Handicap"
+        },
+        {
+            "startOff": 3079,
+            "endOff": 3083,
+            "id": 572,
+            "text": "Chase"
+        },
+        {
+            "startOff": 3084,
+            "endOff": 3086,
+            "id": 573,
+            "text": "and"
+        },
+        {
+            "startOff": 3087,
+            "endOff": 3091,
+            "id": 574,
+            "text": "there"
+        },
+        {
+            "startOff": 3092,
+            "endOff": 3093,
+            "id": 575,
+            "text": "is"
+        },
+        {
+            "startOff": 3094,
+            "endOff": 3094,
+            "id": 576,
+            "text": "a"
+        },
+        {
+            "startOff": 3095,
+            "endOff": 3097,
+            "id": 577,
+            "text": "lot"
+        },
+        {
+            "startOff": 3098,
+            "endOff": 3099,
+            "id": 578,
+            "text": "to"
+        },
+        {
+            "startOff": 3100,
+            "endOff": 3103,
+            "id": 579,
+            "text": "like"
+        },
+        {
+            "startOff": 3104,
+            "endOff": 3108,
+            "id": 580,
+            "text": "about"
+        },
+        {
+            "startOff": 3109,
+            "endOff": 3116,
+            "id": 581,
+            "text": "Ellmarie"
+        },
+        {
+            "startOff": 3117,
+            "endOff": 3123,
+            "id": 582,
+            "text": "Holdens"
+        },
+        {
+            "startOff": 3124,
+            "endOff": 3134,
+            "id": 583,
+            "text": "runner.This"
+        },
+        {
+            "startOff": 3135,
+            "endOff": 3136,
+            "id": 584,
+            "text": "is"
+        },
+        {
+            "startOff": 3137,
+            "endOff": 3140,
+            "id": 585,
+            "text": "only"
+        },
+        {
+            "startOff": 3141,
+            "endOff": 3143,
+            "id": 586,
+            "text": "his"
+        },
+        {
+            "startOff": 3144,
+            "endOff": 3149,
+            "id": 587,
+            "text": "second"
+        },
+        {
+            "startOff": 3150,
+            "endOff": 3155,
+            "id": 588,
+            "text": "chance"
+        },
+        {
+            "startOff": 3156,
+            "endOff": 3157,
+            "id": 589,
+            "text": "in"
+        },
+        {
+            "startOff": 3158,
+            "endOff": 3158,
+            "id": 590,
+            "text": "a"
+        },
+        {
+            "startOff": 3159,
+            "endOff": 3166,
+            "id": 591,
+            "text": "handicap"
+        },
+        {
+            "startOff": 3167,
+            "endOff": 3171,
+            "id": 592,
+            "text": "chase"
+        },
+        {
+            "startOff": 3172,
+            "endOff": 3174,
+            "id": 593,
+            "text": "and"
+        },
+        {
+            "startOff": 3175,
+            "endOff": 3176,
+            "id": 594,
+            "text": "he"
+        },
+        {
+            "startOff": 3177,
+            "endOff": 3179,
+            "id": 595,
+            "text": "won"
+        },
+        {
+            "startOff": 3180,
+            "endOff": 3182,
+            "id": 596,
+            "text": "the"
+        },
+        {
+            "startOff": 3183,
+            "endOff": 3188,
+            "id": 597,
+            "text": "first,"
+        },
+        {
+            "startOff": 3189,
+            "endOff": 3199,
+            "id": 598,
+            "text": "comfortably"
+        },
+        {
+            "startOff": 3200,
+            "endOff": 3206,
+            "id": 599,
+            "text": "beating"
+        },
+        {
+            "startOff": 3207,
+            "endOff": 3208,
+            "id": 600,
+            "text": "10"
+        },
+        {
+            "startOff": 3209,
+            "endOff": 3214,
+            "id": 601,
+            "text": "rivals"
+        },
+        {
+            "startOff": 3215,
+            "endOff": 3216,
+            "id": 602,
+            "text": "at"
+        },
+        {
+            "startOff": 3217,
+            "endOff": 3222,
+            "id": 603,
+            "text": "Gowran"
+        },
+        {
+            "startOff": 3223,
+            "endOff": 3224,
+            "id": 604,
+            "text": "in"
+        },
+        {
+            "startOff": 3225,
+            "endOff": 3230,
+            "id": 605,
+            "text": "March."
+        },
+        {
+            "startOff": 3231,
+            "endOff": 3231,
+            "id": 606,
+            "text": " "
+        },
+        {
+            "startOff": 3232,
+            "endOff": 3233,
+            "id": 607,
+            "text": "He"
+        },
+        {
+            "startOff": 3234,
+            "endOff": 3236,
+            "id": 608,
+            "text": "was"
+        },
+        {
+            "startOff": 3237,
+            "endOff": 3240,
+            "id": 609,
+            "text": "well"
+        },
+        {
+            "startOff": 3241,
+            "endOff": 3247,
+            "id": 610,
+            "text": "treated"
+        },
+        {
+            "startOff": 3248,
+            "endOff": 3249,
+            "id": 611,
+            "text": "at"
+        },
+        {
+            "startOff": 3250,
+            "endOff": 3252,
+            "id": 612,
+            "text": "the"
+        },
+        {
+            "startOff": 3253,
+            "endOff": 3259,
+            "id": 613,
+            "text": "weights"
+        },
+        {
+            "startOff": 3260,
+            "endOff": 3263,
+            "id": 614,
+            "text": "that"
+        },
+        {
+            "startOff": 3264,
+            "endOff": 3266,
+            "id": 615,
+            "text": "day"
+        },
+        {
+            "startOff": 3267,
+            "endOff": 3269,
+            "id": 616,
+            "text": "but"
+        },
+        {
+            "startOff": 3270,
+            "endOff": 3271,
+            "id": 617,
+            "text": "he"
+        },
+        {
+            "startOff": 3272,
+            "endOff": 3276,
+            "id": 618,
+            "text": "still"
+        },
+        {
+            "startOff": 3277,
+            "endOff": 3281,
+            "id": 619,
+            "text": "looks"
+        },
+        {
+            "startOff": 3282,
+            "endOff": 3283,
+            "id": 620,
+            "text": "on"
+        },
+        {
+            "startOff": 3284,
+            "endOff": 3284,
+            "id": 621,
+            "text": "a"
+        },
+        {
+            "startOff": 3285,
+            "endOff": 3288,
+            "id": 622,
+            "text": "fair"
+        },
+        {
+            "startOff": 3289,
+            "endOff": 3293,
+            "id": 623,
+            "text": "mark,"
+        },
+        {
+            "startOff": 3294,
+            "endOff": 3300,
+            "id": 624,
+            "text": "judging"
+        },
+        {
+            "startOff": 3301,
+            "endOff": 3302,
+            "id": 625,
+            "text": "by"
+        },
+        {
+            "startOff": 3303,
+            "endOff": 3305,
+            "id": 626,
+            "text": "two"
+        },
+        {
+            "startOff": 3306,
+            "endOff": 3312,
+            "id": 627,
+            "text": "efforts"
+        },
+        {
+            "startOff": 3313,
+            "endOff": 3314,
+            "id": 628,
+            "text": "in"
+        },
+        {
+            "startOff": 3315,
+            "endOff": 3321,
+            "id": 629,
+            "text": "quality"
+        },
+        {
+            "startOff": 3322,
+            "endOff": 3327,
+            "id": 630,
+            "text": "novice"
+        },
+        {
+            "startOff": 3328,
+            "endOff": 3335,
+            "id": 631,
+            "text": "contests"
+        },
+        {
+            "startOff": 3336,
+            "endOff": 3337,
+            "id": 632,
+            "text": "in"
+        },
+        {
+            "startOff": 3338,
+            "endOff": 3346,
+            "id": 633,
+            "text": "November."
+        },
+        {
+            "startOff": 3347,
+            "endOff": 3347,
+            "id": 634,
+            "text": " "
+        },
+        {
+            "startOff": 3348,
+            "endOff": 3349,
+            "id": 635,
+            "text": "He"
+        },
+        {
+            "startOff": 3350,
+            "endOff": 3352,
+            "id": 636,
+            "text": "did"
+        },
+        {
+            "startOff": 3353,
+            "endOff": 3355,
+            "id": 637,
+            "text": "not"
+        },
+        {
+            "startOff": 3356,
+            "endOff": 3358,
+            "id": 638,
+            "text": "get"
+        },
+        {
+            "startOff": 3359,
+            "endOff": 3362,
+            "id": 639,
+            "text": "home"
+        },
+        {
+            "startOff": 3363,
+            "endOff": 3364,
+            "id": 640,
+            "text": "on"
+        },
+        {
+            "startOff": 3365,
+            "endOff": 3367,
+            "id": 641,
+            "text": "his"
+        },
+        {
+            "startOff": 3368,
+            "endOff": 3371,
+            "id": 642,
+            "text": "last"
+        },
+        {
+            "startOff": 3372,
+            "endOff": 3376,
+            "id": 643,
+            "text": "visit"
+        },
+        {
+            "startOff": 3377,
+            "endOff": 3381,
+            "id": 644,
+            "text": "here,"
+        },
+        {
+            "startOff": 3382,
+            "endOff": 3383,
+            "id": 645,
+            "text": "in"
+        },
+        {
+            "startOff": 3384,
+            "endOff": 3386,
+            "id": 646,
+            "text": "the"
+        },
+        {
+            "startOff": 3387,
+            "endOff": 3393,
+            "id": 647,
+            "text": "Cleeve,"
+        },
+        {
+            "startOff": 3394,
+            "endOff": 3396,
+            "id": 648,
+            "text": "but"
+        },
+        {
+            "startOff": 3397,
+            "endOff": 3400,
+            "id": 649,
+            "text": "this"
+        },
+        {
+            "startOff": 3401,
+            "endOff": 3406,
+            "id": 650,
+            "text": "should"
+        },
+        {
+            "startOff": 3407,
+            "endOff": 3408,
+            "id": 651,
+            "text": "be"
+        },
+        {
+            "startOff": 3409,
+            "endOff": 3412,
+            "id": 652,
+            "text": "much"
+        },
+        {
+            "startOff": 3413,
+            "endOff": 3416,
+            "id": 653,
+            "text": "less"
+        },
+        {
+            "startOff": 3417,
+            "endOff": 3418,
+            "id": 654,
+            "text": "of"
+        },
+        {
+            "startOff": 3419,
+            "endOff": 3419,
+            "id": 655,
+            "text": "a"
+        },
+        {
+            "startOff": 3420,
+            "endOff": 3426,
+            "id": 656,
+            "text": "stamina"
+        },
+        {
+            "startOff": 3427,
+            "endOff": 3436,
+            "id": 657,
+            "text": "test.Poker"
+        },
+        {
+            "startOff": 3437,
+            "endOff": 3441,
+            "id": 658,
+            "text": "Play,"
+        },
+        {
+            "startOff": 3442,
+            "endOff": 3444,
+            "id": 659,
+            "text": "who"
+        },
+        {
+            "startOff": 3445,
+            "endOff": 3447,
+            "id": 660,
+            "text": "did"
+        },
+        {
+            "startOff": 3448,
+            "endOff": 3450,
+            "id": 661,
+            "text": "not"
+        },
+        {
+            "startOff": 3451,
+            "endOff": 3454,
+            "id": 662,
+            "text": "stay"
+        },
+        {
+            "startOff": 3455,
+            "endOff": 3459,
+            "id": 663,
+            "text": "three"
+        },
+        {
+            "startOff": 3460,
+            "endOff": 3464,
+            "id": 664,
+            "text": "miles"
+        },
+        {
+            "startOff": 3465,
+            "endOff": 3468,
+            "id": 665,
+            "text": "last"
+        },
+        {
+            "startOff": 3469,
+            "endOff": 3473,
+            "id": 666,
+            "text": "time,"
+        },
+        {
+            "startOff": 3474,
+            "endOff": 3475,
+            "id": 667,
+            "text": "is"
+        },
+        {
+            "startOff": 3476,
+            "endOff": 3476,
+            "id": 668,
+            "text": "a"
+        },
+        {
+            "startOff": 3477,
+            "endOff": 3480,
+            "id": 669,
+            "text": "real"
+        },
+        {
+            "startOff": 3481,
+            "endOff": 3486,
+            "id": 670,
+            "text": "threat"
+        },
+        {
+            "startOff": 3487,
+            "endOff": 3489,
+            "id": 671,
+            "text": "and"
+        },
+        {
+            "startOff": 3490,
+            "endOff": 3495,
+            "id": 672,
+            "text": "offers"
+        },
+        {
+            "startOff": 3496,
+            "endOff": 3502,
+            "id": 673,
+            "text": "eachway"
+        },
+        {
+            "startOff": 3503,
+            "endOff": 3507,
+            "id": 674,
+            "text": "value"
+        },
+        {
+            "startOff": 3508,
+            "endOff": 3509,
+            "id": 675,
+            "text": "at"
+        },
+        {
+            "startOff": 3510,
+            "endOff": 3521,
+            "id": 676,
+            "text": "doublefigure"
+        },
+        {
+            "startOff": 3522,
+            "endOff": 3530,
+            "id": 677,
+            "text": "odds.1.25"
+        },
+        {
+            "startOff": 3531,
+            "endOff": 3540,
+            "id": 678,
+            "text": "Cheltenham"
+        },
+        {
+            "startOff": 3541,
+            "endOff": 3543,
+            "id": 679,
+            "text": "The"
+        },
+        {
+            "startOff": 3544,
+            "endOff": 3549,
+            "id": 680,
+            "text": "Dipper"
+        },
+        {
+            "startOff": 3550,
+            "endOff": 3555,
+            "id": 681,
+            "text": "Novice"
+        },
+        {
+            "startOff": 3556,
+            "endOff": 3560,
+            "id": 682,
+            "text": "Chase"
+        },
+        {
+            "startOff": 3561,
+            "endOff": 3562,
+            "id": 683,
+            "text": "is"
+        },
+        {
+            "startOff": 3563,
+            "endOff": 3565,
+            "id": 684,
+            "text": "the"
+        },
+        {
+            "startOff": 3566,
+            "endOff": 3573,
+            "id": 685,
+            "text": "original"
+        },
+        {
+            "startOff": 3574,
+            "endOff": 3577,
+            "id": 686,
+            "text": "race"
+        },
+        {
+            "startOff": 3578,
+            "endOff": 3581,
+            "id": 687,
+            "text": "that"
+        },
+        {
+            "startOff": 3582,
+            "endOff": 3583,
+            "id": 688,
+            "text": "is"
+        },
+        {
+            "startOff": 3584,
+            "endOff": 3586,
+            "id": 689,
+            "text": "not"
+        },
+        {
+            "startOff": 3587,
+            "endOff": 3592,
+            "id": 690,
+            "text": "always"
+        },
+        {
+            "startOff": 3593,
+            "endOff": 3594,
+            "id": 691,
+            "text": "to"
+        },
+        {
+            "startOff": 3595,
+            "endOff": 3597,
+            "id": 692,
+            "text": "the"
+        },
+        {
+            "startOff": 3598,
+            "endOff": 3603,
+            "id": 693,
+            "text": "swift,"
+        },
+        {
+            "startOff": 3604,
+            "endOff": 3607,
+            "id": 694,
+            "text": "Defi"
+        },
+        {
+            "startOff": 3608,
+            "endOff": 3609,
+            "id": 695,
+            "text": "Du"
+        },
+        {
+            "startOff": 3610,
+            "endOff": 3614,
+            "id": 696,
+            "text": "Seuil"
+        },
+        {
+            "startOff": 3615,
+            "endOff": 3617,
+            "id": 697,
+            "text": "and"
+        },
+        {
+            "startOff": 3618,
+            "endOff": 3621,
+            "id": 698,
+            "text": "Clan"
+        },
+        {
+            "startOff": 3622,
+            "endOff": 3624,
+            "id": 699,
+            "text": "Des"
+        },
+        {
+            "startOff": 3625,
+            "endOff": 3630,
+            "id": 700,
+            "text": "Obeaux"
+        },
+        {
+            "startOff": 3631,
+            "endOff": 3634,
+            "id": 701,
+            "text": "both"
+        },
+        {
+            "startOff": 3635,
+            "endOff": 3640,
+            "id": 702,
+            "text": "having"
+        },
+        {
+            "startOff": 3641,
+            "endOff": 3647,
+            "id": 703,
+            "text": "managed"
+        },
+        {
+            "startOff": 3648,
+            "endOff": 3649,
+            "id": 704,
+            "text": "to"
+        },
+        {
+            "startOff": 3650,
+            "endOff": 3652,
+            "id": 705,
+            "text": "get"
+        },
+        {
+            "startOff": 3653,
+            "endOff": 3658,
+            "id": 706,
+            "text": "beaten"
+        },
+        {
+            "startOff": 3659,
+            "endOff": 3660,
+            "id": 707,
+            "text": "in"
+        },
+        {
+            "startOff": 3661,
+            "endOff": 3662,
+            "id": 708,
+            "text": "it"
+        },
+        {
+            "startOff": 3663,
+            "endOff": 3668,
+            "id": 709,
+            "text": "within"
+        },
+        {
+            "startOff": 3669,
+            "endOff": 3671,
+            "id": 710,
+            "text": "the"
+        },
+        {
+            "startOff": 3672,
+            "endOff": 3675,
+            "id": 711,
+            "text": "last"
+        },
+        {
+            "startOff": 3676,
+            "endOff": 3680,
+            "id": 712,
+            "text": "three"
+        },
+        {
+            "startOff": 3681,
+            "endOff": 3686,
+            "id": 713,
+            "text": "years."
+        },
+        {
+            "startOff": 3687,
+            "endOff": 3687,
+            "id": 714,
+            "text": " "
+        },
+        {
+            "startOff": 3688,
+            "endOff": 3692,
+            "id": 715,
+            "text": "Those"
+        },
+        {
+            "startOff": 3693,
+            "endOff": 3700,
+            "id": 716,
+            "text": "memories"
+        },
+        {
+            "startOff": 3701,
+            "endOff": 3707,
+            "id": 717,
+            "text": "inspire"
+        },
+        {
+            "startOff": 3708,
+            "endOff": 3714,
+            "id": 718,
+            "text": "caution"
+        },
+        {
+            "startOff": 3715,
+            "endOff": 3719,
+            "id": 719,
+            "text": "about"
+        },
+        {
+            "startOff": 3720,
+            "endOff": 3725,
+            "id": 720,
+            "text": "Champ,"
+        },
+        {
+            "startOff": 3726,
+            "endOff": 3728,
+            "id": 721,
+            "text": "who"
+        },
+        {
+            "startOff": 3729,
+            "endOff": 3730,
+            "id": 722,
+            "text": "is"
+        },
+        {
+            "startOff": 3731,
+            "endOff": 3732,
+            "id": 723,
+            "text": "no"
+        },
+        {
+            "startOff": 3733,
+            "endOff": 3738,
+            "id": 724,
+            "text": "bigger"
+        },
+        {
+            "startOff": 3739,
+            "endOff": 3742,
+            "id": 725,
+            "text": "than"
+        },
+        {
+            "startOff": 3743,
+            "endOff": 3744,
+            "id": 726,
+            "text": "47"
+        },
+        {
+            "startOff": 3745,
+            "endOff": 3746,
+            "id": 727,
+            "text": "at"
+        },
+        {
+            "startOff": 3747,
+            "endOff": 3750,
+            "id": 728,
+            "text": "time"
+        },
+        {
+            "startOff": 3751,
+            "endOff": 3752,
+            "id": 729,
+            "text": "of"
+        },
+        {
+            "startOff": 3753,
+            "endOff": 3760,
+            "id": 730,
+            "text": "writing."
+        },
+        {
+            "startOff": 3761,
+            "endOff": 3761,
+            "id": 731,
+            "text": " "
+        },
+        {
+            "startOff": 3762,
+            "endOff": 3766,
+            "id": 732,
+            "text": "After"
+        },
+        {
+            "startOff": 3767,
+            "endOff": 3769,
+            "id": 733,
+            "text": "all"
+        },
+        {
+            "startOff": 3770,
+            "endOff": 3771,
+            "id": 734,
+            "text": "he"
+        },
+        {
+            "startOff": 3772,
+            "endOff": 3777,
+            "id": 735,
+            "text": "tested"
+        },
+        {
+            "startOff": 3778,
+            "endOff": 3784,
+            "id": 736,
+            "text": "several"
+        },
+        {
+            "startOff": 3785,
+            "endOff": 3793,
+            "id": 737,
+            "text": "potential"
+        },
+        {
+            "startOff": 3794,
+            "endOff": 3800,
+            "id": 738,
+            "text": "avenues"
+        },
+        {
+            "startOff": 3801,
+            "endOff": 3802,
+            "id": 739,
+            "text": "of"
+        },
+        {
+            "startOff": 3803,
+            "endOff": 3808,
+            "id": 740,
+            "text": "defeat"
+        },
+        {
+            "startOff": 3809,
+            "endOff": 3814,
+            "id": 741,
+            "text": "before"
+        },
+        {
+            "startOff": 3815,
+            "endOff": 3824,
+            "id": 742,
+            "text": "consenting"
+        },
+        {
+            "startOff": 3825,
+            "endOff": 3826,
+            "id": 743,
+            "text": "to"
+        },
+        {
+            "startOff": 3827,
+            "endOff": 3830,
+            "id": 744,
+            "text": "pass"
+        },
+        {
+            "startOff": 3831,
+            "endOff": 3833,
+            "id": 745,
+            "text": "the"
+        },
+        {
+            "startOff": 3834,
+            "endOff": 3837,
+            "id": 746,
+            "text": "post"
+        },
+        {
+            "startOff": 3838,
+            "endOff": 3842,
+            "id": 747,
+            "text": "first"
+        },
+        {
+            "startOff": 3843,
+            "endOff": 3844,
+            "id": 748,
+            "text": "at"
+        },
+        {
+            "startOff": 3845,
+            "endOff": 3851,
+            "id": 749,
+            "text": "Newbury"
+        },
+        {
+            "startOff": 3852,
+            "endOff": 3855,
+            "id": 750,
+            "text": "last"
+        },
+        {
+            "startOff": 3856,
+            "endOff": 3860,
+            "id": 751,
+            "text": "time,"
+        },
+        {
+            "startOff": 3861,
+            "endOff": 3864,
+            "id": 752,
+            "text": "when"
+        },
+        {
+            "startOff": 3865,
+            "endOff": 3866,
+            "id": 753,
+            "text": "he"
+        },
+        {
+            "startOff": 3867,
+            "endOff": 3875,
+            "id": 754,
+            "text": "misjudged"
+        },
+        {
+            "startOff": 3876,
+            "endOff": 3882,
+            "id": 755,
+            "text": "fences,"
+        },
+        {
+            "startOff": 3883,
+            "endOff": 3886,
+            "id": 756,
+            "text": "lost"
+        },
+        {
+            "startOff": 3887,
+            "endOff": 3889,
+            "id": 757,
+            "text": "his"
+        },
+        {
+            "startOff": 3890,
+            "endOff": 3896,
+            "id": 758,
+            "text": "footing"
+        },
+        {
+            "startOff": 3897,
+            "endOff": 3899,
+            "id": 759,
+            "text": "and"
+        },
+        {
+            "startOff": 3900,
+            "endOff": 3905,
+            "id": 760,
+            "text": "almost"
+        },
+        {
+            "startOff": 3906,
+            "endOff": 3909,
+            "id": 761,
+            "text": "took"
+        },
+        {
+            "startOff": 3910,
+            "endOff": 3912,
+            "id": 762,
+            "text": "the"
+        },
+        {
+            "startOff": 3913,
+            "endOff": 3917,
+            "id": 763,
+            "text": "wrong"
+        },
+        {
+            "startOff": 3918,
+            "endOff": 3924,
+            "id": 764,
+            "text": "course."
+        },
+        {
+            "startOff": 3925,
+            "endOff": 3925,
+            "id": 765,
+            "text": " "
+        },
+        {
+            "startOff": 3926,
+            "endOff": 3928,
+            "id": 766,
+            "text": "But"
+        },
+        {
+            "startOff": 3929,
+            "endOff": 3930,
+            "id": 767,
+            "text": "he"
+        },
+        {
+            "startOff": 3931,
+            "endOff": 3934,
+            "id": 768,
+            "text": "will"
+        },
+        {
+            "startOff": 3935,
+            "endOff": 3938,
+            "id": 769,
+            "text": "know"
+        },
+        {
+            "startOff": 3939,
+            "endOff": 3942,
+            "id": 770,
+            "text": "more"
+        },
+        {
+            "startOff": 3943,
+            "endOff": 3944,
+            "id": 771,
+            "text": "on"
+        },
+        {
+            "startOff": 3945,
+            "endOff": 3948,
+            "id": 772,
+            "text": "this"
+        },
+        {
+            "startOff": 3949,
+            "endOff": 3953,
+            "id": 773,
+            "text": "third"
+        },
+        {
+            "startOff": 3954,
+            "endOff": 3956,
+            "id": 774,
+            "text": "run"
+        },
+        {
+            "startOff": 3957,
+            "endOff": 3960,
+            "id": 775,
+            "text": "over"
+        },
+        {
+            "startOff": 3961,
+            "endOff": 3966,
+            "id": 776,
+            "text": "fences"
+        },
+        {
+            "startOff": 3967,
+            "endOff": 3969,
+            "id": 777,
+            "text": "and"
+        },
+        {
+            "startOff": 3970,
+            "endOff": 3973,
+            "id": 778,
+            "text": "none"
+        },
+        {
+            "startOff": 3974,
+            "endOff": 3975,
+            "id": 779,
+            "text": "of"
+        },
+        {
+            "startOff": 3976,
+            "endOff": 3978,
+            "id": 780,
+            "text": "his"
+        },
+        {
+            "startOff": 3979,
+            "endOff": 3984,
+            "id": 781,
+            "text": "rivals"
+        },
+        {
+            "startOff": 3985,
+            "endOff": 3988,
+            "id": 782,
+            "text": "pose"
+        },
+        {
+            "startOff": 3989,
+            "endOff": 3989,
+            "id": 783,
+            "text": "a"
+        },
+        {
+            "startOff": 3990,
+            "endOff": 3993,
+            "id": 784,
+            "text": "very"
+        },
+        {
+            "startOff": 3994,
+            "endOff": 4000,
+            "id": 785,
+            "text": "obvious"
+        },
+        {
+            "startOff": 4001,
+            "endOff": 4007,
+            "id": 786,
+            "text": "threat,"
+        },
+        {
+            "startOff": 4008,
+            "endOff": 4014,
+            "id": 787,
+            "text": "Deyrann"
+        },
+        {
+            "startOff": 4015,
+            "endOff": 4016,
+            "id": 788,
+            "text": "De"
+        },
+        {
+            "startOff": 4017,
+            "endOff": 4022,
+            "id": 789,
+            "text": "Carjac"
+        },
+        {
+            "startOff": 4023,
+            "endOff": 4028,
+            "id": 790,
+            "text": "having"
+        },
+        {
+            "startOff": 4029,
+            "endOff": 4032,
+            "id": 791,
+            "text": "been"
+        },
+        {
+            "startOff": 4033,
+            "endOff": 4038,
+            "id": 792,
+            "text": "behind"
+        },
+        {
+            "startOff": 4039,
+            "endOff": 4041,
+            "id": 793,
+            "text": "him"
+        },
+        {
+            "startOff": 4042,
+            "endOff": 4045,
+            "id": 794,
+            "text": "last"
+        },
+        {
+            "startOff": 4046,
+            "endOff": 4050,
+            "id": 795,
+            "text": "time."
+        },
+        {
+            "startOff": 4051,
+            "endOff": 4051,
+            "id": 796,
+            "text": " "
+        },
+        {
+            "startOff": 4052,
+            "endOff": 4057,
+            "id": 797,
+            "text": "Matfog"
+        },
+        {
+            "startOff": 4058,
+            "endOff": 4059,
+            "id": 798,
+            "text": "is"
+        },
+        {
+            "startOff": 4060,
+            "endOff": 4061,
+            "id": 799,
+            "text": "an"
+        },
+        {
+            "startOff": 4062,
+            "endOff": 4073,
+            "id": 800,
+            "text": "interesting,"
+        },
+        {
+            "startOff": 4074,
+            "endOff": 4078,
+            "id": 801,
+            "text": "young"
+        },
+        {
+            "startOff": 4079,
+            "endOff": 4084,
+            "id": 802,
+            "text": "French"
+        },
+        {
+            "startOff": 4085,
+            "endOff": 4090,
+            "id": 803,
+            "text": "raider"
+        },
+        {
+            "startOff": 4091,
+            "endOff": 4093,
+            "id": 804,
+            "text": "but"
+        },
+        {
+            "startOff": 4094,
+            "endOff": 4096,
+            "id": 805,
+            "text": "his"
+        },
+        {
+            "startOff": 4097,
+            "endOff": 4100,
+            "id": 806,
+            "text": "form"
+        },
+        {
+            "startOff": 4101,
+            "endOff": 4105,
+            "id": 807,
+            "text": "seems"
+        },
+        {
+            "startOff": 4106,
+            "endOff": 4107,
+            "id": 808,
+            "text": "to"
+        },
+        {
+            "startOff": 4108,
+            "endOff": 4112,
+            "id": 809,
+            "text": "leave"
+        },
+        {
+            "startOff": 4113,
+            "endOff": 4115,
+            "id": 810,
+            "text": "him"
+        },
+        {
+            "startOff": 4116,
+            "endOff": 4119,
+            "id": 811,
+            "text": "with"
+        },
+        {
+            "startOff": 4120,
+            "endOff": 4120,
+            "id": 812,
+            "text": "a"
+        },
+        {
+            "startOff": 4121,
+            "endOff": 4123,
+            "id": 813,
+            "text": "lot"
+        },
+        {
+            "startOff": 4124,
+            "endOff": 4125,
+            "id": 814,
+            "text": "to"
+        },
+        {
+            "startOff": 4126,
+            "endOff": 4134,
+            "id": 815,
+            "text": "find.2.35"
+        },
+        {
+            "startOff": 4135,
+            "endOff": 4144,
+            "id": 816,
+            "text": "Cheltenham"
+        },
+        {
+            "startOff": 4145,
+            "endOff": 4148,
+            "id": 817,
+            "text": "This"
+        },
+        {
+            "startOff": 4149,
+            "endOff": 4150,
+            "id": 818,
+            "text": "is"
+        },
+        {
+            "startOff": 4151,
+            "endOff": 4157,
+            "id": 819,
+            "text": "proving"
+        },
+        {
+            "startOff": 4158,
+            "endOff": 4158,
+            "id": 820,
+            "text": "a"
+        },
+        {
+            "startOff": 4159,
+            "endOff": 4168,
+            "id": 821,
+            "text": "bounceback"
+        },
+        {
+            "startOff": 4169,
+            "endOff": 4174,
+            "id": 822,
+            "text": "season"
+        },
+        {
+            "startOff": 4175,
+            "endOff": 4177,
+            "id": 823,
+            "text": "for"
+        },
+        {
+            "startOff": 4178,
+            "endOff": 4184,
+            "id": 824,
+            "text": "Richard"
+        },
+        {
+            "startOff": 4185,
+            "endOff": 4191,
+            "id": 825,
+            "text": "Hobson,"
+        },
+        {
+            "startOff": 4192,
+            "endOff": 4200,
+            "id": 826,
+            "text": "operating"
+        },
+        {
+            "startOff": 4201,
+            "endOff": 4202,
+            "id": 827,
+            "text": "at"
+        },
+        {
+            "startOff": 4203,
+            "endOff": 4203,
+            "id": 828,
+            "text": "a"
+        },
+        {
+            "startOff": 4204,
+            "endOff": 4206,
+            "id": 829,
+            "text": "29%"
+        },
+        {
+            "startOff": 4207,
+            "endOff": 4216,
+            "id": 830,
+            "text": "strikerate"
+        },
+        {
+            "startOff": 4217,
+            "endOff": 4221,
+            "id": 831,
+            "text": "since"
+        },
+        {
+            "startOff": 4222,
+            "endOff": 4224,
+            "id": 832,
+            "text": "May"
+        },
+        {
+            "startOff": 4225,
+            "endOff": 4227,
+            "id": 833,
+            "text": "and"
+        },
+        {
+            "startOff": 4228,
+            "endOff": 4228,
+            "id": 834,
+            "text": "a"
+        },
+        {
+            "startOff": 4229,
+            "endOff": 4234,
+            "id": 835,
+            "text": "winner"
+        },
+        {
+            "startOff": 4235,
+            "endOff": 4238,
+            "id": 836,
+            "text": "with"
+        },
+        {
+            "startOff": 4239,
+            "endOff": 4242,
+            "id": 837,
+            "text": "five"
+        },
+        {
+            "startOff": 4243,
+            "endOff": 4244,
+            "id": 838,
+            "text": "of"
+        },
+        {
+            "startOff": 4245,
+            "endOff": 4247,
+            "id": 839,
+            "text": "his"
+        },
+        {
+            "startOff": 4248,
+            "endOff": 4252,
+            "id": 840,
+            "text": "seven"
+        },
+        {
+            "startOff": 4253,
+            "endOff": 4259,
+            "id": 841,
+            "text": "runners"
+        },
+        {
+            "startOff": 4260,
+            "endOff": 4261,
+            "id": 842,
+            "text": "in"
+        },
+        {
+            "startOff": 4262,
+            "endOff": 4270,
+            "id": 843,
+            "text": "December."
+        },
+        {
+            "startOff": 4271,
+            "endOff": 4271,
+            "id": 844,
+            "text": " "
+        },
+        {
+            "startOff": 4272,
+            "endOff": 4275,
+            "id": 845,
+            "text": "Whos"
+        },
+        {
+            "startOff": 4276,
+            "endOff": 4277,
+            "id": 846,
+            "text": "My"
+        },
+        {
+            "startOff": 4278,
+            "endOff": 4283,
+            "id": 847,
+            "text": "Jockey"
+        },
+        {
+            "startOff": 4284,
+            "endOff": 4285,
+            "id": 848,
+            "text": "is"
+        },
+        {
+            "startOff": 4286,
+            "endOff": 4286,
+            "id": 849,
+            "text": "a"
+        },
+        {
+            "startOff": 4287,
+            "endOff": 4290,
+            "id": 850,
+            "text": "very"
+        },
+        {
+            "startOff": 4291,
+            "endOff": 4301,
+            "id": 851,
+            "text": "interesting"
+        },
+        {
+            "startOff": 4302,
+            "endOff": 4309,
+            "id": 852,
+            "text": "addition"
+        },
+        {
+            "startOff": 4310,
+            "endOff": 4311,
+            "id": 853,
+            "text": "to"
+        },
+        {
+            "startOff": 4312,
+            "endOff": 4314,
+            "id": 854,
+            "text": "his"
+        },
+        {
+            "startOff": 4315,
+            "endOff": 4319,
+            "id": 855,
+            "text": "yard,"
+        },
+        {
+            "startOff": 4320,
+            "endOff": 4325,
+            "id": 856,
+            "text": "having"
+        },
+        {
+            "startOff": 4326,
+            "endOff": 4331,
+            "id": 857,
+            "text": "scored"
+        },
+        {
+            "startOff": 4332,
+            "endOff": 4334,
+            "id": 858,
+            "text": "for"
+        },
+        {
+            "startOff": 4335,
+            "endOff": 4340,
+            "id": 859,
+            "text": "Philip"
+        },
+        {
+            "startOff": 4341,
+            "endOff": 4345,
+            "id": 860,
+            "text": "Hobbs"
+        },
+        {
+            "startOff": 4346,
+            "endOff": 4349,
+            "id": 861,
+            "text": "when"
+        },
+        {
+            "startOff": 4350,
+            "endOff": 4353,
+            "id": 862,
+            "text": "last"
+        },
+        {
+            "startOff": 4354,
+            "endOff": 4357,
+            "id": 863,
+            "text": "seen"
+        },
+        {
+            "startOff": 4358,
+            "endOff": 4359,
+            "id": 864,
+            "text": "in"
+        },
+        {
+            "startOff": 4360,
+            "endOff": 4364,
+            "id": 865,
+            "text": "June."
+        },
+        {
+            "startOff": 4365,
+            "endOff": 4365,
+            "id": 866,
+            "text": " "
+        },
+        {
+            "startOff": 4366,
+            "endOff": 4367,
+            "id": 867,
+            "text": "He"
+        },
+        {
+            "startOff": 4368,
+            "endOff": 4371,
+            "id": 868,
+            "text": "goes"
+        },
+        {
+            "startOff": 4372,
+            "endOff": 4375,
+            "id": 869,
+            "text": "well"
+        },
+        {
+            "startOff": 4376,
+            "endOff": 4380,
+            "id": 870,
+            "text": "fresh"
+        },
+        {
+            "startOff": 4381,
+            "endOff": 4383,
+            "id": 871,
+            "text": "and"
+        },
+        {
+            "startOff": 4384,
+            "endOff": 4385,
+            "id": 872,
+            "text": "is"
+        },
+        {
+            "startOff": 4386,
+            "endOff": 4394,
+            "id": 873,
+            "text": "unexposed"
+        },
+        {
+            "startOff": 4395,
+            "endOff": 4396,
+            "id": 874,
+            "text": "in"
+        },
+        {
+            "startOff": 4397,
+            "endOff": 4403,
+            "id": 875,
+            "text": "staying"
+        },
+        {
+            "startOff": 4404,
+            "endOff": 4411,
+            "id": 876,
+            "text": "handicap"
+        },
+        {
+            "startOff": 4412,
+            "endOff": 4418,
+            "id": 877,
+            "text": "hurdles"
+        },
+        {
+            "startOff": 4419,
+            "endOff": 4422,
+            "id": 878,
+            "text": "such"
+        },
+        {
+            "startOff": 4423,
+            "endOff": 4424,
+            "id": 879,
+            "text": "as"
+        },
+        {
+            "startOff": 4425,
+            "endOff": 4428,
+            "id": 880,
+            "text": "this"
+        },
+        {
+            "startOff": 4429,
+            "endOff": 4432,
+            "id": 881,
+            "text": "one."
+        },
+        {
+            "startOff": 4433,
+            "endOff": 4433,
+            "id": 882,
+            "text": " "
+        },
+        {
+            "startOff": 4434,
+            "endOff": 4434,
+            "id": 883,
+            "text": "A"
+        },
+        {
+            "startOff": 4435,
+            "endOff": 4440,
+            "id": 884,
+            "text": "tongue"
+        },
+        {
+            "startOff": 4441,
+            "endOff": 4443,
+            "id": 885,
+            "text": "tie"
+        },
+        {
+            "startOff": 4444,
+            "endOff": 4445,
+            "id": 886,
+            "text": "is"
+        },
+        {
+            "startOff": 4446,
+            "endOff": 4450,
+            "id": 887,
+            "text": "tried"
+        },
+        {
+            "startOff": 4451,
+            "endOff": 4453,
+            "id": 888,
+            "text": "for"
+        },
+        {
+            "startOff": 4454,
+            "endOff": 4456,
+            "id": 889,
+            "text": "the"
+        },
+        {
+            "startOff": 4457,
+            "endOff": 4461,
+            "id": 890,
+            "text": "first"
+        },
+        {
+            "startOff": 4462,
+            "endOff": 4465,
+            "id": 891,
+            "text": "time"
+        },
+        {
+            "startOff": 4466,
+            "endOff": 4467,
+            "id": 892,
+            "text": "on"
+        },
+        {
+            "startOff": 4468,
+            "endOff": 4470,
+            "id": 893,
+            "text": "the"
+        },
+        {
+            "startOff": 4471,
+            "endOff": 4479,
+            "id": 894,
+            "text": "selection"
+        },
+        {
+            "startOff": 4480,
+            "endOff": 4482,
+            "id": 895,
+            "text": "and"
+        },
+        {
+            "startOff": 4483,
+            "endOff": 4485,
+            "id": 896,
+            "text": "Ben"
+        },
+        {
+            "startOff": 4486,
+            "endOff": 4490,
+            "id": 897,
+            "text": "Jones"
+        },
+        {
+            "startOff": 4491,
+            "endOff": 4495,
+            "id": 898,
+            "text": "looks"
+        },
+        {
+            "startOff": 4496,
+            "endOff": 4497,
+            "id": 899,
+            "text": "an"
+        },
+        {
+            "startOff": 4498,
+            "endOff": 4508,
+            "id": 900,
+            "text": "encouraging"
+        },
+        {
+            "startOff": 4509,
+            "endOff": 4520,
+            "id": 901,
+            "text": "booking.3.10"
+        },
+        {
+            "startOff": 4521,
+            "endOff": 4530,
+            "id": 902,
+            "text": "Cheltenham"
+        },
+        {
+            "startOff": 4531,
+            "endOff": 4532,
+            "id": 903,
+            "text": "It"
+        },
+        {
+            "startOff": 4533,
+            "endOff": 4534,
+            "id": 904,
+            "text": "is"
+        },
+        {
+            "startOff": 4535,
+            "endOff": 4544,
+            "id": 905,
+            "text": "surprising"
+        },
+        {
+            "startOff": 4545,
+            "endOff": 4546,
+            "id": 906,
+            "text": "to"
+        },
+        {
+            "startOff": 4547,
+            "endOff": 4549,
+            "id": 907,
+            "text": "see"
+        },
+        {
+            "startOff": 4550,
+            "endOff": 4555,
+            "id": 908,
+            "text": "Janika"
+        },
+        {
+            "startOff": 4556,
+            "endOff": 4563,
+            "id": 909,
+            "text": "returned"
+        },
+        {
+            "startOff": 4564,
+            "endOff": 4565,
+            "id": 910,
+            "text": "to"
+        },
+        {
+            "startOff": 4566,
+            "endOff": 4572,
+            "id": 911,
+            "text": "hurdles"
+        },
+        {
+            "startOff": 4573,
+            "endOff": 4577,
+            "id": 912,
+            "text": "after"
+        },
+        {
+            "startOff": 4578,
+            "endOff": 4584,
+            "id": 913,
+            "text": "running"
+        },
+        {
+            "startOff": 4585,
+            "endOff": 4585,
+            "id": 914,
+            "text": "a"
+        },
+        {
+            "startOff": 4586,
+            "endOff": 4589,
+            "id": 915,
+            "text": "good"
+        },
+        {
+            "startOff": 4590,
+            "endOff": 4595,
+            "id": 916,
+            "text": "fourth"
+        },
+        {
+            "startOff": 4596,
+            "endOff": 4597,
+            "id": 917,
+            "text": "in"
+        },
+        {
+            "startOff": 4598,
+            "endOff": 4600,
+            "id": 918,
+            "text": "the"
+        },
+        {
+            "startOff": 4601,
+            "endOff": 4606,
+            "id": 919,
+            "text": "Tingle"
+        },
+        {
+            "startOff": 4607,
+            "endOff": 4612,
+            "id": 920,
+            "text": "Creek,"
+        },
+        {
+            "startOff": 4613,
+            "endOff": 4618,
+            "id": 921,
+            "text": "behind"
+        },
+        {
+            "startOff": 4619,
+            "endOff": 4623,
+            "id": 922,
+            "text": "three"
+        },
+        {
+            "startOff": 4624,
+            "endOff": 4634,
+            "id": 923,
+            "text": "established"
+        },
+        {
+            "startOff": 4635,
+            "endOff": 4642,
+            "id": 924,
+            "text": "topclass"
+        },
+        {
+            "startOff": 4643,
+            "endOff": 4650,
+            "id": 925,
+            "text": "talents."
+        },
+        {
+            "startOff": 4651,
+            "endOff": 4651,
+            "id": 926,
+            "text": " "
+        },
+        {
+            "startOff": 4652,
+            "endOff": 4654,
+            "id": 927,
+            "text": "But"
+        },
+        {
+            "startOff": 4655,
+            "endOff": 4659,
+            "id": 928,
+            "text": "Nicky"
+        },
+        {
+            "startOff": 4660,
+            "endOff": 4668,
+            "id": 929,
+            "text": "Henderson"
+        },
+        {
+            "startOff": 4669,
+            "endOff": 4671,
+            "id": 930,
+            "text": "has"
+        },
+        {
+            "startOff": 4672,
+            "endOff": 4672,
+            "id": 931,
+            "text": "a"
+        },
+        {
+            "startOff": 4673,
+            "endOff": 4676,
+            "id": 932,
+            "text": "fair"
+        },
+        {
+            "startOff": 4677,
+            "endOff": 4682,
+            "id": 933,
+            "text": "record"
+        },
+        {
+            "startOff": 4683,
+            "endOff": 4684,
+            "id": 934,
+            "text": "at"
+        },
+        {
+            "startOff": 4685,
+            "endOff": 4692,
+            "id": 935,
+            "text": "spotting"
+        },
+        {
+            "startOff": 4693,
+            "endOff": 4700,
+            "id": 936,
+            "text": "hurdling"
+        },
+        {
+            "startOff": 4701,
+            "endOff": 4713,
+            "id": 937,
+            "text": "opportunities"
+        },
+        {
+            "startOff": 4714,
+            "endOff": 4716,
+            "id": 938,
+            "text": "for"
+        },
+        {
+            "startOff": 4717,
+            "endOff": 4719,
+            "id": 939,
+            "text": "his"
+        },
+        {
+            "startOff": 4720,
+            "endOff": 4726,
+            "id": 940,
+            "text": "chasers"
+        },
+        {
+            "startOff": 4727,
+            "endOff": 4729,
+            "id": 941,
+            "text": "and"
+        },
+        {
+            "startOff": 4730,
+            "endOff": 4733,
+            "id": 942,
+            "text": "this"
+        },
+        {
+            "startOff": 4734,
+            "endOff": 4743,
+            "id": 943,
+            "text": "sixyearold"
+        },
+        {
+            "startOff": 4744,
+            "endOff": 4748,
+            "id": 944,
+            "text": "looks"
+        },
+        {
+            "startOff": 4749,
+            "endOff": 4751,
+            "id": 945,
+            "text": "the"
+        },
+        {
+            "startOff": 4752,
+            "endOff": 4755,
+            "id": 946,
+            "text": "pick"
+        },
+        {
+            "startOff": 4756,
+            "endOff": 4757,
+            "id": 947,
+            "text": "of"
+        },
+        {
+            "startOff": 4758,
+            "endOff": 4760,
+            "id": 948,
+            "text": "the"
+        },
+        {
+            "startOff": 4761,
+            "endOff": 4763,
+            "id": 949,
+            "text": "six"
+        },
+        {
+            "startOff": 4764,
+            "endOff": 4770,
+            "id": 950,
+            "text": "runners"
+        },
+        {
+            "startOff": 4771,
+            "endOff": 4772,
+            "id": 951,
+            "text": "in"
+        },
+        {
+            "startOff": 4773,
+            "endOff": 4776,
+            "id": 952,
+            "text": "this"
+        },
+        {
+            "startOff": 4777,
+            "endOff": 4784,
+            "id": 953,
+            "text": "Relkeel."
+        },
+        {
+            "startOff": 4785,
+            "endOff": 4785,
+            "id": 954,
+            "text": " "
+        },
+        {
+            "startOff": 4786,
+            "endOff": 4796,
+            "id": 955,
+            "text": "Summerville"
+        },
+        {
+            "startOff": 4797,
+            "endOff": 4799,
+            "id": 956,
+            "text": "Boy"
+        },
+        {
+            "startOff": 4800,
+            "endOff": 4804,
+            "id": 957,
+            "text": "would"
+        },
+        {
+            "startOff": 4805,
+            "endOff": 4806,
+            "id": 958,
+            "text": "be"
+        },
+        {
+            "startOff": 4807,
+            "endOff": 4807,
+            "id": 959,
+            "text": "a"
+        },
+        {
+            "startOff": 4808,
+            "endOff": 4813,
+            "id": 960,
+            "text": "threat"
+        },
+        {
+            "startOff": 4814,
+            "endOff": 4815,
+            "id": 961,
+            "text": "on"
+        },
+        {
+            "startOff": 4816,
+            "endOff": 4818,
+            "id": 962,
+            "text": "his"
+        },
+        {
+            "startOff": 4819,
+            "endOff": 4822,
+            "id": 963,
+            "text": "best"
+        },
+        {
+            "startOff": 4823,
+            "endOff": 4829,
+            "id": 964,
+            "text": "hurdles"
+        },
+        {
+            "startOff": 4830,
+            "endOff": 4833,
+            "id": 965,
+            "text": "form"
+        },
+        {
+            "startOff": 4834,
+            "endOff": 4836,
+            "id": 966,
+            "text": "but"
+        },
+        {
+            "startOff": 4837,
+            "endOff": 4838,
+            "id": 967,
+            "text": "he"
+        },
+        {
+            "startOff": 4839,
+            "endOff": 4841,
+            "id": 968,
+            "text": "has"
+        },
+        {
+            "startOff": 4842,
+            "endOff": 4847,
+            "id": 969,
+            "text": "become"
+        },
+        {
+            "startOff": 4848,
+            "endOff": 4858,
+            "id": 970,
+            "text": "unreliable."
+        },
+        {
+            "startOff": 4859,
+            "endOff": 4859,
+            "id": 971,
+            "text": " "
+        },
+        {
+            "startOff": 4860,
+            "endOff": 4866,
+            "id": 972,
+            "text": "Roksana"
+        },
+        {
+            "startOff": 4867,
+            "endOff": 4869,
+            "id": 973,
+            "text": "and"
+        },
+        {
+            "startOff": 4870,
+            "endOff": 4873,
+            "id": 974,
+            "text": "Quel"
+        },
+        {
+            "startOff": 4874,
+            "endOff": 4879,
+            "id": 975,
+            "text": "Destin"
+        },
+        {
+            "startOff": 4880,
+            "endOff": 4883,
+            "id": 976,
+            "text": "were"
+        },
+        {
+            "startOff": 4884,
+            "endOff": 4896,
+            "id": 977,
+            "text": "disappointing"
+        },
+        {
+            "startOff": 4897,
+            "endOff": 4900,
+            "id": 978,
+            "text": "last"
+        },
+        {
+            "startOff": 4901,
+            "endOff": 4904,
+            "id": 979,
+            "text": "time"
+        },
+        {
+            "startOff": 4905,
+            "endOff": 4909,
+            "id": 980,
+            "text": "while"
+        },
+        {
+            "startOff": 4910,
+            "endOff": 4916,
+            "id": 981,
+            "text": "William"
+        },
+        {
+            "startOff": 4917,
+            "endOff": 4921,
+            "id": 982,
+            "text": "Henry"
+        },
+        {
+            "startOff": 4922,
+            "endOff": 4924,
+            "id": 983,
+            "text": "and"
+        },
+        {
+            "startOff": 4925,
+            "endOff": 4930,
+            "id": 984,
+            "text": "Emitom"
+        },
+        {
+            "startOff": 4931,
+            "endOff": 4933,
+            "id": 985,
+            "text": "are"
+        },
+        {
+            "startOff": 4934,
+            "endOff": 4939,
+            "id": 986,
+            "text": "likely"
+        },
+        {
+            "startOff": 4940,
+            "endOff": 4941,
+            "id": 987,
+            "text": "to"
+        },
+        {
+            "startOff": 4942,
+            "endOff": 4945,
+            "id": 988,
+            "text": "need"
+        },
+        {
+            "startOff": 4946,
+            "endOff": 4950,
+            "id": 989,
+            "text": "this."
+        }
+    ],
+    "size": 1,
+    "users": [
+        "5",
+        "7"
+    ]
+}

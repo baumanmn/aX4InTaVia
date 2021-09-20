@@ -2,7 +2,6 @@
 ############
 
 build/
-data/
 node_modules/
 
 # OS generated files #
@@ -35,6 +34,7 @@ Thumbs.db
 ############
 
 # Byte-compiled / optimized / DLL files
+*.pyc
 __pycache__/
 *.py[cod]
 *$py.class
@@ -148,6 +148,12 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+pyvenv.cfg
+
+# Scripts related
+Scripts/
+Lib/
+Include/
 
 # Spyder project settings
 .spyderproject
@@ -172,3 +178,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Editor
+.vscode/
