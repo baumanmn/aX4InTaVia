@@ -1,0 +1,25 @@
+{
+  "name": "custom-playground",
+  "version": "1.0.0",
+  "description": "Custom annotation tool implementation",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "serve" : "npx webpack serve",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.tik.uni-stuttgart.de/VISUS/aX4InTaVia"
+  },
+  "keywords": [
+    "Annotation"
+  ],
+  "author": "Baumann, Beck, Satkunarajan",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
+  }
+}
