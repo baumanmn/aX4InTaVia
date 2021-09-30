@@ -235,3 +235,15 @@ body {
   background: gray;
   cursor: pointer;
 }
+
+.selected-span {
+  border: 2px gold solid;
+  animation: blink 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: #fff;
+  }
+}

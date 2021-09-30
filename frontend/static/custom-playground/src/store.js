@@ -97,7 +97,7 @@ const doesGlobalTagExist = (tag) => {
   return store.tags.indexOf(tag) === -1;
 };
 
-const addNewAssignedTag = (newTag) => {
+const addGlobalTag = (newTag) => {
   if (store.tags.indexOf(newTag) === -1) {
     const newTagSet = [...store.tags, newTag];
     store.tags = newTagSet;
@@ -112,6 +112,22 @@ const removeGlobalTag = (oldTag) => {
     newTagSet.splice(pos, 1);
   }
   store.tags = newTagSet;
+
+  const annotationsToUpdate = [];
+  store.annotations.forEach((annotation) => {
+    if (annotation.tags.indexOf(oldTag) !== -1) {
+      annotationsToUpdate.push(annotation);
+    }
+  });
+  annotationsToUpdate.forEach((annotation) => {
+    const updatedTags = annotation.tags;
+    updatedTags.splice(updatedTags.indexOf(oldTag), 1);
+    const newAnnotation = {
+      ...annotation,
+      tags: updatedTags,
+    };
+    updateStore(storeTypes.ANNOTATION, newAnnotation);
+  });
 };
 
 export {
@@ -124,7 +140,7 @@ export {
   removeFromStore,
   getAnnotationData,
   getGlobalTags,
-  addNewAssignedTag,
+  addGlobalTag,
   removeGlobalTag,
   doesGlobalTagExist,
   getTagColor,

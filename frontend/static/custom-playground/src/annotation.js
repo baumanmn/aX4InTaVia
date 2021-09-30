@@ -7,12 +7,14 @@ import {
   updateStore,
 } from "./store.js";
 
-const createEmptyAnnotation = (text) => {
+const createEmptyAnnotation = (textBody) => {
   const id = generateID();
+  const text = textBody.join(" ");
   const newAnnotation = {
     "@context": "http://www.w3.org/ns/anno.jsonld",
     id,
     text,
+    textBody,
     type: "Annotation",
     tags: [],
     comments: [],
