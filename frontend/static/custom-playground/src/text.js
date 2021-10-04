@@ -1,5 +1,6 @@
 import {
   createEmptyAnnotation,
+  assignAnnotationColor,
   addTagToAnnotation,
   removeTagFromAnnotation,
   checkAnnotationTags,
@@ -21,6 +22,34 @@ import {
  */
 let GLOBAL_CACHED_SPAN = null;
 
+let GLOBAL_SPAN_NUM = 0;
+
+const generateDataID = () => {
+  const newID = "span-" + GLOBAL_SPAN_NUM;
+  GLOBAL_SPAN_NUM += 1;
+  return newID;
+};
+
+/**
+ * Adds annotation behaviour to a given list of textual spans.
+ * The spans MUST NOT have a id or data-id attribute yet.
+ * They can however contain any class not named 'annotated-span'.
+ * @param {Array[HTML]} spans Array of pre-existing spans
+ * @returns Same set of spans, now annotatable
+ */
+const makeSpanifiedAnnotatable = (spans) => {
+  let annotatableSpans = spans.map((spanEL) => {
+    const spanDataID = generateDataID();
+    spanEL.setAttribute("data-id", spanDataID);
+
+    addSelectionBehaviour(spanEL);
+
+    return spanEL;
+  });
+
+  return annotatableSpans;
+};
+
 /**
  * Spanify a given string of text
  *
@@ -31,8 +60,10 @@ const spanify = (text) => {
   let spans = text.split(" ");
 
   spans = spans.map((span) => {
+    const spanDataID = generateDataID();
     const spanEL = document.createElement("span");
     spanEL.innerHTML = span + " ";
+    spanEL.setAttribute("data-id", spanDataID);
 
     addSelectionBehaviour(spanEL);
 
@@ -81,17 +112,20 @@ const addSelectionBehaviour = (spanEL) => {
        */
       const wrapperSpan = document.createElement("span");
       const textBody = [];
+      const spanDataIDs = [];
       selectedSpans.forEach((i, count) => {
         textBody.push(i.innerHTML);
+        spanDataIDs.push(i.getAttribute("data-id"));
 
         const copySpan = document.createElement("span");
         copySpan.innerHTML = i.innerHTML;
+        copySpan.setAttribute("data-id", i.getAttribute("data-id"));
         wrapperSpan.appendChild(copySpan);
 
         if (count !== 0) i.remove();
       });
       selectedSpans[0].replaceWith(wrapperSpan);
-      annotateSpan(wrapperSpan, textBody);
+      annotateSpan(wrapperSpan, textBody, spanDataIDs);
     }
     GLOBAL_CACHED_SPAN = null;
   };
@@ -105,8 +139,13 @@ const addSelectionBehaviour = (spanEL) => {
  * @param {HTML} spanEL
  * @param {Array[String]} textBody
  */
-const annotateSpan = (spanEL, textBody) => {
-  const newSpanID = createEmptyAnnotation(textBody);
+const annotateSpan = (spanEL, textBody, spanDataIDs, existingID = null) => {
+  let newSpanID;
+  if (existingID) {
+    newSpanID = existingID;
+  } else {
+    newSpanID = createEmptyAnnotation(textBody, spanDataIDs);
+  }
 
   spanEL.setAttribute("id", newSpanID);
   spanEL.setAttribute("class", "annotated-span");
@@ -130,16 +169,50 @@ const resetSpan = (spanID) => {
   const annotation = getAnnotationData(spanID);
   const annotatedSpan = document.getElementById(spanID);
   const originalStrings = annotation.textBody;
+  const dataIDs = annotation.spanDataIDs;
 
-  originalStrings.forEach((word) => {
+  originalStrings.forEach((word, count) => {
     const reconstructed = document.createElement("span");
     reconstructed.innerHTML = word;
+    reconstructed.setAttribute("data-id", dataIDs[count]);
 
     annotatedSpan.parentNode.insertBefore(reconstructed, annotatedSpan);
 
     addSelectionBehaviour(reconstructed);
   });
   annotatedSpan.remove();
+};
+
+const restoreSpans = (annotations) => {
+  annotations.forEach((annotation) => {
+    const annotationID = annotation.id;
+    const dataIDs = annotation.spanDataIDs;
+    const textBody = annotation.textBody;
+
+    const annotatedSpans = dataIDs.map((dataID) => {
+      return document.querySelector("[data-id='" + dataID + "']");
+    });
+
+    const wrapperSpan = document.createElement("span");
+    //wrapperSpan.setAttribute("id", annotationID);
+
+    annotatedSpans.forEach((span, count) => {
+      const copySpan = document.createElement("span");
+      copySpan.innerHTML = textBody[count];
+      copySpan.setAttribute("data-id", dataIDs[count]);
+
+      wrapperSpan.appendChild(copySpan);
+      if (count != 0) span.remove();
+    });
+
+    annotatedSpans[0].replaceWith(wrapperSpan);
+    annotateSpan(wrapperSpan, textBody, dataIDs, annotationID);
+    if (annotation.tags.length > 0)
+      assignAnnotationColor(
+        annotationID,
+        annotation.tags[annotation.tags.length - 1]
+      );
+  });
 };
 
 /**
@@ -434,4 +507,4 @@ const displayAnnotationMenu = (newSpanID) => {
   document.getElementsByTagName("body")[0].appendChild(annoMenu);
 };
 
-export default createText;
+export { createText, restoreSpans };
