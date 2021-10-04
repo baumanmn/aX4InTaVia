@@ -8,23 +8,23 @@ from app import app
 # import pipeline
 
 
-@app.route("/aX4InTaVia/")
-#@app.route("/")
+#@app.route("/aX4InTaVia/")
+@app.route("/")
 def index():
     return render_template("index.html", data={})
     # return "Hello World!"
 
 
-@app.route("/aX4InTaVia/file_names", methods=["GET", "POST"])
-#@app.route("/file_names", methods=["GET", "POST"])
+#@app.route("/aX4InTaVia/file_names", methods=["GET", "POST"])
+@app.route("/file_names", methods=["GET", "POST"])
 def get_file_names():
     data_path = Path("data")
     file_paths = list(data_path.glob("*.json")) + list(data_path.glob("*.txt"))
     file_names = [p.name for p in file_paths]
     return {"file_names": file_names}
 
-@app.route("/aX4InTaVia/retrieve_data", methods=["GET", "POST"])
-#@app.route("/retrieve_data", methods=["GET", "POST"])
+#@app.route("/aX4InTaVia/retrieve_data", methods=["GET", "POST"])
+@app.route("/retrieve_data", methods=["GET", "POST"])
 def retrieve_data():
     data_key = request.form["key"]
     # pipeline_key = request.form["pipeline"]
