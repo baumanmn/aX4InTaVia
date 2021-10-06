@@ -48,8 +48,11 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "copy-webpack-plugin": "^4.6.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
     "less": "^4.1.1",
-    "prettier": "^2.2.0",
+    "npm-check-updates": "^11.8.5",
+    "prettier": "^2.4.1",
     "sass": "^1.36.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^4.7.2",
@@ -68,5 +71,20 @@
         }
       ]
     ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "rules": {}
   }
 }
