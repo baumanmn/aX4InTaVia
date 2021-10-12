@@ -50,6 +50,7 @@
     "copy-webpack-plugin": "^4.6.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-compat": "^3.13.0",
     "less": "^4.1.1",
     "npm-check-updates": "^11.8.5",
     "prettier": "^2.4.1",
@@ -75,16 +76,22 @@
   "eslintConfig": {
     "env": {
       "browser": true,
-      "es2021": true
+      "es6": true
     },
     "extends": [
       "eslint:recommended",
+      "plugin:compat/recommended",
       "prettier"
     ],
     "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module"
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "impliedStrict": true
+      }
     },
     "rules": {}
-  }
+  },
+  "browserslist": [
+    "IE 6"
+  ]
 }
