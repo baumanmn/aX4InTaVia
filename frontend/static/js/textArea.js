@@ -14,13 +14,6 @@ export function initTextArea(globalChart) {
   tempTokenRange = chart.d.tokenRange;
   //chart.pContainer = container.append("div").attr("id", "pContainer");
   var textContainer = d3.select("body").append("div").attr("class", "textArea");
-  /* var textContainer = d3
-    .select("body")
-    .append("div")
-    .attr("id", "textDiv")
-    .attr("class", "splitView");
-  //region add text area spans
-  var textDiv = d3.select("#textDiv"); */
   var textDiv = d3
     .select(".textArea")
     .append("div")

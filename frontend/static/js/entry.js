@@ -25,7 +25,7 @@ import { initFunctions } from "./functions";
 import { bindSliderToBrushes } from "./slider";
 import { initializeButtonContainer } from "./buttons.js";
 import { initializeStates } from "./overviewState.js";
-//import "./annotation.js";
+import { createAnnotationTool } from "../annotationTool/annotationTool.js";
 
 $(document).ajaxStart(function () {
   let body = document.getElementsByTagName("body")[0];
@@ -210,6 +210,8 @@ function fetchData(fetch_data) {
         bindSliderToBrushes(chart, chart.p.tokenExt, 2, 1);
         bindSliderToBrushes(chart, chart.p.tokenExt, 2, 0);
         initializeStates(chart);
+        const tool = createAnnotationTool();
+        tool.annotate(chart.d.spans);
       });
     },
   });
