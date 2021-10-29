@@ -25,7 +25,11 @@ import { initFunctions } from "./functions";
 import { bindSliderToBrushes } from "./slider";
 import { initializeButtonContainer } from "./buttons.js";
 import { initializeStates } from "./overviewState.js";
-import { createAnnotationTool } from "../annotationTool/annotationTool.js";
+import {
+  instantiateTool,
+  exportToBackend,
+  placeHolderBtn,
+} from "./annotator.js";
 
 $(document).ajaxStart(function () {
   let body = document.getElementsByTagName("body")[0];
@@ -151,7 +155,8 @@ function fetchData(fetch_data) {
     data: fetch_data,
     dataType: "json",
     success: function (results) {
-      var data = results;
+      var data = results["processed_data"];
+      var existingStore = results["existing_store"];
       var chart = initializeChart();
 
       fillChart(chart, data);
@@ -210,8 +215,8 @@ function fetchData(fetch_data) {
         bindSliderToBrushes(chart, chart.p.tokenExt, 2, 1);
         bindSliderToBrushes(chart, chart.p.tokenExt, 2, 0);
         initializeStates(chart);
-        const tool = createAnnotationTool();
-        tool.annotate(chart.d.spans);
+        instantiateTool(chart, existingStore);
+        placeHolderBtn();
       });
     },
   });

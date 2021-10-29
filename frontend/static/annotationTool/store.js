@@ -8,7 +8,7 @@
 const store = {
   annotations: [],
   annotationIDLookUp: {},
-  tags: ["test", "test2"],
+  tags: [],
   numAnnotations: 0,
 };
 
@@ -46,7 +46,8 @@ const generateID = () => {
  * @param {Object} newStore
  */
 const getStore = () => {
-  return store;
+  const serialized = JSON.stringify(store);
+  return serialized;
 };
 
 /**
@@ -184,6 +185,19 @@ const addGlobalTag = (newTag) => {
   //console.log(store.tags);
 };
 
+const addPredefinedTagsToStore = (newTags, colors) => {
+  newTags.forEach((tag) => {
+    if (store.tags.indexOf(tag) === -1) {
+      const newTagSet = [...store.tags, tag];
+      store.tags = newTagSet;
+    }
+  });
+  if (colors) {
+    //add colors
+  }
+  //console.log(store.tags);
+};
+
 /**
  * Remove a tag from the globally available tags.
  * Updates all affected annotations containing the tag.
@@ -226,6 +240,7 @@ export {
   getAnnotationData,
   getGlobalTags,
   addGlobalTag,
+  addPredefinedTagsToStore,
   removeGlobalTag,
   doesGlobalTagExist,
   getTagColor,

@@ -30,6 +30,10 @@ const generateDataID = () => {
   return newID;
 };
 
+const resetDataIDs = () => {
+  GLOBAL_SPAN_NUM = 0;
+};
+
 /**
  * Adds annotation behaviour to a given list of textual spans.
  * The spans MUST NOT have a id or data-id attribute yet.
@@ -38,6 +42,7 @@ const generateDataID = () => {
  * @returns Same set of spans, now annotatable
  */
 const makeSpanifiedAnnotatable = (spans) => {
+  resetDataIDs();
   let annotatableSpans = spans.map((spanEL) => {
     const spanDataID = generateDataID();
     spanEL.setAttribute("data-id", spanDataID);
@@ -57,6 +62,7 @@ const makeSpanifiedAnnotatable = (spans) => {
  * @returns Array of annotate-able spans
  */
 const spanify = (text) => {
+  resetDataIDs();
   let spans = text.split(" ");
 
   spans = spans.map((span) => {
@@ -210,11 +216,11 @@ const resetSpan = (spanID) => {
 const restoreSpans = (annotations) => {
   annotations.forEach((annotation) => {
     const annotationID = annotation.id;
-    const dataIDs = annotation.spanDataIDs;
+    const spanData = annotation.spanData;
     const textBody = annotation.textBody;
 
-    const annotatedSpans = dataIDs.map((dataID) => {
-      return document.querySelector("[data-id='" + dataID + "']");
+    const annotatedSpans = spanData.map((span) => {
+      return document.querySelector("[data-id='" + span["data-id"] + "']");
     });
 
     const wrapperSpan = document.createElement("span");
@@ -222,14 +228,17 @@ const restoreSpans = (annotations) => {
     annotatedSpans.forEach((span, count) => {
       const copySpan = document.createElement("span");
       copySpan.innerHTML = textBody[count];
-      copySpan.setAttribute("data-id", dataIDs[count]);
+      copySpan.setAttribute("data-id", spanData[count]["data-id"]);
+      copySpan.setAttribute("class", spanData[count]["class"]);
+      copySpan.setAttribute("id", spanData[count]["id"]);
+      copySpan.style.backgroundColor = spanData[count]["background"];
 
       wrapperSpan.appendChild(copySpan);
       if (count != 0) span.remove();
     });
 
     annotatedSpans[0].replaceWith(wrapperSpan);
-    annotateSpan(wrapperSpan, textBody, dataIDs, annotationID);
+    annotateSpan(wrapperSpan, textBody, spanData, annotationID);
     if (annotation.tags.length > 0)
       assignAnnotationColor(
         annotationID,
