@@ -1258,6 +1258,48 @@
                 4925,
                 4930
             ]
+        },
+        {
+            "annotationTokens": [
+                302,
+                303,
+                304,
+                305,
+                306,
+                307
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "PER"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "decade, this truly is a historic",
+            "annotationChar": [],
+            "live_annotation_id": "annotatedSpan1"
+        },
+        {
+            "annotationTokens": [
+                108,
+                109,
+                110,
+                111
+            ],
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": [
+                "LOC"
+            ],
+            "borderTokens": {
+                "1leftTokenSafe": true,
+                "2rightTokenSafe": true
+            },
+            "annotationText": "Leicester mayor Sir Peter",
+            "annotationChar": [],
+            "live_annotation_id": "annotatedSpan2"
         }
     ],
     "tokens": [

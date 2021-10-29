@@ -1,0 +1,262 @@
+{
+    "data/processed_data.json": {
+        "live_annotations": {
+            "annotations": [
+                {
+                    "@context": "http://www.w3.org/ns/anno.jsonld",
+                    "comments": [],
+                    "id": "annotatedSpan1",
+                    "spanData": [
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "tx_t txt_t active_tx_t",
+                            "data-id": "span-604",
+                            "id": "tx_t_302"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "text_whitespace",
+                            "data-id": "span-605",
+                            "id": "tx_w_302"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "tx_t txt_t active_tx_t",
+                            "data-id": "span-606",
+                            "id": "tx_t_303"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "text_whitespace",
+                            "data-id": "span-607",
+                            "id": "tx_w_303"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "tx_t txt_t active_tx_t",
+                            "data-id": "span-608",
+                            "id": "tx_t_304"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "text_whitespace",
+                            "data-id": "span-609",
+                            "id": "tx_w_304"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "tx_t txt_t active_tx_t",
+                            "data-id": "span-610",
+                            "id": "tx_t_305"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "text_whitespace",
+                            "data-id": "span-611",
+                            "id": "tx_w_305"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "tx_t txt_t active_tx_t",
+                            "data-id": "span-612",
+                            "id": "tx_t_306"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "text_whitespace",
+                            "data-id": "span-613",
+                            "id": "tx_w_306"
+                        },
+                        {
+                            "background": "rgb(244, 179, 179)",
+                            "class": "tx_t txt_t active_tx_t",
+                            "data-id": "span-614",
+                            "id": "tx_t_307"
+                        }
+                    ],
+                    "tags": [
+                        "PER"
+                    ],
+                    "text": "decade,   this   truly   is   a   historic",
+                    "textBody": [
+                        "decade,",
+                        " ",
+                        "this",
+                        " ",
+                        "truly",
+                        " ",
+                        "is",
+                        " ",
+                        "a",
+                        " ",
+                        "historic"
+                    ],
+                    "type": "Annotation"
+                },
+                {
+                    "@context": "http://www.w3.org/ns/anno.jsonld",
+                    "id": "annotatedSpan2",
+                    "text": "Leicester   mayor   Sir   Peter",
+                    "textBody": [
+                        "Leicester",
+                        " ",
+                        "mayor",
+                        " ",
+                        "Sir",
+                        " ",
+                        "Peter"
+                    ],
+                    "spanData": [
+                        {
+                            "data-id": "span-216",
+                            "id": "tx_t_108",
+                            "class": "tx_t text_user7_c12 underline txt_t active_tx_t",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-217",
+                            "id": "tx_w_108",
+                            "class": "text_whitespace",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-218",
+                            "id": "tx_t_109",
+                            "class": "tx_t txt_t active_tx_t",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-219",
+                            "id": "tx_w_109",
+                            "class": "text_whitespace",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-220",
+                            "id": "tx_t_110",
+                            "class": "tx_t text_user7_c13 underline txt_t active_tx_t",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-221",
+                            "id": "tx_w_110",
+                            "class": "text_whitespace text_user7_c13 underline",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-222",
+                            "id": "tx_t_111",
+                            "class": "tx_t text_user7_c13 underline txt_t active_tx_t",
+                            "background": "rgb(244, 179, 179)"
+                        }
+                    ],
+                    "type": "Annotation",
+                    "tags": [
+                        "LOC"
+                    ],
+                    "comments": []
+                }
+            ],
+            "annotationIDLookUp": {
+                "annotatedSpan1": 0,
+                "annotatedSpan2": 1
+            },
+            "tags": [
+                "PER",
+                "LOC",
+                "ORG",
+                "EVT",
+                "WRK",
+                "WVL",
+                "CNC"
+            ],
+            "numAnnotations": 2
+        },
+        "meta_data": {
+            "offset": {
+                "annotatedSpan1": 63,
+                "annotatedSpan2": 64
+            },
+            "idArray": [
+                "annotatedSpan1",
+                "annotatedSpan2"
+            ]
+        }
+    },
+    "data/bt_debatte4.json": {
+        "live_annotations": {
+            "annotations": [
+                {
+                    "@context": "http://www.w3.org/ns/anno.jsonld",
+                    "id": "annotatedSpan1",
+                    "text": "Umfragen   und   Gespr\u00e4chen",
+                    "textBody": [
+                        "Umfragen",
+                        " ",
+                        "und",
+                        " ",
+                        "Gespr\u00e4chen"
+                    ],
+                    "spanData": [
+                        {
+                            "data-id": "span-387",
+                            "id": "tx_t_206",
+                            "class": "tx_t txt_t active_tx_t",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-388",
+                            "id": "tx_w_206",
+                            "class": "text_whitespace",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-389",
+                            "id": "tx_t_207",
+                            "class": "tx_t txt_t active_tx_t",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-390",
+                            "id": "tx_w_207",
+                            "class": "text_whitespace",
+                            "background": "rgb(244, 179, 179)"
+                        },
+                        {
+                            "data-id": "span-391",
+                            "id": "tx_t_208",
+                            "class": "tx_t txt_t active_tx_t",
+                            "background": "rgb(244, 179, 179)"
+                        }
+                    ],
+                    "type": "Annotation",
+                    "tags": [
+                        "PER"
+                    ],
+                    "comments": []
+                }
+            ],
+            "annotationIDLookUp": {
+                "annotatedSpan1": 0
+            },
+            "tags": [
+                "PER",
+                "LOC",
+                "ORG",
+                "EVT",
+                "WRK",
+                "WVL",
+                "CNC"
+            ],
+            "numAnnotations": 1
+        },
+        "meta_data": {
+            "offset": {
+                "annotatedSpan1": 777
+            },
+            "idArray": [
+                "annotatedSpan1"
+            ]
+        }
+    }
+}

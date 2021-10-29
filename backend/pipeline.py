@@ -142,6 +142,29 @@ def stanza_tagger(sentences):
     return token_entity_pairs
 
 
+def create_live_entity_pairs(data):
+    annotations = data["annotations"]
+    token_entity_pairs = []
+
+    for an in annotations:
+        text = an["textBody"]
+        tags = an["tags"]
+        annotation_id = an["id"]
+        token_ids = [entry["id"] for entry in an["spanData"]]
+        token_ids = [noWS for noWS in token_ids if "tx_w" not in noWS]
+
+        quadruple = (
+            [t for t in text if not t.isspace()],
+            token_ids,
+            tags,
+            annotation_id,
+        )
+        token_entity_pairs.append(quadruple)
+
+    print(token_entity_pairs)
+    return token_entity_pairs
+
+
 def remove_chunk(token):
     if token in stop_words:
         return ""
@@ -210,9 +233,6 @@ def process_annotation_data(file_key, pipeline_key):
 
         if pipeline_key == "Stanza" or pipeline_key == "Both":
             token_entity_pairs2 = stanza_tagger(tokens)
-
-        # token_entity_pairs = standard_tagger(tokens)
-        # token_entity_pairs2 = stanza_tagger(tokens)
 
         tokens = [
             token
@@ -351,6 +371,62 @@ def process_annotation_data(file_key, pipeline_key):
         return return_dict
 
 
+def process_live_annotation(processed_annotations, live_annotations, meta_data):
+    token_entity_pairs = create_live_entity_pairs(live_annotations)
+
+    offset_pos = {}
+    id_array = []
+
+    newAnnotations = []
+    replace_annotations = []
+    curr_anno_chars = []
+
+    offset_pos = meta_data["offset"]
+    id_array = meta_data["idArray"]
+
+    for i in range(len(token_entity_pairs)):
+        quadruple = token_entity_pairs[i]
+        tokens = " ".join(quadruple[0])
+        ids = [id.replace("tx_t_", "") for id in quadruple[1]]
+        ids = [int(id) for id in ids]
+        tags = quadruple[2]
+        annotation_id = quadruple[3]
+
+        live_annotation = {
+            "annotationTokens": ids,  # ids of tokens
+            "annotationColor": "#b6f2c6",
+            "userNo": "7",
+            "annotationType": tags,
+            "borderTokens": {
+                "1leftTokenSafe": True,
+                "2rightTokenSafe": True,
+            },
+            "annotationText": tokens,
+            "annotationChar": curr_anno_chars,  # start end end char_idx of first/last token respectively
+            "live_annotation_id": annotation_id,
+        }
+
+        if annotation_id in id_array:
+            replace_annotations.append(live_annotation)
+        else:
+            newAnnotations.append(live_annotation)
+
+    for existing_ann in replace_annotations:
+        pos = offset_pos[existing_ann["live_annotation_id"]]
+        processed_annotations["userAnnotations"][pos] = existing_ann
+
+    new_pos = len(processed_annotations["userAnnotations"])
+    for new_ann in newAnnotations:
+        offset_pos[new_ann["live_annotation_id"]] = new_pos
+        id_array.append(new_ann["live_annotation_id"])
+        processed_annotations["userAnnotations"].append(new_ann)
+        new_pos += 1
+
+    new_meta = {"offset": offset_pos, "idArray": id_array}
+
+    return processed_annotations, new_meta
+
+
 def convert_to_constant_label(labels):
     for i in range(len(labels)):
         for const_label in typeArray:
@@ -437,3 +513,51 @@ def separate_strings_and_digits(input_sequence):
         components.append(curr_string)
 
     return components
+
+
+def old(token_entity_pairs):
+    tokens = []
+    curr_anno_ids = []
+    curr_anno_chars = []
+    return_dict = {
+        "userAnnotations": [],
+        "tokens": [],
+        "size": 1,
+        "users": ["5", "7"],
+    }
+
+    char_start = 0  ## LOOK UP END OF FILE
+    char_end = sum([len(t) for t in token_entity_pairs[0][0]])
+
+    for i in range(len(token_entity_pairs) - 1):
+        pair = token_entity_pairs[i]
+        tokens = pair[0]
+        tags = pair[1]
+        token_entry = {
+            "startOff": char_start,
+            "endOff": char_end,
+            "id": i,
+            "text": " ".join(tokens),
+        }
+
+        return_dict["tokens"].append(token_entry)
+
+        return_dict["userAnnotations"].append(
+            {
+                "annotationTokens": curr_anno_ids,  # ids of tokens
+                "annotationColor": "#b6f2c6",
+                "userNo": "7",
+                "annotationType": tags,
+                "borderTokens": {
+                    "1leftTokenSafe": True,
+                    "2rightTokenSafe": True,
+                },
+                "annotationText": " ".join(tokens),
+                "annotationChar": curr_anno_chars,  # start end end char_idx of first/last token respectively
+            }
+        )
+        curr_anno_ids = []
+        curr_anno_chars = []
+
+        char_start = char_end + 1
+        char_end = char_end + len(token_entity_pairs[i + 1][0])
