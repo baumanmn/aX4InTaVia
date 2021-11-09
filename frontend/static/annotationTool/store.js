@@ -1,3 +1,6 @@
+import * as d3 from "d3";
+import { schemeAccent } from "d3-scale-chromatic";
+
 /**
  * The annotation store holding all relevant annotation information:
  * - Annotation objects are stored in the annotations array
@@ -24,7 +27,7 @@ const storeTypes = {
 /**
  * A continuous color scale to assign colors to tags.
  */
-const colorScale = d3.scaleOrdinal(d3.schemeAccent);
+const colorScale = d3.scaleOrdinal(schemeAccent);
 
 const assignColor = (number) => {
   return colorScale(number);
