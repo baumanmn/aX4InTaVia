@@ -648,7 +648,7 @@ function drawCompressionModes(p) {
 
 //detailBars
 export function drawAtomicDetailBars(chart, tokenRange, lens = false) {
-  var detailBTokens_Bins = chart.detailBTokens_Bins;
+  var detailBTokens_Bins = chart.e.detailBgTokens_Bins;
   var userTokens_Bins = chart.userTokens_Bins;
   var userAnnos = chart.userAnnos;
   var chunksG = chart.chunks;
@@ -707,7 +707,7 @@ export function drawAtomicDetailBars(chart, tokenRange, lens = false) {
     (function () {
       var p = Object.create(parameterObject);
 
-      p.group = chart.detailBTokens_Bins;
+      p.group = chart.e.detailBgTokens_Bins;
       p.data = tokens;
 
       p.typeClass = [{ name: "bgToken_g", value: true }];
@@ -1453,7 +1453,7 @@ export function drawAtomicDetailBars(chart, tokenRange, lens = false) {
 }
 
 export function drawSemiAggregatedDetailBars(chart, tokenRange, lens = false) {
-  var detailBTokens_Bins = chart.detailBTokens_Bins;
+  var detailBTokens_Bins = chart.e.detailBgTokens_Bins;
   var userTokens_Bins = chart.userTokens_Bins;
   var userAnnos = chart.userAnnos;
   var chunksG = chart.chunks;
@@ -2304,7 +2304,7 @@ export function drawSemiAggregatedDetailBars(chart, tokenRange, lens = false) {
 }
 
 export function drawAggregatedDetailBars(chart, tokenRange, lens = false) {
-  var detailBTokens_Bins = chart.detailBTokens_Bins;
+  var detailBTokens_Bins = chart.e.detailBgTokens_Bins;
   var userTokens_Bins = chart.userTokens_Bins;
   var userAnnos = chart.userAnnos;
   var chunksG = chart.chunks;
@@ -5915,7 +5915,7 @@ export function drawInitialBars(chart) {
 //      chart.userAtomicFrames.selectAll("*").remove();
 //      chart.userAnnos.selectAll("*").remove();
 //      chart.userTokens_Bins.selectAll("*").remove();
-//      chart.detailBTokens_Bins.selectAll("*").remove();
+//      chart.e.detailBgTokens_Bins.selectAll("*").remove();
 //      chart.terms.selectAll("*").remove();
 //    }
 //
@@ -5929,7 +5929,7 @@ export function drawInitialBars(chart) {
 //        chart.userAtomicFrames.selectAll("*").remove();
 //        chart.userAnnos.selectAll("*").remove();
 //        chart.userTokens_Bins.selectAll("*").remove();
-//        chart.detailBTokens_Bins.selectAll("*").remove();
+//        chart.e.detailBgTokens_Bins.selectAll("*").remove();
 //        chart.terms.selectAll("*").remove();
 //      }
 //
@@ -5945,7 +5945,7 @@ export function drawInitialBars(chart) {
 //        chart.userAtomicFrames.selectAll("*").remove();
 //        chart.userAnnos.selectAll("*").remove();
 //        chart.userTokens_Bins.selectAll("*").remove();
-//        chart.detailBTokens_Bins.selectAll("*").remove();
+//        chart.e.detailBgTokens_Bins.selectAll("*").remove();
 //        chart.terms.selectAll("*").remove();
 //      }
 //

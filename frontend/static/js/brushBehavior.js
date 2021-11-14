@@ -228,7 +228,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     d3.event.target.move,
     snapPos
   );
-  chart.detail.call(chart.zoom.transform, newTransform);
+  chart.e.detail.call(chart.zoom.transform, newTransform);
   //chartClickFix();
   if (overview === 0) {
     setRangesWithID(0, {
@@ -432,7 +432,7 @@ export function zoomEnd(chart, brush = 0, overview = 0) {
     .translate((-chart.p.tokenExt * snapPos[0]) / (snapPos[1] - snapPos[0]), 0)
     .scale(chart.p.tokenExt / (snapPos[1] - snapPos[0]));
   //
-  chart.detail.call(d3.event.target.transform, newTrans);
+  chart.e.detail.call(d3.event.target.transform, newTrans);
 
   //var brushG = d3.select(chart.overviews[overview]["brushID"][brush]);
   var brushG = chart.overviews[overview]["brushGroup"][brush];
@@ -454,7 +454,7 @@ export function zoomEnd(chart, brush = 0, overview = 0) {
 //handle double-click on detail-window
 //JENA: added new parameter 'brush'
 export function quickZoom(chart, brush = 0, overview = 0) {
-  var xMouse = d3.mouse(chart.detail)[0],
+  var xMouse = d3.mouse(chart.e.detail)[0],
     unitId; //id of the bin or token at xMouse
   if (chart.modeOverview === "atomic") {
     var xStart = chart.d.overviewXValues.map(function (xPos) {

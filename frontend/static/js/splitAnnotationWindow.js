@@ -116,7 +116,7 @@ function drawNSplitWindows(chart) {
   let windowWidth = Math.floor(chart.p.tokenExt / n);
   let ids = Object.keys(chart.d.annoViewObj["hashMap"]);
   ids.forEach(function (id, i) {
-    chart["splitWindow_" + id] = chart.detail
+    chart["splitWindow_" + id] = chart.e.detail
       .append("g") //the split Window  (with clip path)
       .attr("id", "splitWindowGroup_" + id)
       .attr("class", "splitWindowGroup")
@@ -145,7 +145,7 @@ function drawNSplitWindows(chart) {
 
     chart["detailBTokens_Bins_" + id] = chart["detailBackground_" + id]
       .append("g")
-      .attr("id", "detailBgT_g_" + id);
+      .attr("id", "detailBgTB_g_" + id);
 
     chart["terms_" + id] = chart["detailBackground_" + id]
       .append("g")
@@ -226,7 +226,7 @@ function drawNSplitWindows(chart) {
     //  split-window dividing line
     if (i !== 0) {
       // no line for first window
-      chart.detail
+      chart.e.detail
         .append("line")
         .attr("x1", i * windowWidth)
         .attr("y1", 0)
@@ -370,7 +370,7 @@ function drawNSplitWindows(chart, n) {
     (chart.d.users.length + 1);
   let windowWidth = Math.floor(chart.p.tokenExt / n);
   for (let i = 0; i < n; i++) {
-    chart["splitWindow_" + i] = chart.detail
+    chart["splitWindow_" + i] = chart.e.detail
       .append("g") //the split Window  (with clip path)
       .attr("id", "splitWindowGroup_" + i)
       .attr("class", "splitWindowGroup")
@@ -399,7 +399,7 @@ function drawNSplitWindows(chart, n) {
 
     chart["detailBTokens_Bins_" + i] = chart["detailBackground_" + i]
       .append("g")
-      .attr("id", "detailBgT_g_" + i);
+      .attr("id", "detailBgTB_g_" + i);
 
     chart["terms_" + i] = chart["detailBackground_" + i]
       .append("g")
@@ -480,7 +480,7 @@ function drawNSplitWindows(chart, n) {
     //  split-window dividing line
     if (i !== 0) {
       // no line for first window
-      chart.detail
+      chart.e.detail
         .append("line")
         .attr("x1", i * windowWidth)
         .attr("y1", 0)

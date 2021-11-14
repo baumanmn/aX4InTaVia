@@ -34,7 +34,7 @@ export function initIndicator(globalChart) {
   //     .attr("height", indicatorWindowHeight);
 
   //the indicator window (with clip path) moved  to the coordinates
-  chart.indicator = chart.detailBackground
+  chart.indicator = chart.e.detailBackground
     .append("g")
     .attr("id", "indicatorGroup")
     .attr(

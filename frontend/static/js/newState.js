@@ -277,7 +277,7 @@ class Brush {
 
     this.group.call(d3.event.target.move, snapPos);
 
-    chart.detail.call(chart.zoom.transform, newTransform); //TO DO
+    chart.e.detail.call(chart.zoom.transform, newTransform); //TO DO
 
     //chartClickFix();
     //updateEvents();
@@ -387,7 +387,7 @@ class Brush {
       )
       .scale(chart.p.tokenExt / (snapPos[1] - snapPos[0]));
     //
-    chart.detail.call(d3.event.target.transform, newTrans);
+    chart.e.detail.call(d3.event.target.transform, newTrans);
 
     //adjust the brush to the overview-tokens/bins (snapped)
     this.group.call(this.brush.move, snapPos);
@@ -402,7 +402,7 @@ class Brush {
   }
 
   quickZoom(chart) {
-    var xMouse = d3.mouse(chart.detail)[0],
+    var xMouse = d3.mouse(chart.e.detail)[0],
       unitId; //id of the bin or token at xMouse
     if (chart.modeOverview === "atomic") {
       var xStart = chart.d.overviewXValues.map(function (xPos) {

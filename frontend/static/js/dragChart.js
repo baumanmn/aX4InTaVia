@@ -38,14 +38,14 @@ export function dragChart(chart) {
   var verticalMov = chart.p.wordViewExt + chart.p.wordViewConnectorsExt;
   var horizontalMov = chart.p.tokenExt + dragHorizontalSpacer;
 
-  chart.drag.attr(
+  chart.e.drag.attr(
     "transform",
     "translate(" + horizontalMov + "," + verticalMov + ")"
   );
   //.attr("clip-path", "url(#clipDrag)");
 
   // Drag window background
-  //chart.drag.append("rect")
+  //chart.e.drag.append("rect")
   //    .attr("id", "dragBackground")
   //    .attr("x", 0)
   //    .attr("y", 0)
@@ -53,7 +53,7 @@ export function dragChart(chart) {
   //    .attr("height", annotatorBandsExt);
 
   // Group of drag buttons
-  chart.dragButtons = chart.drag
+  chart.dragButtons = chart.e.drag
     .append("g")
     .attr("id", "dragButtons")
     .selectAll("g")

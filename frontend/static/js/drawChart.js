@@ -5,13 +5,11 @@ import $ from "jquery"; //Jena
 //import * as d3 from "../node_modules/d3/build/d3.js";
 import { typeArray } from "./constants.js";
 import * as preprocessData from "./preprocessData.js";
-
 //import {computeTerms} from "./preprocessData";
 //endregion
 
 //region constants
 //region chart-related constants
-
 // const canvasHeight = window.innerHeight; //height of the canvast
 const maxNumOverviews = 3; //JENA: temp variable indicating number of active overviews, needed for positioning
 //const canvasHeight = 750; //height of the canvas, former 650
@@ -20,7 +18,6 @@ const maxNumOverviews = 3; //JENA: temp variable indicating number of active ove
 //const canvasWidth = orientation === "landscape" ? lsHeight : ptHeight;
 //const canvasWidth = (orientation === "landscape") ? $(window).tokenExt() : $(window).height();
 const orientation = "portrait"; //landscape or portrait
-
 const tokenExt = 750; //(landsacpe) width of the annoWindow
 const annotatorIdExtension = 40; //space for the annotators IDs
 const wordViewExt = 110; //(landscape) height of the token text window
@@ -32,7 +29,6 @@ const [annoWindowWidth, annoWindowHeight] =
   orientation === "landscape"
     ? [annoWindowExt, annotatorExt]
     : [annotatorExt, annoWindowExt];
-
 const overviewExt = 40; //height of an overview strip
 const sliderSpace = 15; //space for sliders
 const activeOverviews = 3; //JENA: temp variable indicating number of active overviews, needed for positioning
@@ -44,7 +40,6 @@ const [overviewStripsWidth, overviewStripsHeight] =
   orientation === "landscape"
     ? [overviewStripsExt, stripsExt]
     : [stripsExt, overviewStripsExt];
-
 const buttonsWidth = 500;
 
 //const margins = {
@@ -115,7 +110,9 @@ const maxLevelsSupercompCompAgg = Math.min(
 //region bin-related constants
 const xScaleTokens_Bins = d3.scaleBand().range([0, tokenExt]);
 //endregion
+
 const minWindowSize = 150;
+
 //region JENA: slider related constants
 var sliderWidth = 0;
 var sliderHeight = 0;
@@ -125,7 +122,7 @@ var sliderHandleWidth = 0;
 
 //region auxilliary functions
 function defineShadowAndGradient(chart, dist) {
-  var filterDefs = chart.detail.append("defs");
+  var filterDefs = chart.e.detail.append("defs");
   var filter = filterDefs
     .append("filter")
     .attr("filterUnits", "userSpaceOnUse")
@@ -178,7 +175,6 @@ function addOverview(chart, overviewID) {
 
   chart.activeOverviews = chart.activeOverviews + 1; //MB TODO delete?
 }
-
 //endregion
 
 //region main functions
@@ -186,48 +182,48 @@ export function initializeChart() {
   const chart = {};
   chart.p = {
     //parameters that should be available with the chart
-    maxNumOverviews, //added by Jena
-    sliderWidth,
-    sliderHeight,
-    sliderHandleWidth,
-    annotatorBandsExt,
-    wordViewConnectorsExt,
-    wordViewExt,
-    globalTermHeight,
-    termTickLength,
-    termFrameTicks,
-    indConnector,
-    textDisplacement,
-    termIndicatorHeight,
-    termFontSize,
-    userHeight,
-    tokenExt,
     //margins,
-    lowerTokenThreshold,
-    numOfTerms,
-    magFactor,
-    annoMaxHPadding,
     annoHPaddingFactor,
     annoHeight,
+    annoMaxHPadding,
+    annotatorBandsExt,
+    annotatorExt,
+    binAnnosHeight,
+    buttonsWidth,
+    freeSpace,
+    globalTermHeight,
+    indConnector,
+    lowerTokenThreshold,
+    magFactor,
     maxLevelsCompUncomp,
     maxLevelsSupercompComp,
     maxLevelsSupercompCompAgg,
+    maxNumOverviews, //added by Jena
+    minimalBrush,
+    numOfTerms,
+    orientation,
+    overlapMargin,
+    overviewExt,
     shortAnnoHeight,
     shortAnnoHeight_sa,
-    overviewExt,
-    xScaleTokens_Bins,
-    xScaleTokenText,
-    xScaleTerms,
+    sliderHandleWidth,
+    sliderHeight,
+    sliderWidth,
     spaceForAnnos,
-    typeStrokeWidth,
-    annotatorExt,
-    overlapMargin,
-    binAnnosHeight,
-    freeSpace,
-    minimalBrush,
-    orientation,
+    termFontSize,
+    termFrameTicks,
     termFreeze,
-    buttonsWidth,
+    termIndicatorHeight,
+    termTickLength,
+    textDisplacement,
+    tokenExt,
+    typeStrokeWidth,
+    userHeight,
+    wordViewConnectorsExt,
+    wordViewExt,
+    xScaleTerms,
+    xScaleTokenText,
+    xScaleTokens_Bins,
   };
 
   chart.e = {}; //the property storing all svg-elements
@@ -241,7 +237,7 @@ export function initializeChart() {
     .attr("width", annoWindowWidth)
     .attr("viewBox", `0 0 ${annoWindowWidth} ${annoWindowHeight}`);
   if (orientation === "portrait") {
-    var aRotLength = Math.min(annoWindowWidth, annoWindowHeight) / 2;
+    let aRotLength = Math.min(annoWindowWidth, annoWindowHeight) / 2;
     chart.e.annoWindow = chart.e.annoWindow
       .append("g")
       .attr("transform", `rotate (90, ${aRotLength}, ${aRotLength})`);
@@ -261,29 +257,29 @@ export function initializeChart() {
   //    .attr("tokenExt", tokenExt)
   //    .attr("height", overviewExt);
 
-  chart.drag = chart.e.annoWindow.append("g").attr("id", "dragGroup");
+  chart.e.drag = chart.e.annoWindow.append("g").attr("id", "drag_g");
 
-  chart.detail = chart.e.annoWindow
+  chart.e.detail = chart.e.annoWindow
     .append("g") //the detail window (with clip path) moved for margin
     .attr("id", "detail_g")
     //.attr("transform", "translate(" + margins.left + "," + margins.top + ")")
     .attr("clip-path", "url(#clipD)");
 
-  chart.detail
+  chart.e.detail
     .append("rect") //a background-rect for the detail-window
     .attr("width", tokenExt)
     .attr("height", annotatorExt)
     .attr("id", "detailBg_r");
 
   //the groups of the aggregated tokens/bins (background), the texts & connecting polygons
-  chart.detailBackground = chart.detail.append("g").attr("id", "detailBg_g");
-  chart.detailBTokens_Bins = chart.detailBackground
+  chart.e.detailBackground = chart.e.detail.append("g").attr("id", "detailBg_g");
+  chart.e.detailBgTokens_Bins = chart.e.detailBackground
     .append("g")
-    .attr("id", "detailBgT_g");
+    .attr("id", "detailBgTB_g");
   //.attr("transform", `translate(0, ${wordViewExt + wordViewConnectorsExt})`);
-  //chart.tokenPolygons = chart.detailBackground.append("g").attr("id", "tokenPol_g")
+  //chart.tokenPolygons = chart.e.detailBackground.append("g").attr("id", "tokenPol_g")
   //    .attr("transform", `translate(0, ${wordViewExt})`);
-  chart.terms = chart.detailBackground.append("g").attr("id", "terms_g");
+  chart.terms = chart.e.detailBackground.append("g").attr("id", "terms_g");
 
   ////a rect as listener for double-clicks
   //chart.e.termNav = chart.terms.append("rect")
@@ -295,7 +291,7 @@ export function initializeChart() {
   //    .style("pointer-events", "visible");
 
   //the group of all user tokens/annos (foreground)
-  chart.detailForeground = chart.detail
+  chart.detailForeground = chart.e.detail
     .append("g")
     .attr("id", "detailFG")
     .attr("transform", `translate(0, ${wordViewExt + wordViewConnectorsExt})`);

@@ -246,7 +246,7 @@ export function lensChart(chart) {
 
   //region groups & fixed rects
   //the lens window
-  chart.lensWindow = chart.detail
+  chart.lensWindow = chart.e.detail
     .append("g")
     .attr("id", "lensWindowGroup")
     .style("pointer-events", "none")

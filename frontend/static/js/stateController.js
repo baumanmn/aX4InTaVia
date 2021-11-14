@@ -552,7 +552,7 @@ export var StateController = (function () {
           var x = binSteps * (elemAddress.id - chart.d.binRange[0]);
           var translateHeight =
             chart.p.wordViewExt + chart.p.wordViewConnectorsExt;
-          d3.select("#detailBgT_g")
+          d3.select("#detailBgTB_g")
             .append("rect")
             .classed("noAnnoBgBin", true)
             .attr("id", "noAnno_bg_b" + elemAddress.id)
@@ -599,7 +599,7 @@ export var StateController = (function () {
             chart.p.tokenExt /
             (chart.d.tokenRange[1] - chart.d.tokenRange[0] + 1);
           var x = tokenSteps * (elemAddress.id - chart.d.tokenRange[0]);
-          d3.select("#detailBgT_g")
+          d3.select("#detailBgTB_g")
             .append("rect")
             .classed("noAnnoBgToken", true)
             .attr("id", "noAnno_bg_t" + elemAddress.id)
