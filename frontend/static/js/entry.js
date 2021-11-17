@@ -293,7 +293,9 @@ if (backend) {
     });
   } //draw the basic chart
 } else {
-  d3.json("../../../backend/data/bt_debatte4.json", function (data) {
+  //let path = "../../../backend/data/bt_debatte4.json" //MARTIN
+  let path = "../../backend/data/bt_debatte4.json" //JENA
+  d3.json(path, function (data) {
     drawChart(data);
   });
 }
