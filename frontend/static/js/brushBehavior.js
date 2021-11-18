@@ -231,15 +231,29 @@ export function brushEnd(chart, brush = 0, overview = 0) {
   chart.e.detail.call(chart.zoom.transform, newTransform);
   //chartClickFix();
   if (overview === 0) {
+    /**
+     * Update stored brush ranges in overview state object
+     */
     setRangesWithID(0, {
       id: [brush],
       selection: snapPos,
       overlay: [],
     });
+    console.log("ranges in overview");
+    console.log(snapPos);
+    /**
+     * Update the set of indicators in the current overview, as well as descendants
+     */
     updateAll(chart, brush);
     updateAllIndicators(chart, 1);
     updateAllIndicators(chart, 2);
+
+    /**
+     * Check whether the adjusted brush is linked with a text view.
+     * If so, update the displayed text tokens.
+     */
     checkAndUpdateAssignment(chart, 0, [brush], snapPos);
+
     adjustWorkBenchBrush([brush], snapPos);
     updateAllGrandButtonRectangles(brush);
     drawNameTBDdRectangle(chart, brush);
