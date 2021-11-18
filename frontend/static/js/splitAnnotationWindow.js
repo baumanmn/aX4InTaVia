@@ -44,6 +44,7 @@ export function updateAnnoViewID(chart, oldID, newID) {
 }
 
 export function drawDetailBars(chart) {
+  if (!chart.d.annoViewObj) return 0;
   let numViews = chart.d.annoViewObj["numViews"];
   let toUpdate = chart.d.annoViewObj["toUpdate"];
   let hashMap = chart.d.annoViewObj["hashMap"];

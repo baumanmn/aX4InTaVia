@@ -327,6 +327,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
       brush,
     ]);
   }
+  drawDetailBars(chart);
   //updateEvents();
   autoScrollTextArea();
   deleteAllIndicators(); //HM for escaping hover bugs during the brash process
