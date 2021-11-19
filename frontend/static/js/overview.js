@@ -48,11 +48,12 @@ export function setActiveOverview(chart, brush, overview = 1) {
   var overviewBrush;
   var overviewRects;
   var caller;
-  if (overview === 1) {
+  if (overview === 1 && chart.overviews[1]) {
     overviewBrush = chart.overviews[1]["brushGroup"][brush];
     overviewRects = chart.overviews[1]["backgroundRects"]; //chart.overviewRects2
     caller = drawSecondOverviewBars;
-  } else {
+  }
+  if (overview === 2 && chart.overviews[2]) {
     overviewBrush = chart.overviews[2]["brushGroup"][brush];
     overviewRects = chart.overviews[2]["backgroundRects"]; //chart.overviewRects3
     caller = drawThirdOverviewBars;

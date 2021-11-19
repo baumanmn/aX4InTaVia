@@ -239,8 +239,6 @@ export function brushEnd(chart, brush = 0, overview = 0) {
       selection: snapPos,
       overlay: [],
     });
-    console.log("ranges in overview");
-    console.log(snapPos);
     /**
      * Update the set of indicators in the current overview, as well as descendants
      */

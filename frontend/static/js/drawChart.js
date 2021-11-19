@@ -5,6 +5,19 @@ import $ from "jquery"; //Jena
 //import * as d3 from "../node_modules/d3/build/d3.js";
 import { typeArray } from "./constants.js";
 import * as preprocessData from "./preprocessData.js";
+import { initTextArea, updateTextArea } from "./textArea";
+import {
+  installZoom,
+  installBrush,
+  initializeViewAssignment,
+} from "./brushSetup.js";
+import {
+  drawInitialBars,
+  drawSecondOverviewBars,
+  drawThirdOverviewBars,
+} from "./drawBars.js";
+import { bindSliderToBrushes } from "./slider";
+import { initializeStates } from "./overviewState.js";
 //import {computeTerms} from "./preprocessData";
 //endregion
 
@@ -152,6 +165,23 @@ function defineShadowAndGradient(chart, dist) {
   feMerge.append("feMergeNode").attr("in", "SourceGraphic");
 }
 
+function addOverviewCollapse(chart, overviewID) {
+  let collapseObject = drawOverviewCollapse(chart, overviewID);
+  chart.overviews[overviewID]["collapse"].object = collapseObject["collapse"];
+  chart.overviews[overviewID]["collapse"].label = collapseObject["label"];
+}
+
+function drawOverviewBackground(chart, overviewID) {
+  let backgroundObject = drawCompleteOverviewBackground(
+    chart.overviews[overviewID]["stripGroup"]
+  );
+  chart.overviews[overviewID]["background"] = backgroundObject["background"];
+  chart.overviews[overviewID]["backgroundRects"] = backgroundObject["rects"];
+  chart.overviews[overviewID]["slider"]["svg"] = backgroundObject["slider"];
+
+  chart.activeOverviews = chart.activeOverviews + 1; //MB TODO delete?
+}
+
 function addOverview(chart, overviewID) {
   chart.overviews[overviewID] = {
     stripGroup: drawStripGroup(chart, overviewID), //replaces chart.overview
@@ -165,15 +195,11 @@ function addOverview(chart, overviewID) {
       svg: "",
       object: "",
     },
+    collapse: {
+      object: "",
+      label: "",
+    },
   };
-  let backgroundObject = drawCompleteOverviewBackground(
-    chart.overviews[overviewID]["stripGroup"]
-  );
-  chart.overviews[overviewID]["background"] = backgroundObject["background"];
-  chart.overviews[overviewID]["backgroundRects"] = backgroundObject["rects"];
-  chart.overviews[overviewID]["slider"]["svg"] = backgroundObject["slider"];
-
-  chart.activeOverviews = chart.activeOverviews + 1; //MB TODO delete?
 }
 //endregion
 
@@ -272,7 +298,9 @@ export function initializeChart() {
     .attr("id", "detailBg_r");
 
   //the groups of the aggregated tokens/bins (background), the texts & connecting polygons
-  chart.e.detailBackground = chart.e.detail.append("g").attr("id", "detailBg_g");
+  chart.e.detailBackground = chart.e.detail
+    .append("g")
+    .attr("id", "detailBg_g");
   chart.e.detailBgTokens_Bins = chart.e.detailBackground
     .append("g")
     .attr("id", "detailBgTB_g");
@@ -315,9 +343,6 @@ export function initializeChart() {
       .append("g")
       .attr("transform", `rotate (90, ${oSRotLength}, ${oSRotLength})`);
   }
-  addOverview(chart, 0);
-  addOverview(chart, 1);
-  addOverview(chart, 2);
   //endregion
 
   return chart;
@@ -434,6 +459,38 @@ export function drawStripGroup(chart, pos) {
   );
 }
 
+function drawOverviewCollapse(chart, overviewID) {
+  const overview = chart.overviews[overviewID]["stripGroup"];
+  const expandBtnW = 40;
+  const expandBtnH = 30;
+  const labelSize = 16;
+  return {
+    collapse: overview
+      .append("rect")
+      .attr("class", "overview_collapse")
+      .attr("x", tokenExt / 2 - expandBtnW / 2)
+      .attr("y", 0)
+      .attr("rx", 8)
+      .attr("ry", 8)
+      .attr("width", expandBtnW)
+      .attr("height", expandBtnH)
+      .attr("fill", "black")
+      .on("click", function () {
+        console.log("hi");
+        expandCollapsedOverview(chart, overviewID);
+      }),
+
+    label: overview
+      .append("text")
+      .attr("x", tokenExt / 2 - expandBtnW / 2 + 15)
+      .attr("y", expandBtnH / 2 + 5)
+      .attr("fill", "white")
+      .style("font-size", labelSize + "px")
+      .style("font-weight", "bold")
+      .text("+"),
+  };
+}
+
 export function drawCompleteOverviewBackground(overview) {
   return {
     background: overview
@@ -453,4 +510,62 @@ export function drawCompleteOverviewBackground(overview) {
   };
 }
 
+export function drawInitialOverview(chart) {
+  addOverview(chart, 0);
+  drawOverviewBackground(chart, 0);
+  drawInitialBars(chart);
+
+  initTextArea(chart);
+
+  installZoom(chart); //MB currently defucnt
+
+  initializeViewAssignment(chart);
+
+  installBrush(chart, 0, {
+    brushNr: 0,
+    overlay: [0, chart.p.tokenExt],
+    selection: [0, chart.p.tokenExt],
+  });
+  bindSliderToBrushes(chart, chart.p.tokenExt, 0, 1);
+  bindSliderToBrushes(chart, chart.p.tokenExt, 0, 0);
+
+  initializeStates(chart);
+}
+
+export function addInitialCollapseOverview(chart, overviewID) {
+  if (overviewID >= maxNumOverviews) return 0;
+  //TO DO: CHECK IF ALREADY INITIALIZED/COLLAPSED
+  addOverview(chart, overviewID);
+  addOverviewCollapse(chart, overviewID);
+}
+
+export function expandCollapsedOverview(chart, overviewID) {
+  chart.overviews[overviewID].collapse.object.remove();
+  chart.overviews[overviewID].collapse.label.remove();
+  drawOverviewBackground(chart, overviewID);
+
+  if (overviewID === 1) {
+    drawSecondOverviewBars(
+      chart,
+      [0, chart.d.bins.length],
+      [0, chart.d.tokens.length]
+    );
+  }
+  if (overviewID === 2) {
+    drawThirdOverviewBars(
+      chart,
+      [0, chart.d.bins.length],
+      [0, chart.d.tokens.length]
+    );
+  }
+  installBrush(chart, overviewID, {
+    brushNr: 0,
+    overlay: [0, chart.p.tokenExt],
+    selection: [0, chart.p.tokenExt],
+  });
+  bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 1);
+  bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 0);
+
+  addInitialCollapseOverview(chart, overviewID + 1);
+}
 //endregion

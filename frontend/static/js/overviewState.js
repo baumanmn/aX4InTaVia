@@ -438,6 +438,8 @@ export function drawSplitIndicator(chart, sliderID, splitPos, overview = 1) {
  * @param {*} overview
  */
 export function updateAllIndicators(chart, overview) {
+  if (!chart.overviews[1] && !chart.overviews[2]) return 0;
+
   let currStateEncoder;
   let overviewBrush;
   let parentID;

@@ -2,30 +2,22 @@
 import * as d3 from "d3";
 import $ from "jquery"; //Jena
 import { controller } from "./controller.js"; //Jena
-import { initializeChart, fillChart } from "./drawChart.js";
 import {
-  drawInitialBars,
-  drawSecondOverviewBars,
-  drawThirdOverviewBars,
-} from "./drawBars.js";
-import {
-  installZoom,
-  installBrush,
-  initializeViewAssignment,
-} from "./brushSetup.js";
+  initializeChart,
+  fillChart,
+  drawInitialOverview,
+  addInitialCollapseOverview,
+} from "./drawChart.js";
 import { dragChart } from "./dragChart.js";
 import { initLens } from "./lensChart.js";
 // import { initLens } from "./newLensChart.js";
-import { initTextArea, updateTextArea } from "./textArea";
 import { initFilters } from "./filters";
 import { initIndicator } from "./indicator";
 import { initStateController } from "./stateController";
 import { initElemrntAddres } from "./elemAddress";
 // import { initEvents } from "./events";
 import { initFunctions } from "./functions";
-import { bindSliderToBrushes } from "./slider";
 import { initializeButtonContainer } from "./buttons.js";
-import { initializeStates } from "./overviewState.js";
 //import "./annotation.js";
 //endregion
 
@@ -39,41 +31,13 @@ function drawChart(data) {
 
   fillChart(chart, data);
 
-  //draw the initial view
-  drawInitialBars(chart);
-  drawSecondOverviewBars(
-    chart,
-    [0, chart.d.bins.length],
-    [0, chart.d.tokens.length]
-  );
-  drawThirdOverviewBars(
-    chart,
-    [0, chart.d.bins.length],
-    [0, chart.d.tokens.length]
-  );
-
-  initTextArea(chart);
-  //initializeButtonContainer(chart);
-  // initEvents(chart);
   initFunctions(chart);
 
-  installZoom(chart); //MB currently defucnt
-  initializeViewAssignment(chart);
-  installBrush(chart, 0, {
-    brushNr: 0,
-    overlay: [0, chart.p.tokenExt],
-    selection: [0, chart.p.tokenExt],
-  });
-  installBrush(chart, 1, {
-    brushNr: 0,
-    overlay: [0, chart.p.tokenExt],
-    selection: [0, chart.p.tokenExt],
-  });
-  installBrush(chart, 2, {
-    brushNr: 0,
-    overlay: [0, chart.p.tokenExt],
-    selection: [0, chart.p.tokenExt],
-  });
+  drawInitialOverview(chart);
+
+  addInitialCollapseOverview(chart, 1);
+
+  //draw the initial view
 
   initializeButtonContainer(chart);
 
@@ -86,13 +50,7 @@ function drawChart(data) {
 
   $(function () {
     controller.newMonitor("textDiv", chart);
-    bindSliderToBrushes(chart, chart.p.tokenExt, 0, 1);
-    bindSliderToBrushes(chart, chart.p.tokenExt, 0, 0);
-    bindSliderToBrushes(chart, chart.p.tokenExt, 1, 1);
-    bindSliderToBrushes(chart, chart.p.tokenExt, 1, 0);
-    bindSliderToBrushes(chart, chart.p.tokenExt, 2, 1);
-    bindSliderToBrushes(chart, chart.p.tokenExt, 2, 0);
-    initializeStates(chart);
+    //initializeStates(chart);
   });
   console.log(chart);
 }
@@ -294,7 +252,7 @@ if (backend) {
   } //draw the basic chart
 } else {
   //let path = "../../../backend/data/bt_debatte4.json" //MARTIN
-  let path = "../../backend/data/bt_debatte4.json" //JENA
+  let path = "../../backend/data/bt_debatte4.json"; //JENA
   d3.json(path, function (data) {
     drawChart(data);
   });
