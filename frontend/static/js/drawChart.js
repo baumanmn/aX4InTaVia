@@ -476,7 +476,6 @@ function drawOverviewCollapse(chart, overviewID) {
       .attr("height", expandBtnH)
       .attr("fill", "black")
       .on("click", function () {
-        console.log("hi");
         expandCollapsedOverview(chart, overviewID);
       }),
 

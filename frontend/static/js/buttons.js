@@ -1043,13 +1043,21 @@ function addBrushToWorkbench(id = [0], button) {
       workbench[snap_id]["selectionRange"] = selectionRange;
       workbench[snap_id]["position"] = [y, length];
       workbench[snap_id]["brush"] = workbench.object
+      .append("g")
+      .classed("workbenchBrush", true)
+      .call(workbench[snap_id]["brushObject"])
+      .call(workbench[snap_id]["brushObject"].move, [
+        y + selectionRange[0],
+        y + selectionRange[0] + selectionRange[1], //
+      ]);
+      /* workbench[snap_id]["brush"] = workbench.object
         .append("g")
         .classed("workbenchBrush", true)
         .call(workbench[snap_id]["brushObject"])
         .call(workbench[snap_id]["brushObject"].move, [
           y + selectionRange[0],
           y + selectionRange[1],
-        ]);
+        ]); */
 
       workbench[snap_id]["brush"]
         .select(".selection")
@@ -1062,7 +1070,7 @@ function addBrushToWorkbench(id = [0], button) {
         .append("rect")
         .attr("class", "workbenchDivider")
         .attr("x", overviewMapDepthExt + 100)
-        .attr("y", y + selectionRange[1])
+        .attr("y", y + selectionRange[0] + selectionRange[1])
         .attr("height", 4)
         .attr("width", chartRef.p.overviewExt + 40)
         .attr("fill", "lightgray");
@@ -1082,7 +1090,6 @@ function addBrushToWorkbench(id = [0], button) {
       workbench[snap_id]["brushObject"].on("end", function () {
         let overviewBrushRanges = getBrushRanges(snap_id); //get overlay and selection ranges
         if (overviewBrushRanges[0][1] === 750) overviewBrushRanges[0][1] = 749;
-        console.log("end");
         updateAnnoViewRange(
           chartRef,
           workbench[snap_id]["ids"],
@@ -1143,6 +1150,7 @@ function isPartOfSubtree(id) {
 
 function redrawWorkbench() {
   workbench.object.selectAll(".workbenchBrush").remove();
+  workbench.object.selectAll(".workbenchDivider").remove();
 
   let wX = parseInt(d3.select("#workbench").attr("x"));
   let wY = parseInt(d3.select("#workbench").attr("y"));
@@ -1193,22 +1201,18 @@ function redrawWorkbench() {
       .select(".selection")
       .attr("fill", workbench[snap_id]["color"]);
 
-    /* workbench[snap_id]["brushObject"].on("brush", function () {
-        let overviewBrushRanges = getBrushRanges(snap_id); //get overlay and selection ranges
-        if (overviewBrushRanges[0][1] === 750) overviewBrushRanges[0][1] = 749;
-        updateAnnoViewRange(
-          chartRef,
-          workbench[snap_id]["ids"],
-          overviewBrushRanges[0],
-          true
-        );
-        adjustOverviewBrush(snap_id);
-      }); */
+      workbench.object
+      .append("rect")
+      .attr("class", "workbenchDivider")
+      .attr("x", overviewMapDepthExt + 100)
+      .attr("y", y + handlePositions[0] + handlePositions[1])
+      .attr("height", 4)
+      .attr("width", chartRef.p.overviewExt + 40)
+      .attr("fill", "lightgray");
 
     workbench[snap_id]["brushObject"].on("end", function () {
       let overviewBrushRanges = getBrushRanges(snap_id); //get overlay and selection ranges
       if (overviewBrushRanges[0][1] === 750) overviewBrushRanges[0][1] = 749;
-      console.log("end");
       updateAnnoViewRange(
         chartRef,
         workbench[snap_id]["ids"],

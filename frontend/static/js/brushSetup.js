@@ -143,7 +143,6 @@ export function installBrush(chart, overviewNr, brushData) {
 }
 
 function handleBrushEnd(chart, overviewNr, brushData) {
-  console.log(overviewNr);
   brushEnd(chart, brushData["brushNr"], overviewNr);
   if (overviewNr === 0) {
     setActiveOverview(chart, brushData["brushNr"]);
