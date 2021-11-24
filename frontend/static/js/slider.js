@@ -34,11 +34,11 @@ export const sliders = {
   x maxNumOverviews */
 };
 
-export function initializeSliders(numOverviews, numBrushes) {
+export function initializeSliders(numOverviews, maxNumSliders) {
   for (let i = 0; i < numOverviews; i++) {
     const overviewID = i;
     sliders[overviewID] = [];
-    for (let j = 0; j < numBrushes - 1; j++) {
+    for (let j = 0; j < maxNumSliders; j++) {
       sliders[overviewID].push({
         sliderObj: "",
         sliderBar: "",

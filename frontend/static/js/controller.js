@@ -21,18 +21,22 @@ export let controller = (function () {
       },
 
       increaseNumViews: function () {
-        console.log("inc")
+        console.log("inc");
         numViews += 1;
         let textArea = document.getElementsByClassName("textArea")[0];
         textArea.style.gridTemplateRows = "repeat(" + numViews + ", 1fr)";
       },
 
       synchronizeView: function (chart, viewID) {
-        let overlayRange = chart.assignedRangeForViews[viewID][1];
+        /* let overlayRange = chart.assignedRangeForViews[viewID][1]; */
+
+        let overlayRange = chart.textViews[viewID]["assignedRange"][1];
+
         let start = overlayRange[0];
         start =
           chart.d.spanIDTable[
-            chart.d.bins[convertLastOverviewPosition(chart, start)].tokens[0].id
+            chart.d.bins[convertLastOverviewPosition(chart, start, viewID)]
+              .tokens[0].id
           ];
         let end = overlayRange[1];
 
@@ -41,8 +45,8 @@ export let controller = (function () {
 
         end =
           chart.d.spanIDTable[
-            chart.d.bins[convertLastOverviewPosition(chart, end) - 1].tokens[0]
-              .id
+            chart.d.bins[convertLastOverviewPosition(chart, end, viewID) - 1]
+              .tokens[0].id
           ];
         if (viewID === 0) {
           view0.emptyContent();

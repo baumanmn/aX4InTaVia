@@ -49,6 +49,9 @@ const [annoWindowWidth, annoWindowHeight] =
  */
 const maxNumOverviews = 5;
 const maxNumBrushes = 3;
+const maxNumSliders = maxNumBrushes - 1;
+const maxNumTextViews = maxNumBrushes;
+
 const overviewExt = 40; //height of an overview strip
 const sliderSpace = 15; //space for sliders
 const overviewHandleExt = 40; //space for the handles
@@ -189,9 +192,9 @@ function addOverview(chart, overviewID) {
   chart.overviews[overviewID] = {
     stripGroup: drawStripGroup(chart, overviewID), //replaces chart.overview
     //origin: computeOverviewOrigin(overviewID), //replaces overviewYPos
-    brushes: [null, null, null],
-    brushGroup: [null, null, null], //replaces overviewBrush
-    splits: [false, false],
+    brushes: new Array(maxNumBrushes).fill(null),
+    brushGroup: new Array(maxNumBrushes).fill(null), //replaces overviewBrush
+    splits: new Array(maxNumBrushes - 1).fill(null),
     background: "",
     backgroundRects: "",
     slider: {
@@ -328,11 +331,6 @@ export function initializeChart() {
     .attr("transform", `translate(0, ${wordViewExt + wordViewConnectorsExt})`);
   //endregion
 
-  //region overview-initialisation MB ?
-  chart.overviews = {
-    maxNumOverviews: 3,
-  };
-
   chart.e.overviewStrips = d3
     .select("body")
     .append("svg")
@@ -346,6 +344,11 @@ export function initializeChart() {
       .attr("transform", `rotate (90, ${oSRotLength}, ${oSRotLength})`);
   }
   //endregion
+
+  //region overview-initialisation MB ?
+  chart.overviews = {};
+
+  chart.textViews = {};
 
   return chart;
 }
@@ -520,17 +523,17 @@ export function drawInitialOverview(chart) {
 
   installZoom(chart); //MB currently defucnt
 
-  initializeViewAssignment(chart);
+  initializeViewAssignment(chart, maxNumTextViews);
 
   installBrush(chart, 0, {
     brushNr: 0,
     overlay: [0, chart.p.tokenExt],
     selection: [0, chart.p.tokenExt],
   });
-  initializeSliders(maxNumOverviews, maxNumBrushes);
-  bindSliderToBrushes(chart, chart.p.tokenExt, 0, 1);
-  bindSliderToBrushes(chart, chart.p.tokenExt, 0, 0);
-
+  initializeSliders(maxNumOverviews, maxNumSliders);
+  for (let i = maxNumSliders - 1; i >= 0; i--) {
+    bindSliderToBrushes(chart, chart.p.tokenExt, 0, i);
+  }
   initializeStates(chart);
 }
 

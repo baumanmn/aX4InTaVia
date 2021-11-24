@@ -219,8 +219,24 @@ export function setCurrentlyActive(id) {
  * init. the brush to view assignments
  * @param {*} chart the chart object
  */
-export function initializeViewAssignment(chart) {
-  chart.selectedBrushForView0 = [0, [0]]; //to be refactored into a view object
+export function initializeViewAssignment(chart, numTextViews) {
+  for (let i = 0; i < numTextViews; i++) {
+    chart.textViews[i] = {
+      overviewID: -1,
+      brushKey: [-1],
+      assignedRange: [],
+    };
+  }
+  chart.textViews[0] = {
+    overviewID: 0,
+    brushKey: [0],
+    assignedRange: [
+      [0, chart.p.tokenExt], //overlay
+      [0, chart.p.tokenExt], //selection
+    ],
+  };
+
+  /* chart.selectedBrushForView0 = [0, [0]]; //to be refactored into a view object
   chart.selectedBrushForView1 = [-1, [-1]]; //to be refactored into a view object
   chart.selectedBrushForView2 = [-1, [-1]]; //to be refactored into a view object
   chart.assignedRangeForViews = {
@@ -229,7 +245,7 @@ export function initializeViewAssignment(chart) {
       [0, chart.p.tokenExt], //overlay
       [0, chart.p.tokenExt], //selection
     ],
-  };
+  }; */
 }
 
 /**
@@ -239,16 +255,22 @@ export function initializeViewAssignment(chart) {
  * @param {*} brushID
  * @param {*} overviewID
  */
-export function assignBrushToView(chart, viewID, overviewID, key) {
-  if (viewID === 0) {
+export function assignBrushToView(chart, viewID, overviewID, brushKey) {
+  /* if (viewID === 0) {
     chart.selectedBrushForView0 = [overviewID, key];
   } else if (viewID === 1) {
     chart.selectedBrushForView1 = [overviewID, key];
   } else {
     chart.selectedBrushForView2 = [overviewID, key];
   }
-  chart.assignedRangeForViews[viewID] = getStoredRanges(overviewID, key);
-  checkAndUpdateSplit(chart, overviewID, key);
+  chart.assignedRangeForViews[viewID] = getStoredRanges(overviewID, key); */
+  chart.textViews[viewID]["overviewID"] = overviewID;
+  chart.textViews[viewID]["brushKey"] = brushKey;
+  chart.textViews[viewID]["assignedRange"] = getStoredRanges(
+    overviewID,
+    brushKey
+  );
+  checkAndUpdateSplit(chart, overviewID, brushKey);
 }
 
 /**
@@ -257,7 +279,7 @@ export function assignBrushToView(chart, viewID, overviewID, key) {
  * @param {*} viewID ID of the text view in question
  */
 export function getSelectedBrushForView(chart, viewID) {
-  let synched = null;
+  /* let synched = null;
   let overviewBrush = null;
   if (viewID === 0) {
     synched = chart.selectedBrushForView0;
@@ -265,8 +287,20 @@ export function getSelectedBrushForView(chart, viewID) {
     synched = chart.selectedBrushForView1;
   } else {
     synched = chart.selectedBrushForView2;
+  } */
+
+  let synchedView = chart.textViews[viewID];
+  if (synchedView["overviewID"] === -1) {
+    return null;
   }
-  if (synched[0] === -1) {
+
+  let brushKey = synchedView["brushKey"];
+  let overviewID = synchedView["overviewID"];
+  let overviewBrush =
+    chart.overviews[overviewID]["brushGroup"][brushKey[overviewID]];
+  return overviewBrush;
+
+  /* if (synched[0] === -1) {
     return null;
   } else {
     let key = synched[1];
@@ -278,7 +312,7 @@ export function getSelectedBrushForView(chart, viewID) {
       overviewBrush = chart.overviews[2]["brushGroup"][key[2]];
     }
     return overviewBrush;
-  }
+  } */
 }
 
 /**
@@ -287,9 +321,22 @@ export function getSelectedBrushForView(chart, viewID) {
  * @param {*} overview number equaling 0, 1 or 2 and denoting the overview
  * @param {*} id ID of the brush
  */
-export function isBrushSynchedWithText(chart, overview, key) {
+export function isBrushSynchedWithText(chart, givenOverviewID, givenBrushKey) {
   //still need
-  let answer = [false, -1];
+  let isSynched = [false, -1];
+
+  for (let i = 0; i < Object.keys(chart.textViews).length; i++) {
+    let overviewID = chart.textViews[i]["overviewID"];
+    let brushKey = chart.textViews[i]["brushKey"];
+    let textViewID = i;
+    if (overviewID === givenOverviewID && compareKey(brushKey, givenBrushKey)) {
+      isSynched = [true, textViewID];
+    }
+  }
+
+  return isSynched;
+
+  /* let answer = [false, -1];
   if (
     chart.selectedBrushForView0[0] === overview &&
     compareKey(chart.selectedBrushForView0[1], key) === true
@@ -308,7 +355,7 @@ export function isBrushSynchedWithText(chart, overview, key) {
   ) {
     answer = [true, 2];
   }
-  return answer;
+  return answer; */
 }
 
 export function checkAndUpdateAssignment(
@@ -321,12 +368,21 @@ export function checkAndUpdateAssignment(
   let synched = isBrushSynchedWithText(chart, overview, key);
   if (synched[0] === true) {
     let viewID = synched[1];
+    chart.textViews[viewID]["assignedRange"][1] = selectionRange;
+    if (overlayRange != null) {
+      chart.textViews[viewID]["assignedRange"][0] = overlayRange;
+    }
+    updateTextArea(chart);
+  }
+
+  /* if (synched[0] === true) {
+    let viewID = synched[1];
     chart.assignedRangeForViews[viewID][1] = selectionRange;
     if (overlayRange != null) {
       chart.assignedRangeForViews[viewID][0] = overlayRange;
     }
     updateTextArea(chart);
-  }
+  } */
 }
 
 export function extractKey(key) {

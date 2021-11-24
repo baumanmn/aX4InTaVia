@@ -353,7 +353,7 @@ export function checkAndUpdateSplit(chart, overviewID, key) {
  * @param {number} position
  */
 export function convertLastOverviewPosition(chart, position, viewKey) {
-  let key;
+  /* let key;
   let new_position = position;
   if (viewKey === 0) {
     key = chart.selectedBrushForView0[1];
@@ -361,10 +361,14 @@ export function convertLastOverviewPosition(chart, position, viewKey) {
     key = chart.selectedBrushForView1[1];
   } else {
     key = chart.selectedBrushForView2[1];
-  }
-  if (key.length > 2) {
-    let grandParent = key[0];
-    let parent = key[1];
+  } */
+
+  let brushKey = chart.textViews[viewKey]["brushKey"];
+  let new_position = position;
+
+  if (brushKey.length > 2) {
+    let grandParent = brushKey[0];
+    let parent = brushKey[1];
     let px = stateEncoder.tokenRange[grandParent][0];
     let pw = stateEncoder.tokenRange[grandParent][1] - px;
     let l = chart.p.tokenExt;
@@ -372,8 +376,8 @@ export function convertLastOverviewPosition(chart, position, viewKey) {
     let gx = stateEncoder[grandParent].tokenRange[parent][0];
     let gw = stateEncoder[grandParent].tokenRange[parent][1] - gx;
     new_position = gx + Math.round((m * gw) / l);
-  } else if (key.length > 1) {
-    let parent = key[0];
+  } else if (brushKey.length > 1) {
+    let parent = brushKey[0];
     let px = stateEncoder.tokenRange[parent][0];
     let pw = stateEncoder.tokenRange[parent][1] - px;
     let l = chart.p.tokenExt;

@@ -60,9 +60,14 @@ export function initTextArea(globalChart) {
  */
 export function updateTextArea(chart) {
   let colors = ["#F4B3B3", "#9CE9B1", "#FAFAD2"];
-  for (let key in chart.assignedRangeForViews) {
-    updateIndividually(chart, key, colors[key]);
+  for (let key in chart.textViews) {
+    if (chart.textViews[key]["overviewID"] !== -1) {
+      updateIndividually(chart, key, colors[key]);
+    }
   }
+  /* for (let key in chart.assignedRangeForViews) {
+    updateIndividually(chart, key, colors[key]);
+  } */
 }
 
 /**
@@ -77,10 +82,15 @@ export function updateTextArea(chart) {
  */
 function updateIndividually(chart, brush, color) {
   if (brush != null) {
-    let oLeft = chart.assignedRangeForViews[brush][0][0];
+    /* let oLeft = chart.assignedRangeForViews[brush][0][0];
     let oRight = chart.assignedRangeForViews[brush][0][1];
     let sLeft = chart.assignedRangeForViews[brush][1][0];
-    let sRight = chart.assignedRangeForViews[brush][1][1];
+    let sRight = chart.assignedRangeForViews[brush][1][1]; */
+
+    let oLeft = chart.textViews[brush]["assignedRange"][0][0];
+    let oRight = chart.textViews[brush]["assignedRange"][0][1];
+    let sLeft = chart.textViews[brush]["assignedRange"][1][0];
+    let sRight = chart.textViews[brush]["assignedRange"][1][1];
 
     oLeft =
       chart.d.bins[convertLastOverviewPosition(chart, oLeft, brush)].tokens[0]
