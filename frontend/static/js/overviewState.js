@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import "jquery-ui-bundle";
-import { slider, secondSlider, thirdSlider, initPos } from "./slider";
+import { sliders } from "./slider";
 
 /**
  *
@@ -450,13 +450,13 @@ export function updateAllIndicators(chart, overview) {
     parentID = stateEncoder.parentActive;
     currStateEncoder = stateEncoder[parentID];
     overviewBrush = chart.overviews[0]["brushGroup"];
-    sliderPos = [secondSlider[0].pos, secondSlider[1].pos];
+    sliderPos = [sliders[overview][0].pos, sliders[overview][1].pos];
   } else {
     parentID = stateEncoder[stateEncoder.parentActive].children.childActive;
     currStateEncoder =
       stateEncoder[stateEncoder.parentActive].children[parentID];
     overviewBrush = chart.overviews[1]["brushGroup"];
-    sliderPos = [thirdSlider[0].pos, thirdSlider[1].pos];
+    sliderPos = [sliders[overview][0].pos, sliders[overview][1].pos];
 
     gpRange = convertChildRangeToGrandparentRange(
       chart,

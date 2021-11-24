@@ -16,7 +16,7 @@ import {
   drawSecondOverviewBars,
   drawThirdOverviewBars,
 } from "./drawBars.js";
-import { bindSliderToBrushes } from "./slider";
+import { initializeSliders, bindSliderToBrushes } from "./slider";
 import { initializeStates } from "./overviewState.js";
 //import {computeTerms} from "./preprocessData";
 //endregion
@@ -24,13 +24,14 @@ import { initializeStates } from "./overviewState.js";
 //region constants
 //region chart-related constants
 // const canvasHeight = window.innerHeight; //height of the canvast
-const maxNumOverviews = 3; //JENA: temp variable indicating number of active overviews, needed for positioning
+
+const orientation = "portrait"; //landscape or portrait
+
 //const canvasHeight = 750; //height of the canvas, former 650
 //const lsHeight = 1500;
 //const ptHeight = parseInt($(window).height() - 50);
 //const canvasWidth = orientation === "landscape" ? lsHeight : ptHeight;
 //const canvasWidth = (orientation === "landscape") ? $(window).tokenExt() : $(window).height();
-const orientation = "portrait"; //landscape or portrait
 const tokenExt = 750; //(landsacpe) width of the annoWindow
 const annotatorIdExtension = 40; //space for the annotators IDs
 const wordViewExt = 110; //(landscape) height of the token text window
@@ -42,13 +43,17 @@ const [annoWindowWidth, annoWindowHeight] =
   orientation === "landscape"
     ? [annoWindowExt, annotatorExt]
     : [annotatorExt, annoWindowExt];
+
+/**
+ * OVERVIEW RELATED CONSTANTS
+ */
+const maxNumOverviews = 5;
+const maxNumBrushes = 3;
 const overviewExt = 40; //height of an overview strip
 const sliderSpace = 15; //space for sliders
-const activeOverviews = 3; //JENA: temp variable indicating number of active overviews, needed for positioning
-const numOverviewStrips = 3;
 const overviewHandleExt = 40; //space for the handles
 const overviewStripsExt = tokenExt + overviewHandleExt;
-const stripsExt = numOverviewStrips * (overviewExt + sliderSpace);
+const stripsExt = maxNumOverviews * (overviewExt + sliderSpace);
 const [overviewStripsWidth, overviewStripsHeight] =
   orientation === "landscape"
     ? [overviewStripsExt, stripsExt]
@@ -178,8 +183,6 @@ function drawOverviewBackground(chart, overviewID) {
   chart.overviews[overviewID]["background"] = backgroundObject["background"];
   chart.overviews[overviewID]["backgroundRects"] = backgroundObject["rects"];
   chart.overviews[overviewID]["slider"]["svg"] = backgroundObject["slider"];
-
-  chart.activeOverviews = chart.activeOverviews + 1; //MB TODO delete?
 }
 
 function addOverview(chart, overviewID) {
@@ -328,7 +331,6 @@ export function initializeChart() {
   //region overview-initialisation MB ?
   chart.overviews = {
     maxNumOverviews: 3,
-    activeOverviews: 0,
   };
 
   chart.e.overviewStrips = d3
@@ -505,7 +507,7 @@ export function drawCompleteOverviewBackground(overview) {
     slider: overview //MB TODO replace by group
       .append("svg")
       .attr("width", tokenExt + 40)
-      .attr("height", overviewExt + 40 * activeOverviews),
+      .attr("height", overviewExt + 40 * maxNumOverviews),
   };
 }
 
@@ -525,6 +527,7 @@ export function drawInitialOverview(chart) {
     overlay: [0, chart.p.tokenExt],
     selection: [0, chart.p.tokenExt],
   });
+  initializeSliders(maxNumOverviews, maxNumBrushes);
   bindSliderToBrushes(chart, chart.p.tokenExt, 0, 1);
   bindSliderToBrushes(chart, chart.p.tokenExt, 0, 0);
 

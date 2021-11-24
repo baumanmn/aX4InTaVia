@@ -177,7 +177,6 @@ export function updatePartition(chart, brushRanges, overviewID, ids) {
  */
 export function reconfigurePartitions(
   chart,
-  view,
   splitPos,
   firstBrush,
   secondBrush,

@@ -34,25 +34,18 @@ function drawChart(data) {
   initFunctions(chart);
 
   drawInitialOverview(chart);
-
   addInitialCollapseOverview(chart, 1);
-
-  //draw the initial view
 
   initializeButtonContainer(chart);
 
-  //dragChart(chart); //HM
-  //lensChart(chart); //HM
   initIndicator(chart); //HM
-  // initFilters(chart);
   initElemrntAddres(chart); //HM
   initStateController(chart); //HM
 
   $(function () {
-    controller.newMonitor("textDiv", chart);
+    controller.newMonitor("textView_0", chart);
     //initializeStates(chart);
   });
-  console.log(chart);
 }
 
 if (backend) {

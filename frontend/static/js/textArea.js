@@ -3,32 +3,32 @@ import $ from "jquery"; //Jena
 import { extractChunks } from "./drawBars.js";
 import { typeRect } from "./colorMaps";
 import { convertLastOverviewPosition } from "./overview.js";
-import { getSelectedBrushForView } from "./brushSetup.js";
 
 var chart;
 var tempTokenRange;
 
-//init text Area
+const views = {};
+
+/**
+ * Initialize the text area and implement the first text view.
+ * Process and fill the text view with all processed text tokens.
+ * @param {Chart} globalChart
+ */
 export function initTextArea(globalChart) {
   chart = globalChart;
   tempTokenRange = chart.d.tokenRange;
-  //chart.pContainer = container.append("div").attr("id", "pContainer");
-  var textContainer = d3.select("body").append("div").attr("class", "textArea");
-  /* var textContainer = d3
-    .select("body")
-    .append("div")
-    .attr("id", "textDiv")
-    .attr("class", "splitView");
-  //region add text area spans
-  var textDiv = d3.select("#textDiv"); */
-  var textDiv = d3
+
+  d3.select("body").append("div").attr("class", "textArea");
+
+  const textView_0 = d3
     .select(".textArea")
     .append("div")
-    .attr("id", "textDiv")
+    .attr("id", "textView_0")
     .attr("class", "splitView");
-  var j = 0;
+
+  let j = 0;
   for (let i = 0; i < chart.d.tokens.length; i++) {
-    textDiv
+    textView_0
       .append("span")
       .text(chart.d.tokens[i].text)
       .attr("id", "tx_t_" + chart.d.tokens[i].id)
@@ -38,7 +38,7 @@ export function initTextArea(globalChart) {
     if (chart.d.tokens[i + 1]) {
       if (chart.d.tokens[i].end !== chart.d.tokens[i + 1].start) {
         j++;
-        textDiv
+        textView_0
           .append("span")
           .text(" ")
           .attr("class", "text_whitespace")
@@ -47,8 +47,8 @@ export function initTextArea(globalChart) {
       }
     }
   }
-  chart.d.spans = Array.from($("#textDiv").find("span"));
-  //chart.d.spans = $("#textDiv").find("span");
+  chart.d.spans = Array.from($("#textView_0").find("span"));
+  views["textView_0"] = textView_0;
   upadateTextChunks(chart);
 }
 
