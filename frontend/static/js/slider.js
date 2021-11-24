@@ -1,6 +1,10 @@
 import * as d3 from "d3";
 import $ from "jquery";
 import { reconfigurePartitions } from "./overview";
+import {
+  getOverviewPartitionConfig,
+  setOverviewPartitionConfig,
+} from "./drawChart";
 
 export const initPos = 1419; //hardcoded end of brush
 
@@ -52,7 +56,6 @@ export function initializeSliders(numOverviews, maxNumSliders) {
       });
     }
   }
-  console.log(sliders);
 }
 
 /**
@@ -190,6 +193,17 @@ export function bindSliderToBrushes(chart, splitPos, overviewID, id) {
           brush2Ranges,
           id,
           overviewID
+        );
+        let currentOverviewPartitionConfig = getOverviewPartitionConfig(
+          chart,
+          overviewID
+        );
+        currentOverviewPartitionConfig["last_slider_config"][id] =
+          currSlider.pos;
+        setOverviewPartitionConfig(
+          chart,
+          overviewID,
+          currentOverviewPartitionConfig
         );
       });
     });

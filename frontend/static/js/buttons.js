@@ -321,6 +321,7 @@ function drawButtons(overview, chart) {
       })
       .on("click", function (d, j) {
         onClick(chart, overview, i, j);
+        //onClick(chart, overview, i, j);
       });
   }
   dragAndSnap(buttonContainer.selectAll(".buttonRects"), chart);
@@ -354,6 +355,11 @@ function onClick(chart, overview, i, j) {
       setThirdOVActive(chart, currentlyActive[1].id);
     }
   }
+
+  //HACK FOR NOW
+  //0 : [j]
+  //1 : father: i % 3, overview, brush: j
+  //2 : [overview, i%3, j]
 }
 
 var dragAndSnap = d3
@@ -1043,13 +1049,13 @@ function addBrushToWorkbench(id = [0], button) {
       workbench[snap_id]["selectionRange"] = selectionRange;
       workbench[snap_id]["position"] = [y, length];
       workbench[snap_id]["brush"] = workbench.object
-      .append("g")
-      .classed("workbenchBrush", true)
-      .call(workbench[snap_id]["brushObject"])
-      .call(workbench[snap_id]["brushObject"].move, [
-        y + selectionRange[0],
-        y + selectionRange[0] + selectionRange[1], //
-      ]);
+        .append("g")
+        .classed("workbenchBrush", true)
+        .call(workbench[snap_id]["brushObject"])
+        .call(workbench[snap_id]["brushObject"].move, [
+          y + selectionRange[0],
+          y + selectionRange[0] + selectionRange[1], //
+        ]);
       /* workbench[snap_id]["brush"] = workbench.object
         .append("g")
         .classed("workbenchBrush", true)
@@ -1201,7 +1207,7 @@ function redrawWorkbench() {
       .select(".selection")
       .attr("fill", workbench[snap_id]["color"]);
 
-      workbench.object
+    workbench.object
       .append("rect")
       .attr("class", "workbenchDivider")
       .attr("x", overviewMapDepthExt + 100)

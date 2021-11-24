@@ -348,6 +348,20 @@ export function initializeChart() {
   //region overview-initialisation MB ?
   chart.overviews = {};
 
+  chart.overviewConfig = {};
+
+  for (let i = 0; i < maxNumBrushes; i++) {
+    let overviewConfigKey = String(i);
+    chart.overviewConfig[overviewConfigKey] = {
+      num_active_partitions: 0,
+      active_partition: 0,
+      last_brush_config: {},
+      last_slider_config: {},
+    };
+  }
+
+  chart.brushConfig = {};
+
   chart.textViews = {};
 
   return chart;
@@ -563,14 +577,61 @@ export function expandCollapsedOverview(chart, overviewID) {
       [0, chart.d.tokens.length]
     );
   }
+
+  addOverviewConfig(chart, overviewID);
   installBrush(chart, overviewID, {
     brushNr: 0,
     overlay: [0, chart.p.tokenExt],
     selection: [0, chart.p.tokenExt],
   });
-  bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 1);
-  bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 0);
+  for (let i = maxNumSliders - 1; i >= 0; i--) {
+    bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, i);
+  }
+  /*   bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 1);
+  bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 0); */
 
   addInitialCollapseOverview(chart, overviewID + 1);
+}
+
+function addOverviewConfig(chart, overviewNr) {
+  let overviewConfigKey = "";
+  for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
+    const active = chart.overviewConfig[String(i)]["active_partition"];
+    overviewConfigKey += active + "_";
+  }
+  overviewConfigKey += String(overviewNr);
+
+  console.log(chart.overviewConfig);
+  console.log(overviewConfigKey);
+
+  chart.overviewConfig[overviewConfigKey] = {
+    num_active_partitions: 0,
+    active_partition: 0,
+    last_brush_config: {},
+    last_slider_config: {},
+  };
+}
+
+export function getOverviewPartitionConfig(chart, overviewNr) {
+  let overviewConfigKey = "";
+  for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
+    const active = chart.overviewConfig[String(i)]["active_partition"];
+    overviewConfigKey += active + "_";
+  }
+  overviewConfigKey += String(overviewNr);
+
+  return chart.overviewConfig[overviewConfigKey];
+}
+
+export function setOverviewPartitionConfig(chart, overviewNr, partitionInfo) {
+  let overviewConfigKey = "";
+  for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
+    const active = chart.overviewConfig[String(i)]["active_partition"];
+    overviewConfigKey += active + "_";
+  }
+  overviewConfigKey += String(overviewNr);
+
+  chart.overviewConfig[overviewConfigKey] = partitionInfo;
+  console.log(chart.overviewConfig);
 }
 //endregion

@@ -18,6 +18,10 @@ import {
 } from "./overviewState";
 import { updateTextArea } from "./textArea";
 import { currentlyActive } from "./buttons.js";
+import {
+  getOverviewPartitionConfig,
+  setOverviewPartitionConfig,
+} from "./drawChart";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
@@ -140,6 +144,22 @@ export function installBrush(chart, overviewNr, brushData) {
     });
 
   setRanges(overviewNr, brushData);
+
+  let currentOverviewPartitionConfig = getOverviewPartitionConfig(
+    chart,
+    overviewNr
+  );
+
+  if (!currentOverviewPartitionConfig["last_brush_config"][id]) {
+    currentOverviewPartitionConfig["num_active_partitions"] += 1;
+  }
+  //currentOverviewPartitionConfig["active_partition"] = id;
+  currentOverviewPartitionConfig["last_brush_config"][id] = {
+    selection: brushData["selection"],
+    overlay: brushData["overlay"],
+  };
+
+  setOverviewPartitionConfig(chart, overviewNr, currentOverviewPartitionConfig);
 }
 
 function handleBrushEnd(chart, overviewNr, brushData) {

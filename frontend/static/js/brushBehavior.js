@@ -23,6 +23,10 @@ import {
   updateAllGrandButtonRectangles,
   drawNameTBDdRectangle,
 } from "./buttons.js";
+import {
+  getOverviewPartitionConfig,
+  setOverviewPartitionConfig,
+} from "./drawChart";
 
 //the first and last token OR bin (id and x-value), whose extension contains x0 or x1
 export function computeSnap(chart, x0, x1) {
@@ -329,6 +333,17 @@ export function brushEnd(chart, brush = 0, overview = 0) {
   //updateEvents();
   autoScrollTextArea();
   deleteAllIndicators(); //HM for escaping hover bugs during the brash process
+
+  let currentOverviewPartitionConfig = getOverviewPartitionConfig(
+    chart,
+    overview
+  );
+  if (currentOverviewPartitionConfig["last_brush_config"][brush]) {
+    currentOverviewPartitionConfig["last_brush_config"][brush][
+      "selection"
+    ] = snapPos;
+    setOverviewPartitionConfig(chart, overview, currentOverviewPartitionConfig);
+  }
 }
 
 //TODO Cleen console logs and idiot commentss
