@@ -230,7 +230,8 @@ export function initializeChart() {
     maxLevelsCompUncomp,
     maxLevelsSupercompComp,
     maxLevelsSupercompCompAgg,
-    maxNumOverviews, //added by Jena
+    maxNumOverviews,
+    maxNumBrushes,
     minimalBrush,
     numOfTerms,
     orientation,
@@ -360,9 +361,13 @@ export function initializeChart() {
     };
   }
 
-  chart.brushConfig = {};
+  chart.brushRanges = {};
 
   chart.textViews = {};
+
+  chart.brushFamilyMap = {};
+
+  chart.indicatorMap = {};
 
   return chart;
 }
@@ -601,9 +606,6 @@ function addOverviewConfig(chart, overviewNr) {
   }
   overviewConfigKey += String(overviewNr);
 
-  console.log(chart.overviewConfig);
-  console.log(overviewConfigKey);
-
   chart.overviewConfig[overviewConfigKey] = {
     num_active_partitions: 0,
     active_partition: 0,
@@ -612,26 +614,155 @@ function addOverviewConfig(chart, overviewNr) {
   };
 }
 
-export function getOverviewPartitionConfig(chart, overviewNr) {
+function getOverviewConfigKey(chart, overviewNr) {
   let overviewConfigKey = "";
   for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
     const active = chart.overviewConfig[String(i)]["active_partition"];
     overviewConfigKey += active + "_";
   }
   overviewConfigKey += String(overviewNr);
+
+  return overviewConfigKey;
+}
+
+export function getOverviewPartitionConfig(chart, overviewNr) {
+  let overviewConfigKey = getOverviewConfigKey(chart, overviewNr);
 
   return chart.overviewConfig[overviewConfigKey];
 }
 
 export function setOverviewPartitionConfig(chart, overviewNr, partitionInfo) {
+  let overviewConfigKey = getOverviewConfigKey(chart, overviewNr);
+
+  chart.overviewConfig[overviewConfigKey] = partitionInfo;
+  console.log(chart.overviewConfig);
+}
+
+export function setOverviewPartitionConfigViaPath(
+  chart,
+  overviewNr,
+  path,
+  partitionInfo
+) {
   let overviewConfigKey = "";
-  for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
-    const active = chart.overviewConfig[String(i)]["active_partition"];
-    overviewConfigKey += active + "_";
+  for (let i = 0; i < path.length; i++) {
+    overviewConfigKey += path[i] + "_";
   }
   overviewConfigKey += String(overviewNr);
 
   chart.overviewConfig[overviewConfigKey] = partitionInfo;
-  console.log(chart.overviewConfig);
+}
+
+export function getBrushConfigKey(chart, overviewNr, brushPartition) {
+  let brushConfigKey = "";
+  for (let i = 0; i <= overviewNr && i < maxNumOverviews; i++) {
+    const active = chart.overviewConfig[String(i)]["active_partition"];
+    brushConfigKey += active + "_";
+  }
+  brushConfigKey += String(brushPartition);
+
+  return brushConfigKey;
+}
+
+export function getBrushStateWithoutKey(chart, overviewNr, brushPartition) {
+  let brushConfigKey = getBrushConfigKey(chart, overviewNr, brushPartition);
+  let brushData = chart.brushRanges[brushConfigKey];
+
+  return brushData;
+}
+
+export function setBrushStateWithoutKey(
+  chart,
+  overviewNr,
+  brushPartition,
+  brushData
+) {
+  let brushConfigKey = getBrushConfigKey(chart, overviewNr, brushPartition);
+  chart.brushRanges[brushConfigKey] = brushData;
+}
+
+export function getBrushState(chart, brushConfigKey) {
+  let brushData = chart.brushRanges[brushConfigKey];
+
+  return brushData;
+}
+
+export function setBrushState(chart, brushConfigKey, brushData) {
+  chart.brushRanges[brushConfigKey] = brushData;
+}
+
+export function addBrushToFamilyMap(chart, overviewNr, brushPartition) {
+  let parentBrushID = -1;
+  if (overviewNr > 0) {
+    let parentOverviewConfig = getOverviewPartitionConfig(
+      chart,
+      overviewNr - 1
+    );
+    let parentBrushPartition = parentOverviewConfig["active_partition"];
+    parentBrushID = getBrushConfigKey(
+      chart,
+      overviewNr - 1,
+      parentBrushPartition
+    );
+  }
+  let brushID = getBrushConfigKey(chart, overviewNr, brushPartition);
+
+  if (!chart.brushFamilyMap[brushID]) {
+    chart.brushFamilyMap[brushID] = {
+      parent: parentBrushID,
+      siblings: new Set([]),
+      children: new Set([]),
+    };
+  }
+}
+
+export function addChildBrushToFamilyMap(chart, overviewNr, brushPartition) {
+  if (overviewNr === 0) {
+    return 0;
+  }
+  let parentOverviewConfig = getOverviewPartitionConfig(chart, overviewNr - 1);
+  let parentBrushPartition = parentOverviewConfig["active_partition"];
+  let parentBrushID = getBrushConfigKey(
+    chart,
+    overviewNr - 1,
+    parentBrushPartition
+  );
+  let childBrushID = getBrushConfigKey(chart, overviewNr, brushPartition);
+
+  chart.brushFamilyMap[parentBrushID]["children"].add(childBrushID);
+}
+
+export function addSiblingBrushToFamilyMap(chart, overviewNr, brushPartition) {
+  let overviewConfig = getOverviewPartitionConfig(chart, overviewNr);
+  let num_active_partitions = overviewConfig["num_active_partitions"];
+
+  let brushID = getBrushConfigKey(chart, overviewNr, brushPartition);
+
+  for (let i = 0; i < num_active_partitions; i++) {
+    if (i != brushPartition) {
+      let siblingPartition = i;
+      let siblingID = getBrushConfigKey(chart, overviewNr, siblingPartition);
+
+      chart.brushFamilyMap[brushID]["siblings"].add(siblingID);
+      chart.brushFamilyMap[siblingID]["siblings"].add(brushID);
+    }
+  }
+  console.log(chart.brushFamilyMap);
+}
+
+export function getFamilyOfBrush(chart, brushID) {
+  let familyData = chart.brushFamilyMap[brushID];
+
+  return familyData;
+}
+
+export function getBrushIndicators(chart, brushID) {
+  let indicatorData = chart.indicatorMap[brushID];
+
+  return indicatorData;
+}
+
+export function setBrushIndicators(chart, brushID, indicatorData) {
+  chart.indicatorMap[brushID] = indicatorData;
 }
 //endregion

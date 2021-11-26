@@ -21,7 +21,13 @@ import { currentlyActive } from "./buttons.js";
 import {
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
+  setBrushState,
+  setBrushStateWithoutKey,
+  addBrushToFamilyMap,
+  addChildBrushToFamilyMap,
+  addSiblingBrushToFamilyMap,
 } from "./drawChart";
+import { cascadingBrushIndicatorUpdate } from "./brushIndicators";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
@@ -160,6 +166,16 @@ export function installBrush(chart, overviewNr, brushData) {
   };
 
   setOverviewPartitionConfig(chart, overviewNr, currentOverviewPartitionConfig);
+  setBrushStateWithoutKey(chart, overviewNr, id, {
+    overlay: brushData["overlay"],
+    selection: brushData["selection"],
+  });
+
+  addBrushToFamilyMap(chart, overviewNr, id);
+  addChildBrushToFamilyMap(chart, overviewNr, id);
+  addSiblingBrushToFamilyMap(chart, overviewNr, id);
+
+  cascadingBrushIndicatorUpdate(chart, overviewNr, id);
 }
 
 function handleBrushEnd(chart, overviewNr, brushData) {

@@ -629,7 +629,7 @@ export function drawStateRectangle(
     .attr("class", "stateRect")
     //.attr("x", binRange[0] + 5)
     .attr("x", range[0])
-    .attr("y", chart.p.overviewExt / 3)
+    .attr("y", chart.p.overviewExt / 5)
     .attr("width", w)
     .attr("height", 10);
 

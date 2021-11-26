@@ -26,6 +26,8 @@ import {
 import {
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
+  getBrushState,
+  setBrushState,
 } from "./drawChart";
 
 //the first and last token OR bin (id and x-value), whose extension contains x0 or x1
@@ -343,6 +345,11 @@ export function brushEnd(chart, brush = 0, overview = 0) {
       "selection"
     ] = snapPos;
     setOverviewPartitionConfig(chart, overview, currentOverviewPartitionConfig);
+  }
+  let currentBrushData = getBrushState(chart, overview, brush);
+  if (currentBrushData) {
+    currentBrushData["selection"] = snapPos;
+    setBrushState(chart, overview, brush, currentBrushData);
   }
 }
 
