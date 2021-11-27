@@ -62,6 +62,11 @@ const [overviewStripsWidth, overviewStripsHeight] =
     ? [overviewStripsExt, stripsExt]
     : [stripsExt, overviewStripsExt];
 const buttonsWidth = 500;
+const indicatorYFunction = d3
+  .scaleBand()
+  .range([5, overviewExt])
+  .domain([...Array(maxNumOverviews).keys()]);
+const indicatorH = Math.max(2, overviewExt / maxNumOverviews - 5);
 
 //const margins = {
 //  top: 0, //former 20
@@ -232,6 +237,8 @@ export function initializeChart() {
     maxLevelsSupercompCompAgg,
     maxNumOverviews,
     maxNumBrushes,
+    indicatorH,
+    indicatorYFunction,
     minimalBrush,
     numOfTerms,
     orientation,
@@ -635,7 +642,7 @@ export function setOverviewPartitionConfig(chart, overviewNr, partitionInfo) {
   let overviewConfigKey = getOverviewConfigKey(chart, overviewNr);
 
   chart.overviewConfig[overviewConfigKey] = partitionInfo;
-  console.log(chart.overviewConfig);
+  //console.log(chart.overviewConfig);
 }
 
 export function setOverviewPartitionConfigViaPath(
@@ -747,7 +754,7 @@ export function addSiblingBrushToFamilyMap(chart, overviewNr, brushPartition) {
       chart.brushFamilyMap[siblingID]["siblings"].add(brushID);
     }
   }
-  console.log(chart.brushFamilyMap);
+  //console.log(chart.brushFamilyMap);
 }
 
 export function getFamilyOfBrush(chart, brushID) {

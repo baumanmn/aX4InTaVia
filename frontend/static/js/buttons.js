@@ -556,6 +556,7 @@ function extractNumbers(id) {
 //-----------------------------------------------------------
 
 export function drawNameTBDdRectangle(chart, id) {
+  return 0;
   let staticOverviewG = d3.select("#nameTBD");
   let staticOverviewRect = d3.select("#nameTDB_overview");
 
@@ -619,6 +620,7 @@ export function drawNameTBDdCircle(chart, id) {
 }
 
 export function drawButtonRectangle(overview, id, splitPos = null) {
+  return 0;
   let convertedBrushID =
     overview === 1 ? "button_" + id[0] : "button_" + id[0] + "_" + id[1];
   let assignedButton = d3.select("#" + convertedBrushID);
@@ -675,6 +677,7 @@ export function drawButtonRectangle(overview, id, splitPos = null) {
 }
 
 export function drawGrandButtonRectangle(id) {
+  return 0;
   let convertedBrushID = "button_" + id[0];
   let assignedButton = d3.select("#" + convertedBrushID);
   let buttonRectID = convertedBrushID + "_rect_" + id.join("_");
@@ -718,6 +721,7 @@ export function drawGrandButtonRectangle(id) {
 }
 
 export function updateAllGrandButtonRectangles(id) {
+  return 0;
   let convertedBrushID = "button_" + id;
   let assignedButton = d3.select("#" + convertedBrushID);
 

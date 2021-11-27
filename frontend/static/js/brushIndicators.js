@@ -7,16 +7,24 @@ import {
   setBrushIndicators,
 } from "./drawChart";
 
+import * as d3 from "d3";
+
 export function cascadingBrushIndicatorUpdate(
   chart,
   overviewNr,
   brushPartition
 ) {
+  console.log("---call----");
   const referenceLength = chart.p.tokenExt;
 
   const rootBrushKey = getBrushConfigKey(chart, overviewNr, brushPartition);
 
-  const rootBrushRanges = getBrushState(chart, rootBrushKey)["selection"];
+  const rootBrushData = getBrushState(chart, rootBrushKey);
+
+  if (!rootBrushKey || !rootBrushData) return 0;
+
+  const rootBrushRanges = rootBrushData["selection"];
+  console.log(rootBrushRanges);
 
   const root_L = rootBrushRanges[1] - rootBrushRanges[0];
 
@@ -34,8 +42,8 @@ export function cascadingBrushIndicatorUpdate(
     let nextNode = successorStack.shift();
 
     let currBrushID = nextNode["id"];
-    let L_parent_transf = nextNode["L_parent_transf"];
-    let X_parent_transf = nextNode["X_parent_transf"];
+    let L_parent_transf = nextNode["L_transf"];
+    let X_parent_transf = nextNode["X_transf"];
 
     let childrenKeys = getFamilyOfBrush(chart, currBrushID)["children"];
 
@@ -73,25 +81,24 @@ export function cascadingBrushIndicatorUpdate(
     brushIndicators.forEach((indicator) => indicator.remove());
   }
 
-  let endOfSVG = chart.p.overviewExt; //-10 missing if i_d = 1 (see below)
-  let init_height = 10;
+  const height = chart.p.indicatorH;
 
-  if (successorStack.length > 0) {
-    brushIndicators = successorStack.map((successor) => {
+  if (indicators.length > 0) {
+    brushIndicators = indicators.map((successor) => {
       let position = successor["pos"];
       let depth = successor["depth"];
 
-      let inverse_depth = Math.min(1, chart.p.maxNumOverviews - depth - 1);
-      let y = endOfSVG / inverse_depth;
-      let height = init_height / depth;
+      let width = position[1] - position[0];
 
-      return chart.overviews[overviewNr]["brushGroup"]
+      let y = chart.p.indicatorYFunction(depth - 1);
+
+      return chart.overviews[overviewNr]["brushGroup"][brushPartition]
         .select("svg")
         .append("rect")
         .attr("class", "stateRect")
         .attr("x", position[0])
         .attr("y", y)
-        .attr("width", position[1])
+        .attr("width", width)
         .attr("height", height)
         .attr("fill", "red");
     });

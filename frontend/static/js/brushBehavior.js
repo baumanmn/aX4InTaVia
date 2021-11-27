@@ -28,7 +28,12 @@ import {
   setOverviewPartitionConfig,
   getBrushState,
   setBrushState,
+  getBrushStateWithoutKey,
 } from "./drawChart";
+import {
+  cascadingBrushIndicatorUpdate,
+  cascadingSplitIndicatorUpdate,
+} from "./brushIndicators.js";
 
 //the first and last token OR bin (id and x-value), whose extension contains x0 or x1
 export function computeSnap(chart, x0, x1) {
@@ -235,6 +240,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     snapPos
   );
   chart.e.detail.call(chart.zoom.transform, newTransform);
+
   //chartClickFix();
   if (overview === 0) {
     /**
@@ -346,10 +352,11 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     ] = snapPos;
     setOverviewPartitionConfig(chart, overview, currentOverviewPartitionConfig);
   }
-  let currentBrushData = getBrushState(chart, overview, brush);
+  let currentBrushData = getBrushStateWithoutKey(chart, overview, brush);
   if (currentBrushData) {
     currentBrushData["selection"] = snapPos;
     setBrushState(chart, overview, brush, currentBrushData);
+    cascadingBrushIndicatorUpdate(chart, overview, brush);
   }
 }
 

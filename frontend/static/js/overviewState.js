@@ -371,6 +371,7 @@ export function setPartitionAsTrue(parentID, childID, overview = 1) {
  * @param {*} overview
  */
 export function drawSplitIndicator(chart, sliderID, splitPos, overview = 1) {
+  return 0;
   let currStateEncoder;
   let overviewBrush;
   let parentID;
@@ -438,6 +439,7 @@ export function drawSplitIndicator(chart, sliderID, splitPos, overview = 1) {
  * @param {*} overview
  */
 export function updateAllIndicators(chart, overview) {
+  return 0;
   if (!chart.overviews[1] && !chart.overviews[2]) return 0;
 
   let currStateEncoder;
@@ -556,6 +558,7 @@ export function updateAllIndicators(chart, overview) {
  * @param {*} overview
  */
 export function resetIndicator(overview) {
+  return 0;
   if (overview === 1) {
     for (let i = 0; i < 3; i++) {
       if (stateEncoder[i].childSplitIndicator[0] != "") {
@@ -603,6 +606,7 @@ export function drawStateRectangle(
   binRange,
   overview = 1
 ) {
+  return 0;
   let currStateEncoder = stateEncoder;
   let overviewBrush;
   if (overview === 1) {
@@ -688,6 +692,7 @@ export function updateStateRectangle(
   binRange,
   overview = 1
 ) {
+  return 0;
   let currStateEncoder = stateEncoder;
   let overviewBrush;
   if (overview === 1) {
@@ -814,6 +819,7 @@ export function updateStateRectangle(
  * @param {*} overview
  */
 export function updateAll(chart, parentID, overview = 1) {
+  return 0;
   let currStateEncoder = stateEncoder;
   let overviewBrush;
   let grandParent;
@@ -890,6 +896,7 @@ export function updateAll(chart, parentID, overview = 1) {
  * @param {number} id
  */
 export function removeAllGrandChildren(id = stateEncoder.parentActive) {
+  return 0;
   for (
     let i = 0;
     i < stateEncoder[id].grandchildOverviewRectangles.length;
@@ -909,6 +916,7 @@ export function removeAllGrandChildren(id = stateEncoder.parentActive) {
  * @param {*} overview
  */
 export function removeAllForParent(chart, parentID, overview = 1) {
+  return 0;
   let currStateEncoder = stateEncoder;
   let overviewBrush;
   if (overview === 1) {
@@ -1047,6 +1055,7 @@ export function setSplitFlag(overviewNr, ids, boolFlag) {
 }
 
 export function indicatorUpdatePipeline(chart, metaData) {
+  return 0;
   for (let [overviewNr, data] of Object.entries(metaData)) {
     if (data["brushIndices"] !== undefined) {
       for (let idx = 0; idx < data["brushIndices"].length; idx++) {
