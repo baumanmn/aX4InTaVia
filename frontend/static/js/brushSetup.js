@@ -27,7 +27,10 @@ import {
   addChildBrushToFamilyMap,
   addSiblingBrushToFamilyMap,
 } from "./drawChart";
-import { cascadingBrushIndicatorUpdate } from "./brushIndicators";
+import {
+  ascendingBrushIndicatorUpdate,
+  cascadingBrushIndicatorUpdate,
+} from "./brushIndicators";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
@@ -176,6 +179,7 @@ export function installBrush(chart, overviewNr, brushData) {
   addSiblingBrushToFamilyMap(chart, overviewNr, id);
 
   cascadingBrushIndicatorUpdate(chart, overviewNr, id);
+  ascendingBrushIndicatorUpdate(chart, overviewNr, id);
 }
 
 function handleBrushEnd(chart, overviewNr, brushData) {

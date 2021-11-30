@@ -31,8 +31,8 @@ import {
   getBrushStateWithoutKey,
 } from "./drawChart";
 import {
+  ascendingBrushIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
-  cascadingSplitIndicatorUpdate,
 } from "./brushIndicators.js";
 
 //the first and last token OR bin (id and x-value), whose extension contains x0 or x1
@@ -357,6 +357,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     currentBrushData["selection"] = snapPos;
     setBrushState(chart, overview, brush, currentBrushData);
     cascadingBrushIndicatorUpdate(chart, overview, brush);
+    ascendingBrushIndicatorUpdate(chart, overview, brush);
   }
 }
 

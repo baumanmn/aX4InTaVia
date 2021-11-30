@@ -393,9 +393,9 @@ margin-left: 40px;
   top: 35px;
 }
 
-.stateRect {
+.partitionIndicator,
+.splitIndicator {
   stroke: red;
-  fill: red;
   opacity: 0.5;
 }
 

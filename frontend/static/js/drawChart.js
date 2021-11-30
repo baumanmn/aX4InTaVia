@@ -47,7 +47,7 @@ const [annoWindowWidth, annoWindowHeight] =
 /**
  * OVERVIEW RELATED CONSTANTS
  */
-const maxNumOverviews = 5;
+const maxNumOverviews = 3;
 const maxNumBrushes = 3;
 const maxNumSliders = maxNumBrushes - 1;
 const maxNumTextViews = maxNumBrushes;
@@ -62,11 +62,22 @@ const [overviewStripsWidth, overviewStripsHeight] =
     ? [overviewStripsExt, stripsExt]
     : [stripsExt, overviewStripsExt];
 const buttonsWidth = 500;
+const indicatorPadding = 5;
+const indicatorMinHeight = 2;
 const indicatorYFunction = d3
   .scaleBand()
-  .range([5, overviewExt])
-  .domain([...Array(maxNumOverviews).keys()]);
-const indicatorH = Math.max(2, overviewExt / maxNumOverviews - 5);
+  .domain([...Array(maxNumOverviews).keys()])
+  .range([indicatorPadding, overviewExt]);
+const indicatorH = Math.max(
+  indicatorMinHeight,
+  overviewExt / maxNumOverviews - indicatorPadding
+);
+const indicatorShader = d3
+  .scaleLinear()
+  .domain([...Array(maxNumOverviews).keys()])
+  .range(["black", "gray"]);
+
+const splitIndicatorSize = indicatorH;
 
 //const margins = {
 //  top: 0, //former 20
@@ -239,6 +250,8 @@ export function initializeChart() {
     maxNumBrushes,
     indicatorH,
     indicatorYFunction,
+    indicatorShader,
+    splitIndicatorSize,
     minimalBrush,
     numOfTerms,
     orientation,
@@ -669,6 +682,11 @@ export function getBrushConfigKey(chart, overviewNr, brushPartition) {
   brushConfigKey += String(brushPartition);
 
   return brushConfigKey;
+}
+
+export function getBrushPartitionFromKey(brushKey) {
+  const split = brushKey.split("_");
+  return split[split.length - 1];
 }
 
 export function getBrushStateWithoutKey(chart, overviewNr, brushPartition) {
