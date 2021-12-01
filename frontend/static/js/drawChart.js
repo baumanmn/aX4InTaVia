@@ -370,8 +370,14 @@ export function initializeChart() {
   chart.overviews = {};
 
   chart.overviewConfig = {};
+  chart.overviewConfig["0"] = {
+    num_active_partitions: 0,
+    active_partition: 0,
+    last_brush_config: {},
+    last_slider_config: {},
+  };
 
-  for (let i = 0; i < maxNumBrushes; i++) {
+  /* for (let i = 0; i < maxNumBrushes; i++) {
     let overviewConfigKey = String(i);
     chart.overviewConfig[overviewConfigKey] = {
       num_active_partitions: 0,
@@ -379,7 +385,7 @@ export function initializeChart() {
       last_brush_config: {},
       last_slider_config: {},
     };
-  }
+  } */
 
   chart.brushRanges = {};
 
@@ -619,12 +625,12 @@ export function expandCollapsedOverview(chart, overviewID) {
 }
 
 function addOverviewConfig(chart, overviewNr) {
-  let overviewConfigKey = "";
+  let overviewConfigKey = "0";
   for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
-    const active = chart.overviewConfig[String(i)]["active_partition"];
-    overviewConfigKey += active + "_";
+    const active = chart.overviewConfig[overviewConfigKey]["active_partition"];
+    overviewConfigKey += "_" + active;
   }
-  overviewConfigKey += String(overviewNr);
+  //overviewConfigKey += String(overviewNr);
 
   chart.overviewConfig[overviewConfigKey] = {
     num_active_partitions: 0,
@@ -635,12 +641,12 @@ function addOverviewConfig(chart, overviewNr) {
 }
 
 function getOverviewConfigKey(chart, overviewNr) {
-  let overviewConfigKey = "";
+  let overviewConfigKey = "0";
   for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
-    const active = chart.overviewConfig[String(i)]["active_partition"];
-    overviewConfigKey += active + "_";
+    const active = chart.overviewConfig[overviewConfigKey]["active_partition"];
+    overviewConfigKey += "_" + active;
   }
-  overviewConfigKey += String(overviewNr);
+  //overviewConfigKey += String(overviewNr);
 
   return overviewConfigKey;
 }
@@ -683,12 +689,12 @@ export function getActiveBrushesInOverview(chart, overviewNr) {
 }
 
 export function getBrushConfigKey(chart, overviewNr, brushPartition) {
-  let brushConfigKey = "";
-  for (let i = 0; i <= overviewNr && i < maxNumOverviews; i++) {
-    const active = chart.overviewConfig[String(i)]["active_partition"];
-    brushConfigKey += active + "_";
+  let brushConfigKey = "0";
+  for (let i = 0; i < overviewNr && i < maxNumOverviews; i++) {
+    const active = chart.overviewConfig[brushConfigKey]["active_partition"];
+    brushConfigKey += "_" + active;
   }
-  brushConfigKey += String(brushPartition);
+  brushConfigKey += "_" + String(brushPartition);
 
   return brushConfigKey;
 }

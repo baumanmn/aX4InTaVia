@@ -1302,6 +1302,7 @@ export function drawButtonTree(chart) {
     const xPos = xScale(overviewDepth);
 
     const ys = drawButtons(
+      chart,
       xPos,
       buttonWidth,
       nextPartitionData["y0"],
@@ -1327,21 +1328,28 @@ export function drawButtonTree(chart) {
   }
 }
 
-const drawButtons = (x, w, y0, y1, partitions) => {
+const drawButtons = (chart, x, w, y0, y1, partitions) => {
   const buttonIDPrefix = "button_";
+
   const n = partitions.length;
+
   const yScale = d3
     .scaleBand()
     .domain(d3.range(n))
     .range([y0, y1])
     .paddingInner(0.005);
+
   const y_pos = {};
+
   partitions.forEach((part, idx) => {
+    const buttonID = buttonIDPrefix + part;
+
     const y_part = yScale(idx);
     const h_part = yScale.bandwidth();
+
     svg
       .append("rect")
-      .attr("id", buttonIDPrefix + part)
+      .attr("id", buttonID)
       .attr("class", "buttonTreeElement")
       .attr("x", x)
       .attr("width", w)
@@ -1349,7 +1357,8 @@ const drawButtons = (x, w, y0, y1, partitions) => {
       .attr("height", h_part)
       .attr("fill", "lightgray")
       .attr("stroke", "black")
-      .attr("stroke-width", "1px");
+      .attr("stroke-width", "1px")
+      .on("click", () => buttonOnClick(chart, buttonID));
 
     y_pos[part] = {
       y0: y_part,
@@ -1358,4 +1367,12 @@ const drawButtons = (x, w, y0, y1, partitions) => {
   });
 
   return y_pos;
+};
+
+const buttonOnClick = (chart, buttonID) => {
+  let strippedOverviewKey = buttonID.split("_");
+  strippedOverviewKey.shift();
+  strippedOverviewKey.pop();
+  strippedOverviewKey = strippedOverviewKey.join("_");
+  console.log(chart.overviewConfig[strippedOverviewKey]);
 };
