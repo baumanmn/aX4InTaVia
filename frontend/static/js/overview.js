@@ -32,6 +32,7 @@ import {
   drawNameTBDdRectangle,
   drawNameTBDdCircle,
   renderButton,
+  drawButtonTree,
 } from "./buttons";
 
 /**
@@ -332,6 +333,8 @@ export function reconfigurePartitions(
       sliderID + 1,
     ]);
   }
+
+  drawButtonTree(chart);
 }
 
 export function checkAndUpdateSplit(chart, overviewID, key) {

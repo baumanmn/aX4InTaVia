@@ -655,7 +655,6 @@ export function setOverviewPartitionConfig(chart, overviewNr, partitionInfo) {
   let overviewConfigKey = getOverviewConfigKey(chart, overviewNr);
 
   chart.overviewConfig[overviewConfigKey] = partitionInfo;
-  //console.log(chart.overviewConfig);
 }
 
 export function setOverviewPartitionConfigViaPath(
@@ -671,6 +670,16 @@ export function setOverviewPartitionConfigViaPath(
   overviewConfigKey += String(overviewNr);
 
   chart.overviewConfig[overviewConfigKey] = partitionInfo;
+}
+
+export function getActiveBrushesInOverview(chart, overviewNr) {
+  let overviewConfigKey = getOverviewConfigKey(chart, overviewNr);
+  let activeKeyData =
+    chart.overviewConfig[overviewConfigKey]["last_brush_config"];
+  let activeBrushKeys = Array.from(Object.keys(activeKeyData));
+  activeBrushKeys = activeBrushKeys.map((key) => overviewConfigKey + "_" + key);
+
+  return activeBrushKeys;
 }
 
 export function getBrushConfigKey(chart, overviewNr, brushPartition) {

@@ -24,6 +24,7 @@ import {
   updateAnnoViewRange,
   updateAnnoViewID,
 } from "./splitAnnotationWindow";
+import { getActiveBrushesInOverview, getFamilyOfBrush } from "./drawChart";
 //endregion
 
 export var activeCoding = false;
@@ -100,6 +101,8 @@ export function initializeButtonContainer(chart) {
     .attr("height", overviewMapExt);
   //.attr("viewBox", `0 0 ${overviewMapDepthExt} ${overviewMapExt}`);
   //svg = wrapperDiv.append("svg").attr("height", "100%").attr("width", "100%");
+
+  return 0;
 
   // Initialization
   initializeButtonStructure(num_overviews, num_brushes, color_palette);
@@ -211,7 +214,8 @@ function initializeButtonStructure(num_overviews, num_brushes, color_palette) {
   }
 }
 
-function drawButtons(overview, chart) {
+function drawButtons1(overview, chart) {
+  return 0;
   let buttonContainer = svg.select(".overviewGroups_" + overview);
   buttonContainer.selectAll("g").remove();
 
@@ -328,6 +332,7 @@ function drawButtons(overview, chart) {
 }
 
 function assignID(overview, i, j) {
+  return 0;
   if (overview === 0) {
     return String(j);
   } else if (overview === 1) {
@@ -400,6 +405,7 @@ var dragAndSnap = d3
 // Function/behavioural methods
 //-----------------------------------------------------------
 function updateButtonColoring(overview, i, force = false) {
+  return 0;
   let groupName = ".group_" + overview + "_" + i;
   svg
     .select(groupName)
@@ -418,6 +424,7 @@ function updateButtonColoring(overview, i, force = false) {
 }
 
 function updateSubTree(overview, i, j) {
+  return 0;
   /**
    * make previously active subtree inactive,
    * force-color previously active buttons,
@@ -471,6 +478,7 @@ function updateSubTree(overview, i, j) {
  * @param {number} j ID of the Brush, specifically included for overview 0
  */
 function checkAndActivate(overview, i, j = 0) {
+  return 0;
   /**
    * sum of values assigned to the buttons
    * if the sum is smaller than (buttonIsActive + 2 * buttonWasRendered)
@@ -490,6 +498,7 @@ function checkAndActivate(overview, i, j = 0) {
 }
 
 function setButtonActive(overview, i, brushID) {
+  return 0;
   let former = buttons[overview].brushes[i];
   for (let j = 0; j < former.length; j++) {
     j === brushID
@@ -513,6 +522,7 @@ function sum(array) {
 }
 
 function intersection(buttonPos, buttonWH) {
+  return 0;
   let wX = parseInt(d3.select("#workbench").attr("x"));
   let wY = parseInt(d3.select("#workbench").attr("y"));
   let wW = parseInt(d3.select("#workbench").attr("width"));
@@ -590,6 +600,7 @@ export function drawNameTBDdRectangle(chart, id) {
 
 //incoming id: id of brush to the left of the new split
 export function drawNameTBDdCircle(chart, id) {
+  return 0;
   let staticOverviewG = d3.select("#nameTBD");
   let staticOverviewRect = d3.select("#nameTDB_overview");
 
@@ -768,6 +779,7 @@ export function updateAllGrandButtonRectangles(id) {
 }
 
 export function renderButton(chart, overview, i, brushID) {
+  return 0;
   if (noRendering === true) return 0;
   if (buttons[overview].brushes[i][brushID] >= buttonWasRendered) return 0;
   buttons[overview].brushes[i][brushID] = buttonWasRendered;
@@ -781,6 +793,7 @@ export function renderButton(chart, overview, i, brushID) {
 }
 
 export function adjustWorkBenchBrush(id, selectionRange = null) {
+  return 0;
   $(function () {
     if (workbench === undefined) return 0;
     let snap_id = isBrushAssignedToWB(id);
@@ -824,6 +837,7 @@ export function adjustWorkBenchBrush(id, selectionRange = null) {
 }
 
 function setSecondOVActive(chart, id) {
+  return 0;
   if (currentlyActiveBrush == id) {
     resetSecondOverviewAndStateRects(chart, id);
     return 0;
@@ -840,6 +854,7 @@ function setSecondOVActive(chart, id) {
 }
 
 function setThirdOVActive(chart, id) {
+  return 0;
   removeAllGrandChildren();
   if (id == stateEncoder[stateEncoder.parentActive].children.childActive) {
     resetThirdOverviewAndStateRects(chart, id);
@@ -854,6 +869,7 @@ function setThirdOVActive(chart, id) {
 }
 
 function adjustOverviewBrush(snap_id) {
+  return 0;
   if (d3.event.sourceEvent && d3.event.sourceEvent.type === "end") return;
 
   let brush = workbench[snap_id]["brush"];
@@ -919,6 +935,7 @@ function adjustOverviewBrush(snap_id) {
 // Workbench
 //-----------------------------------------------------------
 function getBrushRanges(snap_id) {
+  return 0;
   let ids = workbench[snap_id]["ids"];
   let leftSelection, rightSelection, leftOverlay, rightOverlay;
   if (ids.length === 1) {
@@ -956,6 +973,7 @@ function convertBrushRanges(range, source_length, target_length) {
 }
 
 function isBrushAssignedToWB(id) {
+  return "";
   let result = "";
   for (let i = 0; i < workbench.num_snaps; i++) {
     let snap_id = "snap_" + i;
@@ -973,6 +991,7 @@ function isBrushAssignedToWB(id) {
 }
 
 function addBrushToWorkbench(id = [0], button) {
+  return 0;
   if (isBrushAssignedToWB(id) != "") return 0;
 
   $(function () {
@@ -1127,6 +1146,7 @@ function addBrushToWorkbench(id = [0], button) {
 }
 
 function isPartOfSubtree(id) {
+  return -1;
   if (workbench.num_snaps < 1) return -1;
   let result = true;
   let sameTreeSnapID = -1;
@@ -1159,6 +1179,7 @@ function isPartOfSubtree(id) {
 } */
 
 function redrawWorkbench() {
+  return 0;
   workbench.object.selectAll(".workbenchBrush").remove();
   workbench.object.selectAll(".workbenchDivider").remove();
 
@@ -1245,3 +1266,96 @@ function redrawWorkbench() {
     y += length;
   }
 }
+
+export function drawButtonTree(chart) {
+  if (!svg) return 0;
+
+  svg.selectAll(".buttonTreeElement").remove();
+
+  const externalPadding = 20;
+  const internalPadding = 0.05;
+
+  const xScale = d3
+    .scaleBand()
+    .domain(d3.range(chart.p.maxNumOverviews))
+    .rangeRound([overviewMapDepthExt, externalPadding])
+    .paddingInner(internalPadding);
+
+  const buttonWidth = xScale.bandwidth();
+
+  let rootPartition = getActiveBrushesInOverview(chart, 0);
+
+  let treeStack = [
+    {
+      partition: rootPartition,
+      depth: 0,
+      y0: 0,
+      y1: overviewMapExt,
+    },
+  ];
+
+  while (treeStack.length > 0) {
+    const nextPartitionData = treeStack.shift();
+    const nextPartition = nextPartitionData["partition"];
+    const overviewDepth = nextPartitionData["depth"];
+
+    const xPos = xScale(overviewDepth);
+
+    const ys = drawButtons(
+      xPos,
+      buttonWidth,
+      nextPartitionData["y0"],
+      nextPartitionData["y1"],
+      nextPartition
+    );
+
+    nextPartition.forEach((part) => {
+      //const nextButtonData = getBrushState(chart, part);
+      const nextButtonFamily = getFamilyOfBrush(chart, part);
+      const children = Array.from(nextButtonFamily["children"]);
+      const y_pos = ys[part];
+
+      if (children.length > 0) {
+        treeStack.push({
+          partition: children,
+          depth: overviewDepth + 1,
+          y0: y_pos["y0"],
+          y1: y_pos["y1"],
+        });
+      }
+    });
+  }
+}
+
+const drawButtons = (x, w, y0, y1, partitions) => {
+  const buttonIDPrefix = "button_";
+  const n = partitions.length;
+  const yScale = d3
+    .scaleBand()
+    .domain(d3.range(n))
+    .range([y0, y1])
+    .paddingInner(0.005);
+  const y_pos = {};
+  partitions.forEach((part, idx) => {
+    const y_part = yScale(idx);
+    const h_part = yScale.bandwidth();
+    svg
+      .append("rect")
+      .attr("id", buttonIDPrefix + part)
+      .attr("class", "buttonTreeElement")
+      .attr("x", x)
+      .attr("width", w)
+      .attr("y", y_part)
+      .attr("height", h_part)
+      .attr("fill", "lightgray")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1px");
+
+    y_pos[part] = {
+      y0: y_part,
+      y1: y_part + h_part,
+    };
+  });
+
+  return y_pos;
+};
