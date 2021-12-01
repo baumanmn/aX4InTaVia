@@ -21,16 +21,17 @@ import { currentlyActive } from "./buttons.js";
 import {
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
-  setBrushState,
   setBrushStateWithoutKey,
   addBrushToFamilyMap,
   addChildBrushToFamilyMap,
   addSiblingBrushToFamilyMap,
+  removeRemainingOverviews,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
 } from "./brushIndicators";
+import { bindSliderToBrushes, initializeSliders } from "./slider";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
@@ -84,12 +85,21 @@ export function installZoom(chart) {
  }
  */
 export function installBrush(chart, overviewNr, brushData) {
+  let currentOverviewPartitionConfig = getOverviewPartitionConfig(
+    chart,
+    overviewNr
+  );
+
   let id = brushData["brushNr"];
   let currOverview = chart.overviews[overviewNr]["stripGroup"];
   let currClass =
-    currentlyActive[overviewNr].id === id
+    currentOverviewPartitionConfig["active_partition"] === id
       ? brushClasses[overviewNr]
       : brushClasses["inactive"];
+  /* let currClass =
+    currentlyActive[overviewNr].id === id
+      ? brushClasses[overviewNr]
+      : brushClasses["inactive"]; */
 
   annotationBrush = id;
 
@@ -153,11 +163,6 @@ export function installBrush(chart, overviewNr, brushData) {
     });
 
   setRanges(overviewNr, brushData);
-
-  let currentOverviewPartitionConfig = getOverviewPartitionConfig(
-    chart,
-    overviewNr
-  );
 
   if (!currentOverviewPartitionConfig["last_brush_config"][id]) {
     currentOverviewPartitionConfig["num_active_partitions"] += 1;
@@ -449,16 +454,62 @@ export function compareKey(list, key) {
   return true;
 }
 
-//rangeKey === "selection" || "overlay"
-export function getConvertedRange(chart, overviewID, brushID, rangeKey) {
-  if (rangeKey === "selection") {
-    rangeKey = ".selection";
-  } else {
-    rangeKey = ".overlay";
-  }
-  let brush = chart.overviews[overviewID]["brushes"][brushID];
-  let maxNumBins = chart.d.bins.length;
+export function clearOverviewStrips(chart) {
+  initializeSliders(chart);
+  Object.keys(chart.overviews).forEach((overview) => {
+    chart.overviews[overview].brushGroup = chart.overviews[
+      overview
+    ].brushGroup.map((brushGroup) => {
+      if (brushGroup) brushGroup.remove();
+      return null;
+    });
+    chart.overviews[overview].brushes = chart.overviews[overview].brushes.map(
+      (brush) => {
+        if (brush) d3.select(brush).remove();
+        return null;
+      }
+    );
+  });
 
-  let rangeX = parseInt(brush.select(".selection").attr("x"));
-  let rangeW = parseInt(brush.select(".selection").attr("width"));
+  let configKey = "0";
+  let maxOverviewDepth = 0;
+
+  for (
+    let overviewDepth = 0;
+    overviewDepth < chart.p.maxNumOverviews;
+    overviewDepth++
+  ) {
+    let configData = chart.overviewConfig[configKey];
+
+    if (!configData || configData["num_active_partitions"] === 0) {
+      maxOverviewDepth = overviewDepth - 1;
+      break;
+    }
+
+    let partitions = configData["last_brush_config"];
+
+    Object.keys(partitions).forEach((partKey, idx) => {
+      let brushData = {
+        brushNr: partKey,
+        overlay: partitions[partKey]["overlay"],
+        selection: partitions[partKey]["selection"],
+      };
+      installBrush(chart, overviewDepth, brushData);
+
+      let splitPos = partitions[partKey]["overlay"][1] + 1;
+      if (splitPos < chart.p.tokenExt)
+        bindSliderToBrushes(chart, splitPos, overviewDepth, idx);
+    });
+
+    let currNumSliders = configData["num_active_partitions"] - 1;
+    for (let i = chart.p.maxNumSliders - 1; i >= currNumSliders; i--) {
+      bindSliderToBrushes(chart, chart.p.tokenExt, overviewDepth, i);
+    }
+
+    configKey = configKey + "_" + configData["active_partition"];
+  }
+
+  if (maxOverviewDepth >= 0 && maxOverviewDepth < chart.p.maxNumOverviews - 1) {
+    removeRemainingOverviews(chart, maxOverviewDepth);
+  }
 }

@@ -39,6 +39,12 @@ export const sliders = {
 };
 
 export function initializeSliders(numOverviews, maxNumSliders) {
+  Object.keys(sliders).forEach((overviewID) => {
+    sliders[overviewID].forEach((slider) => {
+      if (slider.sliderObj) slider.sliderObj.remove();
+      if (slider.sliderBar) slider.sliderBar.remove();
+    });
+  });
   for (let i = 0; i < numOverviews; i++) {
     const overviewID = i;
     sliders[overviewID] = [];
@@ -66,7 +72,7 @@ export function initializeSliders(numOverviews, maxNumSliders) {
  * @param {number} id ID of the slider ({0, 1})
  * @param {number} splitPos partitioning point in the overview
  */
-function addSlider(chart, overviewID, id, splitPos) {
+export function addSlider(chart, overviewID, id, splitPos) {
   chart.p.sliderWidth = 2;
   chart.p.sliderHandleWidth = 20;
   chart.p.sliderHeight = 40;

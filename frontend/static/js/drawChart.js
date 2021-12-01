@@ -204,6 +204,36 @@ function drawOverviewBackground(chart, overviewID) {
   chart.overviews[overviewID]["slider"]["svg"] = backgroundObject["slider"];
 }
 
+export function removeRemainingOverviews(chart, lastRemainingOverviewID) {
+  for (
+    let overviewNr = lastRemainingOverviewID + 1;
+    overviewNr < maxNumOverviews;
+    overviewNr++
+  ) {
+    removeOverview(chart, overviewNr);
+  }
+  addInitialCollapseOverview(chart, lastRemainingOverviewID + 1);
+}
+
+function removeOverview(chart, overviewID) {
+  if (chart.overviews[overviewID]["stripGroup"])
+    chart.overviews[overviewID]["stripGroup"].remove();
+  if (chart.overviews[overviewID]["background"])
+    chart.overviews[overviewID]["background"].remove();
+  if (chart.overviews[overviewID]["backgroundRects"])
+    chart.overviews[overviewID]["backgroundRects"].remove();
+  if (chart.overviews[overviewID]["slider"]["svg"])
+    chart.overviews[overviewID]["slider"]["svg"].remove();
+  if (chart.overviews[overviewID]["slider"]["object"])
+    chart.overviews[overviewID]["slider"]["object"].remove();
+  if (chart.overviews[overviewID]["collapse"]["object"])
+    chart.overviews[overviewID]["collapse"]["object"].remove();
+  if (chart.overviews[overviewID]["collapse"]["label"])
+    chart.overviews[overviewID]["collapse"]["label"].remove();
+
+  //addInitialCollapseOverview(chart, overviewID);
+}
+
 function addOverview(chart, overviewID) {
   chart.overviews[overviewID] = {
     stripGroup: drawStripGroup(chart, overviewID), //replaces chart.overview
@@ -222,6 +252,10 @@ function addOverview(chart, overviewID) {
       label: "",
     },
   };
+}
+
+function doesOverviewExist(chart, overviewID) {
+  return chart.overviews[overviewID]["background"].length !== 0;
 }
 //endregion
 
@@ -248,6 +282,7 @@ export function initializeChart() {
     maxLevelsSupercompCompAgg,
     maxNumOverviews,
     maxNumBrushes,
+    maxNumSliders,
     indicatorH,
     indicatorYFunction,
     indicatorShader,
@@ -376,16 +411,6 @@ export function initializeChart() {
     last_brush_config: {},
     last_slider_config: {},
   };
-
-  /* for (let i = 0; i < maxNumBrushes; i++) {
-    let overviewConfigKey = String(i);
-    chart.overviewConfig[overviewConfigKey] = {
-      num_active_partitions: 0,
-      active_partition: 0,
-      last_brush_config: {},
-      last_slider_config: {},
-    };
-  } */
 
   chart.brushRanges = {};
 
@@ -676,6 +701,11 @@ export function setOverviewPartitionConfigViaPath(
   overviewConfigKey += String(overviewNr);
 
   chart.overviewConfig[overviewConfigKey] = partitionInfo;
+}
+
+export function updateOverviewConfig(chart, newOverviewConfig) {
+  chart.overviewConfig = newOverviewConfig;
+  console.log(chart.overviewConfig);
 }
 
 export function getActiveBrushesInOverview(chart, overviewNr) {

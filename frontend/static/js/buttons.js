@@ -4,6 +4,7 @@ import $ from "jquery";
 import "jquery-ui-bundle";
 import {
   assignBrushToView,
+  clearOverviewStrips,
   currentlyActiveBrush,
   setCurrentlyActive,
 } from "./brushSetup";
@@ -24,7 +25,11 @@ import {
   updateAnnoViewRange,
   updateAnnoViewID,
 } from "./splitAnnotationWindow";
-import { getActiveBrushesInOverview, getFamilyOfBrush } from "./drawChart";
+import {
+  getActiveBrushesInOverview,
+  getFamilyOfBrush,
+  updateOverviewConfig,
+} from "./drawChart";
 //endregion
 
 export var activeCoding = false;
@@ -1370,9 +1375,19 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
 };
 
 const buttonOnClick = (chart, buttonID) => {
-  let strippedOverviewKey = buttonID.split("_");
-  strippedOverviewKey.shift();
-  strippedOverviewKey.pop();
-  strippedOverviewKey = strippedOverviewKey.join("_");
-  console.log(chart.overviewConfig[strippedOverviewKey]);
+  let configData = chart.overviewConfig;
+
+  let key = buttonID.split("_");
+  key.shift();
+
+  while (key.length > 1) {
+    let partitionKey = key.pop();
+    let strippedOverviewKey = key.join("_");
+    console.log(strippedOverviewKey);
+
+    configData[strippedOverviewKey]["active_partition"] = partitionKey;
+  }
+
+  updateOverviewConfig(chart, configData);
+  clearOverviewStrips(chart);
 };
