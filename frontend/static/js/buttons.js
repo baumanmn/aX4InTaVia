@@ -4,7 +4,6 @@ import $ from "jquery";
 import "jquery-ui-bundle";
 import {
   assignBrushToView,
-  clearOverviewStrips,
   currentlyActiveBrush,
   setCurrentlyActive,
 } from "./brushSetup";
@@ -29,7 +28,10 @@ import {
   getActiveBrushesInOverview,
   getFamilyOfBrush,
   updateOverviewConfig,
+  clearOverviewStrips,
+  setButtonRefInList,
 } from "./drawChart";
+import { cascadingButtonIndicatorUpdate, projection } from "./brushIndicators";
 //endregion
 
 export var activeCoding = false;
@@ -1276,6 +1278,7 @@ export function drawButtonTree(chart) {
   if (!svg) return 0;
 
   svg.selectAll(".buttonTreeElement").remove();
+  svg.selectAll(".buttonPartitionIndicator").remove();
 
   const externalPadding = 20;
   const internalPadding = 0.05;
@@ -1316,7 +1319,8 @@ export function drawButtonTree(chart) {
     );
 
     nextPartition.forEach((part) => {
-      //const nextButtonData = getBrushState(chart, part);
+      cascadingButtonIndicatorUpdate(chart, overviewDepth, part);
+
       const nextButtonFamily = getFamilyOfBrush(chart, part);
       const children = Array.from(nextButtonFamily["children"]);
       const y_pos = ys[part];
@@ -1341,7 +1345,7 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
   const yScale = d3
     .scaleBand()
     .domain(d3.range(n))
-    .range([y0, y1])
+    .rangeRound([y0, y1])
     .paddingInner(0.005);
 
   const y_pos = {};
@@ -1352,7 +1356,7 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
     const y_part = yScale(idx);
     const h_part = yScale.bandwidth();
 
-    svg
+    const button = svg
       .append("rect")
       .attr("id", buttonID)
       .attr("class", "buttonTreeElement")
@@ -1364,6 +1368,13 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
       .attr("stroke", "black")
       .attr("stroke-width", "1px")
       .on("click", () => buttonOnClick(chart, buttonID));
+
+    setButtonRefInList(chart, part, {
+      x,
+      w,
+      y: y_part,
+      h: h_part,
+    });
 
     y_pos[part] = {
       y0: y_part,
@@ -1383,11 +1394,37 @@ const buttonOnClick = (chart, buttonID) => {
   while (key.length > 1) {
     let partitionKey = key.pop();
     let strippedOverviewKey = key.join("_");
-    console.log(strippedOverviewKey);
 
     configData[strippedOverviewKey]["active_partition"] = partitionKey;
   }
 
   updateOverviewConfig(chart, configData);
   clearOverviewStrips(chart);
+};
+
+export function drawButtonIndicator(
+  chart,
+  indicatorX,
+  indicatorY,
+  indicatorID
+) {
+  const buttonIndicatorID = constructButtonIndicatorID(indicatorID);
+  const oldIndicator = d3.select("#" + buttonIndicatorID);
+  if (oldIndicator) oldIndicator.remove();
+
+  svg
+    .append("rect")
+    .attr("id", buttonIndicatorID)
+    .attr("class", "buttonPartitionIndicator")
+    .attr("x", indicatorX[0])
+    .attr("y", indicatorY[0])
+    .attr("width", indicatorX[1] - indicatorX[0])
+    .attr("height", indicatorY[1] - indicatorY[0])
+    .attr("fill", "black")
+    .attr("");
+}
+
+const constructButtonIndicatorID = (indicatorID) => {
+  const prefix = "button_";
+  return prefix + indicatorID;
 };

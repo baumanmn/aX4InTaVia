@@ -394,7 +394,8 @@ margin-left: 40px;
 }
 
 .partitionIndicator,
-.splitIndicator {
+.splitIndicator,
+.buttonPartitionIndicator {
   stroke: red;
   opacity: 0.5;
 }

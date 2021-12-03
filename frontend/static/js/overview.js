@@ -49,12 +49,22 @@ export function setActiveOverview(chart, brush, overview = 1) {
   var overviewBrush;
   var overviewRects;
   var caller;
-  if (overview === 1 && chart.overviews[1]) {
+  if (
+    overview === 1 &&
+    chart.overviews[1] &&
+    Object.keys(chart.overviews[1]).length > 0 &&
+    chart.overviews[1]["backgroundRects"]
+  ) {
     overviewBrush = chart.overviews[1]["brushGroup"][brush];
     overviewRects = chart.overviews[1]["backgroundRects"]; //chart.overviewRects2
     caller = drawSecondOverviewBars;
   }
-  if (overview === 2 && chart.overviews[2]) {
+  if (
+    overview === 2 &&
+    chart.overviews[2] &&
+    Object.keys(chart.overviews[2]).length > 0 &&
+    chart.overviews[1]["backgroundRects"]
+  ) {
     overviewBrush = chart.overviews[2]["brushGroup"][brush];
     overviewRects = chart.overviews[2]["backgroundRects"]; //chart.overviewRects3
     caller = drawThirdOverviewBars;
@@ -333,8 +343,7 @@ export function reconfigurePartitions(
       sliderID + 1,
     ]);
   }
-
-  drawButtonTree(chart);
+  //drawButtonTree(chart);
 }
 
 export function checkAndUpdateSplit(chart, overviewID, key) {

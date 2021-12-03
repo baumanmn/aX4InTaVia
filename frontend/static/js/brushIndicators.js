@@ -6,9 +6,12 @@ import {
   getBrushIndicators,
   setBrushIndicators,
   getBrushPartitionFromKey,
+  getButtonRefFromList,
+  setButtonRefInList,
 } from "./drawChart";
 
 import * as d3 from "d3";
+import { drawButtonIndicator } from "./buttons";
 
 const constructIndicatorID = (parentOverviewID, brushID) => {
   const indicatorIDPrefix = "idc_";
@@ -168,7 +171,7 @@ export function cascadingBrushIndicatorUpdate(
   });
 }
 
-function projection(L_ref, L_parent_transf, X_parent_transf, POS_curr) {
+export function projection(L_ref, L_parent_transf, X_parent_transf, POS_curr) {
   const pos_transformed = POS_curr.map((X) => {
     const X_transformed = X_parent_transf + (X / L_ref) * L_parent_transf;
     return X_transformed;
@@ -202,72 +205,176 @@ export function ascendingBrushIndicatorUpdate(
   }
 }
 
-export function ascendingBrushIndicatorUpdate2(
+export function cascadingButtonIndicatorUpdate(
+  chart,
+  overviewNr,
+  rootBrushKey
+) {
+  //const rootBrushKey = getBrushConfigKey(chart, overviewNr, brushPartition);
+
+  const rootBrushData = getBrushState(chart, rootBrushKey);
+
+  const rootButtonData = getButtonRefFromList(chart, rootBrushKey);
+
+  if (!rootBrushKey || !rootButtonData || !rootBrushData) return 0;
+
+  const rootButtonY = rootButtonData["y"];
+
+  const rootButtonHeight = rootButtonData["h"];
+
+  const rootButtonX = rootButtonData["x"];
+
+  const rootButtonWidth = rootButtonData["w"];
+
+  const brushRefExtend =
+    rootBrushData["overlay"][1] - rootBrushData["overlay"][0];
+
+  const rootOverviewHeight = chart.p.overviewExt;
+
+  let childrenKeys = getFamilyOfBrush(chart, rootBrushKey)["children"];
+
+  if (childrenKeys.size > 0) {
+    childrenKeys.forEach((childKey, idx) => {
+      let indicatorID = constructIndicatorID(overviewNr, childKey);
+
+      let childIndicator = d3.select("#" + indicatorID);
+
+      let rootIndicatorXPosition = [
+        parseInt(childIndicator.attr("x")),
+        parseInt(childIndicator.attr("x")) +
+          parseInt(childIndicator.attr("width")),
+      ];
+
+      let rootIndicatorYPosition = [
+        parseInt(childIndicator.attr("y")),
+        parseInt(childIndicator.attr("y")) +
+          parseInt(childIndicator.attr("height")),
+      ];
+
+      let convertedY = projection(
+        brushRefExtend,
+        rootButtonHeight,
+        rootButtonY,
+        rootIndicatorXPosition
+      );
+
+      /* let convertedX = projection(
+        rootOverviewHeight,
+        rootButtonWidth,
+        rootButtonX,
+        rootIndicatorYPosition
+      ); */
+
+      let convertedX = [
+        rootButtonX + (1 / 4) * rootButtonWidth,
+        rootButtonX + (3 / 4) * rootButtonWidth,
+      ];
+
+      drawButtonIndicator(chart, convertedX, convertedY, indicatorID);
+
+      //draw indicator in button: Need button x, width to determine pos. of indicator
+
+      //TODO
+
+      /* let childExtend = childBrushState["overlay"];
+      if (childExtend[1] < chart.p.tokenExt) {
+        let convertedChildExtend = projection(
+          referenceLength,
+          L_parent_transf,
+          X_parent_transf,
+          childExtend
+        );
+        splitsToUpdate.push({
+          idx,
+          pos: convertedChildExtend[1] + 1,
+          depth: currOverviewDepth + 1,
+        });
+      } */
+    });
+  }
+
+  /* let brushIndicators = getBrushIndicators(chart, rootBrushKey);
+
+  let partitionIndicators = brushIndicators
+    ? brushIndicators["partitions"]
+    : [];
+  let splitIndicators = brushIndicators ? brushIndicators["splits"] : [];
+
+  if (partitionIndicators.length > 0) {
+    partitionIndicators.forEach((indicator) => indicator.remove());
+  }
+
+  if (indicatorsToUpdate.length > 0) {
+    const height = chart.p.indicatorH;
+
+    partitionIndicators = indicatorsToUpdate.map((successor) => {
+      let position = successor["pos"];
+      let depth = successor["depth"];
+      let indicatorID = constructIndicatorID(overviewNr, successor["id"]);
+
+      let width = position[1] - position[0];
+
+      let y = chart.p.indicatorYFunction(depth - 1);
+
+      let color = chart.p.indicatorShader(depth - 1);
+
+      return chart.overviews[overviewNr]["brushGroup"][brushPartition]
+        .select("svg")
+        .append("rect")
+        .attr("class", "partitionIndicator")
+        .attr("id", indicatorID)
+        .attr("x", position[0])
+        .attr("y", y)
+        .attr("width", width)
+        .attr("height", height)
+        .attr("fill", color);
+    });
+  }
+
+  if (splitIndicators.length > 0) {
+    splitIndicators.forEach((split) => split.remove());
+  }
+
+  if (splitsToUpdate.length > 0) {
+    const circleSize = chart.p.splitIndicatorSize;
+
+    splitIndicators = splitsToUpdate.map((split) => {
+      let position = split["pos"];
+      let depth = split["depth"];
+      let y = chart.p.indicatorYFunction(depth - 1);
+
+      return chart.overviews[overviewNr]["brushGroup"][brushPartition]
+        .select("svg")
+        .append("circle")
+        .attr("class", "splitIndicator")
+        .attr("cx", position)
+        .attr("cy", y + circleSize / 2)
+        .attr("r", circleSize)
+        .attr("fill", "black");
+    });
+  } */
+}
+
+export function ascendingButtonIndicatorUpdate(
   chart,
   overviewNr,
   brushPartition
 ) {
-  const referenceLength = chart.p.tokenExt;
-
   const rootBrushKey = getBrushConfigKey(chart, overviewNr, brushPartition);
 
-  const rootBrushData = getBrushState(chart, rootBrushKey);
-
-  if (!rootBrushKey || !rootBrushData) return 0;
-
-  const rootBrushRanges = rootBrushData["selection"];
-
-  let parentOverviewDepth = overviewNr - 1;
+  if (!rootBrushKey) return 0;
 
   let currBrushID = rootBrushKey;
 
-  let transformed_curr_pos = rootBrushRanges;
+  let parentOverviewDepth = overviewNr - 1;
 
   let parentNodeKey = getFamilyOfBrush(chart, currBrushID)["parent"];
 
   while (parentNodeKey && parentOverviewDepth >= 0) {
-    let parentBrushData = getBrushState(chart, parentNodeKey);
+    cascadingButtonIndicatorUpdate(chart, parentOverviewDepth, parentNodeKey);
 
-    let X_parent = parentBrushData["selection"][0];
-
-    let L_parent =
-      parentBrushData["selection"][1] - parentBrushData["selection"][0];
-
-    transformed_curr_pos = projection(
-      referenceLength,
-      L_parent,
-      X_parent,
-      transformed_curr_pos
-    );
-
-    let brushIndicators = getBrushIndicators(chart, parentNodeKey);
-
-    let targetIndicatorID = constructIndicatorID(
-      parentOverviewDepth,
-      rootBrushKey
-    );
-
-    console.log("---");
-    console.log("ov: " + parentOverviewDepth);
-    if (brushIndicators && brushIndicators.length > 0) {
-      brushIndicators.map((indicator, i) => {
-        let currentID = indicator.attr("id");
-        console.log(currentID);
-        if (currentID === targetIndicatorID) {
-          brushIndicators[i].attr("x", transformed_curr_pos[0]);
-          brushIndicators[i].attr(
-            "width",
-            transformed_curr_pos[1] - transformed_curr_pos[0]
-          );
-        }
-      });
-    }
-    console.log("---");
-
-    setBrushIndicators(chart, parentNodeKey, brushIndicators);
-
-    parentOverviewDepth -= 1;
     currBrushID = parentNodeKey;
     parentNodeKey = getFamilyOfBrush(chart, currBrushID)["parent"];
+    parentOverviewDepth -= 1;
   }
 }

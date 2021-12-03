@@ -17,7 +17,7 @@ import {
   setRanges,
 } from "./overviewState";
 import { updateTextArea } from "./textArea";
-import { currentlyActive } from "./buttons.js";
+import { currentlyActive, drawButtonTree } from "./buttons.js";
 import {
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
@@ -25,13 +25,12 @@ import {
   addBrushToFamilyMap,
   addChildBrushToFamilyMap,
   addSiblingBrushToFamilyMap,
-  removeRemainingOverviews,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
+  cascadingButtonIndicatorUpdate,
 } from "./brushIndicators";
-import { bindSliderToBrushes, initializeSliders } from "./slider";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
@@ -185,6 +184,9 @@ export function installBrush(chart, overviewNr, brushData) {
 
   cascadingBrushIndicatorUpdate(chart, overviewNr, id);
   ascendingBrushIndicatorUpdate(chart, overviewNr, id);
+
+  drawButtonTree(chart);
+  //cascadingButtonIndicatorUpdate(chart, overviewNr, id);
 }
 
 function handleBrushEnd(chart, overviewNr, brushData) {
@@ -452,64 +454,4 @@ export function compareKey(list, key) {
     }
   }
   return true;
-}
-
-export function clearOverviewStrips(chart) {
-  initializeSliders(chart);
-  Object.keys(chart.overviews).forEach((overview) => {
-    chart.overviews[overview].brushGroup = chart.overviews[
-      overview
-    ].brushGroup.map((brushGroup) => {
-      if (brushGroup) brushGroup.remove();
-      return null;
-    });
-    chart.overviews[overview].brushes = chart.overviews[overview].brushes.map(
-      (brush) => {
-        if (brush) d3.select(brush).remove();
-        return null;
-      }
-    );
-  });
-
-  let configKey = "0";
-  let maxOverviewDepth = 0;
-
-  for (
-    let overviewDepth = 0;
-    overviewDepth < chart.p.maxNumOverviews;
-    overviewDepth++
-  ) {
-    let configData = chart.overviewConfig[configKey];
-
-    if (!configData || configData["num_active_partitions"] === 0) {
-      maxOverviewDepth = overviewDepth - 1;
-      break;
-    }
-
-    let partitions = configData["last_brush_config"];
-
-    Object.keys(partitions).forEach((partKey, idx) => {
-      let brushData = {
-        brushNr: partKey,
-        overlay: partitions[partKey]["overlay"],
-        selection: partitions[partKey]["selection"],
-      };
-      installBrush(chart, overviewDepth, brushData);
-
-      let splitPos = partitions[partKey]["overlay"][1] + 1;
-      if (splitPos < chart.p.tokenExt)
-        bindSliderToBrushes(chart, splitPos, overviewDepth, idx);
-    });
-
-    let currNumSliders = configData["num_active_partitions"] - 1;
-    for (let i = chart.p.maxNumSliders - 1; i >= currNumSliders; i--) {
-      bindSliderToBrushes(chart, chart.p.tokenExt, overviewDepth, i);
-    }
-
-    configKey = configKey + "_" + configData["active_partition"];
-  }
-
-  if (maxOverviewDepth >= 0 && maxOverviewDepth < chart.p.maxNumOverviews - 1) {
-    removeRemainingOverviews(chart, maxOverviewDepth);
-  }
 }

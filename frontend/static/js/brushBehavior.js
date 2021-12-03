@@ -29,10 +29,13 @@ import {
   getBrushState,
   setBrushState,
   getBrushStateWithoutKey,
+  getBrushConfigKey,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
+  ascendingButtonIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
+  cascadingButtonIndicatorUpdate,
 } from "./brushIndicators.js";
 
 //the first and last token OR bin (id and x-value), whose extension contains x0 or x1
@@ -358,6 +361,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     setBrushState(chart, overview, brush, currentBrushData);
     cascadingBrushIndicatorUpdate(chart, overview, brush);
     ascendingBrushIndicatorUpdate(chart, overview, brush);
+    ascendingButtonIndicatorUpdate(chart, overview, brush);
   }
 }
 

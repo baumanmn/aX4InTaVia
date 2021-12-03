@@ -191,8 +191,10 @@ function defineShadowAndGradient(chart, dist) {
 
 function addOverviewCollapse(chart, overviewID) {
   let collapseObject = drawOverviewCollapse(chart, overviewID);
-  chart.overviews[overviewID]["collapse"].object = collapseObject["collapse"];
-  chart.overviews[overviewID]["collapse"].label = collapseObject["label"];
+  chart.overviews[overviewID]["collapse"]["object"] =
+    collapseObject["collapse"];
+  chart.overviews[overviewID]["collapse"]["label"] = collapseObject["label"];
+  chart.overviews[overviewID]["collapse"]["isDrawn"] = true;
 }
 
 function drawOverviewBackground(chart, overviewID) {
@@ -204,58 +206,95 @@ function drawOverviewBackground(chart, overviewID) {
   chart.overviews[overviewID]["slider"]["svg"] = backgroundObject["slider"];
 }
 
-export function removeRemainingOverviews(chart, lastRemainingOverviewID) {
-  for (
-    let overviewNr = lastRemainingOverviewID + 1;
-    overviewNr < maxNumOverviews;
-    overviewNr++
-  ) {
-    removeOverview(chart, overviewNr);
+function initializeOverviews(numOverviews) {
+  let newOverviewObject = {};
+  for (let i = 0; i < numOverviews; i++) {
+    const overviewID = i;
+    newOverviewObject[overviewID] = {
+      drawn: false,
+      stripGroup: "", //replaces chart.overview
+      //origin: computeOverviewOrigin(overviewID), //replaces overviewYPos
+      brushes: new Array(maxNumBrushes).fill(null),
+      brushGroup: new Array(maxNumBrushes).fill(null), //replaces overviewBrush
+      splits: new Array(maxNumBrushes - 1).fill(null),
+      background: "",
+      backgroundRects: "",
+      slider: {
+        svg: "",
+        object: "",
+      },
+      collapse: {
+        isDrawn: false,
+        object: "",
+        label: "",
+      },
+    };
   }
-  addInitialCollapseOverview(chart, lastRemainingOverviewID + 1);
+
+  return newOverviewObject;
 }
 
-function removeOverview(chart, overviewID) {
-  if (chart.overviews[overviewID]["stripGroup"])
-    chart.overviews[overviewID]["stripGroup"].remove();
-  if (chart.overviews[overviewID]["background"])
-    chart.overviews[overviewID]["background"].remove();
-  if (chart.overviews[overviewID]["backgroundRects"])
-    chart.overviews[overviewID]["backgroundRects"].remove();
-  if (chart.overviews[overviewID]["slider"]["svg"])
-    chart.overviews[overviewID]["slider"]["svg"].remove();
-  if (chart.overviews[overviewID]["slider"]["object"])
-    chart.overviews[overviewID]["slider"]["object"].remove();
-  if (chart.overviews[overviewID]["collapse"]["object"])
-    chart.overviews[overviewID]["collapse"]["object"].remove();
-  if (chart.overviews[overviewID]["collapse"]["label"])
-    chart.overviews[overviewID]["collapse"]["label"].remove();
-
-  //addInitialCollapseOverview(chart, overviewID);
+function resetOverviews(chart) {
+  d3.selectAll(".overview_group").remove();
+  chart.overviews = initializeOverviews(maxNumOverviews);
 }
 
-function addOverview(chart, overviewID) {
-  chart.overviews[overviewID] = {
-    stripGroup: drawStripGroup(chart, overviewID), //replaces chart.overview
-    //origin: computeOverviewOrigin(overviewID), //replaces overviewYPos
-    brushes: new Array(maxNumBrushes).fill(null),
-    brushGroup: new Array(maxNumBrushes).fill(null), //replaces overviewBrush
-    splits: new Array(maxNumBrushes - 1).fill(null),
-    background: "",
-    backgroundRects: "",
-    slider: {
-      svg: "",
-      object: "",
-    },
-    collapse: {
-      object: "",
-      label: "",
-    },
-  };
+function renderOverview(chart, overviewID) {
+  if (chart.overviews[overviewID]["stripGroup"].length === 0) {
+    drawStripGroup(chart, overviewID);
+    drawOverviewBackground(chart, overviewID);
+  }
+  if (chart.overviews[overviewID]["collapse"]["isDrawn"] === true) {
+    removeCollapseAndDrawBackground(chart, overviewID);
+  }
 }
 
-function doesOverviewExist(chart, overviewID) {
-  return chart.overviews[overviewID]["background"].length !== 0;
+export function clearOverviewStrips(chart) {
+  initializeSliders(chart);
+  resetOverviews(chart);
+
+  let configKey = "0";
+  let overviewDepth = 0;
+
+  for (
+    overviewDepth;
+    overviewDepth < chart.p.maxNumOverviews;
+    overviewDepth++
+  ) {
+    let configData = chart.overviewConfig[configKey];
+
+    if (!configData || configData["num_active_partitions"] === 0) {
+      break;
+    }
+
+    renderOverview(chart, overviewDepth);
+
+    let partitions = configData["last_brush_config"];
+
+    Object.keys(partitions).forEach((partKey, idx) => {
+      let brushData = {
+        brushNr: partKey,
+        overlay: partitions[partKey]["overlay"],
+        selection: partitions[partKey]["selection"],
+      };
+      installBrush(chart, overviewDepth, brushData);
+
+      let splitPos = partitions[partKey]["overlay"][1] + 1;
+      if (splitPos < chart.p.tokenExt)
+        bindSliderToBrushes(chart, splitPos, overviewDepth, idx);
+    });
+
+    let currNumSliders = configData["num_active_partitions"] - 1;
+    for (let i = chart.p.maxNumSliders - 1; i >= currNumSliders; i--) {
+      bindSliderToBrushes(chart, chart.p.tokenExt, overviewDepth, i);
+    }
+
+    configKey = configKey + "_" + configData["active_partition"];
+  }
+
+  if (overviewDepth < chart.p.maxNumOverviews) {
+    addInitialCollapseOverview(chart, overviewDepth);
+  }
 }
 //endregion
 
@@ -402,7 +441,7 @@ export function initializeChart() {
   //endregion
 
   //region overview-initialisation MB ?
-  chart.overviews = {};
+  chart.overviews = initializeOverviews(maxNumOverviews);
 
   chart.overviewConfig = {};
   chart.overviewConfig["0"] = {
@@ -419,6 +458,8 @@ export function initializeChart() {
   chart.brushFamilyMap = {};
 
   chart.indicatorMap = {};
+
+  chart.buttonList = {};
 
   return chart;
 }
@@ -516,22 +557,23 @@ export function fillChart(chart, rawData) {
 //  return pos * 3 * margins.overviewDetail;
 //}
 
-export function drawStripGroup(chart, pos) {
+export function drawStripGroup(chart, overviewID) {
   //let yShift = computeOverviewOrigin(pos);
-  return (
-    chart.e.overviewStrips
-      .append("g") //transform-group for stacking the overview strips at the right positions
-      //.attr("id", id)
-      .attr(
-        "transform",
-        `translate (0, ${pos * (overviewExt + sliderSpace)} )`
-        //"translate(" +
-        //  margins.left +
-        //  "," +
-        //  (margins.top + detailHeight + margins.overviewDetail + yShift) +
-        //  ")"
-      )
-  );
+  const pos = overviewID;
+  const id = "overview_group_" + overviewID;
+  chart.overviews[overviewID]["stripGroup"] = chart.e.overviewStrips
+    .append("g") //transform-group for stacking the overview strips at the right positions
+    .attr("id", id)
+    .attr("class", "overview_group")
+    .attr(
+      "transform",
+      `translate (0, ${pos * (overviewExt + sliderSpace)} )`
+      //"translate(" +
+      //  margins.left +
+      //  "," +
+      //  (margins.top + detailHeight + margins.overviewDetail + yShift) +
+      //  ")"
+    );
 }
 
 function drawOverviewCollapse(chart, overviewID) {
@@ -585,7 +627,7 @@ export function drawCompleteOverviewBackground(overview) {
 }
 
 export function drawInitialOverview(chart) {
-  addOverview(chart, 0);
+  drawStripGroup(chart, 0);
   drawOverviewBackground(chart, 0);
   drawInitialBars(chart);
 
@@ -610,14 +652,19 @@ export function drawInitialOverview(chart) {
 export function addInitialCollapseOverview(chart, overviewID) {
   if (overviewID >= maxNumOverviews) return 0;
   //TO DO: CHECK IF ALREADY INITIALIZED/COLLAPSED
-  addOverview(chart, overviewID);
+  drawStripGroup(chart, overviewID);
   addOverviewCollapse(chart, overviewID);
 }
 
-export function expandCollapsedOverview(chart, overviewID) {
-  chart.overviews[overviewID].collapse.object.remove();
-  chart.overviews[overviewID].collapse.label.remove();
+export function removeCollapseAndDrawBackground(chart, overviewID) {
+  chart.overviews[overviewID]["collapse"]["object"].remove();
+  chart.overviews[overviewID]["collapse"]["label"].remove();
+  chart.overviews[overviewID]["collapse"]["isDrawn"] = false;
   drawOverviewBackground(chart, overviewID);
+}
+
+export function expandCollapsedOverview(chart, overviewID) {
+  removeCollapseAndDrawBackground(chart, overviewID);
 
   if (overviewID === 1) {
     drawSecondOverviewBars(
@@ -643,8 +690,6 @@ export function expandCollapsedOverview(chart, overviewID) {
   for (let i = maxNumSliders - 1; i >= 0; i--) {
     bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, i);
   }
-  /*   bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 1);
-  bindSliderToBrushes(chart, chart.p.tokenExt, overviewID, 0); */
 
   addInitialCollapseOverview(chart, overviewID + 1);
 }
@@ -705,7 +750,6 @@ export function setOverviewPartitionConfigViaPath(
 
 export function updateOverviewConfig(chart, newOverviewConfig) {
   chart.overviewConfig = newOverviewConfig;
-  console.log(chart.overviewConfig);
 }
 
 export function getActiveBrushesInOverview(chart, overviewNr) {
@@ -834,5 +878,13 @@ export function getBrushIndicators(chart, brushID) {
 
 export function setBrushIndicators(chart, brushID, indicatorData) {
   chart.indicatorMap[brushID] = indicatorData;
+}
+
+export function setButtonRefInList(chart, brushKey, buttonRef) {
+  chart.buttonList[brushKey] = buttonRef;
+}
+
+export function getButtonRefFromList(chart, brushKey) {
+  return chart.buttonList[brushKey];
 }
 //endregion
