@@ -226,22 +226,30 @@ export function cascadingButtonIndicatorUpdate(
 
   const rootButtonWidth = rootButtonData["w"];
 
-  const brushRefExtend =
-    rootBrushData["overlay"][1] - rootBrushData["overlay"][0];
+  const brushRefX = rootBrushData["overlay"][0];
+
+  const brushRefW = rootBrushData["overlay"][1] - rootBrushData["overlay"][0];
 
   const rootOverviewHeight = chart.p.overviewExt;
+
+  const indicatorHalfSize = chart.p.buttonTreeIndicatorSize / 2;
 
   let childrenKeys = getFamilyOfBrush(chart, rootBrushKey)["children"];
 
   if (childrenKeys.size > 0) {
     childrenKeys.forEach((childKey, idx) => {
+      let childBrushData = getBrushState(chart, childKey);
+
       let indicatorID = constructIndicatorID(overviewNr, childKey);
 
       let childIndicator = d3.select("#" + indicatorID);
 
+      if (childIndicator.empty()) return;
+
       let rootIndicatorXPosition = [
-        parseInt(childIndicator.attr("x")),
-        parseInt(childIndicator.attr("x")) +
+        parseInt(childIndicator.attr("x")) - brushRefX,
+        parseInt(childIndicator.attr("x")) -
+          brushRefX +
           parseInt(childIndicator.attr("width")),
       ];
 
@@ -252,7 +260,7 @@ export function cascadingButtonIndicatorUpdate(
       ];
 
       let convertedY = projection(
-        brushRefExtend,
+        brushRefW,
         rootButtonHeight,
         rootButtonY,
         rootIndicatorXPosition
@@ -265,94 +273,27 @@ export function cascadingButtonIndicatorUpdate(
         rootIndicatorYPosition
       ); */
 
-      let convertedX = [
+      /* let convertedX = [
         rootButtonX + (1 / 4) * rootButtonWidth,
         rootButtonX + (3 / 4) * rootButtonWidth,
+      ]; */
+
+      let convertedX = [
+        rootButtonX + (1 / 2) * rootButtonWidth - indicatorHalfSize,
+        rootButtonX + (1 / 2) * rootButtonWidth + indicatorHalfSize,
       ];
 
-      drawButtonIndicator(chart, convertedX, convertedY, indicatorID);
+      let childIsLast = childBrushData["overlay"][1] >= chart.p.tokenExt - 1;
 
-      //draw indicator in button: Need button x, width to determine pos. of indicator
-
-      //TODO
-
-      /* let childExtend = childBrushState["overlay"];
-      if (childExtend[1] < chart.p.tokenExt) {
-        let convertedChildExtend = projection(
-          referenceLength,
-          L_parent_transf,
-          X_parent_transf,
-          childExtend
-        );
-        splitsToUpdate.push({
-          idx,
-          pos: convertedChildExtend[1] + 1,
-          depth: currOverviewDepth + 1,
-        });
-      } */
+      drawButtonIndicator(
+        chart,
+        convertedX,
+        convertedY,
+        indicatorID,
+        !childIsLast
+      );
     });
   }
-
-  /* let brushIndicators = getBrushIndicators(chart, rootBrushKey);
-
-  let partitionIndicators = brushIndicators
-    ? brushIndicators["partitions"]
-    : [];
-  let splitIndicators = brushIndicators ? brushIndicators["splits"] : [];
-
-  if (partitionIndicators.length > 0) {
-    partitionIndicators.forEach((indicator) => indicator.remove());
-  }
-
-  if (indicatorsToUpdate.length > 0) {
-    const height = chart.p.indicatorH;
-
-    partitionIndicators = indicatorsToUpdate.map((successor) => {
-      let position = successor["pos"];
-      let depth = successor["depth"];
-      let indicatorID = constructIndicatorID(overviewNr, successor["id"]);
-
-      let width = position[1] - position[0];
-
-      let y = chart.p.indicatorYFunction(depth - 1);
-
-      let color = chart.p.indicatorShader(depth - 1);
-
-      return chart.overviews[overviewNr]["brushGroup"][brushPartition]
-        .select("svg")
-        .append("rect")
-        .attr("class", "partitionIndicator")
-        .attr("id", indicatorID)
-        .attr("x", position[0])
-        .attr("y", y)
-        .attr("width", width)
-        .attr("height", height)
-        .attr("fill", color);
-    });
-  }
-
-  if (splitIndicators.length > 0) {
-    splitIndicators.forEach((split) => split.remove());
-  }
-
-  if (splitsToUpdate.length > 0) {
-    const circleSize = chart.p.splitIndicatorSize;
-
-    splitIndicators = splitsToUpdate.map((split) => {
-      let position = split["pos"];
-      let depth = split["depth"];
-      let y = chart.p.indicatorYFunction(depth - 1);
-
-      return chart.overviews[overviewNr]["brushGroup"][brushPartition]
-        .select("svg")
-        .append("circle")
-        .attr("class", "splitIndicator")
-        .attr("cx", position)
-        .attr("cy", y + circleSize / 2)
-        .attr("r", circleSize)
-        .attr("fill", "black");
-    });
-  } */
 }
 
 export function ascendingButtonIndicatorUpdate(

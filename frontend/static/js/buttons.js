@@ -1297,8 +1297,8 @@ export function drawButtonTree(chart) {
     {
       partition: rootPartition,
       depth: 0,
-      y0: 0,
-      y1: overviewMapExt,
+      y0: 1,
+      y1: overviewMapExt - 1,
     },
   ];
 
@@ -1342,11 +1342,8 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
 
   const n = partitions.length;
 
-  const yScale = d3
-    .scaleBand()
-    .domain(d3.range(n))
-    .rangeRound([y0, y1])
-    .paddingInner(0.005);
+  const yScale = d3.scaleBand().domain(d3.range(n)).rangeRound([y0, y1]);
+  //.paddingInner(0.005);
 
   const y_pos = {};
 
@@ -1362,8 +1359,8 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
       .attr("class", "buttonTreeElement")
       .attr("x", x)
       .attr("width", w)
-      .attr("y", y_part)
-      .attr("height", h_part)
+      .attr("y", y_part + 1)
+      .attr("height", h_part - 1)
       .attr("fill", "lightgray")
       .attr("stroke", "black")
       .attr("stroke-width", "1px")
@@ -1406,9 +1403,12 @@ export function drawButtonIndicator(
   chart,
   indicatorX,
   indicatorY,
-  indicatorID
+  indicatorID,
+  drawSplitIndicator
 ) {
-  const buttonIndicatorID = constructButtonIndicatorID(indicatorID);
+  const [buttonIndicatorID, splitIndicatorID] = constructButtonIndicatorIDs(
+    indicatorID
+  );
   const oldIndicator = d3.select("#" + buttonIndicatorID);
   if (oldIndicator) oldIndicator.remove();
 
@@ -1419,12 +1419,26 @@ export function drawButtonIndicator(
     .attr("x", indicatorX[0])
     .attr("y", indicatorY[0])
     .attr("width", indicatorX[1] - indicatorX[0])
-    .attr("height", indicatorY[1] - indicatorY[0])
-    .attr("fill", "black")
-    .attr("");
+    .attr("height", indicatorY[1] - indicatorY[0]) //indicatorY[1] - indicatorY[0]
+    .attr("fill", "black");
+
+  if (drawSplitIndicator) {
+    const oldSplitIndicator = d3.select("#" + splitIndicatorID);
+    if (oldSplitIndicator) oldSplitIndicator.remove();
+
+    svg
+      .append("circle")
+      .attr("id", splitIndicatorID)
+      .attr("class", "buttonPartitionIndicator")
+      .attr("cx", indicatorX[1] - (indicatorX[1] - indicatorX[0]) / 2)
+      .attr("cy", indicatorY[1] - indicatorY[0] + 1)
+      .attr("r", (indicatorX[1] - indicatorX[0]) / 2)
+      .attr("fill", "black");
+  }
 }
 
-const constructButtonIndicatorID = (indicatorID) => {
-  const prefix = "button_";
-  return prefix + indicatorID;
+const constructButtonIndicatorIDs = (indicatorID) => {
+  const buttonPrefix = "button_";
+  const splitPrefix = "button_split_";
+  return [buttonPrefix + indicatorID, splitPrefix + indicatorID];
 };

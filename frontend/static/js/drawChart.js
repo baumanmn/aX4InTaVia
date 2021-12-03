@@ -18,6 +18,7 @@ import {
 } from "./drawBars.js";
 import { initializeSliders, bindSliderToBrushes } from "./slider";
 import { initializeStates } from "./overviewState.js";
+import { drawButtonTree } from "./buttons.js";
 //import {computeTerms} from "./preprocessData";
 //endregion
 
@@ -77,7 +78,10 @@ const indicatorShader = d3
   .domain([...Array(maxNumOverviews).keys()])
   .range(["black", "gray"]);
 
-const splitIndicatorSize = indicatorH;
+const splitIndicatorSize =
+  Math.max(indicatorMinHeight, overviewExt / maxNumOverviews) / 2;
+
+const buttonTreeIndicatorSize = 10;
 
 //const margins = {
 //  top: 0, //former 20
@@ -295,6 +299,8 @@ export function clearOverviewStrips(chart) {
   if (overviewDepth < chart.p.maxNumOverviews) {
     addInitialCollapseOverview(chart, overviewDepth);
   }
+
+  drawButtonTree(chart);
 }
 //endregion
 
@@ -326,6 +332,7 @@ export function initializeChart() {
     indicatorYFunction,
     indicatorShader,
     splitIndicatorSize,
+    buttonTreeIndicatorSize,
     minimalBrush,
     numOfTerms,
     orientation,
