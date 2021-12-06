@@ -666,3 +666,23 @@ div span {
     transform: rotate(360deg);
   }
 }
+
+rect.active-node,
+.active-node > .selection {
+  fill: darkred;
+}
+
+rect.active-sibling,
+.active-sibling > .selection {
+  fill: red;
+}
+
+rect.active-relative,
+.active-relative > .selection {
+  fill: orange;
+}
+
+rect.active-predec,
+.active-predec > .selection {
+  fill: yellow;
+}

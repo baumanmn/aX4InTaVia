@@ -34,6 +34,7 @@ import {
   renderButton,
   drawButtonTree,
 } from "./buttons";
+import { redrawCurrentActivation } from "./drawChart";
 
 /**
  * Set the currently active overview, that needs to be synched witht he annotation view.
@@ -344,6 +345,7 @@ export function reconfigurePartitions(
     ]);
   }
   //drawButtonTree(chart);
+  redrawCurrentActivation(chart);
 }
 
 export function checkAndUpdateSplit(chart, overviewID, key) {

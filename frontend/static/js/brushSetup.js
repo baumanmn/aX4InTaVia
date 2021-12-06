@@ -25,6 +25,9 @@ import {
   addBrushToFamilyMap,
   addChildBrushToFamilyMap,
   addSiblingBrushToFamilyMap,
+  getBrushConfigKey,
+  redrawCurrentActivation,
+  colorActiveTree,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
@@ -89,37 +92,39 @@ export function installBrush(chart, overviewNr, brushData) {
     overviewNr
   );
 
-  let id = brushData["brushNr"];
+  const selectorPrefix = "brush_";
+  let partitionKey = brushData["brushNr"];
+  let brushID =
+    selectorPrefix + getBrushConfigKey(chart, overviewNr, partitionKey);
   let currOverview = chart.overviews[overviewNr]["stripGroup"];
-  let currClass =
-    currentOverviewPartitionConfig["active_partition"] === id
-      ? brushClasses[overviewNr]
-      : brushClasses["inactive"];
   /* let currClass =
-    currentlyActive[overviewNr].id === id
+    currentOverviewPartitionConfig["active_partition"] === partitionKey
       ? brushClasses[overviewNr]
       : brushClasses["inactive"]; */
+  let currClass = brushClasses["inactive"];
 
-  annotationBrush = id;
+  annotationBrush = partitionKey;
 
-  chart.overviews[overviewNr]["brushGroup"][id] = currOverview
+  chart.overviews[overviewNr]["brushGroup"][partitionKey] = currOverview
     .append("g")
+    .attr("id", brushID)
     .attr("class", currClass)
     .on("click", function () {
-      if (overviewNr !== 2) {
+      colorActiveTree(chart, overviewNr, partitionKey);
+      /* if (overviewNr !== 2) {
         annotationBrush;
-        brushEndOnClick(chart, id); //MB why overviewNo not passed?
+        brushEndOnClick(chart, partitionKey); //MB why overviewNo not passed?
       } else {
-        setBrushStateActiveInOverview(id, 2);
-      }
+        setBrushStateActiveInOverview(partitionKey, 2);
+      } */
     });
 
-  chart.overviews[overviewNr]["brushGroup"][id]
+  chart.overviews[overviewNr]["brushGroup"][partitionKey]
     .append("svg")
     .attr("width", chart.p.tokenExt)
     .attr("height", chart.p.overviewExt);
 
-  chart.overviews[overviewNr]["brushes"][id] = d3
+  chart.overviews[overviewNr]["brushes"][partitionKey] = d3
     .brushX()
     .extent([
       [brushData["overlay"][0], 0],
@@ -137,53 +142,53 @@ export function installBrush(chart, overviewNr, brushData) {
     });
 
   //call the brush on the overview-window
-  chart.overviews[overviewNr]["brushGroup"][id]
-    .call(chart.overviews[overviewNr]["brushes"][id])
-    .call(chart.overviews[overviewNr]["brushes"][id].move, [
+  chart.overviews[overviewNr]["brushGroup"][partitionKey]
+    .call(chart.overviews[overviewNr]["brushes"][partitionKey])
+    .call(chart.overviews[overviewNr]["brushes"][partitionKey].move, [
       brushData["selection"][0],
       brushData["selection"][1],
     ]); //initialize selection to extent-region
 
   //change cursor appearance in case of portrait-orientation
   if (chart.p.orientation === "portrait") {
-    chart.overviews[overviewNr]["brushGroup"][id]
+    chart.overviews[overviewNr]["brushGroup"][partitionKey]
       .selectAll(".handle")
       .attr("cursor", "ns-resize");
   }
 
   //a click outside of the brush-selection centers the brush there (since .overlay lies under .selection,
   //the listener receives only clicks outside of selection but inside of overlay)
-  chart.overviews[overviewNr]["brushGroup"][id]
+  chart.overviews[overviewNr]["brushGroup"][partitionKey]
     .select(".overlay")
     .attr("x", brushData["overlay"][0])
     .attr("width", brushData["overlay"][1] - brushData["overlay"][0])
     .on("mousedown", function () {
-      centerMousedown(chart, id, overviewNr);
+      centerMousedown(chart, partitionKey, overviewNr);
     });
 
   setRanges(overviewNr, brushData);
 
-  if (!currentOverviewPartitionConfig["last_brush_config"][id]) {
+  if (!currentOverviewPartitionConfig["last_brush_config"][partitionKey]) {
     currentOverviewPartitionConfig["num_active_partitions"] += 1;
   }
   //currentOverviewPartitionConfig["active_partition"] = id;
-  currentOverviewPartitionConfig["last_brush_config"][id] = {
+  currentOverviewPartitionConfig["last_brush_config"][partitionKey] = {
     selection: brushData["selection"],
     overlay: brushData["overlay"],
   };
 
   setOverviewPartitionConfig(chart, overviewNr, currentOverviewPartitionConfig);
-  setBrushStateWithoutKey(chart, overviewNr, id, {
+  setBrushStateWithoutKey(chart, overviewNr, partitionKey, {
     overlay: brushData["overlay"],
     selection: brushData["selection"],
   });
 
-  addBrushToFamilyMap(chart, overviewNr, id);
-  addChildBrushToFamilyMap(chart, overviewNr, id);
-  addSiblingBrushToFamilyMap(chart, overviewNr, id);
+  addBrushToFamilyMap(chart, overviewNr, partitionKey);
+  addChildBrushToFamilyMap(chart, overviewNr, partitionKey);
+  addSiblingBrushToFamilyMap(chart, overviewNr, partitionKey);
 
-  cascadingBrushIndicatorUpdate(chart, overviewNr, id);
-  ascendingBrushIndicatorUpdate(chart, overviewNr, id);
+  cascadingBrushIndicatorUpdate(chart, overviewNr, partitionKey);
+  ascendingBrushIndicatorUpdate(chart, overviewNr, partitionKey);
 
   drawButtonTree(chart);
   //cascadingButtonIndicatorUpdate(chart, overviewNr, id);

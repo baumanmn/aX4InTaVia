@@ -83,6 +83,12 @@ const splitIndicatorSize =
 
 const buttonTreeIndicatorSize = 10;
 
+const activeNodeClass = "active-node";
+const activeSiblingClass = "active-sibling";
+const activeRelativeClass = "active-relative";
+const activePredecClass = "active-predec";
+const defaultBrushNodeClass = "O0";
+const defaultButtonNodeClass = "buttonTreeElement";
 //const margins = {
 //  top: 0, //former 20
 //  right: 0,
@@ -301,6 +307,7 @@ export function clearOverviewStrips(chart) {
   }
 
   drawButtonTree(chart);
+  redrawCurrentActivation(chart);
 }
 //endregion
 
@@ -332,6 +339,12 @@ export function initializeChart() {
     indicatorYFunction,
     indicatorShader,
     splitIndicatorSize,
+    activeNodeClass,
+    activeSiblingClass,
+    activeRelativeClass,
+    activePredecClass,
+    defaultBrushNodeClass,
+    defaultButtonNodeClass,
     buttonTreeIndicatorSize,
     minimalBrush,
     numOfTerms,
@@ -467,6 +480,8 @@ export function initializeChart() {
   chart.indicatorMap = {};
 
   chart.buttonList = {};
+
+  chart.activeNodes = {};
 
   return chart;
 }
@@ -895,3 +910,127 @@ export function getButtonRefFromList(chart, brushKey) {
   return chart.buttonList[brushKey];
 }
 //endregion
+
+export function redrawCurrentActivation(chart) {
+  const currActiveNodes = Object.keys(chart.activeNodes);
+  if (currActiveNodes.length === 0) return;
+
+  let currentlyActive;
+  currActiveNodes.forEach((nodeID) => {
+    if (chart.activeNodes[nodeID] === chart.p.activeNodeClass) {
+      currentlyActive = nodeID;
+    }
+  });
+
+  if (currentlyActive) colorActiveTree(chart, -1, currentlyActive, true);
+}
+
+export function colorActiveTree(
+  chart,
+  overviewNr,
+  brushPartitionKey,
+  partitionIsKey = false
+) {
+  const selectorPrefix = "#brush_";
+  const buttonSelectorPrefix = "#button_";
+
+  resetActiveTree(chart);
+
+  const newActiveNodeSet = {};
+
+  const activeBrushKey = !partitionIsKey
+    ? getBrushConfigKey(chart, overviewNr, brushPartitionKey)
+    : brushPartitionKey;
+
+  console.log(activeBrushKey);
+
+  const activeBrush = d3.select(selectorPrefix + activeBrushKey);
+  if (activeBrush.empty()) return;
+  activeBrush.attr("class", chart.p.activeNodeClass);
+  newActiveNodeSet[activeBrushKey] = chart.p.activeNodeClass;
+
+  const refButton = d3.select(buttonSelectorPrefix + activeBrushKey);
+  if (!refButton.empty()) refButton.attr("class", chart.p.activeNodeClass);
+
+  const familyData = getFamilyOfBrush(chart, activeBrushKey);
+  if (familyData) {
+    const siblings = familyData["siblings"];
+    siblings.forEach((siblingKey) => {
+      let siblingBrush = d3.select(selectorPrefix + siblingKey);
+      siblingBrush.attr("class", chart.p.activeSiblingClass);
+      newActiveNodeSet[siblingKey] = chart.p.activeSiblingClass;
+
+      let refButton = d3.select(buttonSelectorPrefix + siblingKey);
+      if (!refButton.empty())
+        refButton.attr("class", chart.p.activeSiblingClass);
+    });
+
+    const children = familyData["children"];
+    children.forEach((childKey) => {
+      let childBrush = d3.select(selectorPrefix + childKey);
+      childBrush.attr("class", chart.p.activeRelativeClass);
+      newActiveNodeSet[childKey] = chart.p.activeRelativeClass;
+
+      let refButton = d3.select(buttonSelectorPrefix + childKey);
+      if (!refButton.empty())
+        refButton.attr("class", chart.p.activeRelativeClass);
+    });
+
+    const parent = familyData["parent"];
+    const predecStack = [parent];
+
+    while (predecStack.length > 0) {
+      let nextPredec = predecStack.shift();
+      let predecBrush = d3.select(selectorPrefix + nextPredec);
+
+      if (!predecBrush.empty()) {
+        predecBrush.attr("class", chart.p.activePredecClass);
+        newActiveNodeSet[nextPredec] = chart.p.activePredecClass;
+
+        let refButton = d3.select(buttonSelectorPrefix + nextPredec);
+        if (!refButton.empty())
+          refButton.attr("class", chart.p.activePredecClass);
+
+        let predecFamilyData = getFamilyOfBrush(chart, nextPredec);
+        if (predecFamilyData) {
+          let predecSiblings = predecFamilyData["siblings"];
+          predecSiblings.forEach((predecSiblingKey) => {
+            let predecSiblingBrush = d3.select(
+              selectorPrefix + predecSiblingKey
+            );
+            predecSiblingBrush.attr("class", chart.p.activeRelativeClass);
+            newActiveNodeSet[predecSiblingKey] = chart.p.activeRelativeClass;
+
+            refButton = d3.select(buttonSelectorPrefix + predecSiblingKey);
+            if (!refButton.empty())
+              refButton.attr("class", chart.p.activeRelativeClass);
+          });
+
+          if (predecFamilyData["parent"])
+            predecStack.push(predecFamilyData["parent"]);
+        }
+      }
+    }
+  }
+
+  chart.activeNodes = newActiveNodeSet;
+}
+
+function resetActiveTree(chart) {
+  const selectorPrefix = "#brush_";
+  const buttonSelectorPrefix = "#button_";
+
+  const currActiveNodes = Object.keys(chart.activeNodes);
+
+  if (currActiveNodes.length > 0) {
+    currActiveNodes.forEach((nodeID) => {
+      const brushNode = d3.select(selectorPrefix + nodeID);
+      if (!brushNode.empty())
+        brushNode.attr("class", chart.p.defaultBrushNodeClass);
+
+      const buttonNode = d3.select(buttonSelectorPrefix + nodeID);
+      if (!buttonNode.empty())
+        buttonNode.attr("class", chart.p.defaultButtonNodeClass);
+    });
+  }
+}

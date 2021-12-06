@@ -30,6 +30,7 @@ import {
   setBrushState,
   getBrushStateWithoutKey,
   getBrushConfigKey,
+  colorActiveTree,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
@@ -362,6 +363,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     //cascadingBrushIndicatorUpdate(chart, overview, brush);
     ascendingBrushIndicatorUpdate(chart, overview, brush);
     ascendingButtonIndicatorUpdate(chart, overview, brush);
+    //colorActiveTree(chart, overview, brush);
   }
 }
 

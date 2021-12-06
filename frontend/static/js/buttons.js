@@ -1277,6 +1277,10 @@ function redrawWorkbench() {
 export function drawButtonTree(chart) {
   if (!svg) return 0;
 
+  svg.selectAll("." + chart.p.activeNodeClass).remove();
+  svg.selectAll("." + chart.p.activeSiblingClass).remove();
+  svg.selectAll("." + chart.p.activeRelativeClass).remove();
+  svg.selectAll("." + chart.p.activePredecClass).remove();
   svg.selectAll(".buttonTreeElement").remove();
   svg.selectAll(".buttonPartitionIndicator").remove();
 
