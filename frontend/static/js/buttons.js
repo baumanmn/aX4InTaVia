@@ -1400,6 +1400,7 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
 };
 
 const buttonOnClick = (chart, buttonID) => {
+  if (buttonID.includes("root")) return;
   let configData = chart.overviewConfig;
 
   let key = buttonID.split("_");

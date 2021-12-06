@@ -361,7 +361,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
   if (currentBrushData) {
     currentBrushData["selection"] = snapPos;
     setBrushState(chart, overview, brush, currentBrushData);
-    //cascadingBrushIndicatorUpdate(chart, overview, brush);
+    cascadingBrushIndicatorUpdate(chart, overview, brush);
     ascendingBrushIndicatorUpdate(chart, overview, brush);
     ascendingButtonIndicatorUpdate(chart, overview, brush);
     drawRootButtonTreeNodeIndicators(chart);
