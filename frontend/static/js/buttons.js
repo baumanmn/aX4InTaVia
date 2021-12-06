@@ -31,7 +31,11 @@ import {
   clearOverviewStrips,
   setButtonRefInList,
 } from "./drawChart";
-import { cascadingButtonIndicatorUpdate, projection } from "./brushIndicators";
+import {
+  cascadingButtonIndicatorUpdate,
+  drawRootButtonTreeNodeIndicators,
+  projection,
+} from "./brushIndicators";
 //endregion
 
 export var activeCoding = false;
@@ -1287,13 +1291,21 @@ export function drawButtonTree(chart) {
   const externalPadding = 20;
   const internalPadding = 0.05;
 
+  const overviewsNumerated = d3.range(chart.p.maxNumOverviews);
+  overviewsNumerated.unshift(-1); //adding overview -1
+
   const xScale = d3
     .scaleBand()
-    .domain(d3.range(chart.p.maxNumOverviews))
+    .domain(overviewsNumerated)
     .rangeRound([overviewMapDepthExt, externalPadding])
     .paddingInner(internalPadding);
 
   const buttonWidth = xScale.bandwidth();
+
+  drawButtons(chart, xScale(-1), buttonWidth, 1, overviewMapExt - 1, [
+    chart.p.rootButtonClassSuffix,
+  ]);
+  drawRootButtonTreeNodeIndicators(chart);
 
   let rootPartition = getActiveBrushesInOverview(chart, 0);
 
@@ -1342,7 +1354,8 @@ export function drawButtonTree(chart) {
 }
 
 const drawButtons = (chart, x, w, y0, y1, partitions) => {
-  const buttonIDPrefix = "button_";
+  const buttonIDPrefix = chart.p.buttonTreeIDPrefix;
+  const buttonTreeClass = chart.p.buttonTreeClass;
 
   const n = partitions.length;
 
@@ -1360,7 +1373,7 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
     const button = svg
       .append("rect")
       .attr("id", buttonID)
-      .attr("class", "buttonTreeElement")
+      .attr("class", buttonTreeClass)
       .attr("x", x)
       .attr("width", w)
       .attr("y", y_part + 1)
@@ -1436,6 +1449,44 @@ export function drawButtonIndicator(
       .attr("class", "buttonPartitionIndicator")
       .attr("cx", indicatorX[1] - (indicatorX[1] - indicatorX[0]) / 2)
       .attr("cy", indicatorY[1] - indicatorY[0] + 1)
+      .attr("r", (indicatorX[1] - indicatorX[0]) / 2)
+      .attr("fill", "black");
+  }
+}
+
+export function drawRootButtonIndicator(
+  chart,
+  indicatorX,
+  indicatorY,
+  indicatorID,
+  splitPos
+) {
+  const [buttonIndicatorID, splitIndicatorID] = constructButtonIndicatorIDs(
+    indicatorID
+  );
+  const oldIndicator = d3.select("#" + buttonIndicatorID);
+  if (oldIndicator) oldIndicator.remove();
+
+  svg
+    .append("rect")
+    .attr("id", buttonIndicatorID)
+    .attr("class", "buttonPartitionIndicator")
+    .attr("x", indicatorX[0])
+    .attr("y", indicatorY[0])
+    .attr("width", indicatorX[1] - indicatorX[0])
+    .attr("height", indicatorY[1] - indicatorY[0]) //indicatorY[1] - indicatorY[0]
+    .attr("fill", "black");
+
+  if (splitPos < chart.p.tokenExt) {
+    const oldSplitIndicator = d3.select("#" + splitIndicatorID);
+    if (oldSplitIndicator) oldSplitIndicator.remove();
+
+    svg
+      .append("circle")
+      .attr("id", splitIndicatorID)
+      .attr("class", "buttonPartitionIndicator")
+      .attr("cx", indicatorX[1] - (indicatorX[1] - indicatorX[0]) / 2)
+      .attr("cy", splitPos)
       .attr("r", (indicatorX[1] - indicatorX[0]) / 2)
       .attr("fill", "black");
   }

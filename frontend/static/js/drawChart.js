@@ -82,6 +82,9 @@ const splitIndicatorSize =
   Math.max(indicatorMinHeight, overviewExt / maxNumOverviews) / 2;
 
 const buttonTreeIndicatorSize = 10;
+const buttonTreeClass = "buttonTreeElement";
+const buttonTreeIDPrefix = "button_";
+const rootButtonClassSuffix = "root";
 
 const activeNodeClass = "active-node";
 const activeSiblingClass = "active-sibling";
@@ -346,6 +349,9 @@ export function initializeChart() {
     defaultBrushNodeClass,
     defaultButtonNodeClass,
     buttonTreeIndicatorSize,
+    buttonTreeClass,
+    buttonTreeIDPrefix,
+    rootButtonClassSuffix,
     minimalBrush,
     numOfTerms,
     orientation,
@@ -907,6 +913,7 @@ export function setButtonRefInList(chart, brushKey, buttonRef) {
 }
 
 export function getButtonRefFromList(chart, brushKey) {
+  console.log(chart.buttonList);
   return chart.buttonList[brushKey];
 }
 //endregion

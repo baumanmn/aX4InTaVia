@@ -686,3 +686,12 @@ rect.active-predec,
 .active-predec > .selection {
   fill: yellow;
 }
+
+#button_root {
+  fill: rgba(0, 0, 0, 0.767);
+}
+
+rect[id^="button_root_"],
+circle[id^="button_split_root_"] {
+  fill: lightgray;
+}

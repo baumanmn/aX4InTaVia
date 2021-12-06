@@ -8,10 +8,11 @@ import {
   getBrushPartitionFromKey,
   getButtonRefFromList,
   setButtonRefInList,
+  getActiveBrushesInOverview,
 } from "./drawChart";
 
 import * as d3 from "d3";
-import { drawButtonIndicator } from "./buttons";
+import { drawButtonIndicator, drawRootButtonIndicator } from "./buttons";
 
 const constructIndicatorID = (parentOverviewID, brushID) => {
   const indicatorIDPrefix = "idc_";
@@ -317,5 +318,58 @@ export function ascendingButtonIndicatorUpdate(
     currBrushID = parentNodeKey;
     parentNodeKey = getFamilyOfBrush(chart, currBrushID)["parent"];
     parentOverviewDepth -= 1;
+  }
+}
+
+export function drawRootButtonTreeNodeIndicators(chart) {
+  const rootButtonKey = chart.p.rootButtonClassSuffix;
+  const rootButtonData = getButtonRefFromList(chart, rootButtonKey);
+  if (!rootButtonData) return;
+  const rootButtonY = rootButtonData["y"];
+  const rootButtonHeight = rootButtonData["h"];
+  const rootButtonX = rootButtonData["x"];
+  const rootButtonWidth = rootButtonData["w"];
+  const brushRefX = 0;
+  const brushRefW = chart.p.tokenExt;
+  const indicatorHalfSize = chart.p.buttonTreeIndicatorSize / 2;
+
+  const childrenKeys = getActiveBrushesInOverview(chart, 0);
+
+  if (childrenKeys.length > 0) {
+    childrenKeys.forEach((childKey, idx) => {
+      let childBrushData = getBrushState(chart, childKey);
+      let indicatorID = chart.p.rootButtonClassSuffix + "_" + idx;
+
+      /* if (!d3.select("#" + indicatorID).empty()) {
+        d3.select("#" + indicatorID).remove();
+      } */
+
+      let rootChildXPosition = [
+        childBrushData["selection"][0] - brushRefX,
+        childBrushData["selection"][1] - brushRefX,
+      ];
+
+      let convertedY = projection(
+        brushRefW,
+        rootButtonHeight,
+        rootButtonY,
+        rootChildXPosition
+      );
+
+      let convertedX = [
+        rootButtonX + (1 / 2) * rootButtonWidth - indicatorHalfSize,
+        rootButtonX + (1 / 2) * rootButtonWidth + indicatorHalfSize,
+      ];
+
+      let childIsLast = childBrushData["overlay"][1] >= chart.p.tokenExt - 1;
+
+      drawRootButtonIndicator(
+        chart,
+        convertedX,
+        convertedY,
+        indicatorID,
+        childBrushData["overlay"][1]
+      );
+    });
   }
 }

@@ -37,6 +37,7 @@ import {
   ascendingButtonIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
   cascadingButtonIndicatorUpdate,
+  drawRootButtonTreeNodeIndicators,
 } from "./brushIndicators.js";
 
 //the first and last token OR bin (id and x-value), whose extension contains x0 or x1
@@ -363,6 +364,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     //cascadingBrushIndicatorUpdate(chart, overview, brush);
     ascendingBrushIndicatorUpdate(chart, overview, brush);
     ascendingButtonIndicatorUpdate(chart, overview, brush);
+    drawRootButtonTreeNodeIndicators(chart);
     //colorActiveTree(chart, overview, brush);
   }
 }
