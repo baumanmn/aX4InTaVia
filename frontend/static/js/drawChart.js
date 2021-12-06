@@ -57,7 +57,7 @@ const overviewExt = 40; //height of an overview strip
 const sliderSpace = 15; //space for sliders
 const overviewHandleExt = 40; //space for the handles
 const overviewStripsExt = tokenExt + overviewHandleExt;
-const stripsExt = maxNumOverviews * (overviewExt + sliderSpace);
+const stripsExt = (maxNumOverviews + 1) * (overviewExt + sliderSpace);
 const [overviewStripsWidth, overviewStripsHeight] =
   orientation === "landscape"
     ? [overviewStripsExt, stripsExt]
@@ -489,6 +489,13 @@ export function initializeChart() {
 
   chart.activeNodes = {};
 
+  chart.workbench = {
+    strip: "",
+    workBenchBrushes: {},
+    numActive: 0,
+    linkedKeys: [],
+  };
+
   return chart;
 }
 
@@ -596,6 +603,107 @@ export function drawStripGroup(chart, overviewID) {
     .attr(
       "transform",
       `translate (0, ${pos * (overviewExt + sliderSpace)} )`
+      //"translate(" +
+      //  margins.left +
+      //  "," +
+      //  (margins.top + detailHeight + margins.overviewDetail + yShift) +
+      //  ")"
+    );
+}
+
+export function addWorkBenchbrush(chart, workBenchBrushID, linkedBrushKey) {
+  drawWorkbenchStrip(chart);
+  chart.workbench["numActive"] = chart.workbench["numActive"] + 1;
+  drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey);
+}
+
+export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
+  const newNumActive = chart.workbench["numActive"];
+
+  const workBenchYScale = d3
+    .scaleBand()
+    .domain(d3.range(newNumActive))
+    .rangeRound([0, tokenExt]);
+
+  const y = workBenchYScale(workBenchBrushID);
+  const height = workBenchYScale.bandwidth();
+
+  chart.workbench["workBenchBrushes"][workBenchBrushID] = {
+    linkedBrushKey,
+    objects: {
+      brushGroup: "",
+      brush: "",
+      background: "",
+      rects: "",
+    },
+  };
+
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+    "background"
+  ] = chart.workbench["strip"]
+    .append("rect")
+    .attr("class", "overviewBg_r")
+    .attr("x", y)
+    .attr("y", 0)
+    .attr("width", height)
+    .attr("height", overviewExt);
+
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+    "rects"
+  ] = chart.workbench["strip"].append("g");
+
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+    "brushGroup"
+  ] = chart.workbench["strip"].attr("id", "O0").attr("class", "workbenchBrush");
+
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+    "brush"
+  ] = d3.brushX().extent([
+    [y, 0],
+    [y + height, overviewExt],
+  ]);
+  /* .on("end", () => {
+      setBrushState(chart, linkedBrushKey, {
+        overlay: [0, chart.p.tokenExt],
+        selection: [20, chart.p.tokenExt],
+      });
+      clearOverviewStrips(chart);
+    }); */
+
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brushGroup"]
+    .call(
+      chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brush"]
+    )
+    .call(
+      chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brush"]
+        .move,
+      [y, y + height]
+    );
+
+  if (chart.p.orientation === "portrait") {
+    chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+      "brushGroup"
+    ]
+      .selectAll(".handle")
+      .attr("cursor", "ns-resize");
+  }
+}
+
+export function drawWorkbenchStrip(chart) {
+  const pos = stripsExt - overviewExt;
+  const id = "workbench_strip";
+
+  if (!d3.select("#" + id).empty()) {
+    d3.select("#" + id).remove();
+  }
+
+  chart.workbench["strip"] = chart.e.overviewStrips
+    .append("g") //transform-group for stacking the overview strips at the right positions
+    .attr("id", id)
+    .attr("class", "overview_group")
+    .attr(
+      "transform",
+      `translate (0, ${pos} )`
       //"translate(" +
       //  margins.left +
       //  "," +

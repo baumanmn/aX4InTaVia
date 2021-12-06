@@ -7,6 +7,8 @@ import {
   fillChart,
   drawInitialOverview,
   addInitialCollapseOverview,
+  drawWorkbenchStrip,
+  addWorkBenchbrush,
 } from "./drawChart.js";
 import { dragChart } from "./dragChart.js";
 import { initLens } from "./lensChart.js";
@@ -41,6 +43,8 @@ function drawChart(data) {
   initIndicator(chart); //HM
   initElemrntAddres(chart); //HM
   initStateController(chart); //HM
+
+  addWorkBenchbrush(chart, 0, "0_0");
 
   $(function () {
     controller.newMonitor("textView_0", chart);
