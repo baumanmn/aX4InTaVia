@@ -19,7 +19,14 @@ import {
 import { initializeSliders, bindSliderToBrushes } from "./slider";
 import { initializeStates } from "./overviewState.js";
 import { drawButtonTree } from "./buttons.js";
-import { projection } from "./brushIndicators.js";
+import {
+  ascendingBrushIndicatorUpdate,
+  ascendingButtonIndicatorUpdate,
+  cascadingBrushIndicatorUpdate,
+  cascadingButtonIndicatorUpdate,
+  drawRootButtonTreeNodeIndicators,
+  projection,
+} from "./brushIndicators.js";
 //import {computeTerms} from "./preprocessData";
 //endregion
 
@@ -316,7 +323,7 @@ export function clearOverviewStrips(chart) {
   }
 
   drawButtonTree(chart);
-  redrawCurrentActivation(chart);
+  //redrawCurrentActivation(chart);
 }
 //endregion
 
@@ -734,16 +741,20 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
 }
 
 export function updateLinkedBrush(chart, brushKey, newBrushData) {
+  const split = brushKey.split("_");
+  split.shift();
+  const overviewDepth = split.length - 1;
+  const partitionKey = split[split.length - 1];
   if (!d3.select("#brush_" + brushKey).empty()) {
-    const split = brushKey.split("_");
-    split.shift();
-    const overviewDepth = split.length - 1;
-    const partitionKey = split[split.length - 1];
     const brush = chart.overviews[overviewDepth]["brushes"][partitionKey];
     const brushObj = chart.overviews[overviewDepth]["brushGroup"][partitionKey];
     brushObj.call(brush.move, newBrushData["selection"]);
   }
   setBrushState(chart, brushKey, newBrushData);
+  cascadingBrushIndicatorUpdate(chart, overviewDepth, partitionKey);
+  ascendingBrushIndicatorUpdate(chart, overviewDepth, partitionKey);
+  ascendingButtonIndicatorUpdate(chart, overviewDepth, partitionKey);
+  drawRootButtonTreeNodeIndicators(chart);
 }
 
 export function redrawWorkbench(chart) {

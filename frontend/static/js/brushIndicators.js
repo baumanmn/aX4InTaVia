@@ -227,9 +227,10 @@ export function cascadingButtonIndicatorUpdate(
 
   const rootButtonWidth = rootButtonData["w"];
 
-  const brushRefX = rootBrushData["overlay"][0];
+  const brushRefX = rootBrushData["selection"][0];
 
-  const brushRefW = rootBrushData["overlay"][1] - rootBrushData["overlay"][0];
+  const brushRefW =
+    rootBrushData["selection"][1] - rootBrushData["selection"][0];
 
   const rootOverviewHeight = chart.p.overviewExt;
 
@@ -249,9 +250,9 @@ export function cascadingButtonIndicatorUpdate(
 
       let rootIndicatorXPosition = [
         parseInt(childIndicator.attr("x")) - brushRefX,
-        parseInt(childIndicator.attr("x")) -
-          brushRefX +
-          parseInt(childIndicator.attr("width")),
+        parseInt(childIndicator.attr("x")) +
+          parseInt(childIndicator.attr("width")) -
+          brushRefX,
       ];
 
       let rootIndicatorYPosition = [
@@ -267,31 +268,20 @@ export function cascadingButtonIndicatorUpdate(
         rootIndicatorXPosition
       );
 
-      let convertedSplitIndicatorPos = projection(
-        brushRefW,
-        rootButtonHeight,
-        rootButtonY,
-        childBrushData["overlay"]
-      );
-
-      /* let convertedX = projection(
-        rootOverviewHeight,
-        rootButtonWidth,
-        rootButtonX,
-        rootIndicatorYPosition
-      ); */
-
-      /* let convertedX = [
-        rootButtonX + (1 / 4) * rootButtonWidth,
-        rootButtonX + (3 / 4) * rootButtonWidth,
-      ]; */
+      let convertedSplitIndicatorPos =
+        childBrushData["overlay"][1] < chart.p.tokenExt
+          ? projection(
+              chart.p.tokenExt,
+              rootButtonHeight,
+              rootButtonY,
+              childBrushData["overlay"]
+            )
+          : [-1, -1];
 
       let convertedX = [
         rootButtonX + (1 / 2) * rootButtonWidth - indicatorHalfSize,
         rootButtonX + (1 / 2) * rootButtonWidth + indicatorHalfSize,
       ];
-
-      let childIsLast = childBrushData["overlay"][1] >= chart.p.tokenExt - 1;
 
       drawButtonIndicator(
         chart,

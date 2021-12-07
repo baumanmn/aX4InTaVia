@@ -197,6 +197,7 @@ export function installBrush(chart, overviewNr, brushData) {
   ascendingBrushIndicatorUpdate(chart, overviewNr, partitionKey);
 
   drawButtonTree(chart);
+  redrawCurrentActivation(chart);
   //cascadingButtonIndicatorUpdate(chart, overviewNr, id);
 }
 

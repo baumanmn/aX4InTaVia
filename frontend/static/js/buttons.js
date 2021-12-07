@@ -30,6 +30,7 @@ import {
   updateOverviewConfig,
   clearOverviewStrips,
   setButtonRefInList,
+  colorActiveTree,
 } from "./drawChart";
 import {
   cascadingButtonIndicatorUpdate,
@@ -1406,6 +1407,9 @@ const buttonOnClick = (chart, buttonID) => {
   let key = buttonID.split("_");
   key.shift();
 
+  const overviewDepth = key[0];
+  const partitionKey = key[key.length - 1];
+
   while (key.length > 1) {
     let partitionKey = key.pop();
     let strippedOverviewKey = key.join("_");
@@ -1415,6 +1419,7 @@ const buttonOnClick = (chart, buttonID) => {
 
   updateOverviewConfig(chart, configData);
   clearOverviewStrips(chart);
+  colorActiveTree(chart, overviewDepth, partitionKey);
 };
 
 export function drawButtonIndicator(
@@ -1440,7 +1445,7 @@ export function drawButtonIndicator(
     .attr("height", indicatorY[1] - indicatorY[0]) //indicatorY[1] - indicatorY[0]
     .attr("fill", "black");
 
-  if (splitIndicatorPos < chart.p.tokenExt) {
+  if (splitIndicatorPos > 0) {
     const oldSplitIndicator = d3.select("#" + splitIndicatorID);
     if (oldSplitIndicator) oldSplitIndicator.remove();
 
