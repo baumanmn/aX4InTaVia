@@ -28,6 +28,7 @@ import {
   getBrushConfigKey,
   redrawCurrentActivation,
   colorActiveTree,
+  setBrushState,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
@@ -94,8 +95,8 @@ export function installBrush(chart, overviewNr, brushData) {
 
   const selectorPrefix = "brush_";
   let partitionKey = brushData["brushNr"];
-  let brushID =
-    selectorPrefix + getBrushConfigKey(chart, overviewNr, partitionKey);
+  let brushKey = getBrushConfigKey(chart, overviewNr, partitionKey);
+  let brushID = selectorPrefix + brushKey;
   let currOverview = chart.overviews[overviewNr]["stripGroup"];
   /* let currClass =
     currentOverviewPartitionConfig["active_partition"] === partitionKey
@@ -173,12 +174,17 @@ export function installBrush(chart, overviewNr, brushData) {
   }
   //currentOverviewPartitionConfig["active_partition"] = id;
   currentOverviewPartitionConfig["last_brush_config"][partitionKey] = {
+    brushKey,
     selection: brushData["selection"],
     overlay: brushData["overlay"],
   };
 
   setOverviewPartitionConfig(chart, overviewNr, currentOverviewPartitionConfig);
-  setBrushStateWithoutKey(chart, overviewNr, partitionKey, {
+  /* setBrushStateWithoutKey(chart, overviewNr, partitionKey, {
+    overlay: brushData["overlay"],
+    selection: brushData["selection"],
+  }); */
+  setBrushState(chart, brushKey, {
     overlay: brushData["overlay"],
     selection: brushData["selection"],
   });

@@ -19,6 +19,7 @@ import {
 import { initializeSliders, bindSliderToBrushes } from "./slider";
 import { initializeStates } from "./overviewState.js";
 import { drawButtonTree } from "./buttons.js";
+import { projection } from "./brushIndicators.js";
 //import {computeTerms} from "./preprocessData";
 //endregion
 
@@ -285,14 +286,19 @@ export function clearOverviewStrips(chart) {
     let partitions = configData["last_brush_config"];
 
     Object.keys(partitions).forEach((partKey, idx) => {
+      let brushKey = partitions[partKey]["brushKey"];
+      let stored = getBrushState(chart, brushKey);
       let brushData = {
         brushNr: partKey,
-        overlay: partitions[partKey]["overlay"],
-        selection: partitions[partKey]["selection"],
+        overlay: stored["overlay"],
+        selection: stored["selection"],
+        /* overlay: partitions[partKey]["overlay"],
+        selection: partitions[partKey]["selection"], */
       };
       installBrush(chart, overviewDepth, brushData);
 
-      let splitPos = partitions[partKey]["overlay"][1] + 1;
+      let splitPos = stored["overlay"][1] + 1;
+      //let splitPos = partitions[partKey]["overlay"][1] + 1;
       if (splitPos < chart.p.tokenExt)
         bindSliderToBrushes(chart, splitPos, overviewDepth, idx);
     });
@@ -628,6 +634,19 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
   const y = workBenchYScale(workBenchBrushID);
   const height = workBenchYScale.bandwidth();
 
+  const linkedBrushData = getBrushState(chart, linkedBrushKey);
+  const linkedBrushRefL =
+    linkedBrushData["overlay"][1] - linkedBrushData["overlay"][0];
+  const linkedBrushX1 =
+    linkedBrushData["selection"][0] - linkedBrushData["overlay"][0];
+  const linkedBrushX2 =
+    linkedBrushData["selection"][1] - linkedBrushData["overlay"][0];
+
+  const convertedSelectionRange = projection(linkedBrushRefL, height, y, [
+    linkedBrushX1,
+    linkedBrushX2,
+  ]);
+
   chart.workbench["workBenchBrushes"][workBenchBrushID] = {
     linkedBrushKey,
     objects: {
@@ -656,19 +675,43 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
     "brushGroup"
   ] = chart.workbench["strip"].attr("id", "O0").attr("class", "workbenchBrush");
 
-  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
-    "brush"
-  ] = d3.brushX().extent([
-    [y, 0],
-    [y + height, overviewExt],
-  ]);
-  /* .on("end", () => {
-      setBrushState(chart, linkedBrushKey, {
-        overlay: [0, chart.p.tokenExt],
-        selection: [20, chart.p.tokenExt],
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brush"] = d3
+    .brushX()
+    .extent([
+      [y, 0],
+      [y + height, overviewExt],
+    ])
+    .on("end", () => {
+      const wbX = parseInt(
+        chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+          "brushGroup"
+        ]
+          .select(".selection")
+          .attr("x")
+      );
+      const wbW =
+        wbX +
+        parseInt(
+          chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+            "brushGroup"
+          ]
+            .select(".selection")
+            .attr("width")
+        );
+      const refBrushData = getBrushState(chart, linkedBrushKey);
+      const refBrushL = refBrushData["overlay"][1] - refBrushData["overlay"][0];
+      const refBrushX = refBrushData["overlay"][0];
+
+      const transformedWB = projection(height, refBrushL, refBrushX, [
+        wbX - y,
+        wbW - y,
+      ]);
+      updateLinkedBrush(chart, linkedBrushKey, {
+        overlay: refBrushData["overlay"],
+        selection: transformedWB,
       });
-      clearOverviewStrips(chart);
-    }); */
+      //clearOverviewStrips(chart);
+    });
 
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brushGroup"]
     .call(
@@ -677,7 +720,8 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
     .call(
       chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brush"]
         .move,
-      [y, y + height]
+      [convertedSelectionRange[0], convertedSelectionRange[1]]
+      //[y, y + height]
     );
 
   if (chart.p.orientation === "portrait") {
@@ -689,12 +733,38 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
   }
 }
 
+export function updateLinkedBrush(chart, brushKey, newBrushData) {
+  if (!d3.select("#brush_" + brushKey).empty()) {
+    const split = brushKey.split("_");
+    split.shift();
+    const overviewDepth = split.length - 1;
+    const partitionKey = split[split.length - 1];
+    const brush = chart.overviews[overviewDepth]["brushes"][partitionKey];
+    const brushObj = chart.overviews[overviewDepth]["brushGroup"][partitionKey];
+    brushObj.call(brush.move, newBrushData["selection"]);
+  }
+  setBrushState(chart, brushKey, newBrushData);
+}
+
+export function redrawWorkbench(chart) {
+  let keys = Object.keys(chart.workbench["workBenchBrushes"]);
+  keys.forEach((wbKey) => {
+    let brushKey = chart.workbench["workBenchBrushes"][wbKey]["linkedBrushKey"];
+    drawWorkbenchStrip(chart);
+    drawWorkBenchBrush(chart, wbKey, brushKey);
+  });
+}
+
 export function drawWorkbenchStrip(chart) {
   const pos = stripsExt - overviewExt;
   const id = "workbench_strip";
 
   if (!d3.select("#" + id).empty()) {
     d3.select("#" + id).remove();
+  }
+
+  if (!d3.selectAll(".workbenchBrush").empty()) {
+    d3.selectAll(".workbenchBrush").remove();
   }
 
   chart.workbench["strip"] = chart.e.overviewStrips
@@ -939,6 +1009,7 @@ export function getBrushState(chart, brushConfigKey) {
 
 export function setBrushState(chart, brushConfigKey, brushData) {
   chart.brushRanges[brushConfigKey] = brushData;
+  console.log(chart.brushRanges);
 }
 
 export function addBrushToFamilyMap(chart, overviewNr, brushPartition) {
@@ -1021,7 +1092,6 @@ export function setButtonRefInList(chart, brushKey, buttonRef) {
 }
 
 export function getButtonRefFromList(chart, brushKey) {
-  console.log(chart.buttonList);
   return chart.buttonList[brushKey];
 }
 //endregion
@@ -1056,8 +1126,6 @@ export function colorActiveTree(
   const activeBrushKey = !partitionIsKey
     ? getBrushConfigKey(chart, overviewNr, brushPartitionKey)
     : brushPartitionKey;
-
-  console.log(activeBrushKey);
 
   const activeBrush = d3.select(selectorPrefix + activeBrushKey);
   if (activeBrush.empty()) return;

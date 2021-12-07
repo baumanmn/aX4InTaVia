@@ -31,6 +31,7 @@ import {
   getBrushStateWithoutKey,
   getBrushConfigKey,
   colorActiveTree,
+  redrawWorkbench,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
@@ -365,6 +366,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     ascendingBrushIndicatorUpdate(chart, overview, brush);
     ascendingButtonIndicatorUpdate(chart, overview, brush);
     drawRootButtonTreeNodeIndicators(chart);
+    redrawWorkbench(chart);
     //colorActiveTree(chart, overview, brush);
   }
 }
