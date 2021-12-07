@@ -267,6 +267,13 @@ export function cascadingButtonIndicatorUpdate(
         rootIndicatorXPosition
       );
 
+      let convertedSplitIndicatorPos = projection(
+        brushRefW,
+        rootButtonHeight,
+        rootButtonY,
+        childBrushData["overlay"]
+      );
+
       /* let convertedX = projection(
         rootOverviewHeight,
         rootButtonWidth,
@@ -291,7 +298,7 @@ export function cascadingButtonIndicatorUpdate(
         convertedX,
         convertedY,
         indicatorID,
-        !childIsLast
+        convertedSplitIndicatorPos[1]
       );
     });
   }
@@ -305,6 +312,11 @@ export function ascendingButtonIndicatorUpdate(
   const rootBrushKey = getBrushConfigKey(chart, overviewNr, brushPartition);
 
   if (!rootBrushKey) return 0;
+
+  if (overviewNr === 0) {
+    cascadingButtonIndicatorUpdate(chart, overviewNr, rootBrushKey);
+    return;
+  }
 
   let currBrushID = rootBrushKey;
 

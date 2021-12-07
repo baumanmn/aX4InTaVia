@@ -1422,7 +1422,7 @@ export function drawButtonIndicator(
   indicatorX,
   indicatorY,
   indicatorID,
-  drawSplitIndicator
+  splitIndicatorPos
 ) {
   const [buttonIndicatorID, splitIndicatorID] = constructButtonIndicatorIDs(
     indicatorID
@@ -1440,7 +1440,7 @@ export function drawButtonIndicator(
     .attr("height", indicatorY[1] - indicatorY[0]) //indicatorY[1] - indicatorY[0]
     .attr("fill", "black");
 
-  if (drawSplitIndicator) {
+  if (splitIndicatorPos < chart.p.tokenExt) {
     const oldSplitIndicator = d3.select("#" + splitIndicatorID);
     if (oldSplitIndicator) oldSplitIndicator.remove();
 
@@ -1449,7 +1449,7 @@ export function drawButtonIndicator(
       .attr("id", splitIndicatorID)
       .attr("class", "buttonPartitionIndicator")
       .attr("cx", indicatorX[1] - (indicatorX[1] - indicatorX[0]) / 2)
-      .attr("cy", indicatorY[1] - indicatorY[0] + 1)
+      .attr("cy", splitIndicatorPos + 1) //indicatorY[1] - indicatorY[0] + 1
       .attr("r", (indicatorX[1] - indicatorX[0]) / 2)
       .attr("fill", "black");
   }
