@@ -18,7 +18,7 @@ import {
 } from "./drawBars.js";
 import { initializeSliders, bindSliderToBrushes } from "./slider";
 import { initializeStates } from "./overviewState.js";
-import { drawButtonTree } from "./buttons.js";
+import { buttonOnClick, drawButtonTree } from "./buttons.js";
 import {
   ascendingBrushIndicatorUpdate,
   ascendingButtonIndicatorUpdate,
@@ -100,6 +100,8 @@ const activeRelativeClass = "active-relative";
 const activePredecClass = "active-predec";
 const defaultBrushNodeClass = "O0";
 const defaultButtonNodeClass = "buttonTreeElement";
+
+const parentBrushPlaceholderID = -1;
 //const margins = {
 //  top: 0, //former 20
 //  right: 0,
@@ -365,6 +367,7 @@ export function initializeChart() {
     buttonTreeClass,
     buttonTreeIDPrefix,
     rootButtonClassSuffix,
+    parentBrushPlaceholderID,
     minimalBrush,
     numOfTerms,
     orientation,
@@ -509,6 +512,8 @@ export function initializeChart() {
     linkedKeys: [],
   };
 
+  chart.nodeActivityMode = "overview";
+
   return chart;
 }
 
@@ -647,9 +652,6 @@ export function addWorkBenchbrush(chart, linkedBrushKey) {
     chart.workbench["linkedKeys"].push(linkedBrushKey);
     chart.workbench["numActive"] = chart.workbench["numActive"] + 1;
   } else {
-    console.log(
-      `is same: ${chart.workbench["linkedKeys"][sameSubtreeNodePos]}, ${linkedBrushKey}`
-    );
     chart.workbench["linkedKeys"][sameSubtreeNodePos] = linkedBrushKey;
   }
 
@@ -686,6 +688,10 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
     linkedBrushX2,
   ]);
 
+  const brushClass = chart.activeNodes[linkedBrushKey]
+    ? chart.activeNodes[linkedBrushKey]
+    : "O0";
+
   chart.workbench["workBenchBrushes"][workBenchBrushID] = {
     linkedBrushKey,
     objects: {
@@ -714,8 +720,8 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
     "brushGroup"
   ] = chart.workbench["strip"]
     .append("g")
-    .attr("id", "workbenchBrush_" + workBenchBrushID)
-    .attr("class", "workbenchBrush");
+    .attr("id", "workbenchBrush_" + linkedBrushKey)
+    .attr("class", "O0");
 
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brush"] = d3
     .brushX()
@@ -754,6 +760,10 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
       });
       //clearOverviewStrips(chart);
     });
+
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+    "brushGroup"
+  ].on("click", () => workbenchBrushOnClick(chart, linkedBrushKey));
 
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
     "brushGroup"
@@ -1072,7 +1082,7 @@ export function setBrushState(chart, brushConfigKey, brushData) {
 }
 
 export function addBrushToFamilyMap(chart, overviewNr, brushPartition) {
-  let parentBrushID = -1;
+  let parentBrushID = chart.p.parentBrushPlaceholderID;
   if (overviewNr > 0) {
     let parentOverviewConfig = getOverviewPartitionConfig(
       chart,
@@ -1181,8 +1191,11 @@ export function colorActiveTree(
 ) {
   const selectorPrefix = "#brush_";
   const buttonSelectorPrefix = "#button_";
+  const workbenchSelectorPrefix = "#workbenchBrush_";
 
   resetActiveTree(chart);
+
+  const activityMode = chart.nodeActivityMode;
 
   const newActiveNodeSet = {};
 
@@ -1198,18 +1211,27 @@ export function colorActiveTree(
   const refButton = d3.select(buttonSelectorPrefix + activeBrushKey);
   if (!refButton.empty()) refButton.attr("class", chart.p.activeNodeClass);
 
+  const refWBBrush = d3.select(workbenchSelectorPrefix + activeBrushKey);
+  if (!refWBBrush.empty()) refWBBrush.attr("class", chart.p.activeNodeClass);
+
   const familyData = getFamilyOfBrush(chart, activeBrushKey);
   if (familyData) {
-    const siblings = familyData["siblings"];
-    siblings.forEach((siblingKey) => {
-      let siblingBrush = d3.select(selectorPrefix + siblingKey);
-      siblingBrush.attr("class", chart.p.activeSiblingClass);
-      newActiveNodeSet[siblingKey] = chart.p.activeSiblingClass;
+    if (activityMode === "overview") {
+      const siblings = familyData["siblings"];
+      siblings.forEach((siblingKey) => {
+        let siblingBrush = d3.select(selectorPrefix + siblingKey);
+        siblingBrush.attr("class", chart.p.activeSiblingClass);
+        newActiveNodeSet[siblingKey] = chart.p.activeSiblingClass;
 
-      let refButton = d3.select(buttonSelectorPrefix + siblingKey);
-      if (!refButton.empty())
-        refButton.attr("class", chart.p.activeSiblingClass);
-    });
+        let refButton = d3.select(buttonSelectorPrefix + siblingKey);
+        if (!refButton.empty())
+          refButton.attr("class", chart.p.activeSiblingClass);
+
+        let refWBBrush = d3.select(workbenchSelectorPrefix + siblingKey);
+        if (!refWBBrush.empty())
+          refWBBrush.attr("class", chart.p.activeSiblingClass);
+      });
+    }
 
     const children = familyData["children"];
     children.forEach((childKey) => {
@@ -1220,6 +1242,10 @@ export function colorActiveTree(
       let refButton = d3.select(buttonSelectorPrefix + childKey);
       if (!refButton.empty())
         refButton.attr("class", chart.p.activeRelativeClass);
+
+      let refWBBrush = d3.select(workbenchSelectorPrefix + childKey);
+      if (!refWBBrush.empty())
+        refWBBrush.attr("class", chart.p.activeRelativeClass);
     });
 
     const parent = familyData["parent"];
@@ -1237,6 +1263,10 @@ export function colorActiveTree(
         if (!refButton.empty())
           refButton.attr("class", chart.p.activePredecClass);
 
+        let refWBBrush = d3.select(workbenchSelectorPrefix + nextPredec);
+        if (!refWBBrush.empty())
+          refWBBrush.attr("class", chart.p.activePredecClass);
+
         let predecFamilyData = getFamilyOfBrush(chart, nextPredec);
         if (predecFamilyData) {
           let predecSiblings = predecFamilyData["siblings"];
@@ -1250,6 +1280,12 @@ export function colorActiveTree(
             refButton = d3.select(buttonSelectorPrefix + predecSiblingKey);
             if (!refButton.empty())
               refButton.attr("class", chart.p.activeRelativeClass);
+
+            let refWBBrush = d3.select(
+              workbenchSelectorPrefix + predecSiblingKey
+            );
+            if (!refWBBrush.empty())
+              refWBBrush.attr("class", chart.p.activeRelativeClass);
           });
 
           if (predecFamilyData["parent"])
@@ -1259,12 +1295,58 @@ export function colorActiveTree(
     }
   }
 
+  if (activityMode === "workbench") {
+    const workbenchSiblingIDs = chart.workbench["linkedKeys"];
+    if (workbenchSiblingIDs.length > 0) {
+      const predecStack = [];
+      workbenchSiblingIDs.forEach((siblingKey) => {
+        if (siblingKey === activeBrushKey) return;
+        let siblingBrush = d3.select(selectorPrefix + siblingKey);
+        if (!siblingBrush.empty()) {
+          siblingBrush.attr("class", chart.p.activeSiblingClass);
+        }
+        newActiveNodeSet[siblingKey] = chart.p.activeSiblingClass;
+
+        let refButton = d3.select(buttonSelectorPrefix + siblingKey);
+        if (!refButton.empty())
+          refButton.attr("class", chart.p.activeSiblingClass);
+
+        let refWBBrush = d3.select(workbenchSelectorPrefix + siblingKey);
+        if (!refWBBrush.empty())
+          refWBBrush.attr("class", chart.p.activeSiblingClass);
+
+        let familyData = getFamilyOfBrush(chart, siblingKey);
+        if (familyData) {
+          let predec = familyData["parent"];
+          while (predec && predec !== chart.p.parentBrushPlaceholderID) {
+            predecStack.push(predec);
+            familyData = getFamilyOfBrush(chart, predec);
+            if (!familyData) break;
+            predec = familyData["parent"];
+          }
+        }
+      });
+      predecStack.forEach((predec) => {
+        let predecBrush = d3.select(selectorPrefix + predec);
+        if (!predecBrush.empty()) {
+          predecBrush.attr("class", chart.p.activeRelativeClass);
+        }
+        newActiveNodeSet[predec] = chart.p.activeRelativeClass;
+
+        let refButton = d3.select(buttonSelectorPrefix + predec);
+        if (!refButton.empty())
+          refButton.attr("class", chart.p.activeRelativeClass);
+      });
+    }
+  }
+
   chart.activeNodes = newActiveNodeSet;
 }
 
 function resetActiveTree(chart) {
   const selectorPrefix = "#brush_";
   const buttonSelectorPrefix = "#button_";
+  const workbenchSelectorPrefix = "#workbenchBrush_";
 
   const currActiveNodes = Object.keys(chart.activeNodes);
 
@@ -1277,6 +1359,9 @@ function resetActiveTree(chart) {
       const buttonNode = d3.select(buttonSelectorPrefix + nodeID);
       if (!buttonNode.empty())
         buttonNode.attr("class", chart.p.defaultButtonNodeClass);
+
+      const wbNode = d3.select(workbenchSelectorPrefix + nodeID);
+      if (!wbNode.empty()) wbNode.attr("class", chart.p.defaultButtonNodeClass);
     });
   }
 }
@@ -1367,3 +1452,24 @@ export function isButtonAssignedToWorkbench(chart, brushKey) {
 
   return isAssigned;
 }
+
+const workbenchBrushOnClick = (chart, linkedBrushKey) => {
+  chart.nodeActivityMode = "workbench";
+  //if (buttonID.includes("root")) return;
+  let configData = chart.overviewConfig;
+
+  let key = linkedBrushKey.split("_");
+
+  const overviewDepth = key[0];
+
+  while (key.length > 1) {
+    let partitionKey = key.pop();
+    let strippedOverviewKey = key.join("_");
+
+    configData[strippedOverviewKey]["active_partition"] = partitionKey;
+  }
+
+  updateOverviewConfig(chart, configData);
+  clearOverviewStrips(chart);
+  colorActiveTree(chart, overviewDepth, linkedBrushKey, true);
+};

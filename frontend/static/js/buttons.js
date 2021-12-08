@@ -116,6 +116,13 @@ export function initializeButtonContainer(chart) {
   //.attr("viewBox", `0 0 ${overviewMapDepthExt} ${overviewMapExt}`);
   //svg = wrapperDiv.append("svg").attr("height", "100%").attr("width", "100%");
 
+  /* svg.on("mouseout", () => {
+    if (!d3.select("#buttonContextMenu").empty()) {
+      d3.select("#buttonContextMenu").remove();
+      d3.select("#buttonContextMenuText").remove();
+    }
+  }); */
+
   return 0;
 
   // Initialization
@@ -1387,6 +1394,9 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
       .on("click", () => buttonOnClick(chart, buttonID))
       .on("contextmenu", (e) => {
         const buttonIsAssigned = isButtonAssignedToWorkbench(chart, part);
+        d3.select("#" + buttonID).attr("stroke", "gold");
+        d3.select("#" + buttonID).attr("stroke-width", 2);
+
         buttonContextMenu(
           chart,
           part,
@@ -1413,8 +1423,9 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
   return y_pos;
 };
 
-const buttonOnClick = (chart, buttonID) => {
+export const buttonOnClick = (chart, buttonID) => {
   if (buttonID.includes("root")) return;
+  chart.nodeActivityMode = "overview";
   let configData = chart.overviewConfig;
 
   let key = buttonID.split("_");
@@ -1523,6 +1534,8 @@ function buttonContextMenu(chart, brushKey, x, y, alreadyAssigned) {
   const fontSize = 12;
   const roundness = 6;
 
+  const btn = d3.select("#" + chart.p.buttonTreeIDPrefix + brushKey);
+
   if (!d3.select("#buttonContextMenu").empty()) {
     d3.select("#buttonContextMenu").remove();
     d3.select("#buttonContextMenuText").remove();
@@ -1546,6 +1559,8 @@ function buttonContextMenu(chart, brushKey, x, y, alreadyAssigned) {
       } else {
         addWorkBenchbrush(chart, brushKey);
       }
+      btn.attr("stroke", "black");
+      btn.attr("stroke-width", 1);
       menu.remove();
       text.remove();
     });
@@ -1571,6 +1586,8 @@ function buttonContextMenu(chart, brushKey, x, y, alreadyAssigned) {
       } else {
         addWorkBenchbrush(chart, brushKey);
       }
+      btn.attr("stroke", "black");
+      btn.attr("stroke-width", 1);
       menu.remove();
       text.remove();
     });
@@ -1578,5 +1595,7 @@ function buttonContextMenu(chart, brushKey, x, y, alreadyAssigned) {
   setTimeout(() => {
     menu.remove();
     text.remove();
+    btn.attr("stroke", "black");
+    btn.attr("stroke-width", 1);
   }, 5000);
 }
