@@ -32,11 +32,12 @@ import {
   setButtonRefInList,
   colorActiveTree,
   addWorkBenchbrush,
+  isButtonAssignedToWorkbench,
+  removeWorkbenchBrushViaBrushKey,
 } from "./drawChart";
 import {
   cascadingButtonIndicatorUpdate,
   drawRootButtonTreeNodeIndicators,
-  projection,
 } from "./brushIndicators";
 //endregion
 
@@ -1385,7 +1386,14 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
       .attr("stroke-width", "1px")
       .on("click", () => buttonOnClick(chart, buttonID))
       .on("contextmenu", (e) => {
-        buttonContextMenu(chart, part, x + w / 2, d3.event.pageY); //(y_part + h_part) / 2
+        const buttonIsAssigned = isButtonAssignedToWorkbench(chart, part);
+        buttonContextMenu(
+          chart,
+          part,
+          x + w / 2,
+          d3.event.pageY,
+          buttonIsAssigned
+        ); //(y_part + h_part) / 2
         d3.event.preventDefault();
       });
 
@@ -1509,8 +1517,8 @@ const constructButtonIndicatorIDs = (indicatorID) => {
   return [buttonPrefix + indicatorID, splitPrefix + indicatorID];
 };
 
-function buttonContextMenu(chart, brushKey, x, y) {
-  const menuWidth = 100;
+function buttonContextMenu(chart, brushKey, x, y, alreadyAssigned) {
+  const menuWidth = alreadyAssigned ? 150 : 100;
   const menuHeight = 30;
   const fontSize = 12;
   const roundness = 6;
@@ -1533,7 +1541,11 @@ function buttonContextMenu(chart, brushKey, x, y) {
     .attr("fill", "white")
     .attr("cursor", "pointer")
     .on("click", () => {
-      addWorkBenchbrush(chart, brushKey);
+      if (alreadyAssigned) {
+        removeWorkbenchBrushViaBrushKey(chart, brushKey);
+      } else {
+        addWorkBenchbrush(chart, brushKey);
+      }
       menu.remove();
       text.remove();
     });
@@ -1546,9 +1558,19 @@ function buttonContextMenu(chart, brushKey, x, y) {
     .attr("font-size", fontSize)
     .attr("cursor", "pointer")
     .attr("text-anchor", "middle")
-    .text("Add to Workbench")
+    .text(() => {
+      if (alreadyAssigned) {
+        return "Remove from Workbench";
+      } else {
+        return "Add to Workbench";
+      }
+    })
     .on("click", () => {
-      addWorkBenchbrush(chart, brushKey);
+      if (alreadyAssigned) {
+        removeWorkbenchBrushViaBrushKey(chart, brushKey);
+      } else {
+        addWorkBenchbrush(chart, brushKey);
+      }
       menu.remove();
       text.remove();
     });

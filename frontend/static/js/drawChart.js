@@ -624,6 +624,13 @@ export function drawStripGroup(chart, overviewID) {
     );
 }
 
+export function removeWorkbenchBrushViaBrushKey(chart, brushKey) {
+  const workbenchIndex = chart.workbench["linkedKeys"].indexOf(brushKey);
+  if (workbenchIndex > -1) {
+    removeWorkbenchBrush(chart, workbenchIndex);
+  }
+}
+
 function removeWorkbenchBrush(chart, workbenchID) {
   chart.workbench["linkedKeys"].splice(workbenchID, 1);
   chart.workbench["numActive"] = chart.workbench["numActive"] - 1;
@@ -1349,4 +1356,14 @@ function workbenchContextMenu(chart, group, workbenchID, x, y) {
     menu.remove();
     text.remove();
   }, 5000);
+}
+
+export function isButtonAssignedToWorkbench(chart, brushKey) {
+  const linkedKeys = chart.workbench["linkedKeys"];
+  let isAssigned = false;
+  linkedKeys.forEach((link) => {
+    if (link === brushKey) isAssigned = true;
+  });
+
+  return isAssigned;
 }
