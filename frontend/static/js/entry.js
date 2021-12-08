@@ -44,7 +44,7 @@ function drawChart(data) {
   initElemrntAddres(chart); //HM
   initStateController(chart); //HM
 
-  addWorkBenchbrush(chart, 0, "0_0");
+  addWorkBenchbrush(chart, "0_0");
 
   $(function () {
     controller.newMonitor("textView_0", chart);

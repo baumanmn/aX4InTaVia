@@ -624,22 +624,47 @@ export function drawStripGroup(chart, overviewID) {
     );
 }
 
-export function addWorkBenchbrush(chart, workBenchBrushID, linkedBrushKey) {
+function removeWorkbenchBrush(chart, workbenchID) {
+  chart.workbench["linkedKeys"].splice(workbenchID, 1);
+  chart.workbench["numActive"] = chart.workbench["numActive"] - 1;
+  redrawWorkbench(chart);
+}
+
+export function addWorkBenchbrush(chart, linkedBrushKey) {
   drawWorkbenchStrip(chart);
-  chart.workbench["numActive"] = chart.workbench["numActive"] + 1;
-  drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey);
+  const sameSubtreeNodePos = isPartOfSubtree(
+    chart.workbench["linkedKeys"],
+    linkedBrushKey
+  );
+  if (sameSubtreeNodePos === -1) {
+    chart.workbench["linkedKeys"].push(linkedBrushKey);
+    chart.workbench["numActive"] = chart.workbench["numActive"] + 1;
+  } else {
+    console.log(
+      `is same: ${chart.workbench["linkedKeys"][sameSubtreeNodePos]}, ${linkedBrushKey}`
+    );
+    chart.workbench["linkedKeys"][sameSubtreeNodePos] = linkedBrushKey;
+  }
+
+  for (
+    let workBenchBrushID = 0;
+    workBenchBrushID < chart.workbench["numActive"];
+    workBenchBrushID++
+  ) {
+    const linkedKey = chart.workbench["linkedKeys"][workBenchBrushID];
+    drawWorkBenchBrush(chart, workBenchBrushID, linkedKey);
+  }
 }
 
 export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
-  const newNumActive = chart.workbench["numActive"];
-
   const workBenchYScale = d3
     .scaleBand()
-    .domain(d3.range(newNumActive))
+    .domain(d3.range(chart.workbench["numActive"]))
     .rangeRound([0, tokenExt]);
 
   const y = workBenchYScale(workBenchBrushID);
   const height = workBenchYScale.bandwidth();
+  //console.log(`brush:${workBenchBrushID}, y:${y}, height:${height}`);
 
   const linkedBrushData = getBrushState(chart, linkedBrushKey);
   const linkedBrushRefL =
@@ -680,7 +705,10 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
 
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
     "brushGroup"
-  ] = chart.workbench["strip"].attr("id", "O0").attr("class", "workbenchBrush");
+  ] = chart.workbench["strip"]
+    .append("g")
+    .attr("id", "workbenchBrush_" + workBenchBrushID)
+    .attr("class", "workbenchBrush");
 
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brush"] = d3
     .brushX()
@@ -720,6 +748,19 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
       //clearOverviewStrips(chart);
     });
 
+  chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
+    "brushGroup"
+  ].on("contextmenu", () => {
+    workbenchContextMenu(
+      chart,
+      chart.workbench["strip"],
+      workBenchBrushID,
+      y + height / 2 - 75,
+      0
+    ); //(y_part + h_part) / 2
+    d3.event.preventDefault();
+  });
+
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brushGroup"]
     .call(
       chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["brush"]
@@ -745,24 +786,25 @@ export function updateLinkedBrush(chart, brushKey, newBrushData) {
   split.shift();
   const overviewDepth = split.length - 1;
   const partitionKey = split[split.length - 1];
+
+  setBrushState(chart, brushKey, newBrushData);
   if (!d3.select("#brush_" + brushKey).empty()) {
     const brush = chart.overviews[overviewDepth]["brushes"][partitionKey];
     const brushObj = chart.overviews[overviewDepth]["brushGroup"][partitionKey];
     brushObj.call(brush.move, newBrushData["selection"]);
   }
-  setBrushState(chart, brushKey, newBrushData);
-  cascadingBrushIndicatorUpdate(chart, overviewDepth, partitionKey);
-  ascendingBrushIndicatorUpdate(chart, overviewDepth, partitionKey);
-  ascendingButtonIndicatorUpdate(chart, overviewDepth, partitionKey);
+  cascadingBrushIndicatorUpdate(chart, overviewDepth, partitionKey, brushKey);
+  ascendingBrushIndicatorUpdate(chart, overviewDepth, partitionKey, brushKey);
+  ascendingButtonIndicatorUpdate(chart, overviewDepth, partitionKey, brushKey);
   drawRootButtonTreeNodeIndicators(chart);
 }
 
 export function redrawWorkbench(chart) {
-  let keys = Object.keys(chart.workbench["workBenchBrushes"]);
-  keys.forEach((wbKey) => {
-    let brushKey = chart.workbench["workBenchBrushes"][wbKey]["linkedBrushKey"];
-    drawWorkbenchStrip(chart);
-    drawWorkBenchBrush(chart, wbKey, brushKey);
+  drawWorkbenchStrip(chart);
+  let keys = chart.workbench["linkedKeys"];
+  keys.forEach((linkedKeys, idx) => {
+    //let brushKey = chart.workbench["workBenchBrushes"][wbKey]["linkedBrushKey"];
+    drawWorkBenchBrush(chart, idx, linkedKeys);
   });
 }
 
@@ -1020,7 +1062,6 @@ export function getBrushState(chart, brushConfigKey) {
 
 export function setBrushState(chart, brushConfigKey, brushData) {
   chart.brushRanges[brushConfigKey] = brushData;
-  console.log(chart.brushRanges);
 }
 
 export function addBrushToFamilyMap(chart, overviewNr, brushPartition) {
@@ -1084,6 +1125,10 @@ export function addSiblingBrushToFamilyMap(chart, overviewNr, brushPartition) {
 
 export function getFamilyOfBrush(chart, brushID) {
   let familyData = chart.brushFamilyMap[brushID];
+  if (!familyData) {
+    /* console.log(chart.brushFamilyMap);
+    console.log(brushID); */
+  }
 
   return familyData;
 }
@@ -1227,4 +1272,81 @@ function resetActiveTree(chart) {
         buttonNode.attr("class", chart.p.defaultButtonNodeClass);
     });
   }
+}
+
+function isPartOfSubtree(workBenchLinkedBrushesList, newLink) {
+  const len = workBenchLinkedBrushesList.length;
+  if (len < 1) return -1;
+
+  let result = false;
+  let sameSubTreeID = -1;
+  let newLinkSplit = newLink.split("_");
+  for (let i = 0; i < len; i++) {
+    let linkedKeySplit = workBenchLinkedBrushesList[i].split("_");
+    let min_length = Math.min(linkedKeySplit.length, newLinkSplit.length);
+    for (let j = 0; j < min_length; j++) {
+      if (linkedKeySplit[j] !== newLinkSplit[j]) {
+        result = false;
+        break;
+      }
+      result = true;
+    }
+    if (result === true) {
+      sameSubTreeID = i;
+      break;
+    }
+  }
+  return sameSubTreeID;
+}
+
+function workbenchContextMenu(chart, group, workbenchID, x, y) {
+  const menuWidth = 150;
+  const menuHeight = 30;
+  const fontSize = 12;
+  const roundness = 6;
+
+  if (!d3.select("#workbenchContextMenu").empty()) {
+    d3.select("#workbenchContextMenu").remove();
+    d3.select("#workbenchContextMenuText").remove();
+  }
+  let menu = group
+    .append("rect")
+    .attr("id", "workbenchContextMenu")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("rx", roundness)
+    .attr("ry", roundness)
+    .attr("width", menuWidth)
+    .attr("height", menuHeight)
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+    .attr("fill", "white")
+    .attr("cursor", "pointer")
+    .on("click", () => {
+      //addWorkBenchbrush(chart, brushKey);
+      removeWorkbenchBrush(chart, workbenchID);
+      menu.remove();
+      text.remove();
+    });
+
+  let text = group
+    .append("text")
+    .attr("id", "workbenchContextMenuText")
+    .attr("x", x + menuWidth / 2)
+    .attr("y", y + menuHeight / 2 + fontSize / 2)
+    .attr("font-size", fontSize)
+    .attr("cursor", "pointer")
+    .attr("text-anchor", "middle")
+    .attr("fill", "black")
+    .text("Remomve from Workbench")
+    .on("click", () => {
+      removeWorkbenchBrush(chart, workbenchID);
+      menu.remove();
+      text.remove();
+    });
+
+  setTimeout(() => {
+    menu.remove();
+    text.remove();
+  }, 5000);
 }

@@ -23,11 +23,14 @@ const constructIndicatorID = (parentOverviewID, brushID) => {
 export function cascadingBrushIndicatorUpdate(
   chart,
   overviewNr,
-  brushPartition
+  brushPartition,
+  brushKey = null
 ) {
   const referenceLength = chart.p.tokenExt;
 
-  const rootBrushKey = getBrushConfigKey(chart, overviewNr, brushPartition);
+  const rootBrushKey = brushKey
+    ? brushKey
+    : getBrushConfigKey(chart, overviewNr, brushPartition);
 
   const rootBrushData = getBrushState(chart, rootBrushKey);
 
@@ -113,7 +116,9 @@ export function cascadingBrushIndicatorUpdate(
   let splitIndicators = brushIndicators ? brushIndicators["splits"] : [];
 
   if (partitionIndicators.length > 0) {
-    partitionIndicators.forEach((indicator) => indicator.remove());
+    partitionIndicators.forEach((indicator) => {
+      if (!d3.select(indicator).empty()) indicator.remove();
+    });
   }
 
   if (indicatorsToUpdate.length > 0) {
@@ -130,21 +135,24 @@ export function cascadingBrushIndicatorUpdate(
 
       let color = chart.p.indicatorShader(depth - 1);
 
-      return chart.overviews[overviewNr]["brushGroup"][brushPartition]
-        .select("svg")
-        .append("rect")
-        .attr("class", "partitionIndicator")
-        .attr("id", indicatorID)
-        .attr("x", position[0])
-        .attr("y", y)
-        .attr("width", width)
-        .attr("height", height)
-        .attr("fill", color);
+      if (chart.overviews[overviewNr]["brushGroup"][brushPartition])
+        return chart.overviews[overviewNr]["brushGroup"][brushPartition]
+          .select("svg")
+          .append("rect")
+          .attr("class", "partitionIndicator")
+          .attr("id", indicatorID)
+          .attr("x", position[0])
+          .attr("y", y)
+          .attr("width", width)
+          .attr("height", height)
+          .attr("fill", color);
     });
   }
 
   if (splitIndicators.length > 0) {
-    splitIndicators.forEach((split) => split.remove());
+    splitIndicators.forEach((split) => {
+      if (!d3.select(split).empty()) split.remove();
+    });
   }
 
   if (splitsToUpdate.length > 0) {
@@ -155,14 +163,15 @@ export function cascadingBrushIndicatorUpdate(
       let depth = split["depth"];
       let y = chart.p.indicatorYFunction(depth - 1);
 
-      return chart.overviews[overviewNr]["brushGroup"][brushPartition]
-        .select("svg")
-        .append("circle")
-        .attr("class", "splitIndicator")
-        .attr("cx", position)
-        .attr("cy", y + circleSize / 2)
-        .attr("r", circleSize)
-        .attr("fill", "black");
+      if (chart.overviews[overviewNr]["brushGroup"][brushPartition])
+        return chart.overviews[overviewNr]["brushGroup"][brushPartition]
+          .select("svg")
+          .append("circle")
+          .attr("class", "splitIndicator")
+          .attr("cx", position)
+          .attr("cy", y + circleSize / 2)
+          .attr("r", circleSize)
+          .attr("fill", "black");
     });
   }
 
@@ -183,11 +192,15 @@ export function projection(L_ref, L_parent_transf, X_parent_transf, POS_curr) {
 export function ascendingBrushIndicatorUpdate(
   chart,
   overviewNr,
-  brushPartition
+  brushPartition,
+  brushKey = null
 ) {
-  const rootBrushKey = getBrushConfigKey(chart, overviewNr, brushPartition);
+  const rootBrushKey = brushKey
+    ? brushKey
+    : getBrushConfigKey(chart, overviewNr, brushPartition);
 
   if (!rootBrushKey) return 0;
+  //console.log(`key: ${rootBrushKey}, ov: ${overviewNr}, pa: ${brushPartition}`);
 
   let currBrushID = rootBrushKey;
 
@@ -297,9 +310,12 @@ export function cascadingButtonIndicatorUpdate(
 export function ascendingButtonIndicatorUpdate(
   chart,
   overviewNr,
-  brushPartition
+  brushPartition,
+  brushKey = null
 ) {
-  const rootBrushKey = getBrushConfigKey(chart, overviewNr, brushPartition);
+  const rootBrushKey = brushKey
+    ? brushKey
+    : getBrushConfigKey(chart, overviewNr, brushPartition);
 
   if (!rootBrushKey) return 0;
 

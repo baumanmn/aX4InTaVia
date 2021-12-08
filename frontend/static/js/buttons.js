@@ -31,6 +31,7 @@ import {
   clearOverviewStrips,
   setButtonRefInList,
   colorActiveTree,
+  addWorkBenchbrush,
 } from "./drawChart";
 import {
   cascadingButtonIndicatorUpdate,
@@ -1382,7 +1383,11 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
       .attr("fill", "lightgray")
       .attr("stroke", "black")
       .attr("stroke-width", "1px")
-      .on("click", () => buttonOnClick(chart, buttonID));
+      .on("click", () => buttonOnClick(chart, buttonID))
+      .on("contextmenu", (e) => {
+        buttonContextMenu(chart, part, x + w / 2, d3.event.pageY); //(y_part + h_part) / 2
+        d3.event.preventDefault();
+      });
 
     setButtonRefInList(chart, part, {
       x,
@@ -1503,3 +1508,53 @@ const constructButtonIndicatorIDs = (indicatorID) => {
   const splitPrefix = "button_split_";
   return [buttonPrefix + indicatorID, splitPrefix + indicatorID];
 };
+
+function buttonContextMenu(chart, brushKey, x, y) {
+  const menuWidth = 100;
+  const menuHeight = 30;
+  const fontSize = 12;
+  const roundness = 6;
+
+  if (!d3.select("#buttonContextMenu").empty()) {
+    d3.select("#buttonContextMenu").remove();
+    d3.select("#buttonContextMenuText").remove();
+  }
+  let menu = svg
+    .append("rect")
+    .attr("id", "buttonContextMenu")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("rx", roundness)
+    .attr("ry", roundness)
+    .attr("width", menuWidth)
+    .attr("height", menuHeight)
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+    .attr("fill", "white")
+    .attr("cursor", "pointer")
+    .on("click", () => {
+      addWorkBenchbrush(chart, brushKey);
+      menu.remove();
+      text.remove();
+    });
+
+  let text = svg
+    .append("text")
+    .attr("id", "buttonContextMenuText")
+    .attr("x", x + menuWidth / 2)
+    .attr("y", y + menuHeight / 2 + fontSize / 2)
+    .attr("font-size", fontSize)
+    .attr("cursor", "pointer")
+    .attr("text-anchor", "middle")
+    .text("Add to Workbench")
+    .on("click", () => {
+      addWorkBenchbrush(chart, brushKey);
+      menu.remove();
+      text.remove();
+    });
+
+  setTimeout(() => {
+    menu.remove();
+    text.remove();
+  }, 5000);
+}
