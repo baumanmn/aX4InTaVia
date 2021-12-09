@@ -111,6 +111,7 @@ export function installBrush(chart, overviewNr, brushData) {
     .attr("id", brushID)
     .attr("class", currClass)
     .on("click", function () {
+      chart.nodeActivityMode = "overview";
       colorActiveTree(chart, overviewNr, partitionKey);
       /* if (overviewNr !== 2) {
         annotationBrush;

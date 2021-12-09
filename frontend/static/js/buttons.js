@@ -1431,6 +1431,7 @@ export const buttonOnClick = (chart, buttonID) => {
   let key = buttonID.split("_");
   key.shift();
 
+  const brushKey = key.join("_");
   const overviewDepth = key[0];
   const partitionKey = key[key.length - 1];
 
@@ -1443,7 +1444,7 @@ export const buttonOnClick = (chart, buttonID) => {
 
   updateOverviewConfig(chart, configData);
   clearOverviewStrips(chart);
-  colorActiveTree(chart, overviewDepth, partitionKey);
+  colorActiveTree(chart, overviewDepth, brushKey, true);
 };
 
 export function drawButtonIndicator(
