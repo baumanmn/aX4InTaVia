@@ -29,11 +29,15 @@ export function setAnnotationWindows(chart, keyList) {
 }
 
 export function updateAnnoViewRange(chart, linkedBrushKey, update = false) {
+  /* if (!chart.d.annoViewObj) return;
+  const updateKeyIdx = isPartOfSubtree(linkedBrushKey);
+  if (updateKeyIdx === -1) return; */
   if (
     !chart.d.annoViewObj ||
     Object.keys(chart.d.annoViewObj["hashMap"]).indexOf(linkedBrushKey) === -1
   )
     return;
+  //linkedBrushKey = Object.keys(chart.d.annoViewObj["hashMap"])[updateKeyIdx];
   let id = linkedBrushKey;
   let range = getBrushState(chart, linkedBrushKey)["selection"];
   range = [parseInt(range[0]), parseInt(range[1])];
@@ -553,3 +557,30 @@ function removeOldWindows(n) {
     d3.select("#splitWindowGroup_" + i).remove();
   }
 } */
+
+function isPartOfSubtree(chart, newLink) {
+  if (!chart.d.annoViewObj) return;
+  const list = Object.keys(chart.d.annoViewObj["hashMap"]);
+  const len = list.length;
+  if (len < 1) return -1;
+
+  let result = false;
+  let sameSubTreeID = -1;
+  let newLinkSplit = newLink.split("_");
+  for (let i = 0; i < len; i++) {
+    let linkedKeySplit = list[i].split("_");
+    let min_length = Math.min(linkedKeySplit.length, newLinkSplit.length);
+    for (let j = 0; j < min_length; j++) {
+      if (linkedKeySplit[j] !== newLinkSplit[j]) {
+        result = false;
+        break;
+      }
+      result = true;
+    }
+    if (result === true) {
+      sameSubTreeID = i;
+      break;
+    }
+  }
+  return sameSubTreeID;
+}

@@ -5860,8 +5860,6 @@ function drawAggregatedOverviewBars(chart, binRange, overviewNr = 0) {
     .domain()
     .map(chart.p.xScaleTokens_Bins);
 
-  console.log(chart.d.overviewXValues);
-
   chart.d.overviewIds = bins.map(function (b) {
     return b.id;
   });
@@ -5929,8 +5927,7 @@ export function drawHistogram(chart, range, overviewNr) {
     chart.d.bins[leftBin].tokens[0].id,
     chart.d.bins[rightBin].tokens[0].id,
   ];
-  console.log(tokens);
-  console.log(bins);
+
   //const tokens = chart.d.bins[].tokens[0].id
   //chart.d.tokenRange = [0, numTokens - 1];
 

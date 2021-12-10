@@ -1485,6 +1485,16 @@ export function drawButtonIndicator(
   const oldIndicator = d3.select("#" + buttonIndicatorID);
   if (oldIndicator) oldIndicator.remove();
 
+  const colorMap = {};
+  colorMap[chart.p.activeNodeClass] = "darkred";
+  colorMap[chart.p.activeSiblingClass] = "darkred";
+  colorMap[chart.p.activeRelativeClass] = "orange";
+  colorMap[chart.p.activePredecClass] = "yellow";
+
+  let childBrushID = indicatorID.split("_");
+  childBrushID.shift();
+  childBrushID.shift();
+  childBrushID = childBrushID.join("_");
   svg
     .append("rect")
     .attr("id", buttonIndicatorID)
@@ -1493,7 +1503,13 @@ export function drawButtonIndicator(
     .attr("y", indicatorY[0])
     .attr("width", indicatorX[1] - indicatorX[0])
     .attr("height", indicatorY[1] - indicatorY[0]) //indicatorY[1] - indicatorY[0]
-    .attr("fill", "black");
+    .attr("fill", () => {
+      if (chart.activeNodes[childBrushID]) {
+        return colorMap[chart.activeNodes[childBrushID]];
+      } else {
+        return "black";
+      }
+    });
 
   if (splitIndicatorPos > 0) {
     const oldSplitIndicator = d3.select("#" + splitIndicatorID);
@@ -1523,6 +1539,17 @@ export function drawRootButtonIndicator(
   const oldIndicator = d3.select("#" + buttonIndicatorID);
   if (oldIndicator) oldIndicator.remove();
 
+  const colorMap = {};
+  colorMap[chart.p.activeNodeClass] = "darkred";
+  colorMap[chart.p.activeSiblingClass] = "darkred";
+  colorMap[chart.p.activeRelativeClass] = "orange";
+  colorMap[chart.p.activePredecClass] = "yellow";
+
+  let childBrushID = indicatorID.split("_");
+  childBrushID.shift();
+  childBrushID.shift();
+  childBrushID = childBrushID.join("_");
+
   svg
     .append("rect")
     .attr("id", buttonIndicatorID)
@@ -1531,7 +1558,14 @@ export function drawRootButtonIndicator(
     .attr("y", indicatorY[0])
     .attr("width", indicatorX[1] - indicatorX[0])
     .attr("height", indicatorY[1] - indicatorY[0]) //indicatorY[1] - indicatorY[0]
-    .attr("fill", "black");
+    .attr("fill", () => {
+      if (chart.activeNodes[childBrushID]) {
+        return colorMap[chart.activeNodes[childBrushID]];
+      } else {
+        return "black";
+      }
+    });
+  //.attr("fill", "black");
 
   if (splitPos < chart.p.tokenExt) {
     const oldSplitIndicator = d3.select("#" + splitIndicatorID);

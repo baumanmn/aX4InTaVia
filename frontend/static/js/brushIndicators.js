@@ -135,6 +135,17 @@ export function cascadingBrushIndicatorUpdate(
 
       let color = chart.p.indicatorShader(depth - 1);
 
+      const colorMap = {};
+      colorMap[chart.p.activeNodeClass] = "darkred";
+      colorMap[chart.p.activeSiblingClass] = "darkred";
+      colorMap[chart.p.activeRelativeClass] = "orange";
+      colorMap[chart.p.activePredecClass] = "yellow";
+
+      let childBrushID = indicatorID.split("_");
+      childBrushID.shift();
+      childBrushID.shift();
+      childBrushID = childBrushID.join("_");
+
       if (chart.overviews[overviewNr]["brushGroup"][brushPartition])
         return chart.overviews[overviewNr]["brushGroup"][brushPartition]
           .select("svg")
@@ -145,7 +156,14 @@ export function cascadingBrushIndicatorUpdate(
           .attr("y", y)
           .attr("width", width)
           .attr("height", height)
-          .attr("fill", color);
+          .attr("fill", () => {
+            if (chart.activeNodes[childBrushID]) {
+              return colorMap[chart.activeNodes[childBrushID]];
+            } else {
+              return color;
+            }
+          });
+      //.attr("fill", color);
     });
   }
 
