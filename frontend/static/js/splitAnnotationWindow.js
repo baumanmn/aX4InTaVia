@@ -143,6 +143,11 @@ export function updateWindow(chart, options) {
 }
 
 function drawNSplitWindows(chart) {
+  const mapColor = {};
+  mapColor[chart.p.activeNodeClass] = "darkred";
+  mapColor[chart.p.activeSiblingClass] = "red";
+  const strokeWidth = "2px";
+
   let n = chart.d.annoViewObj["numViews"];
   let dist =
     (chart.p.annotatorBandsExt - chart.d.users.length * chart.p.userHeight) /
@@ -150,10 +155,13 @@ function drawNSplitWindows(chart) {
   let windowWidth = Math.floor(chart.p.tokenExt / n);
   let ids = Object.keys(chart.d.annoViewObj["hashMap"]);
   ids.forEach(function (id, i) {
+    const color = mapColor[chart.activeNodes[id]]
+      ? mapColor[chart.activeNodes[id]]
+      : "black";
     chart["splitWindow_" + id] = chart.e.detail
       .append("g") //the split Window  (with clip path)
       .attr("id", "splitWindowGroup_" + id)
-      .attr("class", "splitWindowGroup")
+      .attr("class", "splitWindowGroup ")
       .attr("clip-path", "url(#split-clip_" + id + ")")
       // .style("pointer-events", "none")
       .attr("transform", "translate(" + (i * windowWidth + 1 * i) + ", 0)");
@@ -169,6 +177,8 @@ function drawNSplitWindows(chart) {
       .append("rect") ////a background-rect for the split Window
       .attr("id", "splitWindowBackground" + id)
       .attr("class", "splitWindowBackground")
+      .attr("stroke", color)
+      .attr("stroke-width", strokeWidth)
       .attr("width", windowWidth)
       .attr("height", chart.p.annotatorExt);
 

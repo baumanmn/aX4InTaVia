@@ -308,6 +308,28 @@ export function clearOverviewStrips(chart) {
 
     renderOverview(chart, overviewDepth);
 
+    if (overviewDepth <= 1) {
+      drawHistogram(chart, [0, chart.p.tokenExt], 0);
+    }
+    if (overviewDepth > 1) {
+      if (
+        chart.overviews[overviewDepth - 1] &&
+        chart.overviews[overviewDepth - 1]["backgroundRects"]
+      ) {
+        const activePartition = getActiveBrushInOverview(
+          chart,
+          overviewDepth - 2
+        );
+        const parentBrushKey = getBrushConfigKey(
+          chart,
+          overviewDepth - 2,
+          activePartition
+        );
+        let convertedBrushData = cascadingProjection(chart, parentBrushKey);
+        drawHistogram(chart, convertedBrushData[1], overviewDepth - 1);
+      }
+    }
+
     let partitions = configData["last_brush_config"];
 
     Object.keys(partitions).forEach((partKey, idx) => {
@@ -745,6 +767,25 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
     .attr("y", 0)
     .attr("width", height)
     .attr("height", overviewExt);
+
+  if (y > 0) {
+    //y + height < chart.p.tokenExt - 1
+    /* chart.workbench["strip"]
+      .append("circle")
+      .attr("class", "workbenchIndicator")
+      .attr("cx", y - 1)
+      .attr("cy", overviewExt / 2 - 5)
+      .attr("r", 10)
+      .attr("fill", "black"); */
+    chart.workbench["strip"]
+      .append("rect")
+      .attr("class", "workbenchIndicator")
+      .attr("x", y - 2)
+      .attr("y", 0)
+      .attr("width", 4)
+      .attr("height", overviewExt)
+      .attr("fill", "gray");
+  }
 
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
     "rects"

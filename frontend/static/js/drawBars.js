@@ -5800,8 +5800,8 @@ function drawSemiAggregatedOverviewBars(chart, tokenRange, overviewNr = 0) {
 
   //chart.p.xScaleTokens_Bins.domain(d3.range(tokens.length));
   chart.p.xScaleTokens_Bins.domain(
-    tokens.map(function (token) {
-      return token.id;
+    tokens.map(function (token, idx) {
+      return idx;
     })
   );
   //the overviewXValues as starting-points of the bands
@@ -5850,8 +5850,8 @@ function drawAggregatedOverviewBars(chart, binRange, overviewNr = 0) {
 
   //chart.p.xScaleTokens_Bins.domain(d3.range(bins.length));
   chart.p.xScaleTokens_Bins.domain(
-    bins.map(function (bin) {
-      return bin.id;
+    bins.map(function (bin, idx) {
+      return idx;
     })
   );
 
@@ -5859,6 +5859,9 @@ function drawAggregatedOverviewBars(chart, binRange, overviewNr = 0) {
   chart.d.overviewXValues = chart.p.xScaleTokens_Bins
     .domain()
     .map(chart.p.xScaleTokens_Bins);
+
+  console.log(chart.d.overviewXValues);
+
   chart.d.overviewIds = bins.map(function (b) {
     return b.id;
   });
@@ -5874,8 +5877,22 @@ function drawAggregatedOverviewBars(chart, binRange, overviewNr = 0) {
     .selectAll("rect")
     .remove();
 
+  bins.forEach((d, idx) => {
+    chart.overviews[overviewNr]["backgroundRects"]
+      .append("rect")
+      .attr("x", chart.p.xScaleTokens_Bins(idx))
+      .attr("width", chart.p.xScaleTokens_Bins.bandwidth())
+      .attr("y", 0)
+      .attr(
+        "height",
+        chart.p.overviewExt *
+          (binMaxima.maxAnnosPerBin[bins.maxSize - 1] === 0
+            ? 0
+            : d.annosPerBin / binMaxima.maxAnnosPerBin[bins.maxSize - 1])
+      );
+  });
   //data join overviewBackground-tokenRects
-  chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
     .selectAll("rect")
     .data(bins)
     .enter()
@@ -5892,7 +5909,7 @@ function drawAggregatedOverviewBars(chart, binRange, overviewNr = 0) {
           ? 0
           : d.annosPerBin / binMaxima.maxAnnosPerBin[bins.maxSize - 1])
       );
-    });
+    }); */
   //.attr("shape-rendering", "crispEdges");
   //.style("fill", function (d) {
   //    return colorMaps.BGBin((binMaxima.maxAnnosPerBin[bins.maxSize - 1] === 0) ? 0 : d.annosPerBin / binMaxima.maxAnnosPerBin[bins.maxSize - 1]);

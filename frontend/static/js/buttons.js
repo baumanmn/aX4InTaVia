@@ -1455,6 +1455,15 @@ export const buttonOnClick = (chart, buttonID) => {
   }
   setAnnotationWindows(chart, activeNodes);
   addMultipleTextviews(chart, activeNodes);
+  /* if (
+    chart.overviews[overview + 1] &&
+    chart.overviews[overview + 1]["backgroundRects"]
+  ) {
+    let convertedBrushData = cascadingProjection(
+      chart,
+      getBrushConfigKey(chart, overviewDepth, sliderID)
+    );
+  } */
 };
 
 export function drawButtonIndicator(
