@@ -8,6 +8,7 @@ import * as preprocessData from "./preprocessData.js";
 import {
   addMultipleTextviews,
   addTextview,
+  cascadingProjection,
   initTextArea,
   replaceTextview,
   resetTextviews,
@@ -20,6 +21,7 @@ import {
   initializeViewAssignment,
 } from "./brushSetup.js";
 import {
+  drawHistogram,
   drawInitialBars,
   drawSecondOverviewBars,
   drawThirdOverviewBars,
@@ -35,7 +37,10 @@ import {
   drawRootButtonTreeNodeIndicators,
   projection,
 } from "./brushIndicators.js";
-import { updateAnnoViewRange } from "./splitAnnotationWindow.js";
+import {
+  setAnnotationWindows,
+  updateAnnoViewRange,
+} from "./splitAnnotationWindow.js";
 //import {computeTerms} from "./preprocessData";
 //endregion
 
@@ -789,7 +794,7 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
       });
       updateTextview(chart, linkedBrushKey);
       if (chart.nodeActivityMode === "workbench") {
-        //updateAnnoViewRange(chart, linkedBrushKey, true);
+        updateAnnoViewRange(chart, linkedBrushKey, true);
       }
       //clearOverviewStrips(chart);
     });
@@ -975,7 +980,7 @@ export function removeCollapseAndDrawBackground(chart, overviewID) {
 export function expandCollapsedOverview(chart, overviewID) {
   removeCollapseAndDrawBackground(chart, overviewID);
 
-  if (overviewID === 1) {
+  /* if (overviewID === 1) {
     drawSecondOverviewBars(
       chart,
       [0, chart.d.bins.length],
@@ -988,7 +993,7 @@ export function expandCollapsedOverview(chart, overviewID) {
       [0, chart.d.bins.length],
       [0, chart.d.tokens.length]
     );
-  }
+  } */
 
   addOverviewConfig(chart, overviewID);
   installBrush(chart, overviewID, {
@@ -1001,6 +1006,16 @@ export function expandCollapsedOverview(chart, overviewID) {
   }
 
   addInitialCollapseOverview(chart, overviewID + 1);
+
+  const activePartition = getActiveBrushInOverview(chart, overviewID - 1);
+  const parentBrushKey = getBrushConfigKey(
+    chart,
+    overviewID - 1,
+    activePartition
+  );
+  //let parentBrushData = getBrushState(chart, parentBrushKey);
+  let convertedBrushData = cascadingProjection(chart, parentBrushKey);
+  drawHistogram(chart, convertedBrushData[1], overviewID);
 }
 
 function addOverviewConfig(chart, overviewNr) {
@@ -1069,6 +1084,14 @@ export function getActiveBrushesInOverview(chart, overviewNr) {
   activeBrushKeys = activeBrushKeys.map((key) => overviewConfigKey + "_" + key);
 
   return activeBrushKeys;
+}
+
+export function getActiveBrushInOverview(chart, overviewNr) {
+  let overviewConfigKey = getOverviewConfigKey(chart, overviewNr);
+  let activePartition =
+    chart.overviewConfig[overviewConfigKey]["active_partition"];
+
+  return activePartition;
 }
 
 export function getBrushConfigKey(chart, overviewNr, brushPartition) {
@@ -1521,6 +1544,7 @@ const workbenchBrushOnClick = (chart, linkedBrushKey) => {
   clearOverviewStrips(chart);
   colorActiveTree(chart, overviewDepth, linkedBrushKey, true);
   //updateAnnoViewRange(chart, linkedBrushKey, true);
+  setAnnotationWindows(chart, chart.workbench["linkedKeys"]);
   addMultipleTextviews(chart, chart.workbench["linkedKeys"]);
   //resetTextviews(chart);
   //chart.workbench["linkedKeys"].forEach((key) => addTextview(chart, key));

@@ -1,10 +1,18 @@
 import * as d3 from "d3";
 //import * as d3 from "../node_modules/d3";
 //import * as d3 from "../node_modules/d3/build/d3.js";
-import { drawDetailBars } from "./splitAnnotationWindow.js";
+import {
+  drawDetailBars,
+  updateAnnoViewRange,
+} from "./splitAnnotationWindow.js";
 import { updateFilters } from "./filters"; //HM
 import { deleteAllIndicators } from "./indicator"; //HM
-import { updateTextArea, autoScrollTextArea, updateTextview } from "./textArea"; //HM
+import {
+  updateTextArea,
+  autoScrollTextArea,
+  updateTextview,
+  cascadingProjection,
+} from "./textArea"; //HM
 import { chartClickFix, tornOFEvents, updateEvents } from "./events"; //HM
 import "jquery-ui-bundle";
 import { checkAndUpdateSplit } from "./overview.js";
@@ -40,6 +48,7 @@ import {
   cascadingButtonIndicatorUpdate,
   drawRootButtonTreeNodeIndicators,
 } from "./brushIndicators.js";
+import { drawHistogram } from "./drawBars.js";
 
 //the first and last token OR bin (id and x-value), whose extension contains x0 or x1
 export function computeSnap(chart, x0, x1) {
@@ -367,7 +376,19 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     ascendingButtonIndicatorUpdate(chart, overview, brush);
     drawRootButtonTreeNodeIndicators(chart);
     redrawWorkbench(chart);
+    updateAnnoViewRange(chart, getBrushConfigKey(chart, overview, brush), true);
     updateTextview(chart, getBrushConfigKey(chart, overview, brush));
+
+    if (
+      chart.overviews[overview + 1] &&
+      chart.overviews[overview + 1]["backgroundRects"]
+    ) {
+      let convertedBrushData = cascadingProjection(
+        chart,
+        getBrushConfigKey(chart, overview, brush)
+      );
+      drawHistogram(chart, convertedBrushData[1], overview + 1);
+    }
     //colorActiveTree(chart, overview, brush);
   }
 }

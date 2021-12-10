@@ -7,12 +7,43 @@ import {
 import { convertBinRange } from "./drawBars";
 import { getBrushState } from "./drawChart.js";
 
+export function setAnnotationWindows(chart, keyList) {
+  if (keyList.length === 0) return;
+  removeOldWindows(chart);
+  chart.d.annoViewObj = {};
+  chart.d.annoViewObj["hashMap"] = {};
+  chart.d.annoViewObj["toUpdate"] = [];
+  chart.d.annoViewObj["numViews"] = 0;
+
+  keyList.forEach((key) => {
+    let id = key;
+    let range = getBrushState(chart, id)["selection"];
+    range = [parseInt(range[0]), parseInt(range[1])];
+    if (range[1] >= chart.p.tokenExt) range = [range[0], range[1] - 1];
+    chart.d.annoViewObj["hashMap"][id] = range;
+    chart.d.annoViewObj["toUpdate"].push(id);
+    chart.d.annoViewObj["numViews"] += 1;
+    drawNSplitWindows(chart);
+  });
+  drawDetailBars(chart);
+}
+
 export function updateAnnoViewRange(chart, linkedBrushKey, update = false) {
+  if (
+    !chart.d.annoViewObj ||
+    Object.keys(chart.d.annoViewObj["hashMap"]).indexOf(linkedBrushKey) === -1
+  )
+    return;
   let id = linkedBrushKey;
   let range = getBrushState(chart, linkedBrushKey)["selection"];
   range = [parseInt(range[0]), parseInt(range[1])];
   if (range[1] >= chart.p.tokenExt) range = [range[0], range[1] - 1];
-  if (!chart.d.annoViewObj) {
+
+  chart.d.annoViewObj["hashMap"][id] = range;
+  chart.d.annoViewObj["toUpdate"].push(id);
+  drawDetailBars(chart);
+
+  /* if (!chart.d.annoViewObj) {
     chart.d.annoViewObj = {};
     chart.d.annoViewObj["hashMap"] = {};
     chart.d.annoViewObj["hashMap"][id] = range;
@@ -32,7 +63,7 @@ export function updateAnnoViewRange(chart, linkedBrushKey, update = false) {
   }
   if (update) {
     drawDetailBars(chart);
-  }
+  } */
 }
 
 export function updateAnnoViewID(chart, oldID, newID) {
@@ -254,6 +285,7 @@ function removeOldElements(options, lens = false) {
 }
 
 function removeOldWindows(chart) {
+  if (!chart.d.annoViewObj) return;
   let ids = Object.keys(chart.d.annoViewObj["hashMap"]);
   d3.selectAll(".splittingLine").remove();
   ids.forEach(function (id) {

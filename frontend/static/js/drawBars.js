@@ -5740,7 +5740,7 @@ export function newDrawAtomicDetailBars(
 }
 
 //overviewBars
-function drawAtomicOverviewBars(chart, tokenRange) {
+function drawAtomicOverviewBars(chart, tokenRange, overviewNr = 0) {
   var tokens = chart.d.tokens.slice(tokenRange[0], tokenRange[1] + 1);
 
   var [xPos, factors] = computeXPos(tokens, chart);
@@ -5751,14 +5751,24 @@ function drawAtomicOverviewBars(chart, tokenRange) {
 
   var tokenPos = [];
 
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .data(tokens)
+    .enter()
+    .append("rect") */
+
+  chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .remove();
+
   //data join overviewBackground-tokenRects
-  chart.overviews[0]["backgroundRects"] //chart.overviewRects
+  chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
     .selectAll("rect")
     .data(tokens)
     .enter()
     .append("rect")
     .attr("x", function (_, i) {
-      tokenPos.append(xPos[i].begin);
+      tokenPos.push(xPos[i].begin);
       return xPos[i].begin;
     })
     .attr("width", function (_, i) {
@@ -5785,7 +5795,7 @@ function drawAtomicOverviewBars(chart, tokenRange) {
     });
 }
 
-function drawSemiAggregatedOverviewBars(chart, tokenRange) {
+function drawSemiAggregatedOverviewBars(chart, tokenRange, overviewNr = 0) {
   var tokens = chart.d.tokens.slice(tokenRange[0], tokenRange[1] + 1);
 
   //chart.p.xScaleTokens_Bins.domain(d3.range(tokens.length));
@@ -5803,7 +5813,18 @@ function drawSemiAggregatedOverviewBars(chart, tokenRange) {
   });
 
   //data join OverviewBackground-TokenRects
-  chart.overviews[0]["backgroundRects"] //chart.overviewRects
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .data(tokens)
+    .enter()
+    .append("rect") */
+
+  chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .remove();
+
+  //data join overviewBackground-tokenRects
+  chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
     .selectAll("rect")
     .data(tokens)
     .enter()
@@ -5822,7 +5843,7 @@ function drawSemiAggregatedOverviewBars(chart, tokenRange) {
   //.attr("shape-rendering", "crispEdges");
 }
 
-function drawAggregatedOverviewBars(chart, binRange) {
+function drawAggregatedOverviewBars(chart, binRange, overviewNr = 0) {
   var bins = chart.d.bins.slice(binRange[0], binRange[1] + 1);
   bins.maxSize = chart.d.bins.maxSize; //this was lost because of the slicing
   var binMaxima = chart.d.binMaxima;
@@ -5843,7 +5864,18 @@ function drawAggregatedOverviewBars(chart, binRange) {
   });
 
   //data join OverviewBackground-binRects
-  chart.overviews[0]["backgroundRects"] //chart.overviewRects
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .data(bins)
+    .enter()
+    .append("rect") */
+
+  chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .remove();
+
+  //data join overviewBackground-tokenRects
+  chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
     .selectAll("rect")
     .data(bins)
     .enter()
@@ -5865,6 +5897,44 @@ function drawAggregatedOverviewBars(chart, binRange) {
   //.style("fill", function (d) {
   //    return colorMaps.BGBin((binMaxima.maxAnnosPerBin[bins.maxSize - 1] === 0) ? 0 : d.annosPerBin / binMaxima.maxAnnosPerBin[bins.maxSize - 1]);
   //});
+}
+
+export function drawHistogram(chart, range, overviewNr) {
+  let numBins = range[1] - range[0];
+  //chart.d.binRange = [0, numBins - 1];
+
+  let numTokens = countTokensInBins(chart, range);
+
+  const leftBin = parseInt(range[0]);
+  const rightBin = Math.min(chart.p.tokenExt - 1, parseInt(range[1]));
+  const bins = [leftBin, rightBin];
+  const tokens = [
+    chart.d.bins[leftBin].tokens[0].id,
+    chart.d.bins[rightBin].tokens[0].id,
+  ];
+  console.log(tokens);
+  console.log(bins);
+  //const tokens = chart.d.bins[].tokens[0].id
+  //chart.d.tokenRange = [0, numTokens - 1];
+
+  if (numTokens < chart.p.tokenExt / chart.p.lowerTokenThreshold) {
+    // drawAtomicDetailBars(chart, [0, numTokens - 1]);
+    drawAtomicOverviewBars(chart, tokens, overviewNr);
+    chart.modeOverview = "atomic";
+    chart.modeDetail = "atomic";
+  } else {
+    if (numTokens < chart.p.tokenExt) {
+      // drawSemiAggregatedDetailBars(chart, [0, numTokens - 1]);
+      drawSemiAggregatedOverviewBars(chart, tokens, overviewNr);
+      chart.modeOverview = "semiAggregated";
+      chart.modeDetail = "semiAggregated";
+    } else {
+      // drawAggregatedDetailBars(chart, [0, numTokens - 1]);
+      drawAggregatedOverviewBars(chart, bins, overviewNr);
+      chart.modeOverview = "aggregated";
+      chart.modeDetail = "aggregated";
+    }
+  }
 }
 //endregion
 //region main functions

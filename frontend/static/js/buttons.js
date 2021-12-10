@@ -23,6 +23,7 @@ import {
   drawDetailBars,
   updateAnnoViewRange,
   updateAnnoViewID,
+  setAnnotationWindows,
 } from "./splitAnnotationWindow";
 import {
   getActiveBrushesInOverview,
@@ -1371,7 +1372,6 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
   const n = partitions.length;
 
   const yScale = d3.scaleBand().domain(d3.range(n)).rangeRound([y0, y1]);
-  //.paddingInner(0.005);
 
   const y_pos = {};
 
@@ -1453,6 +1453,7 @@ export const buttonOnClick = (chart, buttonID) => {
     activeNodes = activeNodes.concat(familyData);
     activeNodes.sort();
   }
+  setAnnotationWindows(chart, activeNodes);
   addMultipleTextviews(chart, activeNodes);
 };
 

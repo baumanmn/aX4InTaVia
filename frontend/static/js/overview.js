@@ -1,5 +1,9 @@
 import $, { get } from "jquery";
-import { drawSecondOverviewBars, drawThirdOverviewBars } from "./drawBars";
+import {
+  drawHistogram,
+  drawSecondOverviewBars,
+  drawThirdOverviewBars,
+} from "./drawBars";
 import {
   installBrush,
   removeBrush,
@@ -24,7 +28,11 @@ import {
 } from "./overviewState";
 import { sliderReconfigurationCaller, resetSlider } from "./slider";
 import { monitor } from "./controller.js";
-import { addMultipleTextviews, updateTextArea } from "./textArea";
+import {
+  addMultipleTextviews,
+  cascadingProjection,
+  updateTextArea,
+} from "./textArea";
 import {
   drawButtonRectangle,
   drawGrandButtonRectangle,
@@ -40,6 +48,7 @@ import {
   getFamilyOfBrush,
   redrawCurrentActivation,
 } from "./drawChart";
+import { setAnnotationWindows } from "./splitAnnotationWindow";
 
 /**
  * Set the currently active overview, that needs to be synched witht he annotation view.
@@ -361,8 +370,19 @@ export function reconfigurePartitions(
         activeNodes = activeNodes.concat(familyData);
         activeNodes.sort();
       }
+      setAnnotationWindows(chart, activeNodes);
       addMultipleTextviews(chart, activeNodes);
     }
+  }
+  if (
+    chart.overviews[overview + 1] &&
+    chart.overviews[overview + 1]["backgroundRects"]
+  ) {
+    let convertedBrushData = cascadingProjection(
+      chart,
+      getBrushConfigKey(chart, overview, sliderID)
+    );
+    drawHistogram(chart, convertedBrushData[1], overview + 1);
   }
 }
 

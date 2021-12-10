@@ -531,7 +531,7 @@ function upadateTextChunks(chart) {
   chart.d.tokenChunks = tokenArray;
 }
 
-function cascadingProjection(chart, brushKey) {
+export function cascadingProjection(chart, brushKey) {
   let predecStack = [];
   let parent = brushKey;
   while (parent && parent !== chart.p.parentBrushPlaceholderID) {

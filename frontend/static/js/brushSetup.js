@@ -40,6 +40,7 @@ import {
   cascadingBrushIndicatorUpdate,
   cascadingButtonIndicatorUpdate,
 } from "./brushIndicators";
+import { setAnnotationWindows } from "./splitAnnotationWindow";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
@@ -125,6 +126,7 @@ export function installBrush(chart, overviewNr, brushData) {
         activeNodes = activeNodes.concat(familyData);
         activeNodes.sort();
       }
+      setAnnotationWindows(chart, activeNodes);
       addMultipleTextviews(chart, activeNodes);
     });
 
@@ -212,7 +214,7 @@ export function installBrush(chart, overviewNr, brushData) {
 
 function handleBrushEnd(chart, overviewNr, brushData) {
   brushEnd(chart, brushData["brushNr"], overviewNr);
-  if (overviewNr === 0) {
+  /* if (overviewNr === 0) {
     setActiveOverview(chart, brushData["brushNr"]);
     $(function () {
       setActiveOverview(
@@ -228,7 +230,7 @@ function handleBrushEnd(chart, overviewNr, brushData) {
     ) {
       setActiveOverview(chart, brushData["brushNr"], 2); //2 because it sets the second level overview (starting from zero)
     }
-  }
+  } */
 }
 
 /**
