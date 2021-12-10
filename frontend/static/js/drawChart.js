@@ -789,7 +789,7 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
       });
       updateTextview(chart, linkedBrushKey);
       if (chart.nodeActivityMode === "workbench") {
-        updateAnnoViewRange(chart, linkedBrushKey, true);
+        //updateAnnoViewRange(chart, linkedBrushKey, true);
       }
       //clearOverviewStrips(chart);
     });
