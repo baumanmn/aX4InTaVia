@@ -16,7 +16,11 @@ import {
   getStoredRanges,
   setRanges,
 } from "./overviewState";
-import { updateTextArea } from "./textArea";
+import {
+  addMultipleTextviews,
+  updateTextArea,
+  updateTextview,
+} from "./textArea";
 import { currentlyActive, drawButtonTree } from "./buttons.js";
 import {
   getOverviewPartitionConfig,
@@ -29,6 +33,7 @@ import {
   redrawCurrentActivation,
   colorActiveTree,
   setBrushState,
+  getFamilyOfBrush,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
@@ -113,12 +118,14 @@ export function installBrush(chart, overviewNr, brushData) {
     .on("click", function () {
       chart.nodeActivityMode = "overview";
       colorActiveTree(chart, overviewNr, partitionKey);
-      /* if (overviewNr !== 2) {
-        annotationBrush;
-        brushEndOnClick(chart, partitionKey); //MB why overviewNo not passed?
-      } else {
-        setBrushStateActiveInOverview(partitionKey, 2);
-      } */
+      let activeNodes = [brushKey];
+      let familyData = getFamilyOfBrush(chart, brushKey);
+      if (familyData && familyData["siblings"].size > 0) {
+        familyData = Array.from(familyData["siblings"]);
+        activeNodes = activeNodes.concat(familyData);
+        activeNodes.sort();
+      }
+      addMultipleTextviews(chart, activeNodes);
     });
 
   chart.overviews[overviewNr]["brushGroup"][partitionKey]
@@ -199,6 +206,7 @@ export function installBrush(chart, overviewNr, brushData) {
 
   drawButtonTree(chart);
   redrawCurrentActivation(chart);
+  updateTextview(chart, brushKey);
   //cascadingButtonIndicatorUpdate(chart, overviewNr, id);
 }
 

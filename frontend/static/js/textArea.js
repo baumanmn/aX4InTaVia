@@ -3,32 +3,59 @@ import $ from "jquery"; //Jena
 import { extractChunks } from "./drawBars.js";
 import { typeRect } from "./colorMaps";
 import { convertLastOverviewPosition } from "./overview.js";
+import {
+  getBrushState,
+  getFamilyOfBrush,
+  getLinkedBrushKey,
+  isPartOfSubtree,
+} from "./drawChart.js";
+import { projection } from "./brushIndicators.js";
 
 var chart;
 var tempTokenRange;
 
-const views = {};
+const viewsObject = {
+  views: {},
+  numViews: 0,
+};
+
+function brushAlreadyLinkedToView(brushKey) {
+  let same = false;
+  for (let i = 0; i < Object.keys(viewsObject["views"]).length; i++) {
+    let currKey = viewsObject["views"][i]["brushKey"];
+    if (currKey === brushKey) {
+      same = true;
+    }
+  }
+
+  return same;
+}
 
 /**
  * Initialize the text area and implement the first text view.
  * Process and fill the text view with all processed text tokens.
  * @param {Chart} globalChart
  */
-export function initTextArea(globalChart) {
+export function initTextArea(globalChart, brushKey) {
   chart = globalChart;
   tempTokenRange = chart.d.tokenRange;
 
+  const viewNr = viewsObject["numViews"];
+  const viewID = "view_" + viewNr;
+  //const viewClass = chart.activeNodes[brushKey];
+  viewsObject["numViews"] += 1;
+
   d3.select("body").append("div").attr("class", "textArea");
 
-  const textView_0 = d3
+  const view = d3
     .select(".textArea")
     .append("div")
-    .attr("id", "textView_0")
+    .attr("id", viewID)
     .attr("class", "splitView");
 
   let j = 0;
   for (let i = 0; i < chart.d.tokens.length; i++) {
-    textView_0
+    view
       .append("span")
       .text(chart.d.tokens[i].text)
       .attr("id", "tx_t_" + chart.d.tokens[i].id)
@@ -38,7 +65,7 @@ export function initTextArea(globalChart) {
     if (chart.d.tokens[i + 1]) {
       if (chart.d.tokens[i].end !== chart.d.tokens[i + 1].start) {
         j++;
-        textView_0
+        view
           .append("span")
           .text(" ")
           .attr("class", "text_whitespace")
@@ -47,9 +74,256 @@ export function initTextArea(globalChart) {
       }
     }
   }
-  chart.d.spans = Array.from($("#textView_0").find("span"));
-  views["textView_0"] = textView_0;
+  chart.d.spans = Array.from($("#" + viewID).find("span"));
+  viewsObject["views"][viewNr] = {
+    view,
+    brushKey,
+    viewID,
+  };
   upadateTextChunks(chart);
+}
+
+export function updateTextview(chart, brushKey) {
+  /* let brushItself = -1;
+  let sameSubTree = -1;
+  for (let i = 0; i < Object.keys(viewsObject["views"]).length; i++) {
+    let currKey = viewsObject["views"][i]["brushKey"];
+    if (currKey === brushKey) {
+      brushItself = i;
+    } else {
+      sameSubTree = getLinkedBrushKey(chart, isPartOfSubtree(chart, brushKey));
+    }
+  }
+  let idx = brushItself > -1 ? brushItself : sameSubTree;
+  console.log(idx);
+
+  if (idx > -1) {
+    fillTextView(chart, idx);
+  } */
+  for (let i = 0; i < viewsObject["numViews"]; i++) {
+    fillTextView(chart, i);
+  }
+}
+
+export function resetTextviews() {
+  const textArea = document.getElementsByClassName("textArea")[0];
+
+  textArea.style.gridTemplateRows = "100%";
+
+  for (let i = 0; i < viewsObject["numViews"]; i++) {
+    let currID = viewsObject["views"][i]["viewID"];
+    document.getElementById(currID).remove();
+  }
+  viewsObject["numViews"] = 0;
+  viewsObject["views"] = {};
+}
+
+export function replaceTextview(chart, oldBrushKey, newBrushKey) {
+  let idx = -1;
+  for (let i = 0; i < Object.keys(viewsObject["views"]).length; i++) {
+    let currKey = viewsObject["views"][i]["brushKey"];
+    if (currKey === oldBrushKey) {
+      idx = i;
+    }
+  }
+
+  if (idx > -1) {
+    viewsObject["views"][idx]["brushKey"] = newBrushKey;
+    fillTextView(chart, idx);
+  }
+}
+
+export function addMultipleTextviews(chart, keyList) {
+  if (keyList.length === 0) return;
+  resetTextviews();
+  const textArea = document.getElementsByClassName("textArea")[0];
+
+  viewsObject["numViews"] = keyList.length;
+
+  textArea.style.gridTemplateRows =
+    "repeat(" + viewsObject["numViews"] + ", 1fr)";
+
+  keyList.forEach((brushKey, idx) => {
+    const viewNr = idx;
+    const viewID = "view_" + viewNr;
+    const viewClass = chart.activeNodes[brushKey];
+
+    const view = d3
+      .select(".textArea")
+      .append("div")
+      .attr("id", viewID)
+      .attr("class", "splitView " + viewClass);
+
+    viewsObject["views"][viewNr] = {
+      view,
+      brushKey,
+      viewID,
+    };
+  });
+
+  for (let i = 0; i < viewsObject["numViews"]; i++) {
+    fillTextView(chart, i);
+  }
+}
+
+export function addTextview(chart, brushKey) {
+  if (brushAlreadyLinkedToView(brushKey) === true) return;
+  const textArea = document.getElementsByClassName("textArea")[0];
+
+  const viewNr = viewsObject["numViews"];
+  const viewID = "view_" + viewNr;
+  viewsObject["numViews"] += 1;
+
+  textArea.style.gridTemplateRows =
+    "repeat(" + viewsObject["numViews"] + ", 1fr)";
+
+  const view = d3
+    .select(".textArea")
+    .append("div")
+    .attr("id", viewID)
+    .attr("class", "splitView");
+
+  viewsObject["views"][viewNr] = {
+    view,
+    brushKey,
+    viewID,
+  };
+
+  for (let i = 0; i < viewsObject["numViews"]; i++) {
+    fillTextView(chart, i);
+  }
+}
+
+export function removeTextview(chart, brushKey) {
+  const textArea = document.getElementsByClassName("textArea")[0];
+
+  viewsObject["numViews"] -= 1;
+
+  textArea.style.gridTemplateRows =
+    viewsObject["numViews"] > 0
+      ? "repeat(" + viewsObject["numViews"] + ", 1fr)"
+      : "100%";
+
+  let idx = -1;
+  for (let i = 0; i < Object.keys(viewsObject["views"]).length; i++) {
+    let currKey = viewsObject["views"][i]["brushKey"];
+    if (currKey === brushKey) {
+      idx = i;
+    }
+  }
+
+  if (idx > -1) {
+    viewsObject["views"][idx]["view"].remove();
+  }
+
+  delete viewsObject["views"][idx];
+
+  for (let i = 0; i < viewsObject["numViews"]; i++) {
+    fillTextView(chart, i);
+  }
+}
+
+function fillTextView(chart, idx) {
+  let targetViewObj = viewsObject["views"][idx];
+  let targetView = viewsObject["views"][idx]["view"];
+  let targetViewID = viewsObject["views"][idx]["viewID"];
+
+  //targetView.empty();
+  const container = document.getElementById(targetViewID);
+  container.innerHTML = "";
+  //d3.select(targetView[0]).html("");
+
+  let convertedRanges = cascadingProjection(chart, targetViewObj["brushKey"]);
+
+  let oLeft = parseInt(convertedRanges[0][0]);
+  let oRight = Math.min(
+    parseInt(convertedRanges[0][1]),
+    chart.d.bins.length - 1
+  );
+  let sLeft = parseInt(convertedRanges[1][0]);
+  let sRight = Math.min(
+    parseInt(convertedRanges[1][1]),
+    chart.d.bins.length - 1
+  );
+
+  oLeft = chart.d.bins[oLeft].tokens[0].id;
+  oRight = chart.d.bins[oRight].tokens[0].id;
+  sLeft = chart.d.bins[sLeft].tokens[0].id;
+  sRight = chart.d.bins[sRight].tokens[0].id;
+
+  const spans = chart.d.spans.slice(oLeft, oRight);
+  spans.forEach((span) => {
+    container.appendChild(span);
+  });
+
+  let color = "lightgray";
+  for (
+    let i = chart.d.spanIDTable[sLeft];
+    i <= chart.d.spanIDTable[sRight];
+    i++
+  ) {
+    let span = chart.d.spans[i];
+    //d3.select(targetView).append($(span));
+
+    let currentID = $(span).attr("id").match(/\d+/)[0];
+    if ($(span).hasClass("tx_t")) {
+      d3.select("#tx_t_" + currentID)
+        //.style("background-color", color)
+        .style("background-color", "white")
+        .style("opacity", "1.0")
+        .classed("txt_t", true)
+        .classed("active_tx_t", true)
+        .classed("inactive_tx_t", false);
+    } else {
+      d3.select("#tx_w_" + currentID)
+        .style("opacity", "1.0")
+        .style("background-color", "white"); //.style("background-color", color);
+    }
+  }
+  for (
+    let i = chart.d.spanIDTable[oLeft];
+    i < chart.d.spanIDTable[sLeft];
+    i++
+  ) {
+    let span = chart.d.spans[i];
+    //targetView.append(span);
+
+    let currentID = $(span).attr("id").match(/\d+/)[0];
+    if ($(span).hasClass("tx_t")) {
+      d3.select("#tx_t_" + currentID)
+        .style("background-color", "white")
+        .style("opacity", "0.5")
+        .classed("txt_t", true)
+        .classed("inactive_tx_t", true)
+        .classed("active_tx_t", false);
+    } else {
+      d3.select("#tx_w_" + currentID)
+        .style("opacity", "0.5")
+        .style("background-color", "white");
+    }
+  }
+  for (
+    let i = chart.d.spanIDTable[sRight + 1];
+    i <= chart.d.spanIDTable[oRight];
+    i++
+  ) {
+    let span = chart.d.spans[i];
+    //targetView.append(span);
+
+    let currentID = $(span).attr("id").match(/\d+/)[0];
+    if ($(span).hasClass("tx_t")) {
+      d3.select("#tx_t_" + currentID)
+        .style("background-color", "white")
+        .style("opacity", "0.5")
+        .classed("txt_t", true)
+        .classed("inactive_tx_t", true)
+        .classed("active_tx_t", false);
+    } else {
+      d3.select("#tx_w_" + currentID)
+        .style("opacity", "0.5")
+        .style("background-color", "white");
+    }
+  }
 }
 
 /**
@@ -59,6 +333,7 @@ export function initTextArea(globalChart) {
  * @param {*} mod
  */
 export function updateTextArea(chart) {
+  return 0;
   let colors = ["#F4B3B3", "#9CE9B1", "#FAFAD2"];
   for (let key in chart.textViews) {
     if (chart.textViews[key]["overviewID"] !== -1) {
@@ -254,4 +529,61 @@ function upadateTextChunks(chart) {
     });
   });
   chart.d.tokenChunks = tokenArray;
+}
+
+function cascadingProjection(chart, brushKey) {
+  let predecStack = [];
+  let parent = brushKey;
+  while (parent && parent !== chart.p.parentBrushPlaceholderID) {
+    predecStack.push(parent);
+    let familyData = getFamilyOfBrush(chart, parent);
+    parent = familyData["parent"];
+  }
+
+  predecStack.reverse();
+
+  const referenceLength = chart.p.tokenExt;
+
+  const rootParent = predecStack.shift();
+
+  const rootBrushData = getBrushState(chart, rootParent);
+
+  const rootBrushRanges = rootBrushData["selection"];
+
+  let L_parent_transf = rootBrushRanges[1] - rootBrushRanges[0];
+
+  let X_parent_transf = rootBrushRanges[0];
+
+  let convertedOverlay = rootBrushData["overlay"];
+
+  let convertedSelection = rootBrushData["selection"];
+
+  while (predecStack.length > 0) {
+    let childKey = predecStack.shift();
+
+    let childBrushState = getBrushState(chart, childKey);
+
+    let childSelection = childBrushState["selection"];
+
+    convertedSelection = projection(
+      referenceLength,
+      L_parent_transf,
+      X_parent_transf,
+      childSelection
+    );
+
+    let childOverlay = childBrushState["overlay"];
+
+    convertedOverlay = projection(
+      referenceLength,
+      L_parent_transf,
+      X_parent_transf,
+      childOverlay
+    );
+
+    L_parent_transf = convertedSelection[1] - convertedSelection[0];
+    X_parent_transf = convertedSelection[0];
+  }
+
+  return [convertedOverlay, convertedSelection];
 }

@@ -24,7 +24,7 @@ import {
 } from "./overviewState";
 import { sliderReconfigurationCaller, resetSlider } from "./slider";
 import { monitor } from "./controller.js";
-import { updateTextArea } from "./textArea";
+import { addMultipleTextviews, updateTextArea } from "./textArea";
 import {
   drawButtonRectangle,
   drawGrandButtonRectangle,
@@ -34,7 +34,12 @@ import {
   renderButton,
   drawButtonTree,
 } from "./buttons";
-import { redrawCurrentActivation } from "./drawChart";
+import {
+  checkIfBrushIsActiveNode,
+  getBrushConfigKey,
+  getFamilyOfBrush,
+  redrawCurrentActivation,
+} from "./drawChart";
 
 /**
  * Set the currently active overview, that needs to be synched witht he annotation view.
@@ -346,6 +351,19 @@ export function reconfigurePartitions(
   }
   //drawButtonTree(chart);
   redrawCurrentActivation(chart);
+  if (chart.nodeActivityMode === "overview") {
+    const brushKey = getBrushConfigKey(chart, overview, sliderID);
+    if (checkIfBrushIsActiveNode(chart, brushKey)) {
+      let activeNodes = [brushKey];
+      let familyData = getFamilyOfBrush(chart, brushKey);
+      if (familyData && familyData["siblings"].size > 0) {
+        familyData = Array.from(familyData["siblings"]);
+        activeNodes = activeNodes.concat(familyData);
+        activeNodes.sort();
+      }
+      addMultipleTextviews(chart, activeNodes);
+    }
+  }
 }
 
 export function checkAndUpdateSplit(chart, overviewID, key) {

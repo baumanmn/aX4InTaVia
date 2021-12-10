@@ -5,9 +5,13 @@ import {
   newDrawSemiAggregatedDetailBars,
 } from "./drawBars.js";
 import { convertBinRange } from "./drawBars";
+import { getBrushState } from "./drawChart.js";
 
-export function updateAnnoViewRange(chart, ids, range, update = false) {
-  let id = ids.join("_");
+export function updateAnnoViewRange(chart, linkedBrushKey, update = false) {
+  let id = linkedBrushKey;
+  let range = getBrushState(chart, linkedBrushKey)["selection"];
+  range = [parseInt(range[0]), parseInt(range[1])];
+  if (range[1] >= chart.p.tokenExt) range = [range[0], range[1] - 1];
   if (!chart.d.annoViewObj) {
     chart.d.annoViewObj = {};
     chart.d.annoViewObj["hashMap"] = {};
@@ -32,8 +36,6 @@ export function updateAnnoViewRange(chart, ids, range, update = false) {
 }
 
 export function updateAnnoViewID(chart, oldID, newID) {
-  oldID = oldID.join("_");
-  newID = newID.join("_");
   if (Object.keys(chart.d.annoViewObj["hashMap"]).indexOf(oldID) != -1) {
     delete Object.assign(chart.d.annoViewObj["hashMap"], {
       [newID]: chart.d.annoViewObj["hashMap"][oldID],

@@ -21,6 +21,7 @@ export let controller = (function () {
       },
 
       increaseNumViews: function () {
+        return 0;
         console.log("inc");
         numViews += 1;
         let textArea = document.getElementsByClassName("textArea")[0];
@@ -28,6 +29,7 @@ export let controller = (function () {
       },
 
       synchronizeView: function (chart, viewID) {
+        return 0;
         /* let overlayRange = chart.assignedRangeForViews[viewID][1]; */
 
         let overlayRange = chart.textViews[viewID]["assignedRange"][1];
@@ -81,6 +83,7 @@ export let controller = (function () {
       },
 
       updateSingleView: function (chart, viewID, overview = 2) {
+        return 0;
         let currentOverview;
         if (overview === 0) {
           currentOverview = chart.overviews[0]["brushGroup"];
@@ -137,6 +140,7 @@ export let controller = (function () {
       },
 
       resetViews: function (chart, overview = 2) {
+        return 0;
         let currentSplits;
         if (overview === 0) {
           currentSplits = chart.overviews[0]["splits"];

@@ -5,7 +5,15 @@ import $ from "jquery"; //Jena
 //import * as d3 from "../node_modules/d3/build/d3.js";
 import { typeArray } from "./constants.js";
 import * as preprocessData from "./preprocessData.js";
-import { initTextArea, updateTextArea } from "./textArea";
+import {
+  addMultipleTextviews,
+  addTextview,
+  initTextArea,
+  replaceTextview,
+  resetTextviews,
+  updateTextArea,
+  updateTextview,
+} from "./textArea";
 import {
   installZoom,
   installBrush,
@@ -27,6 +35,7 @@ import {
   drawRootButtonTreeNodeIndicators,
   projection,
 } from "./brushIndicators.js";
+import { updateAnnoViewRange } from "./splitAnnotationWindow.js";
 //import {computeTerms} from "./preprocessData";
 //endregion
 
@@ -100,6 +109,7 @@ const activeRelativeClass = "active-relative";
 const activePredecClass = "active-predec";
 const defaultBrushNodeClass = "O0";
 const defaultButtonNodeClass = "buttonTreeElement";
+const activeBrushStrokeColor = "gold";
 
 const parentBrushPlaceholderID = -1;
 const workbenchBrushSortingOrder = "inorder";
@@ -370,6 +380,7 @@ export function initializeChart() {
     rootButtonClassSuffix,
     parentBrushPlaceholderID,
     workbenchBrushSortingOrder,
+    activeBrushStrokeColor,
     minimalBrush,
     numOfTerms,
     orientation,
@@ -642,18 +653,19 @@ function removeWorkbenchBrush(chart, workbenchID) {
   chart.workbench["linkedKeys"].splice(workbenchID, 1);
   chart.workbench["numActive"] = chart.workbench["numActive"] - 1;
   redrawWorkbench(chart);
+  if (chart.nodeActivityMode === "workbench") {
+    addMultipleTextviews(chart, chart.workbench["linkedKeys"]);
+  }
 }
 
 export function addWorkBenchbrush(chart, linkedBrushKey) {
   drawWorkbenchStrip(chart);
-  const sameSubtreeNodePos = isPartOfSubtree(
-    chart.workbench["linkedKeys"],
-    linkedBrushKey
-  );
+  const sameSubtreeNodePos = isPartOfSubtree(chart, linkedBrushKey);
   if (sameSubtreeNodePos === -1) {
     chart.workbench["linkedKeys"].push(linkedBrushKey);
     chart.workbench["numActive"] = chart.workbench["numActive"] + 1;
   } else {
+    oldKey = chart.workbench["linkedKeys"][sameSubtreeNodePos];
     chart.workbench["linkedKeys"][sameSubtreeNodePos] = linkedBrushKey;
   }
 
@@ -675,6 +687,11 @@ export function addWorkBenchbrush(chart, linkedBrushKey) {
     const linkedKey = chart.workbench["linkedKeys"][workBenchBrushID];
     drawWorkBenchBrush(chart, workBenchBrushID, linkedKey);
   }
+
+  if (chart.nodeActivityMode === "workbench") {
+    addMultipleTextviews(chart, chart.workbench["linkedKeys"]);
+  }
+  redrawCurrentActivation(chart);
 }
 
 export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
@@ -770,6 +787,10 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
         overlay: refBrushData["overlay"],
         selection: transformedWB,
       });
+      updateTextview(chart, linkedBrushKey);
+      if (chart.nodeActivityMode === "workbench") {
+        updateAnnoViewRange(chart, linkedBrushKey, true);
+      }
       //clearOverviewStrips(chart);
     });
 
@@ -919,7 +940,7 @@ export function drawInitialOverview(chart) {
   drawOverviewBackground(chart, 0);
   drawInitialBars(chart);
 
-  initTextArea(chart);
+  initTextArea(chart, "0_0");
 
   installZoom(chart); //MB currently defucnt
 
@@ -1329,8 +1350,10 @@ export function colorActiveTree(
 
         let familyData = getFamilyOfBrush(chart, siblingKey);
         if (familyData) {
-          if (familyData["siblings"].size > 0)
-            relativeStack = relativeStack.concat(familyData["siblings"]);
+          /* if (familyData["siblings"].size > 0)
+            relativeStack = relativeStack.concat(
+              Array.from(familyData["siblings"])
+            ); */
           let predec = familyData["parent"];
           while (predec && predec !== chart.p.parentBrushPlaceholderID) {
             relativeStack.push(predec);
@@ -1341,6 +1364,7 @@ export function colorActiveTree(
         }
       });
       relativeStack.forEach((relative) => {
+        console.log(relative);
         let relativeBrush = d3.select(selectorPrefix + relative);
         if (!relativeBrush.empty()) {
           relativeBrush.attr("class", chart.p.activeRelativeClass);
@@ -1384,7 +1408,8 @@ function resetActiveTree(chart) {
   }
 }
 
-function isPartOfSubtree(workBenchLinkedBrushesList, newLink) {
+export function isPartOfSubtree(chart, newLink) {
+  const workBenchLinkedBrushesList = chart.workbench["linkedKeys"];
   const len = workBenchLinkedBrushesList.length;
   if (len < 1) return -1;
 
@@ -1407,6 +1432,11 @@ function isPartOfSubtree(workBenchLinkedBrushesList, newLink) {
     }
   }
   return sameSubTreeID;
+}
+
+export function getLinkedBrushKey(chart, workbenchID) {
+  if (!workbenchID || workbenchID <= -1) return -1;
+  return chart.workbench["linkedKeys"][workbenchID];
 }
 
 function workbenchContextMenu(chart, group, workbenchID, x, y) {
@@ -1490,6 +1520,10 @@ const workbenchBrushOnClick = (chart, linkedBrushKey) => {
   updateOverviewConfig(chart, configData);
   clearOverviewStrips(chart);
   colorActiveTree(chart, overviewDepth, linkedBrushKey, true);
+  //updateAnnoViewRange(chart, linkedBrushKey, true);
+  addMultipleTextviews(chart, chart.workbench["linkedKeys"]);
+  //resetTextviews(chart);
+  //chart.workbench["linkedKeys"].forEach((key) => addTextview(chart, key));
 };
 
 function sortBrushKeysInorder(brushKeyList) {
@@ -1518,4 +1552,22 @@ function sortBrushKeysLevelorder(brushKeyList) {
   });
 
   return sortedList;
+}
+
+export function checkIfBrushIsActiveNode(chart, brushKey) {
+  let activeClass = null;
+  const activeNodeKeys = Object.keys(chart.activeNodes);
+  activeNodeKeys.forEach((activeKey) => {
+    if (activeKey === brushKey) {
+      const assignedClass = chart.activeNodes[activeKey];
+      if (
+        assignedClass === chart.p.activeNodeClass ||
+        assignedClass === chart.p.activeSiblingClass
+      ) {
+        activeClass = assignedClass;
+      }
+    }
+  });
+
+  return activeClass;
 }

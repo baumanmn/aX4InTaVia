@@ -39,6 +39,7 @@ import {
   cascadingButtonIndicatorUpdate,
   drawRootButtonTreeNodeIndicators,
 } from "./brushIndicators";
+import { addMultipleTextviews } from "./textArea";
 //endregion
 
 export var activeCoding = false;
@@ -1445,6 +1446,14 @@ export const buttonOnClick = (chart, buttonID) => {
   updateOverviewConfig(chart, configData);
   clearOverviewStrips(chart);
   colorActiveTree(chart, overviewDepth, brushKey, true);
+  let activeNodes = [brushKey];
+  let familyData = getFamilyOfBrush(chart, brushKey);
+  if (familyData && familyData["siblings"].size > 0) {
+    familyData = Array.from(familyData["siblings"]);
+    activeNodes = activeNodes.concat(familyData);
+    activeNodes.sort();
+  }
+  addMultipleTextviews(chart, activeNodes);
 };
 
 export function drawButtonIndicator(

@@ -4,7 +4,7 @@ import * as d3 from "d3";
 import { drawDetailBars } from "./splitAnnotationWindow.js";
 import { updateFilters } from "./filters"; //HM
 import { deleteAllIndicators } from "./indicator"; //HM
-import { updateTextArea, autoScrollTextArea } from "./textArea"; //HM
+import { updateTextArea, autoScrollTextArea, updateTextview } from "./textArea"; //HM
 import { chartClickFix, tornOFEvents, updateEvents } from "./events"; //HM
 import "jquery-ui-bundle";
 import { checkAndUpdateSplit } from "./overview.js";
@@ -367,6 +367,7 @@ export function brushEnd(chart, brush = 0, overview = 0) {
     ascendingButtonIndicatorUpdate(chart, overview, brush);
     drawRootButtonTreeNodeIndicators(chart);
     redrawWorkbench(chart);
+    updateTextview(chart, getBrushConfigKey(chart, overview, brush));
     //colorActiveTree(chart, overview, brush);
   }
 }
