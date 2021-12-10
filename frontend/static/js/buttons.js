@@ -1390,7 +1390,13 @@ const drawButtons = (chart, x, w, y0, y1, partitions) => {
       .attr("y", y_part + 1)
       .attr("height", h_part - 1)
       .attr("fill", "lightgray")
-      .attr("stroke", "black")
+      .attr("stroke", () => {
+        if (isButtonAssignedToWorkbench(chart, part) === true) {
+          return "white";
+        } else {
+          return "black";
+        }
+      })
       .attr("stroke-width", "1px")
       .on("click", () => buttonOnClick(chart, buttonID))
       .on("contextmenu", (e) => {

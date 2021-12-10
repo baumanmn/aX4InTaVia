@@ -60,8 +60,9 @@ const annotatorIdExtension = 40; //space for the annotators IDs
 const wordViewExt = 110; //(landscape) height of the token text window
 const wordViewConnectorsExt = 20; //height of the connecting polygons
 const annotatorBandsExt = 370; //height of the annotators part of the detail window
-const annoWindowExt = tokenExt + annotatorIdExtension;
-const annotatorExt = wordViewExt + wordViewConnectorsExt + annotatorBandsExt;
+const annoWindowExt = tokenExt + annotatorIdExtension + 50;
+const annotatorExt =
+  wordViewExt + wordViewConnectorsExt + annotatorBandsExt + 50;
 const [annoWindowWidth, annoWindowHeight] =
   orientation === "landscape"
     ? [annoWindowExt, annotatorExt]
