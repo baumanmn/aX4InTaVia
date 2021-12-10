@@ -177,8 +177,8 @@ function drawNSplitWindows(chart) {
       .append("rect") ////a background-rect for the split Window
       .attr("id", "splitWindowBackground" + id)
       .attr("class", "splitWindowBackground")
-      .attr("stroke", color)
-      .attr("stroke-width", strokeWidth)
+      /* .attr("stroke", color)
+      .attr("stroke-width", strokeWidth) */
       .attr("width", windowWidth)
       .attr("height", chart.p.annotatorExt);
 
@@ -280,6 +280,15 @@ function drawNSplitWindows(chart) {
         .attr("stroke-width", "1")
         .attr("class", "splittingLine");
     }
+    chart["splitWindow_" + id]
+      .append("rect") ////a background-rect for the split Window
+      .attr("id", "test_" + id)
+      .attr("class", "test")
+      .attr("stroke", color)
+      .attr("stroke-width", strokeWidth)
+      .attr("fill", "none")
+      .attr("width", windowWidth)
+      .attr("height", chart.p.annotatorExt);
   });
 }
 
