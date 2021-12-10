@@ -25,6 +25,7 @@ import {
   drawInitialBars,
   drawSecondOverviewBars,
   drawThirdOverviewBars,
+  drawWorkbenchHistogram,
 } from "./drawBars.js";
 import { initializeSliders, bindSliderToBrushes } from "./slider";
 import { initializeStates } from "./overviewState.js";
@@ -47,6 +48,8 @@ import {
 //region constants
 //region chart-related constants
 // const canvasHeight = window.innerHeight; //height of the canvast
+
+const DRAW_HISTOGRAM = true;
 
 const orientation = "portrait"; //landscape or portrait
 
@@ -791,6 +794,15 @@ export function drawWorkBenchBrush(chart, workBenchBrushID, linkedBrushKey) {
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
     "rects"
   ] = chart.workbench["strip"].append("g");
+
+  if (DRAW_HISTOGRAM === true) {
+    drawWorkbenchHistogram(
+      chart,
+      chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"]["rects"],
+      convertedSelectionRange,
+      [y, y + height]
+    );
+  }
 
   chart.workbench["workBenchBrushes"][workBenchBrushID]["objects"][
     "brushGroup"

@@ -5950,6 +5950,217 @@ export function drawHistogram(chart, range, overviewNr) {
     }
   }
 }
+
+function drawWorkbenchAtomicOverviewBars(chart, strip, tokenRange, overlay) {
+  var tokens = chart.d.tokens.slice(tokenRange[0], tokenRange[1] + 1);
+
+  var [xPos, factors] = computeXPos(tokens, chart);
+  chart.d.overviewXValues = xPos;
+  chart.d.overviewIds = tokens.map(function (t) {
+    return t.id;
+  });
+
+  var tokenPos = [];
+
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .data(tokens)
+    .enter()
+    .append("rect") */
+
+  strip //chart.overviewRects
+    .selectAll("rect")
+    .remove();
+
+  //data join overviewBackground-tokenRects
+  strip //chart.overviewRects
+    .selectAll("rect")
+    .data(tokens)
+    .enter()
+    .append("rect")
+    .attr("x", function (_, i) {
+      tokenPos.push(xPos[i].begin);
+      return xPos[i].begin;
+    })
+    .attr("width", function (_, i) {
+      return xPos[i].inc;
+    })
+    .attr("y", 0)
+    .attr("height", chart.p.overviewExt)
+    .attr("class", function (d) {
+      return d.annotated ? "annoToken" : "noAnnoToken";
+    })
+    .attr("stroke-dasharray", function (d, i) {
+      //set the upper & lower border of the rects to 0
+      return drawTokenBorder(
+        xPos[i].inc,
+        chart.p.overviewExt,
+        i,
+        tokens.length - 1
+      );
+    })
+    .style("fill", function (d) {
+      return colorMaps.BGTokenAtomic(
+        d.maxAnnosPerToken === 0 ? 0 : d.annosPerToken / d.maxAnnosPerToken
+      );
+    });
+}
+
+function drawWorkbenchSemiAggregatedOverviewBars(
+  chart,
+  strip,
+  tokenRange,
+  overlay
+) {
+  var tokens = chart.d.tokens.slice(tokenRange[0], tokenRange[1] + 1);
+
+  //chart.p.xScaleTokens_Bins.domain(d3.range(tokens.length));
+  const xScale = d3.scaleBand().range(overlay);
+  xScale.domain(
+    bins.map(function (bin, idx) {
+      return idx;
+    })
+  );
+  //the overviewXValues as starting-points of the bands
+  chart.d.overviewXValues = chart.p.xScaleTokens_Bins
+    .domain()
+    .map(chart.p.xScaleTokens_Bins);
+
+  //data join OverviewBackground-TokenRects
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .data(tokens)
+    .enter()
+    .append("rect") */
+
+  strip //chart.overviewRects
+    .selectAll("rect")
+    .remove();
+
+  //data join overviewBackground-tokenRects
+  strip //chart.overviewRects
+    .selectAll("rect")
+    .data(tokens)
+    .enter()
+    .append("rect")
+    .attr("x", function (_, i) {
+      return xScale(i);
+    })
+    .attr("width", xScale.bandwidth())
+    .attr("y", 0)
+    .attr("height", function (d) {
+      return (
+        chart.p.overviewExt *
+        (d.maxAnnosPerToken === 0 ? 0 : d.annosPerToken / d.maxAnnosPerToken)
+      );
+    });
+  //.attr("shape-rendering", "crispEdges");
+}
+
+function drawWorkbenchAggregatedOverviewBars(chart, strip, binRange, overlay) {
+  var bins = chart.d.bins.slice(binRange[0], binRange[1] + 1);
+  bins.maxSize = chart.d.bins.maxSize; //this was lost because of the slicing
+  var binMaxima = chart.d.binMaxima;
+
+  const xScale = d3.scaleBand().range(overlay);
+  xScale.domain(
+    bins.map(function (bin, idx) {
+      return idx;
+    })
+  );
+
+  //the overviewXValues as starting-points of the bands
+  chart.d.overviewXValues = chart.p.xScaleTokens_Bins
+    .domain()
+    .map(chart.p.xScaleTokens_Bins);
+
+  //data join OverviewBackground-binRects
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .data(bins)
+    .enter()
+    .append("rect") */
+
+  strip //chart.overviewRects
+    .selectAll("rect")
+    .remove();
+
+  bins.forEach((d, idx) => {
+    strip
+      .append("rect")
+      .attr("x", xScale(idx))
+      .attr("width", xScale.bandwidth())
+      .attr("y", 0)
+      .attr(
+        "height",
+        chart.p.overviewExt *
+          (binMaxima.maxAnnosPerBin[bins.maxSize - 1] === 0
+            ? 0
+            : d.annosPerBin / binMaxima.maxAnnosPerBin[bins.maxSize - 1])
+      );
+  });
+  //data join overviewBackground-tokenRects
+  /* chart.overviews[overviewNr]["backgroundRects"] //chart.overviewRects
+    .selectAll("rect")
+    .data(bins)
+    .enter()
+    .append("rect")
+    .attr("x", function (_, i) {
+      return chart.p.xScaleTokens_Bins(i);
+    })
+    .attr("width", chart.p.xScaleTokens_Bins.bandwidth())
+    .attr("y", 0)
+    .attr("height", function (d) {
+      return (
+        chart.p.overviewExt *
+        (binMaxima.maxAnnosPerBin[bins.maxSize - 1] === 0
+          ? 0
+          : d.annosPerBin / binMaxima.maxAnnosPerBin[bins.maxSize - 1])
+      );
+    }); */
+  //.attr("shape-rendering", "crispEdges");
+  //.style("fill", function (d) {
+  //    return colorMaps.BGBin((binMaxima.maxAnnosPerBin[bins.maxSize - 1] === 0) ? 0 : d.annosPerBin / binMaxima.maxAnnosPerBin[bins.maxSize - 1]);
+  //});
+}
+
+export function drawWorkbenchHistogram(chart, strip, range, overlay) {
+  console.log(range);
+  let numBins = range[1] - range[0];
+  //chart.d.binRange = [0, numBins - 1];
+
+  let numTokens = countTokensInBins(chart, range);
+
+  const leftBin = parseInt(range[0]);
+  const rightBin = Math.min(chart.p.tokenExt - 1, parseInt(range[1]));
+  const bins = [leftBin, rightBin];
+  const tokens = [
+    chart.d.bins[leftBin].tokens[0].id,
+    chart.d.bins[rightBin].tokens[0].id,
+  ];
+
+  //const tokens = chart.d.bins[].tokens[0].id
+  //chart.d.tokenRange = [0, numTokens - 1];
+
+  if (numTokens < chart.p.tokenExt / chart.p.lowerTokenThreshold) {
+    // drawAtomicDetailBars(chart, [0, numTokens - 1]);
+    drawWorkbenchAtomicOverviewBars(chart, strip, tokens, overlay);
+    chart.modeOverview = "atomic";
+    chart.modeDetail = "atomic";
+  } else {
+    if (numTokens < chart.p.tokenExt) {
+      // drawSemiAggregatedDetailBars(chart, [0, numTokens - 1]);
+      drawWorkbenchSemiAggregatedOverviewBars(chart, strip, tokens, overlay);
+      chart.modeOverview = "semiAggregated";
+      chart.modeDetail = "semiAggregated";
+    } else {
+      // drawAggregatedDetailBars(chart, [0, numTokens - 1]);
+      drawWorkbenchAggregatedOverviewBars(chart, strip, bins, overlay);
+      chart.modeOverview = "aggregated";
+      chart.modeDetail = "aggregated";
+    }
+  }
+}
 //endregion
 //region main functions
 export function drawInitialBars(chart) {
