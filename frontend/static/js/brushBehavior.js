@@ -8,14 +8,11 @@ import {
 import { updateFilters } from "./filters"; //HM
 import { deleteAllIndicators } from "./indicator"; //HM
 import {
-  updateTextArea,
   autoScrollTextArea,
   updateTextview,
   cascadingProjection,
 } from "./textArea"; //HM
-import { chartClickFix, tornOFEvents, updateEvents } from "./events"; //HM
 import "jquery-ui-bundle";
-import { checkAndUpdateSplit } from "./overview.js";
 import {
   drawStateRectangle,
   stateEncoder,
@@ -23,7 +20,6 @@ import {
   updateAllIndicators,
   setRangesWithID,
 } from "./overviewState.js";
-import { checkAndUpdateAssignment } from "./brushSetup.js";
 import {
   adjustWorkBenchBrush,
   drawButtonRectangle,
@@ -34,18 +30,15 @@ import {
 import {
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
-  getBrushState,
   setBrushState,
   getBrushStateWithoutKey,
   getBrushConfigKey,
-  colorActiveTree,
   redrawWorkbench,
 } from "./drawChart";
 import {
   ascendingBrushIndicatorUpdate,
   ascendingButtonIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
-  cascadingButtonIndicatorUpdate,
   drawRootButtonTreeNodeIndicators,
 } from "./brushIndicators.js";
 import { drawHistogram } from "./drawBars.js";
@@ -195,35 +188,6 @@ export function brushMove(chart) {
   // updateFilters(); //HM
 }
 
-export function brushEndOnClick(chart, brush = 0, overview = 0) {
-  if (d3.event.sourceEvent && d3.event.sourceEvent.type === "end") return;
-
-  //ignore brush-events fired by brush.move() (zoomMove)
-  if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
-
-  //ignore brush-events fired by centerMousedowsn -> mousemove
-  if (d3.event.sourceEvent && d3.event.sourceEvent.type === "mousemove") return;
-
-  //the default brush-selection is [0, width]
-  var brushX = parseInt(
-    chart.overviews[overview]["brushGroup"][brush]
-      .select(".selection")
-      .attr("x")
-  );
-  var brushEnd =
-    brushX +
-    parseInt(
-      chart.overviews[overview]["brushGroup"][brush]
-        .select(".selection")
-        .attr("width")
-    );
-
-  var selection = [brushX, brushEnd];
-  var overviewRange = computeSnap(chart, selection[0], selection[1]).id;
-
-  //drawDetailBars(chart, test2);
-}
-
 export function brushEnd(chart, brush = 0, overview = 0) {
   //ignore brush-events fired by brush.move() (zoomEnd or brushEnd)
   if (d3.event.sourceEvent && d3.event.sourceEvent.type === "end") return;
@@ -256,102 +220,6 @@ export function brushEnd(chart, brush = 0, overview = 0) {
   );
   chart.e.detail.call(chart.zoom.transform, newTransform);
 
-  //chartClickFix();
-  if (overview === 0) {
-    /**
-     * Update stored brush ranges in overview state object
-     */
-    setRangesWithID(0, {
-      id: [brush],
-      selection: snapPos,
-      overlay: [],
-    });
-    /**
-     * Update the set of indicators in the current overview, as well as descendants
-     */
-    updateAll(chart, brush);
-    updateAllIndicators(chart, 1);
-    updateAllIndicators(chart, 2);
-
-    /**
-     * Check whether the adjusted brush is linked with a text view.
-     * If so, update the displayed text tokens.
-     */
-    checkAndUpdateAssignment(chart, 0, [brush], snapPos);
-
-    adjustWorkBenchBrush([brush], snapPos);
-    updateAllGrandButtonRectangles(brush);
-    drawNameTBDdRectangle(chart, brush);
-  } else if (overview === 1) {
-    setRangesWithID(1, {
-      id: [stateEncoder.parentActive, brush],
-      selection: snapPos,
-      overlay: [],
-    });
-    drawStateRectangle(chart, stateEncoder.parentActive, brush, snapPos);
-    updateAll(chart, brush, 2);
-    updateAllIndicators(chart, 2);
-    checkAndUpdateSplit(chart, 1, [stateEncoder.parentActive, brush]);
-    checkAndUpdateAssignment(
-      chart,
-      1,
-      [stateEncoder.parentActive, brush],
-      snapPos
-    );
-    adjustWorkBenchBrush([stateEncoder.parentActive, brush], snapPos);
-    drawButtonRectangle(1, [stateEncoder.parentActive, brush]);
-    updateAllGrandButtonRectangles(stateEncoder.parentActive);
-  } else {
-    setRangesWithID(2, {
-      id: [
-        stateEncoder.parentActive,
-        stateEncoder[stateEncoder.parentActive].children.childActive,
-        brush,
-      ],
-      selection: snapPos,
-      overlay: [],
-    });
-    drawStateRectangle(
-      chart,
-      stateEncoder[stateEncoder.parentActive].children.childActive,
-      brush,
-      snapPos,
-      2
-    );
-    checkAndUpdateSplit(chart, 2, [
-      stateEncoder.parentActive,
-      stateEncoder[stateEncoder.parentActive].children.childActive,
-      brush,
-    ]);
-    checkAndUpdateAssignment(
-      chart,
-      2,
-      [
-        stateEncoder.parentActive,
-        stateEncoder[stateEncoder.parentActive].children.childActive,
-        brush,
-      ],
-      snapPos
-    );
-    adjustWorkBenchBrush(
-      [
-        stateEncoder.parentActive,
-        stateEncoder[stateEncoder.parentActive].children.childActive,
-        brush,
-      ],
-      snapPos
-    );
-    drawButtonRectangle(2, [
-      stateEncoder.parentActive,
-      stateEncoder[stateEncoder.parentActive].children.childActive,
-      brush,
-    ]);
-    drawGrandButtonRectangle([
-      stateEncoder.parentActive,
-      stateEncoder[stateEncoder.parentActive].children.childActive,
-      brush,
-    ]);
-  }
   drawDetailBars(chart);
   //updateEvents();
   autoScrollTextArea();
@@ -389,7 +257,6 @@ export function brushEnd(chart, brush = 0, overview = 0) {
       );
       drawHistogram(chart, convertedBrushData[1], overview + 1);
     }
-    //colorActiveTree(chart, overview, brush);
   }
 }
 
@@ -516,11 +383,6 @@ export function zoomEnd(chart, brush = 0, overview = 0) {
   brushG.call(currBrush.move, snapPos);
 
   //adjust the brush to the overview-tokens/bins (snapped)
-
-  //chartClickFix();
-  if (overview === 0) {
-    updateTextArea(chart);
-  }
   //updateEvents();
   autoScrollTextArea(false);
   deleteAllIndicators(); //HM for escaping hover bugs during the zoom process

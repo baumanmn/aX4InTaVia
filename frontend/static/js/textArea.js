@@ -2,13 +2,7 @@ import * as d3 from "d3";
 import $ from "jquery"; //Jena
 import { extractChunks } from "./drawBars.js";
 import { typeRect } from "./colorMaps";
-import { convertLastOverviewPosition } from "./overview.js";
-import {
-  getBrushState,
-  getFamilyOfBrush,
-  getLinkedBrushKey,
-  isPartOfSubtree,
-} from "./drawChart.js";
+import { getBrushState, getFamilyOfBrush } from "./drawChart.js";
 import { projection } from "./brushIndicators.js";
 
 var chart;
@@ -84,22 +78,6 @@ export function initTextArea(globalChart, brushKey) {
 }
 
 export function updateTextview(chart, brushKey) {
-  /* let brushItself = -1;
-  let sameSubTree = -1;
-  for (let i = 0; i < Object.keys(viewsObject["views"]).length; i++) {
-    let currKey = viewsObject["views"][i]["brushKey"];
-    if (currKey === brushKey) {
-      brushItself = i;
-    } else {
-      sameSubTree = getLinkedBrushKey(chart, isPartOfSubtree(chart, brushKey));
-    }
-  }
-  let idx = brushItself > -1 ? brushItself : sameSubTree;
-  console.log(idx);
-
-  if (idx > -1) {
-    fillTextView(chart, idx);
-  } */
   for (let i = 0; i < viewsObject["numViews"]; i++) {
     fillTextView(chart, i);
   }
@@ -322,122 +300,6 @@ function fillTextView(chart, idx) {
       d3.select("#tx_w_" + currentID)
         .style("opacity", "0.5")
         .style("background-color", "white");
-    }
-  }
-}
-
-/**
- *
- * Auxillary function calling the coloring function for each of the three views
- * @param {*} chart
- * @param {*} mod
- */
-export function updateTextArea(chart) {
-  return 0;
-  let colors = ["#F4B3B3", "#9CE9B1", "#FAFAD2"];
-  for (let key in chart.textViews) {
-    if (chart.textViews[key]["overviewID"] !== -1) {
-      updateIndividually(chart, key, colors[key]);
-    }
-  }
-  /* for (let key in chart.assignedRangeForViews) {
-    updateIndividually(chart, key, colors[key]);
-  } */
-}
-
-/**
- *
- * Color the token of the given brush with the given color.
- * Given the brush, the selection range is calculated and with that the set of tokens that is covered by the brush.
- * To update correctly, the tokens formerly within the selection range, but not anymore, need to be uncolored.
- * For that, all other tokens not within the range are manually colored white.
- * @param {*} chart
- * @param {*} brush
- * @param {*} color
- */
-function updateIndividually(chart, brush, color) {
-  if (brush != null) {
-    /* let oLeft = chart.assignedRangeForViews[brush][0][0];
-    let oRight = chart.assignedRangeForViews[brush][0][1];
-    let sLeft = chart.assignedRangeForViews[brush][1][0];
-    let sRight = chart.assignedRangeForViews[brush][1][1]; */
-
-    let oLeft = chart.textViews[brush]["assignedRange"][0][0];
-    let oRight = chart.textViews[brush]["assignedRange"][0][1];
-    let sLeft = chart.textViews[brush]["assignedRange"][1][0];
-    let sRight = chart.textViews[brush]["assignedRange"][1][1];
-
-    oLeft =
-      chart.d.bins[convertLastOverviewPosition(chart, oLeft, brush)].tokens[0]
-        .id;
-    oRight =
-      chart.d.bins[
-        Math.min(
-          chart.d.bins.length - 1,
-          convertLastOverviewPosition(chart, oRight, brush)
-        )
-      ].tokens[0].id;
-    sLeft =
-      chart.d.bins[convertLastOverviewPosition(chart, sLeft, brush)].tokens[0]
-        .id;
-    sRight =
-      chart.d.bins[
-        Math.min(
-          chart.d.bins.length - 1,
-          convertLastOverviewPosition(chart, sRight, brush)
-        )
-      ].tokens[0].id;
-
-    for (
-      let i = chart.d.spanIDTable[sLeft];
-      i <= chart.d.spanIDTable[sRight];
-      i++
-    ) {
-      let span = chart.d.spans[i];
-      let currentID = $(span).attr("id").match(/\d+/)[0];
-      if ($(span).hasClass("tx_t")) {
-        d3.select("#tx_t_" + currentID)
-          .style("background-color", color)
-          .classed("txt_t", true)
-          .classed("active_tx_t", true)
-          .classed("inactive_tx_t", false);
-      } else {
-        d3.select("#tx_w_" + currentID).style("background-color", color);
-      }
-    }
-    for (
-      let i = chart.d.spanIDTable[oLeft];
-      i < chart.d.spanIDTable[sLeft];
-      i++
-    ) {
-      let span = chart.d.spans[i];
-      let currentID = $(span).attr("id").match(/\d+/)[0];
-      if ($(span).hasClass("tx_t")) {
-        d3.select("#tx_t_" + currentID)
-          .style("background-color", "white")
-          .classed("txt_t", true)
-          .classed("inactive_tx_t", true)
-          .classed("active_tx_t", false);
-      } else {
-        d3.select("#tx_w_" + currentID).style("background-color", "white");
-      }
-    }
-    for (
-      let i = chart.d.spanIDTable[sRight + 1];
-      i <= chart.d.spanIDTable[oRight];
-      i++
-    ) {
-      let span = chart.d.spans[i];
-      let currentID = $(span).attr("id").match(/\d+/)[0];
-      if ($(span).hasClass("tx_t")) {
-        d3.select("#tx_t_" + currentID)
-          .style("background-color", "white")
-          .classed("txt_t", true)
-          .classed("inactive_tx_t", true)
-          .classed("active_tx_t", false);
-      } else {
-        d3.select("#tx_w_" + currentID).style("background-color", "white");
-      }
     }
   }
 }

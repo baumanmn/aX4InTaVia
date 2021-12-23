@@ -4,7 +4,6 @@ import * as d3 from "d3";
 import * as colorMaps from "./colorMaps.js";
 import { computeBins } from "./preprocessData.js";
 import { typeArray } from "./constants.js";
-import { updateTextArea, highlightText } from "./textArea";
 import { drawDetailBars } from "./splitAnnotationWindow";
 import * as math from "mathjs";
 

@@ -1,40 +1,29 @@
 //region imports
 import * as d3 from "d3";
-import $ from "jquery"; //Jena
+import { removeAndPrepend } from "./brushSetup";
+import { sliderReconfigurationCaller } from "./slider";
 //import * as d3 from "../node_modules/d3";
 //import * as d3 from "../node_modules/d3/build/d3.js";
 import { typeArray } from "./constants.js";
 import * as preprocessData from "./preprocessData.js";
 import {
   addMultipleTextviews,
-  addTextview,
   cascadingProjection,
   initTextArea,
-  replaceTextview,
-  resetTextviews,
-  updateTextArea,
   updateTextview,
 } from "./textArea";
-import {
-  installZoom,
-  installBrush,
-  initializeViewAssignment,
-} from "./brushSetup.js";
+import { installZoom, installBrush } from "./brushSetup.js";
 import {
   drawHistogram,
   drawInitialBars,
-  drawSecondOverviewBars,
-  drawThirdOverviewBars,
   drawWorkbenchHistogram,
 } from "./drawBars.js";
 import { initializeSliders, bindSliderToBrushes } from "./slider";
-import { initializeStates } from "./overviewState.js";
-import { buttonOnClick, drawButtonTree } from "./buttons.js";
+import { drawButtonTree } from "./buttons.js";
 import {
   ascendingBrushIndicatorUpdate,
   ascendingButtonIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
-  cascadingButtonIndicatorUpdate,
   drawRootButtonTreeNodeIndicators,
   projection,
 } from "./brushIndicators.js";
@@ -1003,8 +992,6 @@ export function drawInitialOverview(chart) {
 
   installZoom(chart); //MB currently defucnt
 
-  initializeViewAssignment(chart, maxNumTextViews);
-
   installBrush(chart, 0, {
     brushNr: 0,
     overlay: [0, chart.p.tokenExt],
@@ -1014,7 +1001,6 @@ export function drawInitialOverview(chart) {
   for (let i = maxNumSliders - 1; i >= 0; i--) {
     bindSliderToBrushes(chart, chart.p.tokenExt, 0, i);
   }
-  initializeStates(chart);
 }
 
 export function addInitialCollapseOverview(chart, overviewID) {
@@ -1648,4 +1634,54 @@ export function checkIfBrushIsActiveNode(chart, brushKey) {
   });
 
   return activeClass;
+}
+
+/**
+ * Reconfigures the brushes according to new partitioning of brushes,
+ * i.e. recalculate boundaries of brushes, re-add sliders and reconfigure the views bound to each brush
+ * @param {*} chart
+ * @param {number} splitPos new partition position, i.e. slider position
+ * @param {number} firstBrush the left side brush (can be brush 1 or brush 2)
+ * @param {number} secondBrush the right side brush (can be brush 2 or brush 3)
+ * @param {number} sliderID the id of the corresponding slider (can be 0 or 1)
+ * @param {number} overview the id of the corresponding overview
+ */
+export function reconfigurePartitions(
+  chart,
+  splitPos,
+  firstBrush,
+  secondBrush,
+  sliderID = 0,
+  overview = 0
+) {
+  //firstly redraw affected brushes and slider
+  removeAndPrepend(chart, sliderID, overview, firstBrush, secondBrush);
+  sliderReconfigurationCaller(chart, sliderID, overview, splitPos);
+
+  //drawButtonTree(chart);
+  redrawCurrentActivation(chart);
+  if (chart.nodeActivityMode === "overview") {
+    const brushKey = getBrushConfigKey(chart, overview, sliderID);
+    if (checkIfBrushIsActiveNode(chart, brushKey)) {
+      let activeNodes = [brushKey];
+      let familyData = getFamilyOfBrush(chart, brushKey);
+      if (familyData && familyData["siblings"].size > 0) {
+        familyData = Array.from(familyData["siblings"]);
+        activeNodes = activeNodes.concat(familyData);
+        activeNodes.sort();
+      }
+      setAnnotationWindows(chart, activeNodes);
+      addMultipleTextviews(chart, activeNodes);
+    }
+  }
+  if (
+    chart.overviews[overview + 1] &&
+    chart.overviews[overview + 1]["backgroundRects"]
+  ) {
+    let convertedBrushData = cascadingProjection(
+      chart,
+      getBrushConfigKey(chart, overview, sliderID)
+    );
+    drawHistogram(chart, convertedBrushData[1], overview + 1);
+  }
 }

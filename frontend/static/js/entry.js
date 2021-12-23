@@ -7,21 +7,14 @@ import {
   fillChart,
   drawInitialOverview,
   addInitialCollapseOverview,
-  drawWorkbenchStrip,
   addWorkBenchbrush,
 } from "./drawChart.js";
-import { dragChart } from "./dragChart.js";
-import { initLens } from "./lensChart.js";
-// import { initLens } from "./newLensChart.js";
-import { initFilters } from "./filters";
 import { initIndicator } from "./indicator";
 import { initStateController } from "./stateController";
 import { initElemrntAddres } from "./elemAddress";
 // import { initEvents } from "./events";
 import { initFunctions } from "./functions";
 import { initializeButtonContainer } from "./buttons.js";
-//import "./annotation.js";
-//endregion
 
 //region constants
 const backend = false;
@@ -45,11 +38,6 @@ function drawChart(data) {
   initStateController(chart); //HM
 
   addWorkBenchbrush(chart, "0_0");
-
-  $(function () {
-    controller.newMonitor("textView_0", chart);
-    //initializeStates(chart);
-  });
 }
 
 if (backend) {

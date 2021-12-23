@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import $ from "jquery";
-import { reconfigurePartitions } from "./overview";
 import {
+  reconfigurePartitions,
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
 } from "./drawChart";

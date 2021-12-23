@@ -6,26 +6,13 @@ import {
   zoomMove,
   zoomEnd,
   centerMousedown,
-  brushEndOnClick,
 } from "./brushBehavior";
 import { tornOFEvents } from "./events"; //HM
-import { setActiveOverview, checkAndUpdateSplit } from "./overview";
-import {
-  stateEncoder,
-  setBrushStateActiveInOverview,
-  getStoredRanges,
-  setRanges,
-} from "./overviewState";
-import {
-  addMultipleTextviews,
-  updateTextArea,
-  updateTextview,
-} from "./textArea";
-import { currentlyActive, drawButtonTree } from "./buttons.js";
+import { addMultipleTextviews, updateTextview } from "./textArea";
+import { drawButtonTree } from "./buttons.js";
 import {
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
-  setBrushStateWithoutKey,
   addBrushToFamilyMap,
   addChildBrushToFamilyMap,
   addSiblingBrushToFamilyMap,
@@ -38,19 +25,11 @@ import {
 import {
   ascendingBrushIndicatorUpdate,
   cascadingBrushIndicatorUpdate,
-  cascadingButtonIndicatorUpdate,
 } from "./brushIndicators";
 import { setAnnotationWindows } from "./splitAnnotationWindow";
 
 export var annotationBrush = 0;
 export var currentlyActiveBrush = 0;
-
-const brushClasses = {
-  inactive: "O0",
-  0: "O1",
-  1: "O2",
-  2: "O3",
-};
 
 /**
  *
@@ -104,11 +83,7 @@ export function installBrush(chart, overviewNr, brushData) {
   let brushKey = getBrushConfigKey(chart, overviewNr, partitionKey);
   let brushID = selectorPrefix + brushKey;
   let currOverview = chart.overviews[overviewNr]["stripGroup"];
-  /* let currClass =
-    currentOverviewPartitionConfig["active_partition"] === partitionKey
-      ? brushClasses[overviewNr]
-      : brushClasses["inactive"]; */
-  let currClass = brushClasses["inactive"];
+  let currClass = chart.p.defaultBrushNodeClass;
 
   annotationBrush = partitionKey;
 
@@ -176,8 +151,6 @@ export function installBrush(chart, overviewNr, brushData) {
     .on("mousedown", function () {
       centerMousedown(chart, partitionKey, overviewNr);
     });
-
-  setRanges(overviewNr, brushData);
 
   if (!currentOverviewPartitionConfig["last_brush_config"][partitionKey]) {
     currentOverviewPartitionConfig["num_active_partitions"] += 1;
@@ -282,199 +255,4 @@ export function removeBrush(chart, overview, id) {
  */
 export function setCurrentlyActive(id) {
   currentlyActiveBrush = id;
-}
-
-/**
- *
- * init. the brush to view assignments
- * @param {*} chart the chart object
- */
-export function initializeViewAssignment(chart, numTextViews) {
-  for (let i = 0; i < numTextViews; i++) {
-    chart.textViews[i] = {
-      overviewID: -1,
-      brushKey: [-1],
-      assignedRange: [],
-    };
-  }
-  chart.textViews[0] = {
-    overviewID: 0,
-    brushKey: [0],
-    assignedRange: [
-      [0, chart.p.tokenExt], //overlay
-      [0, chart.p.tokenExt], //selection
-    ],
-  };
-
-  /* chart.selectedBrushForView0 = [0, [0]]; //to be refactored into a view object
-  chart.selectedBrushForView1 = [-1, [-1]]; //to be refactored into a view object
-  chart.selectedBrushForView2 = [-1, [-1]]; //to be refactored into a view object
-  chart.assignedRangeForViews = {
-    //to be refactored into a view object
-    0: [
-      [0, chart.p.tokenExt], //overlay
-      [0, chart.p.tokenExt], //selection
-    ],
-  }; */
-}
-
-/**
- * Assign a brush to a view and synchronize them
- * @param {*} chart
- * @param {*} viewID
- * @param {*} brushID
- * @param {*} overviewID
- */
-export function assignBrushToView(chart, viewID, overviewID, brushKey) {
-  /* if (viewID === 0) {
-    chart.selectedBrushForView0 = [overviewID, key];
-  } else if (viewID === 1) {
-    chart.selectedBrushForView1 = [overviewID, key];
-  } else {
-    chart.selectedBrushForView2 = [overviewID, key];
-  }
-  chart.assignedRangeForViews[viewID] = getStoredRanges(overviewID, key); */
-  chart.textViews[viewID]["overviewID"] = overviewID;
-  chart.textViews[viewID]["brushKey"] = brushKey;
-  chart.textViews[viewID]["assignedRange"] = getStoredRanges(
-    overviewID,
-    brushKey
-  );
-  checkAndUpdateSplit(chart, overviewID, brushKey);
-}
-
-/**
- * Return the actual brush object of the brush that is synched with the given view
- * @param {*} chart
- * @param {*} viewID ID of the text view in question
- */
-export function getSelectedBrushForView(chart, viewID) {
-  /* let synched = null;
-  let overviewBrush = null;
-  if (viewID === 0) {
-    synched = chart.selectedBrushForView0;
-  } else if (viewID === 1) {
-    synched = chart.selectedBrushForView1;
-  } else {
-    synched = chart.selectedBrushForView2;
-  } */
-
-  let synchedView = chart.textViews[viewID];
-  if (synchedView["overviewID"] === -1) {
-    return null;
-  }
-
-  let brushKey = synchedView["brushKey"];
-  let overviewID = synchedView["overviewID"];
-  let overviewBrush =
-    chart.overviews[overviewID]["brushGroup"][brushKey[overviewID]];
-  return overviewBrush;
-
-  /* if (synched[0] === -1) {
-    return null;
-  } else {
-    let key = synched[1];
-    if (synched[0] === 0) {
-      overviewBrush = chart.overviews[0]["brushGroup"][key[0]];
-    } else if (synched[0] === 1) {
-      overviewBrush = chart.overviews[1]["brushGroup"][key[1]];
-    } else {
-      overviewBrush = chart.overviews[2]["brushGroup"][key[2]];
-    }
-    return overviewBrush;
-  } */
-}
-
-/**
- * Check wheter a given brush from a certain overview is synched with any of the text views
- * @param {*} chart
- * @param {*} overview number equaling 0, 1 or 2 and denoting the overview
- * @param {*} id ID of the brush
- */
-export function isBrushSynchedWithText(chart, givenOverviewID, givenBrushKey) {
-  //still need
-  let isSynched = [false, -1];
-
-  for (let i = 0; i < Object.keys(chart.textViews).length; i++) {
-    let overviewID = chart.textViews[i]["overviewID"];
-    let brushKey = chart.textViews[i]["brushKey"];
-    let textViewID = i;
-    if (overviewID === givenOverviewID && compareKey(brushKey, givenBrushKey)) {
-      isSynched = [true, textViewID];
-    }
-  }
-
-  return isSynched;
-
-  /* let answer = [false, -1];
-  if (
-    chart.selectedBrushForView0[0] === overview &&
-    compareKey(chart.selectedBrushForView0[1], key) === true
-  ) {
-    answer = [true, 0];
-  }
-  if (
-    chart.selectedBrushForView1[0] === overview &&
-    compareKey(chart.selectedBrushForView1[1], key) === true
-  ) {
-    answer = [true, 1];
-  }
-  if (
-    chart.selectedBrushForView2[0] === overview &&
-    compareKey(chart.selectedBrushForView2[1], key) === true
-  ) {
-    answer = [true, 2];
-  }
-  return answer; */
-}
-
-export function checkAndUpdateAssignment(
-  chart,
-  overview,
-  key,
-  selectionRange,
-  overlayRange = null
-) {
-  let synched = isBrushSynchedWithText(chart, overview, key);
-  if (synched[0] === true) {
-    let viewID = synched[1];
-    chart.textViews[viewID]["assignedRange"][1] = selectionRange;
-    if (overlayRange != null) {
-      chart.textViews[viewID]["assignedRange"][0] = overlayRange;
-    }
-    updateTextArea(chart);
-  }
-
-  /* if (synched[0] === true) {
-    let viewID = synched[1];
-    chart.assignedRangeForViews[viewID][1] = selectionRange;
-    if (overlayRange != null) {
-      chart.assignedRangeForViews[viewID][0] = overlayRange;
-    }
-    updateTextArea(chart);
-  } */
-}
-
-export function extractKey(key) {
-  let brushID;
-  if (key.length > 2) {
-    brushID = key[2];
-  } else if (key.length > 1) {
-    brushID = key[1];
-  } else {
-    brushID = key[0];
-  }
-  return brushID;
-}
-
-export function compareKey(list, key) {
-  if (key.length !== list.length) {
-    return false;
-  }
-  for (let i = 0; i < key.length; i++) {
-    if (key[i] !== list[i]) {
-      return false;
-    }
-  }
-  return true;
 }
