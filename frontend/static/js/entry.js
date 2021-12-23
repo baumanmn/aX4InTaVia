@@ -1,7 +1,6 @@
 //region imports
 import * as d3 from "d3";
 import $ from "jquery"; //Jena
-import { controller } from "./controller.js"; //Jena
 import {
   initializeChart,
   fillChart,

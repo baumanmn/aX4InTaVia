@@ -5,7 +5,6 @@ import {
   drawDetailBars,
   updateAnnoViewRange,
 } from "./splitAnnotationWindow.js";
-import { updateFilters } from "./filters"; //HM
 import { deleteAllIndicators } from "./indicator"; //HM
 import {
   autoScrollTextArea,
@@ -13,20 +12,6 @@ import {
   cascadingProjection,
 } from "./textArea"; //HM
 import "jquery-ui-bundle";
-import {
-  drawStateRectangle,
-  stateEncoder,
-  updateAll,
-  updateAllIndicators,
-  setRangesWithID,
-} from "./overviewState.js";
-import {
-  adjustWorkBenchBrush,
-  drawButtonRectangle,
-  drawGrandButtonRectangle,
-  updateAllGrandButtonRectangles,
-  drawNameTBDdRectangle,
-} from "./buttons.js";
 import {
   getOverviewPartitionConfig,
   setOverviewPartitionConfig,
