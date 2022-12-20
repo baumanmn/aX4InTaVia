@@ -64,11 +64,11 @@ const [annoWindowWidth, annoWindowHeight] =
  * OVERVIEW RELATED CONSTANTS
  */
 const maxNumOverviews = 3;
-const maxNumBrushes = 3;
+const maxNumBrushes = 10;
 const maxNumSliders = maxNumBrushes - 1;
 const maxNumTextViews = maxNumBrushes;
 
-const overviewExt = 40; //height of an overview strip
+const overviewExt = 50; //height of an overview strip
 const sliderSpace = 15; //space for sliders
 const overviewHandleExt = 40; //space for the handles
 const overviewStripsExt = tokenExt + overviewHandleExt;
@@ -77,7 +77,7 @@ const [overviewStripsWidth, overviewStripsHeight] =
   orientation === "landscape"
     ? [overviewStripsExt, stripsExt]
     : [stripsExt, overviewStripsExt];
-const buttonsWidth = 500;
+const buttonsWidth = 200;
 const indicatorPadding = 5;
 const indicatorMinHeight = 2;
 const indicatorYFunction = d3
@@ -94,7 +94,7 @@ const indicatorShader = d3
   .range(["black", "gray"]);
 
 const splitIndicatorSize =
-  Math.max(indicatorMinHeight, overviewExt / maxNumOverviews) / 2;
+  (0.75 * Math.max(indicatorMinHeight, overviewExt / maxNumOverviews)) / 2;
 
 const buttonTreeIndicatorSize = 10;
 const buttonTreeClass = "buttonTreeElement";

@@ -235,8 +235,8 @@ if (backend) {
     });
   } //draw the basic chart
 } else {
-  //let path = "../../../backend/data/bt_debatte4.json" //MARTIN
-  let path = "../../backend/data/bt_debatte4.json"; //JENA
+  let path = "../../../backend/data/bt_debatte4.json" //MARTIN
+  // let path = "../../backend/data/bt_debatte4.json"; //JENA
   d3.json(path, function (data) {
     drawChart(data);
   });

@@ -150,7 +150,7 @@ function drawNSplitWindows(chart) {
   const mapColor = {};
   mapColor[chart.p.activeNodeClass] = "darkred";
   mapColor[chart.p.activeSiblingClass] = "red";
-  const strokeWidth = "2px";
+  const strokeWidth = "6px";
 
   let n = chart.d.annoViewObj["numViews"];
   let dist =
