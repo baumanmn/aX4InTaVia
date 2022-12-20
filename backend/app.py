@@ -82,6 +82,7 @@ def retrieve_data():
             with open(ANNOTATION_FILE, "w") as output:
                 json.dump(annotation_data, output, sort_keys=False, indent=4)
 
+    print(data)
     return {"processed_data": data, "existing_store": annotation_data}
 
 
